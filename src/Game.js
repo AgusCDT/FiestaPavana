@@ -1,9 +1,9 @@
   
-export default class Game extends Phaser.Scene{
+//export default class Game extends Phaser.Scene{}
   /*import { Shop } from './scenes/Shop.js'
   import { Menu } from './scenes/Menu.js'
   import { Tierra } from './scenes/Tierra.js'*/
-    const config = {
+    let config = {
         type: Phaser.AUTO,
         width: 800,
         height: 600,
@@ -15,9 +15,8 @@ export default class Game extends Phaser.Scene{
         },
         scene: {
             preload:preload, create:create}
-            
-        
-      };
+                   
+    };
 
       var game = new Phaser.Game(config);
 
@@ -35,4 +34,4 @@ export default class Game extends Phaser.Scene{
       
       this.pavana.setCollideWorldBounds(true);
     }
-}
+
