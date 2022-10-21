@@ -1,5 +1,3 @@
-  
-//export default class Game extends Phaser.Scene{}
   /*import { Shop } from './scenes/Shop.js'
   import { Menu } from './scenes/Menu.js'
   import { Tierra } from './scenes/Tierra.js'*/
