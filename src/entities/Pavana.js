@@ -13,54 +13,69 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 		this.cursors = this.scene.input.keyboard.createCursorKeys();		
 	}
 	preUpdate() {
-		if (this.cursors.up.isDown || this.cursors.down.isDown || this.cursors.left.isDown || this.cursors.right.isDown)
-		{
-		    if (this.cursors.up.isDown) {
-		    	this.body.setVelocityY(-this.speedY);
-		    	if (this.speedY < this.maxSpeed) {
-					this.speedY += this.acceleration;
-		    	}
-		    	console.log("Arriba2");
-		    }
-		    else if (this.cursors.down.isDown) {
-		    	this.body.setVelocityY(this.speedY);
-		    	if (this.speedY < this.maxSpeed) {
-					this.speedY += this.acceleration;
-		    	}
-		    	console.log("Abajo2");
-		    }
-		    if (this.cursors.left.isDown) {
-		    	this.body.setVelocityX(-this.speedX);
-		    	if (this.speedX < this.maxSpeed) {
-					this.speedX += this.acceleration;
-		    	}
-		    	console.log("Izquierda");
-		    }
-		    else if (this.cursors.right.isDown) {
-		    	this.body.setVelocityX(this.speedX);
-		    	if (this.speedX < this.maxSpeed) {
-					this.speedX += this.acceleration;
-		    	}
-		    	console.log("Derecha");
-		    }
-		}
-	    else {
-	    	//this.body.setVelocityX(0);
-	    	if (this.speedX > 0){
-	    		this.speedX -= this.deceleration;
-	    		if (this.speedX < 0){
-	    			this.speedX = 0;
-	    		}
+	    if (this.cursors.up.isDown) {
+	    	this.body.setVelocityY(this.speedY);
+	    	if (this.speedY < -this.maxSpeed) {
+				this.speedY -= this.acceleration;
 	    	}
-	    	if (this.speedY > 0){
+	    	console.log("Arriba2");
+	    }
+	    else if (this.cursors.down.isDown) {
+	    	this.body.setVelocityY(this.speedY);
+	    	if (this.speedY < this.maxSpeed) {
+				this.speedY += this.acceleration;
+	    	}
+	    	console.log("Abajo2");
+	    }
+	    else {
+		   	if (this.speedY > 0){
 	    		this.speedY -= this.deceleration;
 	    		if (this.speedY < 0){
 	    			this.speedY = 0;
 	    		}
+	    		console.log("Recuperando abajo");
 	    	}
-	    	this.body.setVelocityX(this.speedX);
+	    	if (this.speedY < 0){
+	    		this.speedY += this.deceleration;
+	    		if (this.speedY > 0){
+	    			this.speedY = 0;
+	    		}
+	    		console.log("Recuperando arriba");
+	    	}
 	    	this.body.setVelocityY(this.speedY);
 	    	console.log("Parado2");
+	    }
+	    if (this.cursors.left.isDown) {
+	    	this.body.setVelocityX(this.speedX);
+	    	if (this.speedX < -this.maxSpeed) {
+				this.speedX -= this.acceleration;
+	    	}
+	    	console.log("Izquierda");
+	    }
+	    else if (this.cursors.right.isDown) {
+	    	this.body.setVelocityX(this.speedX);
+	    	if (this.speedX < this.maxSpeed) {
+				this.speedX += this.acceleration;
+	    	}
+	    	console.log("Derecha");
+	    }
+	    else {
+	    	if (this.speedX > 0){
+    			this.speedX -= this.deceleration;
+	    		if (this.speedX < 0) {
+	    			this.speedX = 0;
+	    		}
+	    		console.log("Recuperando derecha");
+	    	}
+	    	else if (this.speedX < 0){
+    			this.speedX += this.deceleration;
+	    		if (this.speedX > 0) {
+	    			this.speedX = 0;
+	    		}
+	    		console.log("Recuperando izquierda");
+	    	}
+	    	this.body.setVelocityX(this.speedX);
+	    	//console.log("Parado2");
 	    }
 	}
 }
