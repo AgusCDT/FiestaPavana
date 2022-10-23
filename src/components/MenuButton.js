@@ -5,7 +5,7 @@ export default class MenuButton{
 	}
 
 	preload(){
-		this.relatedScene.load.image('menubutton', '.../assets/imagenes/componentes/BotonMenu.png');
+		this.relatedScene.load.image('menubutton', '../assets/imagenes/componentes/BotonMenu.png');
 	}
 
 	create(){
