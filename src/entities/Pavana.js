@@ -59,7 +59,7 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 	    		}
 	    	}
 	    	this.body.setVelocityX(this.speedX);
-	    	this.body.setVelocityX(this.speedY);
+	    	this.body.setVelocityY(this.speedY);
 	    	console.log("Parado2");
 	    }
 	}
