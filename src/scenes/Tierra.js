@@ -7,7 +7,7 @@ export default class Tierra extends Phaser.Scene {
 	/*precarga de las imagenes que van en las escenas*/ 
 	preload() {
 		/*hay que colocar la direccion de la imagen del escenario. Ahora está una de ejemplo*/
-	 	//this.load.image('tierra', './assets/imagenes/otras/TRIOLIC.png'); 
+	 	this.load.image('tierra', './assets/imagenes/otras/plane.png'); 
 	 	this.load.image('pavana', '../../assets/imagenes/gaviota.png');
 	 	console.log("Creada");
 	}
@@ -18,7 +18,8 @@ export default class Tierra extends Phaser.Scene {
 
 	 	/* instancio la pavana(cambiar parámetros)*/
 	 	//let pavana = new Pavana(this, 20, 20);
-	 	this.pavana = new Pavana(this, 20, 20);	
+	 	this.pavana = new Pavana(this, 200, 200);
+	 	this.add.image(200, 200, 'pavana').setOrigin(0, 0);	
 	 	console.log("Instanciada");
 	}
 }

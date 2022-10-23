@@ -2,6 +2,9 @@
 export default class Pavana extends Phaser.GameObjects.Sprite{
 	constructor(scene, x, y) {
 		super(scene, x, y,'pavana');
+		this.scene.add.existing(this);
+    	this.scene.physics.add.existing(this);
+    	this.body.setCollideWorldBounds();
 		this.speed = 0;
 		this.acceleration = 10;
 		this.deceleration = 20;
