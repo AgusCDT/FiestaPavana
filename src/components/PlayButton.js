@@ -5,7 +5,7 @@ export default class PlayButton{
 	}
 
 	preload() {
-		this.relatedScene.load.image('playbutton', '../../assets/imagenes/componentes/BotonPlay.png');
+		this.relatedScene.load.image('playbutton', './assets/componentes/BotonPlay.png');
 	}
 
 	create(){
