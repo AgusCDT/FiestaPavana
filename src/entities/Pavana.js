@@ -20,14 +20,14 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 		    	if (this.speedY < this.maxSpeed) {
 					this.speedY += this.acceleration;
 		    	}
-		    	console.log("Arriba");
+		    	console.log("Arriba2");
 		    }
 		    else if (this.cursors.down.isDown) {
 		    	this.body.setVelocityY(this.speedY);
 		    	if (this.speedY < this.maxSpeed) {
 					this.speedY += this.acceleration;
 		    	}
-		    	console.log("Abajo");
+		    	console.log("Abajo2");
 		    }
 		    if (this.cursors.left.isDown) {
 		    	this.body.setVelocityX(-this.speedX);
