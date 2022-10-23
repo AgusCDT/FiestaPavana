@@ -12,34 +12,37 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 		this.cursors = this.scene.input.keyboard.createCursorKeys();		
 	}
 	preUpdate() {
-	    if (this.cursors.up.isDown) {
-	    	this.body.setVelocityY(this.speed);
-	    	if (this.speed < this.maxSpeed) {
-				this.speed += this.acceleration;
-	    	}
-	    	console.log("Hola");
-	    }
-	    else if (this.cursors.down.isDown) {
-	    	this.body.setVelocityY(-this.speed);
-	    	if (this.speed < this.maxSpeed) {
-				this.speed += this.acceleration;
-	    	}
-	    	console.log("Hola2");
-	    }
-	    if (this.cursors.left.isDown) {
-	    	this.body.setVelocityX(-this.speed);
-	    	if (this.speed < this.maxSpeed) {
-				this.speed += this.acceleration;
-	    	}
-	    	console.log("Hola3");
-	    }
-	    else if (this.cursors.right.isDown) {
-	    	this.body.setVelocityX(this.speed);
-	    	if (this.speed < this.maxSpeed) {
-				this.speed += this.acceleration;
-	    	}
-	    	console.log("Hola4");
-	    }
+		if (this.cursors.up.isDown || this.cursors.down.isDown || this.cursors.left.isDown || this.cursors.right.isDown)
+		{
+		    if (this.cursors.up.isDown) {
+		    	this.body.setVelocityY(-this.speed);
+		    	if (this.speed < this.maxSpeed) {
+					this.speed += this.acceleration;
+		    	}
+		    	console.log("Arriba");
+		    }
+		    else if (this.cursors.down.isDown) {
+		    	this.body.setVelocityY(this.speed);
+		    	if (this.speed < this.maxSpeed) {
+					this.speed += this.acceleration;
+		    	}
+		    	console.log("Abajo");
+		    }
+		    if (this.cursors.left.isDown) {
+		    	this.body.setVelocityX(-this.speed);
+		    	if (this.speed < this.maxSpeed) {
+					this.speed += this.acceleration;
+		    	}
+		    	console.log("Izquierda");
+		    }
+		    else if (this.cursors.right.isDown) {
+		    	this.body.setVelocityX(this.speed);
+		    	if (this.speed < this.maxSpeed) {
+					this.speed += this.acceleration;
+		    	}
+		    	console.log("Derecha");
+		    }
+		}
 	    else {
 	    	//this.body.setVelocityX(0);
 	    	if (this.speed > 0){
@@ -48,7 +51,8 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 	    			this.speed = 0;
 	    		}
 	    	}
-	    	console.log("Hola5");
+	    	this.body.setVelocityX(this.speed);
+	    	console.log("Parado");
 	    }
 	}
 }
