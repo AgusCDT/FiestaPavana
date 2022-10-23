@@ -1,4 +1,4 @@
-import MenuButton from '../components/MenuButton.js';
+import MenuButton from '../src/components/MenuButton.js';
  
 export default class Shop extends Phaser.Scene {
 	constructor() {

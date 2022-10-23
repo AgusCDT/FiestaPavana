@@ -5,7 +5,7 @@ export default class ShopButton{
 	}
 
 	preload(){
-		this.relatedScene.load.image('shopbutton', './assets/imagenes/componentes/BotonShop.png');
+		this.relatedScene.load.image('shopbutton', '.../assets/imagenes/componentes/BotonShop.png');
 	}
 
 	create(){
