@@ -16,6 +16,7 @@ export default class Tierra extends Phaser.Scene {
 	 	this.add.image(0, 0, 'tierra').setOrigin(0, 0);
 
 	 	/* instancio la pavana(cambiar parámetros)*/
-	 	let pavana = new Pavana(this, 20, 20);	 	
+	 	let pavana = new Pavana(this, 20, 20);	
+	 	this.spawn();	
 	}
 }
