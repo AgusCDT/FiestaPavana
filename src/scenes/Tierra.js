@@ -20,6 +20,5 @@ export default class Tierra extends Phaser.Scene {
 	 	//let pavana = new Pavana(this, 20, 20);
 	 	this.pavana = new Pavana(this, 20, 20);	
 	 	console.log("Instanciada");
-	 	this.spawn();	
 	}
 }

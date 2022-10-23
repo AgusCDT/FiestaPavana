@@ -21,18 +21,21 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 	    	if (this.speed < this.maxSpeed) {
 				this.speed += this.acceleration;
 	    	}
+	    	console.log("Hola2");
 	    }
 	    if (this.cursors.left.isDown) {
 	    	this.body.setVelocityX(-this.speed);
 	    	if (this.speed < this.maxSpeed) {
 				this.speed += this.acceleration;
 	    	}
+	    	console.log("Hola3");
 	    }
 	    else if (this.cursors.right.isDown) {
 	    	this.body.setVelocityX(this.speed);
 	    	if (this.speed < this.maxSpeed) {
 				this.speed += this.acceleration;
 	    	}
+	    	console.log("Hola4");
 	    }
 	    else {
 	    	//this.body.setVelocityX(0);
@@ -42,7 +45,7 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 	    			this.speed = 0;
 	    		}
 	    	}
-	    	
+	    	console.log("Hola5");
 	    }
 	}
 }
