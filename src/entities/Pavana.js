@@ -14,7 +14,7 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 	}
 	preUpdate() {
 	    if (this.cursors.up.isDown) {
-	    	this.body.setVelocityY(this.speedY);
+	    	//this.body.setVelocityY(this.speedY);
 	    	if (this.speedY > -this.maxSpeed) {
 				this.speedY -= this.acceleration;
 				console.log(this.speedY);
@@ -22,7 +22,7 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 	    	console.log("Arriba2");
 	    }
 	    else if (this.cursors.down.isDown) {
-	    	this.body.setVelocityY(this.speedY);
+	    	//this.body.setVelocityY(this.speedY);
 	    	if (this.speedY < this.maxSpeed) {
 				this.speedY += this.acceleration;
 	    	}
@@ -43,17 +43,17 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 	    		}
 	    		console.log("Recuperando arriba");
 	    	}
-	    	this.body.setVelocityY(this.speedY);
+	    	//this.body.setVelocityY(this.speedY);
 	    }
 	    if (this.cursors.left.isDown) {
-	    	this.body.setVelocityX(this.speedX);
+	    	//this.body.setVelocityX(this.speedX);
 	    	if (this.speedX > -this.maxSpeed) {
 				this.speedX -= this.acceleration;
 	    	}
 	    	console.log("Izquierda");
 	    }
 	    else if (this.cursors.right.isDown) {
-	    	this.body.setVelocityX(this.speedX);
+	    	//this.body.setVelocityX(this.speedX);
 	    	if (this.speedX < this.maxSpeed) {
 				this.speedX += this.acceleration;
 	    	}
@@ -74,7 +74,9 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 	    		}
 	    		console.log("Recuperando izquierda");
 	    	}
-	    	this.body.setVelocityX(this.speedX);
+	    	//this.body.setVelocityX(this.speedX);
 	    }
+	    this.setVelocity(this.speedX, this.speedY);
+	    console.log("Es la buena");
 	}
 }
