@@ -5,12 +5,12 @@ export default class PlayButton{
 	}
 
 	preload() {
-		this.relatedScene.load.image('playbutton', '../assets/imagenes/componentes/BotonPlay.png');
+		this.relatedScene.load.image('playbutton', '../../assets/imagenes/componentes/BotonPlay.png');
 	}
 
 	create(){
-		this.startButton = this.relatedScene.add.image(400, 140, 'playbutton').setInteractive();
-		this.startButton.on('pointerdown',() => {
+		this.playButton = this.relatedScene.add.image(400, 140, 'playbutton').setInteractive();
+		this.playButton.on('pointerdown',() => {
 			this.relatedScene.scene.start('tierra');
 		});
 	}

@@ -1,5 +1,5 @@
-import ShopButton from '../src/components/ShopButton.js';
-import PlayButton from '../src/components/PlayButton.js';
+import ShopButton from '../components/ShopButton.js';
+import PlayButton from '../components/PlayButton.js';
 
 export default class Menu extends Phaser.Scene {
 	constructor() {
