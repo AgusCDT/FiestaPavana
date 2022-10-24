@@ -7,7 +7,7 @@ export default class Tierra extends Phaser.Scene {
 	/*precarga de las imagenes que van en las escenas*/ 
 	preload() {
 		/*hay que colocar la direccion de la imagen del escenario. Ahora está una de ejemplo*/
-	 	this.load.image('tierra', './assets/imagenes/obstáculos/plane.png'); 
+	 	this.load.image('tierra', './assets/prueba.png'); 
 	 	this.load.image('pavana', './assets/imagenes/gaviota.png');
 	 	console.log("Creada");
 	}
