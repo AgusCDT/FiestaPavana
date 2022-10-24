@@ -2,3 +2,11 @@ h1 {
 	color: red;
 	text-align: center;
 }
+
+#canvas
+{
+	position: absolute;
+	border: 2px solid black;
+	width: 800px;
+	height: 600px;
+}
