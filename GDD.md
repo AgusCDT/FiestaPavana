@@ -1,26 +1,24 @@
 **Programación de Videojuegos en Lenguajes Interpretados
 Game Design Document**
 
-Agustín Castro De Troya, Pablo Cerrada Vega, 
-Pablo Cao Calvo, Beatriz Rubio Rodríguez
-Grupo 11
-acastrod@ucm.es pablce01@ucm.es pablocao@ucm.es berubi03@ucm.es
+- Agustín Castro De Troya(acastrod@ucm.es)
+- Pablo Cerrada Vega(pablce01@ucm.es)
+- Pablo Cao Calvo(pablocao@ucm.es)
+- Beatriz Rubio Rodríguez(berubi03@ucm.es) 
 
 
 # FIESTA PAVANA by ***Triolic Games***
  
 
-![Imagen Triolic Games](https://raw.githubusercontent.com/PabloCerrada/TriolicGames/main/assets/imagenes/TRIOLIC.png)
+![Imagen Triolic Games](https://raw.githubusercontent.com/AgusCDT/FiestaPavana/blob/main/assets/imagenes/otras/TRIOLIC.png)
 
-
-## ÍNDICE
 
 ### 1. Ficha técnica
 - **Título:** Fiesta Pavana 
 - **Género:** Acción
 - **Target:** Casual Gamers
 - **Plataforma:** PC
-- **Modo de juego:**  Solitario
+- **Modo de juego:** Solitario
 
 
 ### 2. Descripción
@@ -28,11 +26,12 @@ Fiesta Pavana es un juego donde el jugador controla una pavana (gaviota) por dif
 
 
 ### 3.	Jugabilidad
+
 #### 3.1. Movimiento del personaje
-El movimiento del personaje estará acotado por la pantalla y controlado por WASD. Habrá una pequeña aceleración al iniciar el movimiento.
+El movimiento del personaje estará acotado por la pantalla y controlado por WASD. Habrá una pequeña aceleración al iniciar el movimiento. Además podremos ir en diagonal.
 
 #### 3.2. Cámara
-La cámara estará fija y será el escenario el que se desplace horizontal o verticalmente.
+La cámara estará fija y será el escenario el que se desplace horizontalmente.
 
 #### 3.3. Mecánicas del jugador
 La mecánica principal es la de movimiento, teniendo además una mecánica secundaria que es la recogida de monedas a través de peces dorados.
@@ -56,30 +55,30 @@ Aparecerán también en los diferentes escenarios, algunos son: tiburones bajo e
 #### 4.1. Imagen y explicación de los escenarios
 
 
-- Tierra
+- Tierra: escenario en el que la pavana viajará por tierra firme. Será el nivel principal y desde donde partiremos a los demás escenarios. Habrá coches, carteles de carretera, globos...
 
 
-- Mar
+- Mar: escenario ubicado sobre el mar. Habrá barcos, peces, aves rapaces...
 
 
-- Espacio exterior
+- Espacio exterior: nos iremos al espacio donde habrá obstáculos como planetas y asteroides además de ovnis como enemigos.
 
 
-- Discoteca(Hawaii)
+- Discoteca(Hawaii): nivel estático sin scroll donde solo habrá monedas para recolectar y todos los power-ups.
+
+
+![Imagen Escenario Tierra](https://raw.githubusercontent.com/AgusCDT/FiestaPavana/blob/main/assets/escenarios/Tierra/Carretera/Carretera.jpg)
 
 
 
-#### 4.2. Descripción de partida típica
-
-
-
-#### 4.3. Generación de escenarios
+#### 4.2. Generación de escenarios
 Para tener un escenario fluido generamos a la derecha de la pantalla un frame de cada nivel, es decir tendremos una colección de 4 imágenes en vertical pegadas entre sí. Para dar cierta variedad al escenario crearemos distintos frames para cada altura y escenario con detalles distintos en cada uno, después escogeremos uno al azar de entre todos los posibles para cada nivel y lo instanciamos a la derecha de la pantalla para garantizar la continuidad del escenario. Para ejemplificar esto imaginemos que tenemos 3 frames distintos para cada nivel y escenario, para cada altura escogemos al azar un frame y el resultado podría quedar de arriba a abajo: espacio nº1, atmósfera nº3, ciudad nº3x
 
 
 
 ### 5.	HUD
 #### 5.1. Mockup del HUD
+
 #### 5.2. Explicación de los elementos del HUD y su funcionamiento**
 
 Plumas: vidas que tiene el personaje.
@@ -90,13 +89,18 @@ Peces dorados: contador de peces conseguidos.
 
 
 ### **6. Visual**
+El videojuego tiene un estilo de dibujo animado, ya que la escultura elegida proviene de un cómic y queríamos que nuestro proyecto tuviera dicho estilo. Además esta estética más familiar está enfocada a todos los públicos.
+
+Los recursos estéticos se conseguirán mediante la página web “Flaticon” y de nuestra encargada de arte. Algunos ejemplos visuales serían:
 
 
 ### **7. Contenido**
 
+#### **7.1. Entidades**
+
 | Nombre    | Descripción | Tipo | Escenario |
 |-----------|:-----------:|:----:|----------:|
-|Pavana     |
+|Pavana     |Es el personaje que manejamos durante el juego. Movimiento uniformemente acelerado hacia arriba, abajo, izquierda y derecha.|Protagonista|Todos|
 |Halcones   |
 |Ovnis      |
 |Coches     |
@@ -111,62 +115,10 @@ Peces dorados: contador de peces conseguidos.
 |Camisa Hawaiiana|
 |Peces Dorados|
 
-#### **7.1. Pavana y enemigos**
-
-
-- **Pavana:** es el personaje que manejamos durante el juego. Movimiento uniformemente acelerado hacia arriba, abajo, izquierda y derecha.
-
-
-- **Halcones:** aves un poco más grandes que las gaviotas que realizan un movimiento vertical. Las encontramos en el mar.
-
-
-- **Ovnis:** naves que hacen un movimiento vertical. Los encontramos en el espacio.
-
-
-- **Coches:** vehículos que van a una velocidad mayor que el escenario. Los encontramos en las carreteras y ciudades.
 
 
 
-
-#### **7.2. Obstáculos**
-
-
-- **Islote:** montículo de tierra con diferentes estructuras. Aparece en el mar y habrá que esquivarlo por arriba.
-
-
-- **Avioneta:** aparece en el escenario marítimo, en el cielo. 
-
-
-- **Carteles de carretera:** aparece tanto en la ciudad como en la carretera. Los habrá de distintos tipos y tamaños.
-
-
-- **Barcos:** aparece en el escenario marítimo, sobre el mar. Habrá que pasarlo por arriba.
-
-
-- **Asteroides:** obstáculo que contará con una animación de rodadura. Aparece en el espacio.
-
-
-- **Globo aerostático:** aparece en la ciudad/carretera, en el cielo.
-
-
-
-
-#### **7.3. Objetos**
-
-
-- **Flotador:** lo encontraremos en la ciudad/carretera o en la discoteca. Provoca el cambio al escenario marítimo.
-
-
-- **Casco de astronauta:** lo encontramos en la ciudad/carretera, en el mar o en la discoteca. Con esto iremos al escenario en el espacio.
-
-
-- **Camiseta Hawaiana:** lo encontramos en cualquier escenario con una baja probabilidad. Cambia al escenario de la discoteca.
-
-
-- **Peces Dorados:** bonificaciones que aparecen en cualquier escenario y con los que el jugador podrá comprar elementos en la tienda.
-
-
-#### **7.4. Tienda del juego**
+#### **7.2. Tienda del juego**
 
 En la tienda se podrá mejorar distintas características para poder obtener un mejor récord y se recompense al jugador perseverante.
 Se podrán mejorar la velocidad de la pavana, el número de vidas, y la frecuencia de aparición de los power-ups a cambio de peces dorados (monedas) que se recolectan en las runs.
