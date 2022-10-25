@@ -132,6 +132,7 @@ Se podrán mejorar la velocidad de la pavana, el número de vidas, y la frecuenc
 Al elegir una opción se pedirá una confirmación de compra para no hacer compras sin querer.
 
 Una imagen de cómo se podría ver la tienda:
+
 ![Imagen Tienda](https://raw.githubusercontent.com/AgusCDT/FiestaPavana/main/assets/imagenes/otras/shopScreenshot.PNG)
 
 
