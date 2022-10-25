@@ -10,7 +10,7 @@ Game Design Document**
 # FIESTA PAVANA by ***Triolic Games***
  
 
-![Imagen Triolic Games](https://raw.githubusercontent.com/AgusCDT/FiestaPavana/blob/main/assets/imagenes/otras/TRIOLIC.png)
+![Imagen Triolic Games](https://raw.githubusercontent.com/AgusCDT/FiestaPavana/main/assets/imagenes/otras/TRIOLIC.png)
 
 
 ### 1. Ficha técnica
@@ -37,17 +37,20 @@ La cámara estará fija y será el escenario el que se desplace horizontalmente.
 La mecánica principal es la de movimiento, teniendo además una mecánica secundaria que es la recogida de monedas a través de peces dorados.
 
 #### 3.4. Mecánicas de escenario
-La mecánica principal del escenario es un scroll lateral hacia la izquierda, moviéndose con una velocidad incremental a lo largo de la partida. El escenario irá transformándose cuando la pavana recoge un power-up, dando lugar a diferentes lugares y obstáculos:
-- **Flotador:** a la pavana se le pondrá un flotador y el escenario cambia a uno sobre el mar.
+La mecánica principal del escenario es un scroll lateral hacia la izquierda, moviéndose con una velocidad incremental a lo largo de la partida. El escenario irá transformándose cuando la pavana recoge ciertos objetos, dando lugar a diferentes lugares y obstáculos:
+- **Flotador:** el escenario cambia a uno sobre el mar.
 - **Casco de astronauta:** le servirá a la pavana para viajar a un escenario en el espacio.
-- **Camiseta hawaiana:** la vestirá la pavana en un escenario estático con temática de fiesta.
+- **Camiseta hawaiana:** la pavana irá a un escenario estático con temática de fiesta.
+- **Cono de tráfico:** el escenario cambia al de Tierra(principal).
+
+
 En cuanto a los obstáculos, irán apareciendo de manera aleatoria en los diferentes escenarios, como carteles en la carretera o barcos en el mar.
 
 
 #### 3.5. Enemigos
 Diferenciaremos obstáculos de enemigos en que estos no serán estáticos y tendrán otras características como el desplazamiento vertical o mayor velocidad de desplazamiento.
-Aparecerán también en los diferentes escenarios, algunos son: tiburones bajo el mar, asteroides en el espacio o coches en la ciudad.
 
+Aparecerán también en los diferentes escenarios, algunos son: halcones, asteroides en el espacio o coches en la ciudad.
 
 
 
@@ -64,10 +67,11 @@ Aparecerán también en los diferentes escenarios, algunos son: tiburones bajo e
 - Espacio exterior: nos iremos al espacio donde habrá obstáculos como planetas y asteroides además de ovnis como enemigos.
 
 
-- Discoteca(Hawaii): nivel estático sin scroll donde solo habrá monedas para recolectar y todos los power-ups.
+- Discoteca(Hawaii): nivel estático sin scroll donde solo habrá monedas para recolectar y todos los demás objetos.
 
+Por ejemplo el escenario de Tierra podría quedar así:
 
-![Imagen Escenario Tierra](https://raw.githubusercontent.com/AgusCDT/FiestaPavana/blob/main/assets/escenarios/Tierra/Carretera/Carretera.jpg)
+![Imagen Escenario Tierra](https://raw.githubusercontent.com/AgusCDT/FiestaPavana/main/assets/escenarios/Tierra/Carretera/Carretera.jpg)
 
 
 
@@ -92,7 +96,9 @@ Peces dorados: contador de peces conseguidos.
 El videojuego tiene un estilo de dibujo animado, ya que la escultura elegida proviene de un cómic y queríamos que nuestro proyecto tuviera dicho estilo. Además esta estética más familiar está enfocada a todos los públicos.
 
 Los recursos estéticos se conseguirán mediante la página web “Flaticon” y de nuestra encargada de arte. Algunos ejemplos visuales serían:
-
+![Imagen Pavana](https://raw.githubusercontent.com/AgusCDT/FiestaPavana/main/assets/imagenes/gaviota.png)
+![Imagen Pavana](https://raw.githubusercontent.com/AgusCDT/FiestaPavana/main/assets/imagenes/objetos/cloth.png)
+![Imagen Pavana](https://raw.githubusercontent.com/AgusCDT/FiestaPavana/main/assets/imagenes/objetos/lifebuoy.png)
 
 ### **7. Contenido**
 
@@ -100,20 +106,21 @@ Los recursos estéticos se conseguirán mediante la página web “Flaticon” y
 
 | Nombre    | Descripción | Tipo | Escenario |
 |-----------|:-----------:|:----:|----------:|
-|Pavana     |Es el personaje que manejamos durante el juego. Movimiento uniformemente acelerado hacia arriba, abajo, izquierda y derecha.|Protagonista|Todos|
-|Halcones   |
-|Ovnis      |
-|Coches     |
-|Islote     |
-|Avioneta   |
-|Carteles   |
-|Barcos     |
-|Asteroides |
-|Globo      |
-|Flotador   |
-|Casco Astronauta|
-|Camisa Hawaiiana|
-|Peces Dorados|
+|Pavana     |Es el personaje que manejamos durante el juego. Movimiento uniformemente acelerado hacia arriba, abajo, izquierda, derecha y en diagonal.|Protagonista|Todos|
+|Halcones   |Aves un poco más grandes que la Pavana que realizan un movimiento vertical.|Enemigo|Mar|
+|Ovnis      |Naves que hacen un movimiento vertical.|Enemigos|Espacio|
+|Coches     |Vehículos que van a una velocidad mayor que el escenario.|Enemigo|Tierra|
+|Islote     |Montículo de tierra con diferentes estructuras. Habrá que esquivarlo por arriba.|Obstáculo|Mar|
+|Avioneta   |Tienen mayor tamaño que la Pavana.|Obstáculo|Mar| 
+|Carteles   |Señales de tráfico. Las habrá de distintos tipos y tamaños. Se esquivan por arriba.|Obstáculo|Tierra|
+|Barcos     |Habrá que pasarlos por arriba.|Obstáculo|Mar|
+|Asteroides |Obstáculo que contará con una animación de rodadura.|Obstáculo|Espacio|
+|Globo      |Tienen un tamaño similar a la avioneta.|Obstáculo|Tierra|
+|Flotador   |Provoca el cambio al escenario marítimo.|Objeto|Tierra, Discoteca|
+|Casco Astronauta|Con esto iremos al escenario en el espacio.|Objeto|Tierra y Discoteca|
+|Camisa Hawaiiana|Lo encontramos con una baja probabilidad. Cambia al escenario de la discoteca.|Objeto|Todos|
+|Cono de tráfico|Provoca el cambio al escenario terrestre.|Objeto|Espacio, Mar y Discoteca|
+|Peces Dorados|Bonificaciones con las que el jugador podrá comprar elementos en la tienda.|Objeto|Todos|
 
 
 
@@ -123,6 +130,9 @@ Los recursos estéticos se conseguirán mediante la página web “Flaticon” y
 En la tienda se podrá mejorar distintas características para poder obtener un mejor récord y se recompense al jugador perseverante.
 Se podrán mejorar la velocidad de la pavana, el número de vidas, y la frecuencia de aparición de los power-ups a cambio de peces dorados (monedas) que se recolectan en las runs.
 Al elegir una opción se pedirá una confirmación de compra para no hacer compras sin querer.
+
+Una imagen de cómo se podría ver la tienda:
+![Imagen Tienda](https://raw.githubusercontent.com/AgusCDT/FiestaPavana/main/assets/imagenes/otras/shopScreenshot.PNG)
 
 
 ### **8. Referencias**
