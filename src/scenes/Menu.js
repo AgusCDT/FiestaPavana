@@ -7,17 +7,17 @@ export default class Menu extends Phaser.Scene {
 		this.ShopButton = new ShopButton(this); 
 		this.PlayButton = new PlayButton(this);
 	}
-	 // preload de la imagen del menu
-	 preload() {
-	 	/*this.load.image('menu', './assets/imagenes/');*/
+	 
+	preload() {
+		this.load.image('menu', './assets/escenarios/Tierra/Carretera/Carretera.jpg');
 	 	this.ShopButton.preload();
 	 	this.PlayButton.preload();
-	 }
-	 // creación del botón
-	 create() {
-	 	/*this.add.image(0, 0, 'menu').setOrigin(0, 0);*/
+	}
+	
+	create() {
+	 	this.add.image(0, 0, 'menu').setOrigin(0, 0);
 	 	this.ShopButton.create();
 	 	this.PlayButton.create();
-	 }
+	}
 }
 	

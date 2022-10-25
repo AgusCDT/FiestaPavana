@@ -23,5 +23,4 @@ export default class MenuButton{
 			this.relatedScene.scene.start('menu');
 		});
 	}
-
 }

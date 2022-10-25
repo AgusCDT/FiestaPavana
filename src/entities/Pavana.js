@@ -1,5 +1,5 @@
-/*clase de la pavana, con todas sus características*/
 export default class Pavana extends Phaser.GameObjects.Sprite{
+
 	constructor(scene, x, y) {
 		super(scene, x, y,'pavana');
 		this.scene.add.existing(this);
@@ -12,6 +12,7 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 		this.deceleration = 10;
 		this.cursors = this.scene.input.keyboard.createCursorKeys();		
 	}
+	
 	preUpdate() {
 	    if (this.cursors.up.isDown) {
 	    	//this.body.setVelocityY(this.speedY);
