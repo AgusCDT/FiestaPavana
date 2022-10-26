@@ -86,7 +86,7 @@ Cuando recogemos uno de los objetos que provocan el cambio de escenario habrá u
 ### 5.	HUD
 #### 5.1. Mockup del HUD
 
-![Imagen HUD](https://raw.githubusercontent.com/AgusCDT/FiestaPavana/main/assets/imagenes/otras/HUD.png)
+![Imagen HUD](https://raw.githubusercontent.com/AgusCDT/FiestaPavana/main/assets/imagenes/otras/HUD.jpg)
 
 #### 5.2. Explicación de los elementos del HUD y su funcionamiento**
 
