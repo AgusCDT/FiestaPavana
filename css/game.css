@@ -5,14 +5,16 @@ h1 {
 	font-size: 200%;
 }
 
+
 html
 {
 	cursor:  url(../assets/imagenes/gaviota2.png), auto;
+	font: oblique bold 100% cursive;
+
 }
 
 a
 {
-	font: oblique bold 120% cursive;
 	cursor:  url(../assets/imagenes/gaviota.png), pointer;
 
 }
@@ -21,5 +23,4 @@ a
 {
 	display: flex;
 	justify-content: space-around;
-	font-family: oblique bold 120% cursive;
 }
