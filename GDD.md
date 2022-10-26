@@ -76,19 +76,24 @@ Por ejemplo el escenario de Tierra podría quedar así:
 
 
 #### 4.2. Generación de escenarios
-Para tener un escenario fluido generamos a la derecha de la pantalla un frame de cada nivel, es decir tendremos una colección de 4 imágenes en vertical pegadas entre sí. Para dar cierta variedad al escenario crearemos distintos frames para cada altura y escenario con detalles distintos en cada uno, después escogeremos uno al azar de entre todos los posibles para cada nivel y lo instanciamos a la derecha de la pantalla para garantizar la continuidad del escenario. Para ejemplificar esto imaginemos que tenemos 3 frames distintos para cada nivel y escenario, para cada altura escogemos al azar un frame y el resultado podría quedar de arriba a abajo: espacio nº1, atmósfera nº3, ciudad nº3x
+Contamos en el juego con varios escenarios, nombrados y explicados anteriormente, a los cuales se acceden con objetos como el flotador. Partimos del escenario de Tierra, y mediante un scroll lateral movemos el fondo de manera que parezca que nos desplazamos.
+
+Cuando recogemos uno de los objetos que provocan el cambio de escenario habrá una transición y cambiaremos de un fondo a otro. Los fondos serán más largos que la pantalla de juego, favoreciendo el scroll para que no sea aburrido.
+
 
 
 
 ### 5.	HUD
 #### 5.1. Mockup del HUD
 
+![Imagen HUD](https://raw.githubusercontent.com/AgusCDT/FiestaPavana/main/assets/imagenes/otras/HUD.png)
+
 #### 5.2. Explicación de los elementos del HUD y su funcionamiento**
 
-Plumas: vidas que tiene el personaje.
-Record: puntuación máxima que ha alcanzado el jugador en las partidas jugadas.
-Puntuación: puntuación de la partida actual.
-Peces dorados: contador de peces conseguidos.
+Plumas:  nuestro personaje contará con 3 vidas en forma de plumas(arriba a la izquierda).
+Record: puntuación máxima que ha alcanzado el jugador en las partidas jugadas(arriba).
+Puntuación: puntuación de la partida actual(arriba).
+Peces dorados: contador de peces conseguidos(arriba a la derecha).
 
 
 
@@ -149,5 +154,3 @@ Una imagen de cómo se podría ver la tienda:
 - **Género:** Acción
 - **Modo de Juego:** Solitario
 - **Plataforma:** PC
-
-
