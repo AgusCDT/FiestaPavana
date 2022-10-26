@@ -5,10 +5,12 @@ h1 {
 	font-size: 200%;
 }
 
-#canvas
+body
 {
-	position: absolute;
-	border: 2px solid black;
-	width: 800px;
-	height: 600px;
+	cursor:  url(./assets/imagenes/gaviota.png),auto;
+}
+
+#redes
+{
+
 }
