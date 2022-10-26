@@ -12,19 +12,19 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 		this.deceleration = 10;
 		this.cursors = this.scene.input.keyboard.createCursorKeys();		
 	}
-
-	inputMovement() {
-		if (this.cursors.up.isDown) {
+	
+	preUpdate() {
+		if (this.cursors.up.isDown) { // Input hacia arriba acelerando
 	    	if (this.speedY > -this.maxSpeed) {
 				this.speedY -= this.acceleration;
 	    	}
 	    }
-	    else if (this.cursors.down.isDown) {
+	    else if (this.cursors.down.isDown) { // Input hacia abajo acelerando
 	    	if (this.speedY < this.maxSpeed) {
 				this.speedY += this.acceleration;
 	    	}
 	    }
-	    else {
+	    else { // Deceleracion cuando no se detecta input en el eje Y
 		   	if (this.speedY > 0){
 	    		this.speedY -= this.deceleration;
 	    		if (this.speedY < 0){
@@ -38,17 +38,17 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 	    		}
 	    	}
 	    }
-	    if (this.cursors.left.isDown) {
+	    if (this.cursors.left.isDown) { // Input hacia la izquierda acelerando
 	    	if (this.speedX > -this.maxSpeed) {
 				this.speedX -= this.acceleration;
 	    	}
 	    }
-	    else if (this.cursors.right.isDown) {
+	    else if (this.cursors.right.isDown) { // Input hacia la derecha acelerando
 	    	if (this.speedX < this.maxSpeed) {
 				this.speedX += this.acceleration;
 	    	}
 	    }
-	    else {
+	    else { // Deceleracion cuando no se detecta input en el eje X
 	    	if (this.speedX > 0){
     			this.speedX -= this.deceleration;
 	    		if (this.speedX < 0) {
@@ -62,10 +62,6 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 	    		}
 	    	}
 	    }
-	}
-	
-	preUpdate() {
-		inputMovement();
-	    this.body.setVelocity(this.speedX, this.speedY);
+	    this.body.setVelocity(this.speedX, this.speedY); // Aplicamos los valores de velocidad
 	}
 }
