@@ -12,8 +12,8 @@ Architecture**
 - **ShopButton:** Carga la escena de Shop.
 - **MenuButton:** Carga la escena de Menu.
 - **PlayButton:** Carga la escena de Tierra, es decir, inicia el bucle de juego.
-- **Tierra:** Carga la Pavana, el movimiento del escenario (parallax) y la posibilidad de aparición de enemigos en el escenario.
-- **Pavana:** Gestiona el movimiento de la pavana.
+- **Tierra:** Carga la Pavana, el movimiento del escenario (parallax) y la posibilidad de aparición de enemigos en el escenario. Tendrá un score, que será la puntuación de la run actual.
+- **Pavana:** Gestiona el movimiento de la pavana. Tendrá vidas y un highscore, que se comparará con el score actual para ver si se supera el récord.
 - **Parallax:** Gestiona el movimiento del escenario.
 - **Enemies:** Tienes las características generales de cualquier tipo de enemigo.
 - **StaticEnemy**: Hereda de la clase Enemies, será el enemigo estandar, solo cambiará el aspecto y la hitbox, y el lugar de aparición.
