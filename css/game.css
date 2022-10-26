@@ -22,5 +22,5 @@ a
 	display: flex;
 	justify-content: space-around;
 	font-family: oblique bold 120% cursive;
-	bottom: 0;
+	align-content: flex-end;
 }
