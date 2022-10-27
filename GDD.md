@@ -37,7 +37,7 @@ La cámara estará fija y será el escenario el que se desplace horizontalmente.
 La mecánica principal es la de movimiento, teniendo además una mecánica secundaria que es la recogida de monedas a través de peces dorados.
 
 #### 3.4. Mecánicas de escenario
-La mecánica principal del escenario es un scroll lateral hacia la izquierda, moviéndose con una velocidad incremental a lo largo de la partida. El escenario irá transformándose cuando la pavana recoge ciertos objetos, dando lugar a diferentes lugares y obstáculos:
+La mecánica principal del escenario es un scroll lateral hacia la izquierda, moviéndose con una velocidad incremental a lo largo de la partida. El escenario irá transformándose cuando la pavana recoge ciertos objetos (desbloqueables en la tienda), dando lugar a diferentes lugares y obstáculos:
 - **Flotador:** el escenario cambia a uno sobre el mar.
 - **Casco de astronauta:** le servirá a la pavana para viajar a un escenario en el espacio.
 - **Camiseta hawaiana:** la pavana irá a un escenario estático con temática de fiesta.
@@ -78,7 +78,7 @@ Por ejemplo el escenario de Tierra podría quedar así:
 #### 4.2. Generación de escenarios
 Contamos en el juego con varios escenarios, nombrados y explicados anteriormente, a los cuales se acceden con objetos como el flotador. Partimos del escenario de Tierra, y mediante un scroll lateral movemos el fondo de manera que parezca que nos desplazamos.
 
-Cuando recogemos uno de los objetos que provocan el cambio de escenario habrá una transición y cambiaremos de un fondo a otro. Los fondos serán más largos que la pantalla de juego, favoreciendo el scroll para que no sea aburrido.
+Primero habrá que desbloquear los objetos de escenario que nos llevan a otros escenarios. Cuando recogemos uno de esos objetos que provocan el cambio de escenario habrá una transición y cambiaremos de un fondo a otro. Los fondos serán más largos que la pantalla de juego, favoreciendo el scroll para que no sea aburrido.
 
 
 
@@ -132,7 +132,7 @@ Los recursos estéticos se conseguirán mediante la página web “Flaticon” y
 
 #### **7.2. Tienda del juego**
 
-En la tienda se podrá mejorar distintas características para poder obtener un mejor récord y se recompense al jugador perseverante.
+En la tienda se podrá mejorar distintas características para poder obtener un mejor récord y objetos de escenario que harán cambiar el fondo, los obstáculos y los enemigos.
 Se podrán mejorar la velocidad de la pavana, el número de vidas, y la frecuencia de aparición de los power-ups a cambio de peces dorados (monedas) que se recolectan en las runs.
 Al elegir una opción se pedirá una confirmación de compra para no hacer compras sin querer.
 
