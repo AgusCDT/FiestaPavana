@@ -1,16 +1,26 @@
-h1 {
-	color: mediumturquoise;
-	text-align: center;
-	font: oblique bold 120% cursive;
-	font-size: 200%;
-}
-
-
 html
 {
 	cursor:  url(../assets/imagenes/plumacursor.png), auto;
 	font: oblique bold 100% cursive;
 	height: 100%;
+}
+
+body
+{
+	margin: 3px;
+}
+
+#cuerpo
+{
+	bottom: 0;
+}
+
+h1 
+{
+	color: mediumturquoise;
+	text-align: center;
+	font: oblique bold 120% cursive;
+	font-size: 200%;
 }
 
 a
