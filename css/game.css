@@ -12,6 +12,11 @@ html
 	font: oblique bold 100% cursive;
 }
 
+a
+{
+	cursor:  url(../assets/imagenes/plumacursor.png), pointer;
+}
+
 #redes
 {
 	display: flex;
