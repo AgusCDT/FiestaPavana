@@ -5,13 +5,9 @@ html
 	height: 100%;
 }
 
-body
-{
-	margin: 3px;
-}
-
 #cuerpo
 {
+	position:  absolute;
 	bottom: 0;
 }
 
@@ -32,4 +28,10 @@ a
 {
 	display: flex;
 	justify-content: space-around;
+}
+
+canvas
+{
+	position: absolute;
+	top: 30;
 }
