@@ -20,4 +20,4 @@ import Tierra from './scenes/Tierra.js';
         }             
     };
 
-new Phaser.Game(config);
+new Phaser.Game(config)<"Canvas">;

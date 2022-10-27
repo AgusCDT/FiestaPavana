@@ -10,6 +10,7 @@ html
 {
 	cursor:  url(../assets/imagenes/plumacursor.png), auto;
 	font: oblique bold 100% cursive;
+	height: 100%;
 }
 
 a
