@@ -8,15 +8,8 @@ h1 {
 
 html
 {
-	cursor:  url(../assets/imagenes/gaviota2.png), auto;
+	cursor:  url(../assets/imagenes/plumacursor.png), auto;
 	font: oblique bold 100% cursive;
-
-}
-
-a
-{
-	cursor:  url(../assets/imagenes/gaviota.png), pointer;
-
 }
 
 #redes
