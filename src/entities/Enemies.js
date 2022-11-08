@@ -4,13 +4,13 @@ export default class Enemies extends Phaser.GameObjects.Sprite{
 		super(scene, x, y, filename);
 		this.scene.add.existing(this);
     	this.scene.physics.add.existing(this);
-    	this.body.setCollideWorldBounds();
 		this.speedX = -1;
+		this.posX=x;
 		
 	}
 	
 	preUpdate() 
 	{		
-	    this.body.setVelocity(this.speedX, this.speedY); // Aplicamos los valores de velocidad
+	    this.body.setPosition(posX+speedX);
 	}
 }

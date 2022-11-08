@@ -12,7 +12,7 @@ export default class Tierra extends Phaser.Scene
 	preload() {
 		this.Parallax.preload(); 
 	 	this.load.image('pavana', './assets/imagenes/gaviota.png');
-	 	/*this.load.image('enemy1', './assets/imagenes/enemigos/toy-car.png');
+	 	this.load.image('enemy1', './assets/imagenes/enemigos/toy-car.png');
 	 	this.load.image('enemy2', './assets/imagenes/enemigos/shark.png');
 	 	this.load.image('enemy3', './assets/imagenes/enemigos/eagle.png');
 	 	this.load.image('enemy4', './assets/imagenes/enemigos/ufo.png');
@@ -20,7 +20,7 @@ export default class Tierra extends Phaser.Scene
 	 	this.load.image('mar', './assets/imagenes/enemigos/lifebuoy.png');
 	 	this.load.image('tierra', './assets/imagenes/enemigos/traffic_cone.png');
 	 	this.load.image('discoteca', './assets/imagenes/enemigos/eagle.png');
-	 	this.load.image('pezdorado', './assets/imagenes/enemigos/pez-dorado.png');*/
+	 	this.load.image('pezdorado', './assets/imagenes/enemigos/pez-dorado.png');
 	 	console.log("Creada");	 	
 	}
 	 
@@ -32,10 +32,10 @@ export default class Tierra extends Phaser.Scene
 	update() {
 
 		this.Parallax.update();
-		//setTimeOut(enemyrandom,5000);
+		setTimeOut(enemyrandom,5000);
 	}
 
-	/*puprandom()
+	puprandom()
 	{
 		var x = Math.Floor((Math.Random()*6);
 		if (x == 1) {this.enemy= new Enemies(this,1200,300,'espacio');}
@@ -54,6 +54,6 @@ export default class Tierra extends Phaser.Scene
 		else if (x == 3) {this.enemy= new Enemies(this,1200,300,'enemy3');}
 		else if (x == 4) {this.enemy= new Enemies(this,1200,300,'enemy4');}
 		else enemyrandom();
-	}*/
+	}
 	//habrá una funcion bool que devuelva el valor de si has comprado un pup u otro
 }
