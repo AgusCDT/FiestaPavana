@@ -32,7 +32,8 @@ export default class Tierra extends Phaser.Scene
 	update() {
 
 		this.Parallax.update();
-		setTimeOut(enemyrandom,5000);
+		setTimeOut(enemyrandom(),5000);
+		setTimeOut(puprandom(),5000);
 	}
 
 	puprandom()
