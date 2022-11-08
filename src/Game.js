@@ -5,7 +5,7 @@ import Tierra from './scenes/Tierra.js';
     let config = {
         type: Phaser.CANVAS,
         canvas: document.getElementById("juego"),
-        width: 1200,
+        width: 800,
         height: 600,
         pixelArt: true,
         scale: {
