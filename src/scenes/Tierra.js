@@ -38,7 +38,7 @@ export default class Tierra extends Phaser.Scene
 
 	puprandom()
 	{
-		var x = Math.Floor((Math.Random()*6);
+		var x = Math.Floor(Math.Random()*6);
 		if (x == 1) {this.enemy= new Enemies(this,1200,300,'espacio');}
 		else if (x == 2) {this.enemy= new Enemies(this,1200,300,'mar');}
 		else if (x == 3) {this.enemy= new Enemies(this,1200,300,'tierra');}
