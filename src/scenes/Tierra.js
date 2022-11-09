@@ -10,7 +10,8 @@ export default class Tierra extends Phaser.Scene
 	}
 	
 	preload() {
-		var timer;
+		var timerE;
+		var timerP;
 		this.Parallax.preload(); 
 	 	this.load.image('pavana', './assets/imagenes/gaviota.png');
 	 	this.load.image('enemy1', './assets/imagenes/enemigos/toy-car.png');
@@ -29,40 +30,45 @@ export default class Tierra extends Phaser.Scene
 	create() {
 		this.Parallax.create();		
 	 	this.pavana = new Pavana(this, 100, 100); 	
-		this.timer=0; 	
+		this.timerE=0; 
+		this.timerP=0;	
 	}
 
 	puprandom()
 	{
 		var x = Phaser.Math.Between(1,6);
-		if (x == 1) {this.enemy= new Enemies(this,1200,300,'espacio');}
-		else if (x == 2) {this.enemy= new Enemies(this,800,300,'mar');}
-		else if (x == 3) {this.enemy= new Enemies(this,800,300,'tierra');}
-		else if (x == 4) {this.enemy= new Enemies(this,800,300,'discoteca');}
-		else if (x == 5) {this.enemy= new Enemies(this,800,300,'pezdorado');}
+		if (x == 1) {this.enemy= new Enemies(this,800,500,'espacio');}
+		else if (x == 2) {this.enemy= new Enemies(this,800,500,'mar');}
+		else if (x == 3) {this.enemy= new Enemies(this,800,500,'tierra');}
+		else if (x == 4) {this.enemy= new Enemies(this,800,500,'discoteca');}
+		else if (x == 5) {this.enemy= new Enemies(this,800,500,'pezdorado');}
 		else this.puprandom();
 	}
 
 	enemyrandom()
 	{
-		console.log("b");
 		var x = Phaser.Math.Between(1,5);
-		if (x == 1) {this.enemy= new Enemies(this,1200,300,'enemy1');}
-		else if (x == 2) {this.enemy= new Enemies(this,1200,300,'enemy2');}
-		else if (x == 3) {this.enemy= new Enemies(this,1200,300,'enemy3');}
-		else if (x == 4) {this.enemy= new Enemies(this,1200,300,'enemy4');}
+		if (x == 1) {this.enemy= new Enemies(this,800,300,'enemy1');}
+		else if (x == 2) {this.enemy= new Enemies(this,800,300,'enemy2');}
+		else if (x == 3) {this.enemy= new Enemies(this,800,300,'enemy3');}
+		else if (x == 4) {this.enemy= new Enemies(this,800,300,'enemy4');}
 		else this.enemyrandom();
 	}
 
 	update() {
 		
 		this.Parallax.update();
-		this.timer=this.timer+1;
-		if(this.timer>=100)
+		this.timerE=this.timerE+1;
+		this.timerP=this.timerP+1;
+		if(this.timerE>=100)
 		{
-			console.log("a");
 			this.enemyrandom();
-			this.timer=0;
+			this.timerE=0;
+		}
+		if(this.timerP>=300)
+		{
+			this.puprandom();
+			this.timerP=0;
 		}
 	}
 
