@@ -17,10 +17,9 @@ export default class Tierra extends Phaser.Scene
 		this.Parallax.preload(); 
 	 	this.load.image('pavana', './assets/imagenes/gaviota.png');
 	 	this.load.image('enemy1', './assets/imagenes/enemigos/toy-car.png');
-	 	this.load.image('enemy2', './assets/imagenes/enemigos/shark.png');
-	 	this.load.image('enemy3', './assets/imagenes/enemigos/eagle.png');
-	 	this.load.image('enemy4', './assets/imagenes/enemigos/ufo.png');
-	 	this.load.image('espacio', './assets/imagenes/gaviota.png');
+	 	this.load.image('enemy2', './assets/imagenes/enemigos/eagle.png');
+	 	this.load.image('enemy3', './assets/imagenes/enemigos/ufo.png');
+	 	this.load.image('espacio', './assets/imagenes/objetos/astronaut-helmet.png'); 
 	 	this.load.image('mar', './assets/imagenes/objetos/lifebuoy.png');
 	 	this.load.image('tierra', './assets/imagenes/objetos/traffic_cone.png');
 	 	this.load.image('discoteca', './assets/imagenes/objetos/cloth.png');
@@ -52,8 +51,7 @@ export default class Tierra extends Phaser.Scene
 		var x = Phaser.Math.Between(1,5);
 		if (x == 1) {this.obstacle= new Obstacles(this,800,300,'enemy1');}
 		else if (x == 2) {this.obstacle= new Obstacles(this,800,300,'enemy2');}
-		else if (x == 3) {this.obstacle= new Obstacles(this,800,300,'enemy3');}
-		else if (x == 4) {this.obstacle= new Obstacles(this,800,300,'enemy4');}
+		else if (x == 3) {this.obstacle= new Obstacles(this,800,300,'enemy3');}		
 		else this.obstaclerandom();
 	}
 
@@ -62,12 +60,12 @@ export default class Tierra extends Phaser.Scene
 		this.Parallax.update();
 		this.timerE=this.timerE+1;
 		this.timerP=this.timerP+1;
-		if(this.timerE>=100)
+		if(this.timerE>=300)
 		{
 			this.obstaclerandom();
 			this.timerE=0;
 		}
-		if(this.timerP>=300)
+		if(this.timerP>=600)
 		{
 			this.puprandom();
 			this.timerP=0;
