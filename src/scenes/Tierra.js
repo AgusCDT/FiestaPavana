@@ -1,8 +1,7 @@
 import Pavana from '../entities/Pavana.js';
 import Parallax from '../Parallax.js'
 import Enemies from '../entities/Enemies.js'
-import Obstacles from '../entities/Enemies.js'
-import Pups from '../entities/Enemies.js'
+import Pups from '../entities/Pups.js'
 
 export default class Tierra extends Phaser.Scene 
 {
@@ -46,13 +45,13 @@ export default class Tierra extends Phaser.Scene
 		else this.puprandom();
 	}
 
-	obstaclerandom()
+	enemyrandom()
 	{
 		var x = Phaser.Math.Between(1,5);
-		if (x == 1) {this.obstacle= new Obstacles(this,1200,300,'enemy1');}
-		else if (x == 2) {this.obstacle= new Obstacles(this,1200,300,'enemy2');}
-		else if (x == 3) {this.obstacle= new Obstacles(this,1200,300,'enemy3');}		
-		else this.obstaclerandom();
+		if (x == 1) {this.enemy= new Enemies(this,1200,300,'enemy1', 0);}
+		else if (x == 2) {this.enemy= new Enemies(this,1200,300,'enemy2', 1);}
+		else if (x == 3) {this.enemy= new Enemies(this,1200,300,'enemy3', 2);}		
+		else this.enemyrandom();
 	}
 
 	update() {
@@ -62,7 +61,7 @@ export default class Tierra extends Phaser.Scene
 		this.timerP=this.timerP+1;
 		if(this.timerE>=300)
 		{
-			this.obstaclerandom();
+			this.enemyrandom();
 			this.timerE=0;
 		}
 		if(this.timerP>=600)

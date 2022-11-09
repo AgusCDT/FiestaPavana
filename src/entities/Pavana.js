@@ -10,10 +10,16 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 		this.maxSpeed = 400;
 		this.acceleration = 10;
 		this.deceleration = 10;
+		this.life = 3;
+		this.tempColision = 150;
+		this.label = this.scene.add.text(10, 10, "Life: " + this.life, { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
 		this.cursors = this.scene.input.keyboard.createCursorKeys();		
 	}
 	
 	preUpdate() {
+		if (this.tempColision > 0){
+			this.tempColision -= 1;
+		}
 		if (this.cursors.up.isDown) { // Input hacia arriba acelerando
 	    	if (this.speedY > -this.maxSpeed) {
 				this.speedY -= this.acceleration;
