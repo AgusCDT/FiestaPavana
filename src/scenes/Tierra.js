@@ -38,20 +38,20 @@ export default class Tierra extends Phaser.Scene
 	puprandom()
 	{
 		var x = Phaser.Math.Between(1,6);
-		if (x == 1) {this.pup= new Pups(this,800,500,'espacio');}
-		else if (x == 2) {this.pup= new Pups(this,800,500,'mar');}
-		else if (x == 3) {this.pup= new Pups(this,800,500,'tierra');}
-		else if (x == 4) {this.pup= new Pups(this,800,500,'discoteca');}
-		else if (x == 5) {this.pup= new Pups(this,800,500,'pezdorado');}
+		if (x == 1) {this.pup= new Pups(this,1200,500,'espacio');}
+		else if (x == 2) {this.pup= new Pups(this,1200,500,'mar');}
+		else if (x == 3) {this.pup= new Pups(this,1200,500,'tierra');}
+		else if (x == 4) {this.pup= new Pups(this,1200,500,'discoteca');}
+		else if (x == 5) {this.pup= new Pups(this,1200,500,'pezdorado');}
 		else this.puprandom();
 	}
 
 	obstaclerandom()
 	{
 		var x = Phaser.Math.Between(1,5);
-		if (x == 1) {this.obstacle= new Obstacles(this,800,300,'enemy1');}
-		else if (x == 2) {this.obstacle= new Obstacles(this,800,300,'enemy2');}
-		else if (x == 3) {this.obstacle= new Obstacles(this,800,300,'enemy3');}		
+		if (x == 1) {this.obstacle= new Obstacles(this,1200,300,'enemy1');}
+		else if (x == 2) {this.obstacle= new Obstacles(this,1200,300,'enemy2');}
+		else if (x == 3) {this.obstacle= new Obstacles(this,1200,300,'enemy3');}		
 		else this.obstaclerandom();
 	}
 

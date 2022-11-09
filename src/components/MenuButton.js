@@ -1,26 +1,11 @@
-export default class MenuButton{
+import Button from './button.js';
 
-	constructor(scene){
-		this.relatedScene = scene;
-	}
+export default class MenuButton extends Button {
+  constructor(scene) {
+    super(scene, 'menubutton', 600, 450);
+  }
 
-	preload(){
-		this.relatedScene.load.spritesheet('menubutton', './assets/componentes/BotonMenu.png', { frameWidth: 176, frameHeight: 93});
-	}
-
-	create(){
-		this.menuButton = this.relatedScene.add.sprite(400, 550, 'menubutton').setInteractive();
-
-		this.menuButton.on('pointerover', () => {
-			this.menuButton.setFrame(1);
-		});
-
-		this.menuButton.on('pointerout', () => {
-			this.menuButton.setFrame(0);
-		});
-
-		this.menuButton.on('pointerdown',() => {
-			this.relatedScene.scene.start('menu');
-		});
-	}
+  ClickButton() {
+    this.relatedScene.scene.start('menu');
+  }
 }

@@ -1,26 +1,11 @@
-export default class PlayButton{
-	
-	constructor(scene){
-		this.relatedScene = scene;
-	}
+import Button from './button.js';
 
-	preload() {
-		this.relatedScene.load.spritesheet('playbutton', './assets/componentes/BotonPlay.png', { frameWidth: 176, frameHeight: 93});
-	}
+export default class PlayButton extends Button {
+  constructor(scene) {
+    super(scene, 'playbutton', 600, 350);
+  }
 
-	create(){
-		this.playButton = this.relatedScene.add.sprite(400, 450, 'playbutton').setInteractive();
-
-		this.playButton.on('pointerover', () => {
-			this.playButton.setFrame(1);
-		});
-
-		this.playButton.on('pointerout', () => {
-			this.playButton.setFrame(0);
-		});
-
-		this.playButton.on('pointerdown',() => {
-			this.relatedScene.scene.start('tierra');
-		});
-	}
+  ClickButton() {
+    this.relatedScene.scene.start('tierra');
+  } 
 }

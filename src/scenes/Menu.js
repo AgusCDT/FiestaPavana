@@ -9,9 +9,9 @@ export default class Menu extends Phaser.Scene {
 	}
 	 
 	preload() {
-		this.load.image('menu', './assets/escenarios/Tierra/Carretera/Carretera.jpg');
-	 	this.ShopButton.preload();
-	 	this.PlayButton.preload();
+		this.load.image('menu', './assets/escenarios/Tierra/Carretera/Carretera.jpg');	 	
+	 	this.load.spritesheet('playbutton', './assets/componentes/BotonPlay.png', { frameWidth: 176, frameHeight: 93});
+		this.load.spritesheet('shopbutton', './assets/componentes/BotonShop.png', { frameWidth: 176, frameHeight: 93});
 	}
 	
 	create() {

@@ -7,8 +7,8 @@ export default class Shop extends Phaser.Scene {
 	}
 	 
 	preload() {
-	 	this.load.image('shop',  './assets/imagenes/otras/shop.jpg');
-	 	this.MenuButton.preload();
+	 	this.load.image('shop',  './assets/imagenes/otras/shop.jpg');	 	
+		this.load.spritesheet('menubutton', './assets/componentes/BotonMenu.png', { frameWidth: 176, frameHeight: 93});
 	}
 	 
 	create() {

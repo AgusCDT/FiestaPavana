@@ -5,12 +5,11 @@ import Tierra from './scenes/Tierra.js';
     let config = {
         type: Phaser.CANVAS,
         canvas: document.getElementById("juego"),
-        width: 800,
+        width: 1200,
         height: 600,
         pixelArt: true,
         scale: {
-            autoCenter: Phaser.Scale.CENTER_HORIZONTALLY,
-            mode: Phaser.Scale.FIT,
+            autoCenter: Phaser.Scale.CENTER_HORIZONTALLY,         
             min: {
             width: 256,
             height: 192
