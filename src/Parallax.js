@@ -5,7 +5,7 @@ export default class Parallax{
 	}
 
 	preload(){
-		this.relatedScene.load.image('parallax', './assets/escenarios/Tierra/Espacio/espacio.jpg');
+		this.relatedScene.load.image('parallax', './assets/escenarios/Espacio/espacio.jpg');
 	}
 
 	create(){
