@@ -1,6 +1,8 @@
 import Pavana from '../entities/Pavana.js';
 import Parallax from '../Parallax.js'
 import Enemies from '../entities/Enemies.js'
+import Obstacles from '../entities/Enemies.js'
+import Pups from '../entities/Enemies.js'
 
 export default class Tierra extends Phaser.Scene 
 {
@@ -37,22 +39,22 @@ export default class Tierra extends Phaser.Scene
 	puprandom()
 	{
 		var x = Phaser.Math.Between(1,6);
-		if (x == 1) {this.enemy= new Enemies(this,800,500,'espacio');}
-		else if (x == 2) {this.enemy= new Enemies(this,800,500,'mar');}
-		else if (x == 3) {this.enemy= new Enemies(this,800,500,'tierra');}
-		else if (x == 4) {this.enemy= new Enemies(this,800,500,'discoteca');}
-		else if (x == 5) {this.enemy= new Enemies(this,800,500,'pezdorado');}
+		if (x == 1) {this.pup= new Pups(this,800,500,'espacio');}
+		else if (x == 2) {this.pup= new Pups(this,800,500,'mar');}
+		else if (x == 3) {this.pup= new Pups(this,800,500,'tierra');}
+		else if (x == 4) {this.pup= new Pups(this,800,500,'discoteca');}
+		else if (x == 5) {this.pup= new Pups(this,800,500,'pezdorado');}
 		else this.puprandom();
 	}
 
-	enemyrandom()
+	obstaclerandom()
 	{
 		var x = Phaser.Math.Between(1,5);
-		if (x == 1) {this.enemy= new Enemies(this,800,300,'enemy1');}
-		else if (x == 2) {this.enemy= new Enemies(this,800,300,'enemy2');}
-		else if (x == 3) {this.enemy= new Enemies(this,800,300,'enemy3');}
-		else if (x == 4) {this.enemy= new Enemies(this,800,300,'enemy4');}
-		else this.enemyrandom();
+		if (x == 1) {this.obstacle= new Obstacles(this,800,300,'enemy1');}
+		else if (x == 2) {this.obstacle= new Obstacles(this,800,300,'enemy2');}
+		else if (x == 3) {this.obstacle= new Obstacles(this,800,300,'enemy3');}
+		else if (x == 4) {this.obstacle= new Obstacles(this,800,300,'enemy4');}
+		else this.obstaclerandom();
 	}
 
 	update() {
@@ -62,7 +64,7 @@ export default class Tierra extends Phaser.Scene
 		this.timerP=this.timerP+1;
 		if(this.timerE>=100)
 		{
-			this.enemyrandom();
+			this.obstaclerandom();
 			this.timerE=0;
 		}
 		if(this.timerP>=300)
