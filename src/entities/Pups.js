@@ -5,17 +5,28 @@ export default class Pups extends Phaser.GameObjects.Sprite{
 		this.scene.add.existing(this);
     	this.scene.physics.add.existing(this);
 		this.speedX = -75;
-		this.speedY = 0;		
+		this.speedY = 0;
+		this.filename = filename;
+		this.setDepth(1);		
 	}
 	
 	preUpdate() 
 	{		
 	    this.body.setVelocity(this.speedX,this.speedY);
-		if (this.scene.physics.overlap(this.scene.pavana, this)) {
+		if (this.scene.physics.overlap(this.scene.pavana, this.scene.pup)) {
 			// Cambio de pantalla
-			//this.scene.Parallax.filename = 'Espacio/space.jpg';
-			this.scene.Parallax.updateBackground('Espacio/space.jpg');
-			console.log("Hola");
+			if(this.scene.pup.filename == 'spacePup'){								
+				this.scene.Parallax.changeBackground('space');
+			}
+			else if(this.scene.pup.filename == 'roadPup'){				
+				this.scene.Parallax.changeBackground('road')
+			}
+			/*else if(this.scene.pup.filename == 'seaPup'){
+				this.scene.Parallax.changeBackground('sea')
+			}
+			else if(this.scene.pup.filename == 'discoPup'){
+				this.scene.Parallax.changeBackground('disco')
+			}*/
 		}
 	}
 }

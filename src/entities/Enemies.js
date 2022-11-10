@@ -7,6 +7,7 @@ export default class Enemies extends Phaser.GameObjects.Sprite{
 		this.speedX = -75;
 		this.speedY = -40;
 		this.move = move;
+		this.setDepth(1);
 	}
 	
 	preUpdate()

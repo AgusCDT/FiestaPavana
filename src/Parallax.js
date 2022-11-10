@@ -1,21 +1,13 @@
-export default class Parallax{
+export default class Parallax extends Phaser.GameObjects.Sprite{
 
 	constructor(scene){
-		this.relatedScene = scene;
-		this.filename = 'Tierra/Carretera/Carretera.jpg';
+		super(scene);
+		this.scene.add.existing(this);
+		this.parallax = this.scene.add.tileSprite(0, 0, 3200, 600, 'road').setOrigin(0,0);		
 	}
-
-	preload(){
-		this.relatedScene.load.image('parallax', './assets/escenarios/' + this.filename);
-	}
-
-	create(){
-		this.parallax = this.relatedScene.add.tileSprite(0, 0, 3200, 600, 'parallax').setOrigin(0,0);		
-	}
-
-	updateBackground(filename){
-		
-		console.log("Carga");
+	changeBackground(id){
+		this.parallax = this.scene.add.tileSprite(0, 0, 3200, 600, id).setOrigin(0,0);	
+		console.log(id);
 	}
 	update(){
 		this.parallax.tilePositionX += 0.75;
