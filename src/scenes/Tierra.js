@@ -34,7 +34,7 @@ export default class Tierra extends Phaser.Scene
 		this.timerP=0;	
 	}
 
-	puprandom()
+	pupRandom()
 	{
 		var x = Phaser.Math.Between(1,6);
 		if (x == 1) {this.pup= new Pups(this,1200,500,'espacio');}
@@ -42,16 +42,16 @@ export default class Tierra extends Phaser.Scene
 		else if (x == 3) {this.pup= new Pups(this,1200,500,'tierra');}
 		else if (x == 4) {this.pup= new Pups(this,1200,500,'discoteca');}
 		else if (x == 5) {this.pup= new Pups(this,1200,500,'pezdorado');}
-		else this.puprandom();
+		else this.pupRandom();
 	}
 
-	enemyrandom()
+	enemyRandom()
 	{
 		var x = Phaser.Math.Between(1,5);
 		if (x == 1) {this.enemy= new Enemies(this,1200,300,'enemy1', 0);}
 		else if (x == 2) {this.enemy= new Enemies(this,1200,300,'enemy2', 1);}
 		else if (x == 3) {this.enemy= new Enemies(this,1200,300,'enemy3', 2);}		
-		else this.enemyrandom();
+		else this.enemyRandom();
 	}
 
 	update() {
@@ -61,12 +61,12 @@ export default class Tierra extends Phaser.Scene
 		this.timerP=this.timerP+1;
 		if(this.timerE>=300)
 		{
-			this.enemyrandom();
+			this.enemyRandom();
 			this.timerE=0;
 		}
 		if(this.timerP>=600)
 		{
-			this.puprandom();
+			this.pupRandom();
 			this.timerP=0;
 		}
 	}

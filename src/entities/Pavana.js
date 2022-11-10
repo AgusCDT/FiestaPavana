@@ -15,11 +15,8 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 		this.label = this.scene.add.text(10, 10, "Life: " + this.life, { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
 		this.cursors = this.scene.input.keyboard.createCursorKeys();		
 	}
-	
-	preUpdate() {
-		if (this.tempColision > 0){
-			this.tempColision -= 1;
-		}
+
+	calculateVelocity(){
 		if (this.cursors.up.isDown) { // Input hacia arriba acelerando
 	    	if (this.speedY > -this.maxSpeed) {
 				this.speedY -= this.acceleration;
@@ -68,6 +65,13 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 	    		}
 	    	}
 	    }
+	}
+	
+	preUpdate() {
+		if (this.tempColision > 0){
+			this.tempColision -= 1;
+		}
+		this.calculateVelocity();
 	    this.body.setVelocity(this.speedX, this.speedY); // Aplicamos los valores de velocidad
 	}
 }
