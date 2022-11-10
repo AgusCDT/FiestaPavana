@@ -13,6 +13,9 @@ export default class Pups extends Phaser.GameObjects.Sprite{
 	    this.body.setVelocity(this.speedX,this.speedY);
 		if (this.scene.physics.overlap(this.scene.pavana, this)) {
 			// Cambio de pantalla
+			//this.scene.Parallax.filename = 'Espacio/space.jpg';
+			this.scene.Parallax.updateBackground('Espacio/space.jpg');
+			console.log("Hola");
 		}
 	}
 }
