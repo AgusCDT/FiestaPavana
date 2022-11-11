@@ -25,7 +25,7 @@ export default class Tierra extends Phaser.Scene
 	 	this.load.image('discoPup', './assets/imagenes/objetos/cloth.png');
 	 	this.load.image('goldenfish', './assets/imagenes/objetos/pez-dorado.png');
 		this.load.image('feather', './assets/imagenes/otras/feather.png');
-	 	console.log("Creada");	 	
+	 	console.log("Creada");
 	}
 	 
 	
@@ -41,7 +41,7 @@ export default class Tierra extends Phaser.Scene
 
 	pupRandom()
 	{
-		var x = Phaser.Math.Between(1,6);
+		let x = Phaser.Math.Between(1,6);
 		if (x == 1) {this.pup= new Pups(this,1200,500,'spacePup');}
 		else if (x == 2) {this.pup= new Pups(this,1200,500,'seaPup');}
 		else if (x == 3) {this.pup= new Pups(this,1200,500,'roadPup');}
@@ -52,7 +52,7 @@ export default class Tierra extends Phaser.Scene
 
 	enemyRandom()
 	{
-		var x = Phaser.Math.Between(1,5);
+		let x = Phaser.Math.Between(1,5);
 		if (x == 1) {this.enemy= new Enemies(this,1200,300,'enemy1', 0);}
 		else if (x == 2) {this.enemy= new Enemies(this,1200,300,'enemy2', 1);}
 		else if (x == 3) {this.enemy= new Enemies(this,1200,300,'enemy3', 2);}		
@@ -73,6 +73,7 @@ export default class Tierra extends Phaser.Scene
 			this.pupRandom();
 			this.timerP=0;
 		}
+		
 	}
 
 	//habrá una funcion bool que devuelva el valor de si has comprado un pup u otro

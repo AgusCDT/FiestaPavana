@@ -22,7 +22,6 @@ export default class Enemies extends Phaser.GameObjects.Sprite{
 			else if (this.y >= 600){
 				this.speedY *= -1;
 			}
-			
 		}
 		else if (this.move == 2) { // Movimiento acelarado hacia la izquierda
 			this.speedX -= 1;
