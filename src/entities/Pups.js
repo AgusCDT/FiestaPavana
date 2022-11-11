@@ -17,9 +17,11 @@ export default class Pups extends Phaser.GameObjects.Sprite{
 			// Cambio de pantalla
 			if(this.scene.pup.filename == 'spacePup'){								
 				this.scene.Parallax.changeBackground('space');
+				this.destroy();
 			}
 			else if(this.scene.pup.filename == 'roadPup'){				
-				this.scene.Parallax.changeBackground('road')
+				this.scene.Parallax.changeBackground('road');
+				this.destroy();
 			}
 			/*else if(this.scene.pup.filename == 'seaPup'){
 				this.scene.Parallax.changeBackground('sea')
