@@ -2,6 +2,7 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 
 	constructor(scene, x, y) {
 		super(scene, x, y,'pavana');
+		this.setDepth(1);
 		this.scene.add.existing(this);
     	this.scene.physics.add.existing(this);
     	this.body.setCollideWorldBounds();
@@ -13,7 +14,7 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 		this.life = 3;
 		this.tempColision = 150;
 		this.label = this.scene.add.text(10, 10, "Life: " + this.life, { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
-		this.cursors = this.scene.input.keyboard.createCursorKeys();		
+		this.cursors = this.scene.input.keyboard.createCursorKeys();
 	}
 
 	calculateVelocity(){

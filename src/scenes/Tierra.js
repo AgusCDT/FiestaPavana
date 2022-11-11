@@ -1,7 +1,8 @@
-import Pavana from '../entities/Pavana.js';
+import Pavana from '../entities/Pavana.js'
 import Parallax from '../Parallax.js'
 import Enemies from '../entities/Enemies.js'
 import Pups from '../entities/Pups.js'
+import HUD from '../entities/HUD.js';
 
 export default class Tierra extends Phaser.Scene 
 {
@@ -14,7 +15,6 @@ export default class Tierra extends Phaser.Scene
 		var timerP;
 		this.load.image('road', './assets/escenarios/Tierra/Carretera/Carretera.jpg');
 		this.load.image('space', './assets/escenarios/Espacio/space.jpg');
-		
 	 	this.load.image('pavana', './assets/imagenes/gaviota.png');
 	 	this.load.image('enemy1', './assets/imagenes/enemigos/toy-car.png');
 	 	this.load.image('enemy2', './assets/imagenes/enemigos/eagle.png');
@@ -24,6 +24,7 @@ export default class Tierra extends Phaser.Scene
 	 	this.load.image('roadPup', './assets/imagenes/objetos/traffic_cone.png');
 	 	this.load.image('discoPup', './assets/imagenes/objetos/cloth.png');
 	 	this.load.image('goldenfish', './assets/imagenes/objetos/pez-dorado.png');
+		this.load.image('feather', './assets/imagenes/otras/feather.png');
 	 	console.log("Creada");	 	
 	}
 	 
@@ -31,10 +32,11 @@ export default class Tierra extends Phaser.Scene
 	create() {
 		this.Parallax = new Parallax(this);
 		this.Parallax.setDepth(0);
-	 	this.pavana = new Pavana(this, 100, 100); 	
-		this.pavana.setDepth(1);
-		this.timerE=0; 
-		this.timerP=0;	
+	 	this.pavana = new Pavana(this, 100, 100); 
+		this.hud = new HUD(this, 50, 50);
+		this.hud.drawLife();
+		this.timerE = 0;
+		this.timerP = 0;
 	}
 
 	pupRandom()
@@ -44,7 +46,7 @@ export default class Tierra extends Phaser.Scene
 		else if (x == 2) {this.pup= new Pups(this,1200,500,'seaPup');}
 		else if (x == 3) {this.pup= new Pups(this,1200,500,'roadPup');}
 		else if (x == 4) {this.pup= new Pups(this,1200,500,'discoPup');}
-		//else if (x == 5) {this.pup= new Pups(this,1200,500,'goldenfish');}
+		else if (x == 5) {this.pup= new Pups(this,1200,500,'goldenFish');}
 		else this.pupRandom();
 	}
 

@@ -17,18 +17,21 @@ export default class Pups extends Phaser.GameObjects.Sprite{
 			// Cambio de pantalla
 			if(this.scene.pup.filename == 'spacePup'){								
 				this.scene.Parallax.changeBackground('space');
-				this.destroy();
 			}
 			else if(this.scene.pup.filename == 'roadPup'){				
 				this.scene.Parallax.changeBackground('road');
-				this.destroy();
+			}
+			else if(this.scene.pup.filename == 'goldenFish') {
+
 			}
 			/*else if(this.scene.pup.filename == 'seaPup'){
-				this.scene.Parallax.changeBackground('sea')
+				this.scene.Parallax.changeBackground('sea');
 			}
 			else if(this.scene.pup.filename == 'discoPup'){
-				this.scene.Parallax.changeBackground('disco')
+				this.scene.Parallax.changeBackground('disco');
 			}*/
+			this.scene.pavana.label.setDepth(1);
+			this.destroy();
 		}
 	}
 }
