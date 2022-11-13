@@ -14,9 +14,9 @@ export default class HUD extends Phaser.GameObjects.Sprite {
 
     drawLife() {
         for (var i = 0; i < this.scene.pavana.life; i++) {
-            let image = this.scene.add.image(50 + (i * 70), 50, 'feather');
+            //let image = this.scene.add.image(50 + (i * 70), 50, 'feather');
             //this.lives.push(image);
-            console.log(this.lives);
+            //console.log(this.lives);
             //this.lives.pop();
             //console.log(this.lives);
         }
