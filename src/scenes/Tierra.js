@@ -17,7 +17,7 @@ export default class Tierra extends Phaser.Scene
 		this.load.image('space', './assets/escenarios/Espacio/space.jpg');
 	 	this.load.image('pavana', './assets/imagenes/gaviota.png');
 	 	this.load.image('enemy1', './assets/imagenes/enemigos/toy-car.png');
-	 	this.load.image('enemy2', './assets/imagenes/enemigos/eagle.png');
+	 	this.load.image('enemy2', './assets/imagenes/obstaculos/plane.png');
 	 	this.load.image('enemy3', './assets/imagenes/enemigos/ufo.png');
 	 	this.load.image('spacePup', './assets/imagenes/objetos/astronaut-helmet.png'); 
 	 	this.load.image('seaPup', './assets/imagenes/objetos/lifebuoy.png');
