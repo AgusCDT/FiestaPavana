@@ -10,7 +10,6 @@ export default class Pups extends Phaser.GameObjects.Sprite{
 		this.setDepth(1);		
 	}
 	
-	
 	preUpdate() 
 	{		
 	    this.body.setVelocity(this.speedX,this.speedY);
@@ -18,11 +17,9 @@ export default class Pups extends Phaser.GameObjects.Sprite{
 			// Cambio de pantalla
 			if(this.scene.pup.filename == 'spacePup'){								
 				this.scene.Parallax.changeBackground('space');
-				
 			}
 			else if(this.scene.pup.filename == 'roadPup'){				
 				this.scene.Parallax.changeBackground('road');
-				
 			}
 			else if(this.scene.pup.filename == 'goldenFish') {
 
