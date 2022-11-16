@@ -25,6 +25,7 @@ export default class Tierra extends Phaser.Scene
 	 	this.load.image('discoPup', './assets/imagenes/objetos/cloth.png');
 	 	this.load.image('goldenfish', './assets/imagenes/objetos/pez-dorado.png');
 		this.load.image('feather', './assets/imagenes/otras/feather.png');
+		this.load.image('balloon', './assets/imagenes/obstacles/balloon.png');
 	 	console.log("Creada");
 	}
 	 
@@ -52,10 +53,11 @@ export default class Tierra extends Phaser.Scene
 
 	enemyRandom()
 	{
-		let x = Phaser.Math.Between(1,5);
+		let x = Phaser.Math.Between(1,6);
 		if (x == 1) {this.enemy= new Enemies(this,1200,300,'enemy1', 0);}
 		else if (x == 2) {this.enemy= new Enemies(this,1200,300,'enemy2', 1);}
-		else if (x == 3) {this.enemy= new Enemies(this,1200,300,'enemy3', 2);}		
+		else if (x == 3) {this.enemy= new Enemies(this,1200,300,'enemy3', 2);}	
+		else if (x == 4) {this.enemy= new Enemies(this,1200,300,'balloon', 2);}	
 		else this.enemyRandom();
 	}
 
