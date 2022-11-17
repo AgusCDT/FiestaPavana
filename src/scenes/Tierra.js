@@ -3,21 +3,21 @@ import Parallax from '../Parallax.js'
 import Enemies from '../entities/Enemies.js'
 import Pups from '../entities/Pups.js'
 import HUD from '../entities/HUD.js';
+import Transition from '../components/Transition.js'
 
 export default class Tierra extends Phaser.Scene 
 {
 	constructor() {
-		super({ key: 'tierra' });		
+		super({ key: 'tierra' });
 	}
-	
+	// precarga de imágenes
 	preload() {
-		var timerE;
-		var timerP;
+		this.load.image('transition', './assets/imagenes/otras/backgroundBlack.png');
 		this.load.image('road', './assets/escenarios/Tierra/Carretera/Carretera.jpg');
 		this.load.image('space', './assets/escenarios/Espacio/space.jpg');
 	 	this.load.image('pavana', './assets/imagenes/gaviota.png');
 	 	this.load.image('enemy1', './assets/imagenes/enemigos/toy-car.png');
-	 	this.load.image('enemy2', './assets/imagenes/obstacles/plane.png');
+	 	this.load.spritesheet('enemy2', './assets/imagenes/obstacles/plane.png', { frameWidth: 110.86, frameHeight: 73.30});
 	 	this.load.image('enemy3', './assets/imagenes/enemigos/ufo.png');
 	 	this.load.image('spacePup', './assets/imagenes/objetos/astronaut-helmet.png'); 
 	 	this.load.image('seaPup', './assets/imagenes/objetos/lifebuoy.png');
@@ -25,30 +25,33 @@ export default class Tierra extends Phaser.Scene
 	 	this.load.image('discoPup', './assets/imagenes/objetos/cloth.png');
 	 	this.load.image('goldenfish', './assets/imagenes/objetos/pez-dorado.png');
 		this.load.image('feather', './assets/imagenes/otras/feather.png');
-	 	console.log("Creada");
+	 	
 	}
 	 
-	
+	// creación de Pavana y el fondo
 	create() {
-		this.Parallax = new Parallax(this);
-		this.Parallax.setDepth(0);
+		this.parallax = new Parallax(this);
+		this.parallax.setDepth(0);
 	 	this.pavana = new Pavana(this, 100, 100); 
 		//this.hud = new HUD(this, 50, 50);
 		//this.hud.drawLife();
 		this.timerE = 0;
-		this.timerP = 0;
+		this.timerP = 0;	
+		this.transition = new Transition(this);
 	}
 
+	
 	pupRandom()
 	{
-		let x = Phaser.Math.Between(1,6);
+		let x = Phaser.Math.Between(1,3);
 		if (x == 1) {this.pup= new Pups(this,1200,500,'spacePup');}
-		else if (x == 2) {this.pup= new Pups(this,1200,500,'seaPup');}
+		//else if (x == 2) {this.pup= new Pups(this,1200,500,'seaPup');}
 		else if (x == 3) {this.pup= new Pups(this,1200,500,'roadPup');}
-		else if (x == 4) {this.pup= new Pups(this,1200,500,'discoPup');}
-		else if (x == 5) {this.pup= new Pups(this,1200,500,'goldenFish');}
+		//else if (x == 4) {this.pup= new Pups(this,1200,500,'discoPup');}
+		//else if (x == 5) {this.pup= new Pups(this,1200,500,'goldenFish');}
 		else this.pupRandom();
 	}
+
 
 	enemyRandom()
 	{
@@ -59,8 +62,9 @@ export default class Tierra extends Phaser.Scene
 		else this.enemyRandom();
 	}
 
+
 	update() {	
-		this.Parallax.update();
+		this.parallax.update();
 		this.timerE=this.timerE+1;
 		this.timerP=this.timerP+1;
 		if(this.timerE>=300)

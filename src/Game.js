@@ -25,7 +25,7 @@ import Tierra from './scenes/Tierra.js';
             default: 'arcade', 
             arcade: { 
                 gravity: { y: 0 }, 
-                debug: false 
+                debug: true 
             } 
         }             
     };

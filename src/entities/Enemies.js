@@ -8,6 +8,13 @@ export default class Enemies extends Phaser.GameObjects.Sprite{
 		this.speedY = -40;
 		this.move = move;
 		this.setDepth(1);
+		/*this.anims.create({
+			key: animationId,
+			frames: this.anims.generateFrameNumbers(filename, { start: 0, end: 7 }),
+			frameRate: 7,
+			repeat: -1,
+			yoyo: true,
+		  });*/		
 	}
 	
 	preUpdate()
