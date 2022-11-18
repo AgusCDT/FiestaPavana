@@ -27,7 +27,6 @@ export default class Tierra extends Phaser.Scene
 	 	this.load.image('goldenfish', './assets/imagenes/objetos/pez-dorado.png');
 		this.load.image('feather', './assets/imagenes/otras/feather.png');
 		this.load.image('balloon', './assets/imagenes/obstacles/balloon.png');
-	 	console.log("Creada");
 	}
 	 
 	// creación de Pavana y el fondo
