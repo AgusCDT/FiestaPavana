@@ -18,7 +18,6 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 	}
 
 	calculateVelocity(){
-		console.log('Hola');
 		if (this.cursors.up.isDown) { // Input hacia arriba acelerando
 	    	if (this.speedY > -this.maxSpeed) {
 				this.speedY -= this.acceleration;

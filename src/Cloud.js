@@ -1,6 +1,6 @@
-export default class Cloud extends Phaser.Scene {
-    constructor() {
-		super({ key: 'cloud' });
+export default class Cloud {
+    constructor(scene) {
+		this.relatedScene = scene;
 	}
     preload(){
         //this.load.image('logo', './assets/PhaserLogo.png');
@@ -15,7 +15,7 @@ export default class Cloud extends Phaser.Scene {
         //var txt = this.add.bitmapText(0, 600, 'font', 'VISITS:', 20).setOrigin(0,1);
         //this.visitsTxt = this.add.bitmapText(txt.x+txt.width+10, 600, 'font', '0', 20).setOrigin(0,1);
         this.setVisits();
-        
+        console.log('Creada');
         this.updateHighScore(10);
     };
     
@@ -36,6 +36,7 @@ export default class Cloud extends Phaser.Scene {
     };
     
     updateHighScore(increment){
+        console.log('Choco');
         // Updates the score and stores the new value in the localStorage
         this.highScore += increment;
         //this.highScoreTxt.setText(this.highScore);
