@@ -6,6 +6,7 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 		this.scene.add.existing(this);
     	this.scene.physics.add.existing(this);
     	this.body.setCollideWorldBounds();
+		this.score = 0;
 		this.speedX = 0;
 		this.speedY = 0;
 		this.maxSpeed = 400;
@@ -18,7 +19,6 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 	}
 
 	calculateVelocity(){
-		console.log('Hola');
 		if (this.cursors.up.isDown) { // Input hacia arriba acelerando
 	    	if (this.speedY > -this.maxSpeed) {
 				this.speedY -= this.acceleration;
@@ -70,6 +70,8 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 	}
 	
 	preUpdate() {
+		this.score++;
+		console.log(this.score);
 		if (this.tempColision > 0){
 			this.tempColision -= 1;
 		}

@@ -1,7 +1,6 @@
 import Shop from './scenes/Shop.js';
 import Menu from './scenes/Menu.js';
 import Tierra from './scenes/Tierra.js';
-import Cloud from './Cloud.js';
 
 var config = {
     type: Phaser.CANVAS,
@@ -21,7 +20,7 @@ var config = {
         },
         zoom: 1
     },
-    scene: [Menu,Tierra, Shop, Cloud],           
+    scene: [Menu,Tierra, Shop],           
     physics: { 
         default: 'arcade', 
         arcade: { 

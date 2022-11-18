@@ -1,9 +1,9 @@
-import Pavana from '../entities/Pavana.js'
-import Parallax from '../Parallax.js'
-import Enemies from '../entities/Enemies.js'
-import Pups from '../entities/Pups.js'
-import HUD from '../entities/HUD.js';
-import Transition from '../components/Transition.js'
+import Pavana from '../entities/Pavana.js';
+import Parallax from '../Parallax.js';
+import Enemies from '../entities/Enemies.js';
+import Pups from '../entities/Pups.js';
+import Transition from '../components/Transition.js';
+import Cloud from '../Cloud.js';
 
 export default class Tierra extends Phaser.Scene 
 {
@@ -25,17 +25,15 @@ export default class Tierra extends Phaser.Scene
 	 	this.load.image('discoPup', './assets/imagenes/objetos/cloth.png');
 	 	this.load.image('goldenfish', './assets/imagenes/objetos/pez-dorado.png');
 		this.load.image('feather', './assets/imagenes/otras/feather.png');
-
 		this.load.image('balloon', './assets/imagenes/obstacles/balloon.png');
-	 	console.log("Creada");
 	}
 	 
 	// creación de Pavana y el fondo
 	create() {
 		this.parallax = new Parallax(this);
 		this.parallax.setDepth(0);
-	 	this.pavana = new Pavana(this, 100, 100); 
-		this.hud = new HUD(this, 50, 50);
+	 	this.pavana = new Pavana(this, 100, 100);
+		this.cloud = new Cloud(this);
 		this.timerE = 0;
 		this.timerP = 0;	
 		this.transition = new Transition(this);

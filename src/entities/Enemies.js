@@ -41,7 +41,7 @@ export default class Enemies extends Phaser.GameObjects.Sprite{
 				this.scene.pavana.life -= 1;
 				if (this.scene.pavana.life <= 0) {
 					this.scene.pavana.destroy();
-					this.scene.scene.start('cloud');
+					this.scene.cloud.updateHighScore(this.scene.pavana.score);
 					this.scene.scene.start('menu');
 				}
 				this.scene.pavana.label.text = "Life: " + this.scene.pavana.life;
