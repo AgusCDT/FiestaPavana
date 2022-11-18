@@ -2,22 +2,43 @@ export default class Cloud {
     constructor(scene) {
 		this.relatedScene = scene;
         this.setHighScore();
+        this.setCoins();
 	}
  
     setHighScore() {
-        // Gets the value stored in localStorage, or 0 if nothing is found
-        // Don't fortget to parseInt(), all values are stored as strings in localStorage
+        // Coge el valor de localStorage, o 0 si no se encuentra
+        // Hago el parseInt() porque los valores en localStorage se guardan como strings
         this.highScore = parseInt(localStorage.getItem('highScore')) || 0;
+        localStorage.setItem('highScore', this.highScore);
+    };
+
+    setCoins() {
+        // Coge el valor de localStorage, o 0 si no se encuentra
+        // Hago el parseInt() porque los valores en localStorage se guardan como strings
+        this.coins = parseInt(localStorage.getItem('coins')) || 0;
+        localStorage.setItem('coins', this.coins);
     };
     
     updateHighScore(score){
         if (score > this.highScore){
-            // Updates the score and stores the new value in the localStorage
+            // Actualiza el score y pone su nuevo valor en el localStorage
             this.highScore = score;
             localStorage.setItem('highScore', this.highScore);
         }
-        // Updates the score and stores the new value in the localStorage
-        //this.highScore += increment;
-        //localStorage.setItem('highScore', this.highScore);
     };
+
+    pickUpCoins() {
+        // Actualiza las monedas y pone su nuevo valor en el localStorage
+        this.coins++;
+        localStorage.setItem('coins', this.coins);
+    };
+
+    updateCoins(decrement) {
+        this.coins -= decrement;
+        localStorage.setItem('coins', this.coins);
+    }
+
+    getCoins() {
+        return this.coins;
+    }
 }

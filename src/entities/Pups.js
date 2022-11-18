@@ -9,15 +9,22 @@ export default class Pups extends Phaser.GameObjects.Sprite{
 		this.filename = filename;
 		this.setDepth(1);		
 	}
-
-	preUpdate() 
-	{		
-	    this.body.setVelocity(this.speedX,this.speedY);
-		if (this.scene.physics.overlap(this.scene.pavana, this.scene.pup)) {
+	colision(){
+		if (this.scene.physics.overlap(this.scene.pavana, this)) {
 			// Cambio de pantalla
-			this.scene.transition.fadeIn(this.filename); // llamada a fadeIn en Transition
+			if (this.filename != 'goldenFish'){
+				this.scene.transition.fadeIn(this.filename); // llamada a fadeIn en Transition
+			}
+			else {
+				this.scene.cloud.pickUpCoins();
+			}			
 			this.scene.pavana.label.setDepth(1);
 			this.destroy();
 		}
+	}
+	preUpdate() 
+	{		
+	    this.body.setVelocity(this.speedX,this.speedY);
+		this.colision();
 	}
 }
