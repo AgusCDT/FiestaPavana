@@ -12,6 +12,11 @@ export default class HUD extends Phaser.GameObjects.Sprite {
         this.lives = [];
     }
 
+    preload() {
+        localStorage.setItem('highScore', Game.scene.highScore);
+        Game.scene.highScore = parseInt(localStorage.getItem('highScore')) || 0;
+    }
+
     drawLife() {
         for (var i = 0; i < this.scene.pavana.life; i++) {
             //let image = this.scene.add.image(50 + (i * 70), 50, 'feather');
