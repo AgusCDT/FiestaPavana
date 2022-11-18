@@ -54,6 +54,34 @@ Game.saveFile = function(){
     var file = {
         score: Game.scene.score,
         visits: Game.scene.visits
+
+    let config = {
+        type: Phaser.CANVAS,
+        canvas: document.getElementById("juego"),
+        width: 1200,
+        height: 600,
+        pixelArt: true,
+        scale: {
+            autoCenter: Phaser.Scale.CENTER_HORIZONTALLY,         
+            min: {
+            width: 256,
+            height: 192
+            },
+            max: {
+                width: 800,
+                height: 600 
+            },
+            zoom: 1
+        },
+        scene: [Menu,Tierra, Shop],           
+        physics: { 
+            default: 'arcade', 
+            arcade: { 
+                gravity: { y: 0 }, 
+                debug: true 
+            } 
+        }             
+
     };
     localStorage.setItem('saveFile',JSON.stringify(file));
 };
@@ -63,7 +91,6 @@ Game.loadFile = function(){
     Game.scene.score = file.score;
     Game.scene.visits = file.visits;
 };
-// ##################"
 
 Game.updateScore = function(increment){
     // Updates the score and stores the new value in the localStorage
