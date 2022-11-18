@@ -1,48 +1,56 @@
 export default class Transition extends Phaser.GameObjects.Sprite{
-    // función que maneja una transición entre escenarios,
-    // utilizando un fondo negro y su opacidad 
-    backgroundTransition(){
-        var transition = this.scene.add.image(0, 0, 'transition', 0).setOrigin(0,0);
+    
+	// función que maneja qué pup coge la Pavana
+	// cambiando al escenario elegido
+	transition(pup){
+		
+		if(pup == 'spacePup'){
+			this.scene.parallax.changeBackground('space');	
+		}
+		else if(pup == 'roadPup'){	
+			this.scene.parallax.changeBackground('road');
+		}
+		/*else if(pup == 'seaPup'){
+				this.scene.parallax.changeBackground('sea');
+				
+		}
+		else if(pup == 'discoPup'){
+				this.scene.parallax.changeBackground('disco');
+				
+		}*/
+		this.fadeOut();
+	}
+
+	fadeOut(){
+        var fadeOut = this.scene.add.image(0, 0, 'backgroundTransition', 0).setOrigin(0,0);
 		var tween = this.scene.tweens.add({
-			targets:  transition,
+			targets:  fadeOut,
 			duration: 2000,
             ease: 'Quint.easeInOut',         
 			repeat: 0,
-			yoyo: true,
+			yoyo: false,
 			alpha: {
-				getStart: () => 0, // empieza con fondo negro
-				getEnd: () => 1 // y termina transparente
+				getStart: () => 1, // empieza con fondo negro
+				getEnd: () => 0 // y termina transparente
 			},
-			onComplete: transicion()
+			
 		});			
     }
-transicion(){
-	this.scene.parallax.changeBackground('space');
-}
-	transition(){
-		
-		if(this.scene.pup.filename == 'spacePup'){
-			
-			this.scene.time.addEvent({
-				delay: 2000, 
-        callback: this.scene.parallax.changeBackground,
-        callbackScope: this.scene
-				
-			});							
-			this.backgroundTransition();
-			
-		}
-		else if(this.scene.pup.filename == 'roadPup'){	
-			
-			this.scene.time.addEvent({
-				delay: 2000, 
-        callback: this.scene.parallax.changeBackground,
-        callbackScope: this.scene
-				
-			});	
-			this.backgroundTransition();									
-			
-			
-		}
-	}
+
+	fadeIn(filename){
+		var pup = filename;
+        var fadeIn = this.scene.add.image(0, 0, 'backgroundTransition', 0).setOrigin(0,0);
+		var tween = this.scene.tweens.add({
+			targets:  fadeIn,
+			duration: 2000,
+            ease: 'Quint.easeInOut',         
+			repeat: 0,
+			yoyo: false,
+			alpha: {
+				getStart: () => 0, // empieza con fondo transparente
+				getEnd: () => 1 // y termina con fondo negro
+			},
+			onComplete: () => this.transition(pup) // llamamos a esta función una vez se termina el fadeIn
+		});			
+    }
 }

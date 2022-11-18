@@ -12,14 +12,14 @@ export default class Tierra extends Phaser.Scene
 	}
 	// precarga de imágenes
 	preload() {
-		this.load.image('transition', './assets/imagenes/otras/backgroundBlack.png');
+		this.load.image('backgroundTransition', './assets/imagenes/otras/backgroundBlack.png');
 		this.load.image('road', './assets/escenarios/Tierra/Carretera/Carretera.jpg');
 		this.load.image('space', './assets/escenarios/Espacio/space.jpg');
 	 	this.load.image('pavana', './assets/imagenes/gaviota.png');
 	 	this.load.image('enemy1', './assets/imagenes/enemigos/toy-car.png');
 	 	this.load.spritesheet('enemy2', './assets/imagenes/obstacles/plane.png', { frameWidth: 110.86, frameHeight: 73.30});
 	 	this.load.image('enemy3', './assets/imagenes/enemigos/ufo.png');
-	 	this.load.image('spacePup', './assets/imagenes/objetos/astronaut-helmet.png'); 
+	 	this.load.image('spacePup', './assets/imagenes/objetos/astronaut.png'); 
 	 	this.load.image('seaPup', './assets/imagenes/objetos/lifebuoy.png');
 	 	this.load.image('roadPup', './assets/imagenes/objetos/traffic_cone.png');
 	 	this.load.image('discoPup', './assets/imagenes/objetos/cloth.png');
@@ -75,12 +75,11 @@ export default class Tierra extends Phaser.Scene
 			this.enemyRandom();
 			this.timerE=0;
 		}
-		if(this.timerP>=300)
+		if(this.timerP>=800)
 		{
 			this.pupRandom();
 			this.timerP=0;
-		}
-		
+		}	
 	}
 
 	//habrá una funcion bool que devuelva el valor de si has comprado un pup u otro
