@@ -14,7 +14,7 @@ export default class Tierra extends Phaser.Scene
 	preload() {
 		this.load.image('backgroundTransition', './assets/imagenes/otras/backgroundBlack.png');
 		this.load.image('road', './assets/escenarios/Tierra/Carretera/Carretera.jpg');
-		this.load.image('space', './assets/escenarios/Espacio/space.jpg');
+		this.load.image('space', './assets/escenarios/Espacio/Espacio.jpg');
 	 	this.load.image('pavana', './assets/imagenes/gaviota.png');
 	 	this.load.image('enemy1', './assets/imagenes/enemigos/toy-car.png');
 	 	this.load.spritesheet('enemy2', './assets/imagenes/obstacles/plane.png', { frameWidth: 110.86, frameHeight: 73.30});
