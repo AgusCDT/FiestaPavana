@@ -75,7 +75,7 @@ export default class Tierra extends Phaser.Scene
 			this.enemyRandom();
 			this.timerE=0;
 		}
-		if(this.timerP>=600)
+		if(this.timerP>=300)
 		{
 			this.pupRandom();
 			this.timerP=0;

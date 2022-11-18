@@ -15,17 +15,11 @@ export default class Pups extends Phaser.GameObjects.Sprite{
 	    this.body.setVelocity(this.speedX,this.speedY);
 		if (this.scene.physics.overlap(this.scene.pavana, this.scene.pup)) {
 			// Cambio de pantalla
-			if(this.scene.pup.filename == 'spacePup'){									
-				this.scene.parallax.changeBackground('space');
-				this.scene.transition.backgroundTransition();
-			}
-			else if(this.scene.pup.filename == 'roadPup'){							
-				this.scene.parallax.changeBackground('road');
-				this.scene.transition.backgroundTransition();
-			}
-			else if(this.scene.pup.filename == 'goldenFish') {
+			this.scene.transition.transition();
+			
+		//	else if(this.scene.pup.filename == 'goldenFish') {
 
-			}
+		//	}
 			/*else if(this.scene.pup.filename == 'seaPup'){
 				this.scene.Parallax.changeBackground('sea');
 				this.scene.transition.backgroundTransition();
