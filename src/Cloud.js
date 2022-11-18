@@ -10,10 +10,14 @@ export default class Cloud {
         this.highScore = parseInt(localStorage.getItem('highScore')) || 0;
     };
     
-    updateHighScore(increment){
+    updateHighScore(score){
+        if (score > this.highScore){
+            // Updates the score and stores the new value in the localStorage
+            this.highScore = score;
+            localStorage.setItem('highScore', this.highScore);
+        }
         // Updates the score and stores the new value in the localStorage
-        this.highScore += increment;
-        //this.highScoreTxt.setText(this.highScore);
-        localStorage.setItem('highScore', this.highScore);
+        //this.highScore += increment;
+        //localStorage.setItem('highScore', this.highScore);
     };
 }

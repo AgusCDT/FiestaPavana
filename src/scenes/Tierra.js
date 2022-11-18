@@ -2,7 +2,6 @@ import Pavana from '../entities/Pavana.js';
 import Parallax from '../Parallax.js';
 import Enemies from '../entities/Enemies.js';
 import Pups from '../entities/Pups.js';
-import HUD from '../entities/HUD.js';
 import Transition from '../components/Transition.js';
 import Cloud from '../Cloud.js';
 
@@ -35,7 +34,6 @@ export default class Tierra extends Phaser.Scene
 		this.parallax.setDepth(0);
 	 	this.pavana = new Pavana(this, 100, 100);
 		this.cloud = new Cloud(this);
-		this.hud = new HUD(this, 50, 50);
 		this.timerE = 0;
 		this.timerP = 0;	
 		this.transition = new Transition(this);

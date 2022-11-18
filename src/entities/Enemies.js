@@ -39,9 +39,9 @@ export default class Enemies extends Phaser.GameObjects.Sprite{
 		if (this.scene.physics.overlap(this.scene.pavana, this)) {
 			if (this.scene.pavana.tempColision <= 0) { // Solo puede quitar vida si llevo cierto tiempo después de la anterior colisión
 				this.scene.pavana.life -= 1;
-				//this.scene.cloud.updateHighScore(10);
 				if (this.scene.pavana.life <= 0) {
 					this.scene.pavana.destroy();
+					this.scene.cloud.updateHighScore(this.scene.pavana.score);
 					this.scene.scene.start('menu');
 				}
 				this.scene.pavana.label.text = "Life: " + this.scene.pavana.life;
