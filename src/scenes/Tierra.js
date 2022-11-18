@@ -33,8 +33,7 @@ export default class Tierra extends Phaser.Scene
 		this.Parallax = new Parallax(this);
 		this.Parallax.setDepth(0);
 	 	this.pavana = new Pavana(this, 100, 100); 
-		//this.hud = new HUD(this, 50, 50);
-		//this.hud.drawLife();
+		this.hud = new HUD(this, 50, 50);
 		this.timerE = 0;
 		this.timerP = 0;
 	}
