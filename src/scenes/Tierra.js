@@ -35,6 +35,7 @@ export default class Tierra extends Phaser.Scene
 		this.parallax = new Parallax(this);
 		this.parallax.setDepth(0);
 	 	this.pavana = new Pavana(this, 100, 100);
+		this.pavana.loadLife();
 		this.cloud = new Cloud(this);
 		this.timerE = 0;
 		this.timerP = 0;
@@ -44,7 +45,6 @@ export default class Tierra extends Phaser.Scene
 
 	coinRandom() {
 		let coinProbability = Phaser.Math.Between(1,3);
-		console.log('Moneda');
 		if (coinProbability == 1) {
 			this.pup = new Pups(this,1200,Phaser.Math.Between(50,this.height - 50),'goldenFish');
 		}
