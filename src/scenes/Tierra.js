@@ -25,7 +25,6 @@ export default class Tierra extends Phaser.Scene
 	 	this.load.image('discoPup', './assets/imagenes/objetos/cloth.png');
 	 	this.load.image('goldenfish', './assets/imagenes/objetos/pez-dorado.png');
 		this.load.image('feather', './assets/imagenes/otras/feather.png');
-
 		this.load.image('balloon', './assets/imagenes/obstacles/balloon.png');
 	 	console.log("Creada");
 	}
@@ -40,22 +39,52 @@ export default class Tierra extends Phaser.Scene
 		this.timerE = 0;
 		this.timerP = 0;	
 		this.transition = new Transition(this);
+		this.id='road';
+		this.limitE=Phaser.Math.Between(1,10)*100;
+		this.limitP=Phaser.Math.Between(1,10)*100;
 	}
-
 	
 	pupRandom()
 	{
-		let x = Phaser.Math.Between(1,3);
-		if (x == 1) {this.pup= new Pups(this,1200,500,'spacePup');}
-		//else if (x == 2) {this.pup= new Pups(this,1200,500,'seaPup');}
-		else if (x == 3) {this.pup= new Pups(this,1200,500,'roadPup');}
-		//else if (x == 4) {this.pup= new Pups(this,1200,500,'discoPup');}
-		//else if (x == 5) {this.pup= new Pups(this,1200,500,'goldenFish');}
-		else this.pupRandom();
+		let x = Phaser.Math.Between(1,8);
+		if(this.id=='road')
+		{
+			if (x < 4) {this.pup= new Pups(this,1200,500,'spacePup',1);this.id='space';}
+			//else if (x >= 4 && x <7) {this.pup= new Pups(this,1200,500,'seaPup',1);this.id='sea';}
+			//else if (x == 7) {this.pup= new Pups(this,1200,500,'discoPup',1);this.id='disco';}
+			else if (x == 8) {this.pup= new Pups(this,1200,500,'goldenFish',1);}
+			else this.pupRandom();
+		}
+		else if(this.id=='space')
+		{
+			//if (x < 4) {this.pup= new Pups(this,1200,500,'seaPup',1);this.id='sea';}
+			if (x >= 4 && x <7) {this.pup= new Pups(this,1200,500,'roadPup',1);this.id='road';}
+			//else if (x == 7) {this.pup= new Pups(this,1200,500,'discoPup',1);this.id='disco';}
+			else if (x == 8) {this.pup= new Pups(this,1200,500,'goldenFish',1);}
+			else this.pupRandom();
+		}
+		else if(this.id=='sea')
+		{
+			if (x < 4) {this.pup= new Pups(this,1200,500,'spacePup',1);this.id='space';}
+			else if (x >= 4 && x <7) {this.pup= new Pups(this,1200,500,'roadPup',1);this.id='road';}
+			//else if (x == 7) {this.pup= new Pups(this,1200,500,'discoPup'),1;this.id='disco';}
+			else if (x == 8) {this.pup= new Pups(this,1200,500,'goldenFish',1);}
+			else this.pupRandom();
+		}
+		else if(this.id=='disco')
+		{
+			for (var i =0; i<10;i++)
+			{
+				for (var j=0; j<4;j++)
+				{
+					this.pup=new Pups(this,150+i*100,150+j*10,'goldenFish',0);
+				}
+			}
+		}
 	}
 
 
-	enemyRandom()
+	/*enemyRandom()
 	{
 		let x = Phaser.Math.Between(1,6);
 		if (x == 1) {this.enemy= new Enemies(this,1200,300,'enemy1', 0);}
@@ -63,22 +92,62 @@ export default class Tierra extends Phaser.Scene
 		else if (x == 3) {this.enemy= new Enemies(this,1200,300,'enemy3', 2);}	
 		else if (x == 4) {this.enemy= new Enemies(this,1200,300,'balloon', 2);}	
 		else this.enemyRandom();
-	}
+
+		if(this.id=='road')
+		{
+			let x = Phaser.Math.Between(1,6);
+		if (x == 1) {this.enemy= new Enemies(this,1200,300,'enemy1', 0);}
+		else if (x == 2) {this.enemy= new Enemies(this,1200,300,'enemy2', 1);}
+		else if (x == 3) {this.enemy= new Enemies(this,1200,300,'enemy3', 2);}	
+		else if (x == 4) {this.enemy= new Enemies(this,1200,300,'balloon', 2);}	
+		else this.enemyRandom();
+		}
+		else if(this.id=='space')
+		{
+			let x = Phaser.Math.Between(1,6);
+		if (x == 1) {this.enemy= new Enemies(this,1200,300,'enemy1', 0);}
+		else if (x == 2) {this.enemy= new Enemies(this,1200,300,'enemy2', 1);}
+		else if (x == 3) {this.enemy= new Enemies(this,1200,300,'enemy3', 2);}	
+		else if (x == 4) {this.enemy= new Enemies(this,1200,300,'balloon', 2);}	
+		else this.enemyRandom();
+		}
+		else if(this.id=='sea')
+		{
+			let x = Phaser.Math.Between(1,6);
+		if (x == 1) {this.enemy= new Enemies(this,1200,300,'enemy1', 0);}
+		else if (x == 2) {this.enemy= new Enemies(this,1200,300,'enemy2', 1);}
+		else if (x == 3) {this.enemy= new Enemies(this,1200,300,'enemy3', 2);}	
+		else if (x == 4) {this.enemy= new Enemies(this,1200,300,'balloon', 2);}	
+		else this.enemyRandom();
+		}
+		else if(this.id=='disco')
+		{
+			let x = Phaser.Math.Between(1,6);
+		if (x == 1) {this.enemy= new Enemies(this,1200,300,'enemy1', 0);}
+		else if (x == 2) {this.enemy= new Enemies(this,1200,300,'enemy2', 1);}
+		else if (x == 3) {this.enemy= new Enemies(this,1200,300,'enemy3', 2);}	
+		else if (x == 4) {this.enemy= new Enemies(this,1200,300,'balloon', 2);}	
+		else this.enemyRandom();
+		}
+	}*/
 
 
 	update() {	
+		console.log(this.limitP);
 		this.parallax.update();
 		this.timerE=this.timerE+1;
 		this.timerP=this.timerP+1;
-		if(this.timerE>=300)
+		if(this.timerE>=this.limitE)
 		{
-			this.enemyRandom();
+			//this.enemyRandom();
 			this.timerE=0;
+			this.limitE=Phaser.Math.Between(1,10)*100;
 		}
-		if(this.timerP>=600)
+		if(this.timerP>=this.limitP)
 		{
 			this.pupRandom();
 			this.timerP=0;
+			this.limitP=Phaser.Math.Between(1,10)*100;
 		}
 		
 	}
