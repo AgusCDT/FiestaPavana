@@ -4,24 +4,30 @@ export default class Transition extends Phaser.GameObjects.Sprite{
 	// cambiando al escenario elegido
 	transition(pup){
 		
-		if(pup == 'spacePup'){
-			this.scene.parallax.changeBackground('space');	
+		if(pup == 'spacePup')
+		{
+			this.scene.parallax.changeBackground('space');
 		}
-		else if(pup == 'roadPup'){	
+		else if(pup == 'roadPup')
+		{	
 			this.scene.parallax.changeBackground('road');
 		}
-		/*else if(pup == 'seaPup'){
-				this.scene.parallax.changeBackground('sea');
+		else if(pup == 'seaPup')
+		{
+			this.scene.parallax.changeBackground('sea');
 				
 		}
-		else if(pup == 'discoPup'){
-				this.scene.parallax.changeBackground('disco');
+		else if(pup == 'discoPup')
+		{
+			this.scene.parallax.changeBackground('disco');
 				
-		}*/
+		}
+		//teng que llamar a una funcion para que me cambie el id
 		this.fadeOut();
 	}
 
-	fadeOut(){
+	fadeOut()
+	{
         var fadeOut = this.scene.add.image(0, 0, 'backgroundTransition', 0).setOrigin(0,0);
 		var tween = this.scene.tweens.add({
 			targets:  fadeOut,

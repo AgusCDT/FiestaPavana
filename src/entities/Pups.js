@@ -1,6 +1,6 @@
 export default class Pups extends Phaser.GameObjects.Sprite{
 
-	constructor(scene, x, y, filename, moving) 
+	constructor(scene, x, y, filename) 
 	{
 		super(scene, x, y, filename);
 		this.scene.add.existing(this);
@@ -8,56 +8,38 @@ export default class Pups extends Phaser.GameObjects.Sprite{
 		this.speedX = -75;
 		this.speedY = 0;
 		this.filename = filename;
-		this.moving=moving;
 		this.setDepth(1);			
 	}
 	
 	preUpdate() 
 	{	
-		var mov=this.moving;
-		this.body.setVelocity(this.speedX*mov,this.speedY*mov);
-	    
-		if (this.scene.physics.overlap(this.scene.pavana, this.scene.pup)) {}
+		this.body.setVelocity(this.speedX,this.speedY);    
+		if (this.scene.physics.overlap(this.scene.pavana, this.scene.pup)) {this.colision();}
 	}
 
 	colision()
 	{
-		if (this.scene.physics.overlap(this.scene.pavana, this)) {
-			// Cambio de pantalla
-			if (this.filename != 'goldenFish')
+		if (this.filename != 'goldenFish')
+		{
+			if(this.filename=='discoPup')
 			{
-				this.scene.transition.fadeIn(this.filename); // llamada a fadeIn en Transition
+				for (var i =0; i<10;i++)
+				{
+					for (var j=0; j<4;j++)
+					{
+						this.pup=new Pups(this,150+i*100,150+j*10,'goldenFish');
+					}
+				}
 			}
-			else if(this.scene.pup.filename == 'roadPup')
-			{							
-				this.scene.parallax.changeBackground('road');
-				this.scene.transition.backgroundTransition();
-			}
-			else if(this.scene.pup.filename == 'goldenFish') 
-			{
-
-			}
-			else if(this.scene.pup.filename == 'seaPup')
-			{
-				this.scene.Parallax.changeBackground('sea');
-				this.scene.transition.backgroundTransition();
-			}
-			else if(this.scene.pup.filename == 'discoPup')
-			{
-				this.scene.Parallax.changeBackground('disco');
-				this.scene.transition.backgroundTransition();
-			}
-			else 
-			{
-				this.scene.cloud.pickUpCoins();
-			}			
-			this.scene.pavana.label.setDepth(1);
-			this.destroy();
+			this.scene.transition.fadeIn(this.filename); // llamada a fadeIn en Transition
 		}
-	}
-	preUpdate() 
-	{		
-	    this.body.setVelocity(this.speedX,this.speedY);
-		this.colision();
+		else 
+		{
+			this.scene.cloud.pickUpCoins();
+		}	
+		
+
+		this.scene.pavana.label.setDepth(1);
+		this.destroy();
 	}
 }
