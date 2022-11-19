@@ -1,4 +1,4 @@
-import Button from './button.js';
+import Button from './Button.js';
 
 export default class MenuButton extends Button {
   constructor(scene) {
