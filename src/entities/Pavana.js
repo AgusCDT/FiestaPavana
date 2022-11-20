@@ -13,6 +13,8 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 		this.acceleration = 10;
 		this.deceleration = 10;
 		this.life = 3;
+		this.lifeImages = this.scene.add.group();
+		//this.lifeImages = [];
 		this.tempColision = 150;
 		this.label = this.scene.add.text(10, 10, "Life: " + this.life, { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
 		this.cursors = this.scene.input.keyboard.createCursorKeys();
@@ -69,13 +71,32 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 	    }
 	}
 	
+	loadLife() {
+		var lifee;
+		for (var i = 0; i < this.life; i++) {
+			lifee = this.lifeImages.create(60 * i + 40, 40, 'feather');
+			this.lifeImages.remove(lifee);
+		}
+		/*for (var i = 0; i < this.life; i++) {
+			//this.lifeImages[i] = new Image(60 * i + 40, 40, 'feather');
+			this.scene.add.image(60 * i + 40, 40, 'feather');
+		}*/
+	}
+
+	removeLife() {
+		//console.log(this.lifeImages.getLast());
+		//this.lifeImages.remove(this.lifeImages.getLast());
+		/*console.log(this.lifeImages.getFirstAlive());
+		this.lifeImages.remove(this.lifeImages.getFirstAlive());
+		console.log(this.lifeImages.getLength());*/
+		this.lifeImages.destroy();
+		console.log(this.lifeImages);
+	}
+
 	preUpdate() {
 		this.score++;
 		if (this.tempColision > 0){
 			this.tempColision -= 1;
-		}
-		if(this.life <= 0){
-			
 		}
 		this.calculateVelocity();
 	    this.body.setVelocity(this.speedX, this.speedY); // Aplicamos los valores de velocidad
