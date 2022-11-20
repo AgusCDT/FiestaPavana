@@ -81,11 +81,6 @@ export default class Tierra extends Phaser.Scene
 		}
 	}
 
-	changeId(id)
-	{
-		this.id=id;
-	}
-
 	coinRandom() 
 	{
 		let coinProbability = Phaser.Math.Between(1,3);
@@ -139,11 +134,9 @@ export default class Tierra extends Phaser.Scene
 		this.parallax.update();
 		this.timerE=this.timerE+1;
 		this.timerP=this.timerP+1;
+		this.timerC=this.timerC+1;
+
 		if(this.timerE>=this.limitE)
-		this.timerE = this.timerE + 1;
-		this.timerP = this.timerP + 1;
-		this.timerC = this.timerC + 1;
-		if(this.timerE>=300)
 		{
 			this.enemyRandom();
 			this.timerE=0;
