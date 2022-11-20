@@ -49,9 +49,10 @@ export default class Tierra extends Phaser.Scene
 		this.timerE = 0;
 		this.timerP = 0;
 		this.timerC = 0;	
+		this.playTime=0;
 		this.transition = new Transition(this);
 		this.id='road';
-		this.limitE=Phaser.Math.Between(1,10)*100;
+		this.limitE=100;
 		this.limitP=Phaser.Math.Between(1,10)*100;
 		this.limitC=Phaser.Math.Between(1,10)*100;
 	}
@@ -104,13 +105,13 @@ export default class Tierra extends Phaser.Scene
 	enemyRandom()
 	{
 		this.id=this.parallax.checkId();
-		let x = Phaser.Math.Between(1,6);
+		let x = Phaser.Math.Between(1,4);
 		if(this.id=='road')
 		{
-			if (x == 1) {this.enemy= new Enemies(this,1200,300,'car', 0);}
-			else if (x == 2) {this.enemy= new Enemies(this,1200,300,'plane', 1);}
-			else if (x == 3) {this.enemy= new Enemies(this,1200,300,'eagle', 2);}	
-			else if (x == 4) {this.enemy= new Enemies(this,1200,300,'balloon', 2);}	
+			if (x == 1) {this.enemy= new Enemies(this,1200,(Phaser.Math.Between(0,1)*40)+440,'car', 0);}
+			else if (x == 2) {this.enemy= new Enemies(this,1200,100,'plane', 2);}
+			else if (x == 3) {this.enemy= new Enemies(this,1200,100,'eagle', 3);}	
+			else if (x == 4) {this.enemy= new Enemies(this,1200,200,'balloon', 0);}	
 			else this.enemyRandom();
 		}
 		else if(this.id=='space')
@@ -121,9 +122,9 @@ export default class Tierra extends Phaser.Scene
 		}
 		else if(this.id=='sea')
 		{
-			if (x == 1) {this.enemy= new Enemies(this,1200,300,'boat', 0);}
-			else if (x == 2) {this.enemy= new Enemies(this,1200,300,'plane', 1);}
-			else if (x == 3) {this.enemy= new Enemies(this,1200,300,'island', 2);}	
+			if (x == 1) {this.enemy= new Enemies(this,1200,Phaser.Math.Between(42,52)*10,'boat', 0);}
+			if (x == 2) {this.enemy= new Enemies(this,1200, Phaser.Math.Between(20,45)*10,'plane', Phaser.Math.Between(1,2));}
+			else if (x == 3) {this.enemy= new Enemies(this,1200,440,'island', 0);}	
 			else this.enemyRandom();
 		}
 	}
@@ -135,12 +136,13 @@ export default class Tierra extends Phaser.Scene
 		this.timerE=this.timerE+1;
 		this.timerP=this.timerP+1;
 		this.timerC=this.timerC+1;
-
+		this.playTime+=1;
 		if(this.timerE>=this.limitE)
 		{
 			this.enemyRandom();
 			this.timerE=0;
-			this.limitE=Phaser.Math.Between(1,10)*100;
+			this.limitE=Phaser.Math.Between(1,10)*100-(this.playTime/200);
+			console.log(this.limitE);
 		}
 		if(this.timerP>=this.limitP) 
 		{
