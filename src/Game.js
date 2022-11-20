@@ -1,6 +1,7 @@
 import Shop from './scenes/Shop.js';
 import Menu from './scenes/Menu.js';
 import Tierra from './scenes/Tierra.js';
+import GameOver from './scenes/GameOver.js';
 
 var config = {
     type: Phaser.CANVAS,
@@ -20,7 +21,7 @@ var config = {
         },
         zoom: 1
     },
-    scene: [Menu,Tierra, Shop],           
+    scene: [Menu, Tierra, Shop, GameOver],          
     physics: { 
         default: 'arcade', 
         arcade: { 

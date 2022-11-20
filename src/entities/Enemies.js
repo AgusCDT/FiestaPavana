@@ -26,13 +26,17 @@ export default class Enemies extends Phaser.GameObjects.Sprite{
 			if (this.y <= 0){
 				this.speedY *= -1;
 			}
-			else if (this.y >= 600){
+			else if (this.y >= 500){
 				this.speedY *= -1;
 			}
 		}
 		else if (this.move == 2) { // Movimiento acelarado hacia la izquierda
 			this.speedX -= 1;
 			this.speedY = 0;
+		}
+		else if (this.move == 3) { // Movimiento en picado 
+			this.speedX -= 1;
+			this.speedY += 0.5;
 		}
 		this.body.setVelocity(this.speedX, this.speedY);
 
@@ -44,7 +48,7 @@ export default class Enemies extends Phaser.GameObjects.Sprite{
 				if (this.scene.pavana.life <= 0) {
 					this.scene.pavana.destroy();
 					this.scene.cloud.updateHighScore(this.scene.pavana.score);
-					this.scene.scene.start('menu');
+					this.scene.scene.start('GameOver');
 				}
 				this.scene.pavana.label.text = "Life: " + this.scene.pavana.life;
 				this.scene.pavana.tempColision = 150;
