@@ -7,18 +7,39 @@ export default class Enemies extends Phaser.GameObjects.Sprite{
 		this.speedX = -75;
 		this.speedY = -40;
 		this.move = move;
+		this.filename = filename;
 		this.setDepth(1);
-		/*this.anims.create({
-			key: animationId,
-			frames: this.anims.generateFrameNumbers(filename, { start: 0, end: 7 }),
-			frameRate: 7,
-			repeat: -1,
-			yoyo: true,
-		  });*/		
+		/*this.scene.anims.create({
+			key: 'idle',
+			frames: scene.anims.generateFrameNumbers(this.filename, { start: 0, end: 8}),
+			frameRate: 30,
+			repeat: -1
+		});
+		this.play('idle');*/
+		if (this.filename == 'balloon') {
+			var nStart = 0;
+			var nEnd = 3;
+			var nFrameRate = 5;
+			var nRepeat = -1;
+		}
+		else if (this.filename == 'plane') {
+			var nStart = 0;
+			var nEnd = 30;
+			var nFrameRate = 7;
+			var nRepeat = 0;
+		}
+		this.scene.anims.create({
+			key: this.filename,
+			frames: scene.anims.generateFrameNumbers(this.filename, { start: nStart, end: nEnd}),
+			frameRate: nFrameRate,
+			repeat: nRepeat
+		});
+		this.play(this.filename);
 	}
 	
-	preUpdate()
-	{	
+	preUpdate(t, dt)
+	{
+		super.preUpdate(t, dt);
 		if (this.move == 0){ // Movimiento estático
 			this.speedY = 0;
 		}
