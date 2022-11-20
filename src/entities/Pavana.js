@@ -74,6 +74,9 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 		if (this.tempColision > 0){
 			this.tempColision -= 1;
 		}
+		if(this.life <= 0){
+			
+		}
 		this.calculateVelocity();
 	    this.body.setVelocity(this.speedX, this.speedY); // Aplicamos los valores de velocidad
 	}
