@@ -23,8 +23,8 @@ export default class Tierra extends Phaser.Scene
 		this.load.image('sea', './assets/escenarios/SobreMar/SobreMar.jpg');
 		this.load.image('disco','./assets/escenarios/Tierra/Discoteca/Discoteca.jpg');
 	 	this.load.image('pavana', './assets/imagenes/gaviota.png');
-	 	this.load.image('enemy1', './assets/imagenes/enemigos/toy-car.png');
-	 	this.load.image('enemy3', './assets/imagenes/enemigos/ufo.png');
+	 	this.load.image('car', './assets/imagenes/enemigos/car.png');
+	 	this.load.image('ufo', './assets/imagenes/enemigos/ufo.png');
 	 	this.load.image('spacePup', './assets/imagenes/objetos/astronaut.png'); 
 	 	this.load.image('seaPup', './assets/imagenes/objetos/lifebuoy.png');
 	 	this.load.image('roadPup', './assets/imagenes/objetos/traffic_cone.png');
@@ -32,7 +32,11 @@ export default class Tierra extends Phaser.Scene
 	 	this.load.image('goldenFish', './assets/imagenes/objetos/pez-dorado.png');
 		this.load.image('feather', './assets/imagenes/otras/feather.png');
 		this.load.image('balloon', './assets/imagenes/obstacles/balloon.png');
-		this.load.spritesheet('enemy2', './assets/imagenes/obstacles/plane.png', { frameWidth: 110.86, frameHeight: 73.30});
+		this.load.image('asteroid', './assets/imagenes/obstacles/asteroid.png');
+		this.load.image('island', './assets/imagenes/obstacles/island.png');
+		this.load.image('boat', './assets/imagenes/obstacles/boat.png');
+		this.load.image('eagle', './assets/imagenes/enemigos/eagle.png')
+		this.load.spritesheet('plane', './assets/imagenes/obstacles/plane.png', { frameWidth: 110.86, frameHeight: 73.30});
 	}
 	 
 	// creación de Pavana y el fondo
@@ -51,9 +55,16 @@ export default class Tierra extends Phaser.Scene
 		this.limitP=Phaser.Math.Between(1,10)*100;
 		this.limitC=Phaser.Math.Between(1,10)*100;
 	}
+
+	cleanObjects()
+	{
+		this.enemy.destroy();
+		this.pup.destroy();
+	}
 	
 	pupRandom()
 	{
+		this.id=this.parallax.checkId();
 		let x = Phaser.Math.Between(1,7);
 		if(this.id=='road')
 		{
@@ -92,37 +103,27 @@ export default class Tierra extends Phaser.Scene
 	
 	enemyRandom()
 	{
+		this.id=this.parallax.checkId();
 		let x = Phaser.Math.Between(1,6);
 		if(this.id=='road')
 		{
-			if (x == 1) {this.enemy= new Enemies(this,1200,300,'enemy1', 0);}
-			else if (x == 2) {this.enemy= new Enemies(this,1200,300,'enemy2', 1);}
-			else if (x == 3) {this.enemy= new Enemies(this,1200,300,'enemy3', 2);}	
+			if (x == 1) {this.enemy= new Enemies(this,1200,300,'car', 0);}
+			else if (x == 2) {this.enemy= new Enemies(this,1200,300,'plane', 1);}
+			else if (x == 3) {this.enemy= new Enemies(this,1200,300,'eagle', 2);}	
 			else if (x == 4) {this.enemy= new Enemies(this,1200,300,'balloon', 2);}	
 			else this.enemyRandom();
 		}
 		else if(this.id=='space')
 		{
-			if (x == 1) {this.enemy= new Enemies(this,1200,300,'enemy1', 0);}
-			else if (x == 2) {this.enemy= new Enemies(this,1200,300,'enemy2', 1);}
-			else if (x == 3) {this.enemy= new Enemies(this,1200,300,'enemy3', 2);}	
-			else if (x == 4) {this.enemy= new Enemies(this,1200,300,'balloon', 2);}	
+			if (x == 1) {this.enemy= new Enemies(this,1200,300,'asteroid', 0);}
+			else if (x == 2) {this.enemy= new Enemies(this,1200,300,'ufo', 1);}
 			else this.enemyRandom();
 		}
 		else if(this.id=='sea')
 		{
-			if (x == 1) {this.enemy= new Enemies(this,1200,300,'enemy1', 0);}
-			else if (x == 2) {this.enemy= new Enemies(this,1200,300,'enemy2', 1);}
-			else if (x == 3) {this.enemy= new Enemies(this,1200,300,'enemy3', 2);}	
-			else if (x == 4) {this.enemy= new Enemies(this,1200,300,'balloon', 2);}	
-			else this.enemyRandom();
-		}
-		else if(this.id=='disco')
-		{
-			if (x == 1) {this.enemy= new Enemies(this,1200,300,'enemy1', 0);}
-			else if (x == 2) {this.enemy= new Enemies(this,1200,300,'enemy2', 1);}
-			else if (x == 3) {this.enemy= new Enemies(this,1200,300,'enemy3', 2);}	
-			else if (x == 4) {this.enemy= new Enemies(this,1200,300,'balloon', 2);}	
+			if (x == 1) {this.enemy= new Enemies(this,1200,300,'boat', 0);}
+			else if (x == 2) {this.enemy= new Enemies(this,1200,300,'plane', 1);}
+			else if (x == 3) {this.enemy= new Enemies(this,1200,300,'island', 2);}	
 			else this.enemyRandom();
 		}
 	}
@@ -130,7 +131,6 @@ export default class Tierra extends Phaser.Scene
 
 	update() 
 	{	
-		console.log(this.limitP);
 		this.parallax.update();
 		this.timerE=this.timerE+1;
 		this.timerP=this.timerP+1;
