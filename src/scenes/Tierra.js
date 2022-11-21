@@ -19,6 +19,9 @@ export default class Tierra extends Phaser.Scene
 	{
 		this.load.image('backgroundTransition', './assets/imagenes/otras/backgroundBlack.png');
 		this.load.image('road', './assets/escenarios/Tierra/Carretera/Carretera.jpg');
+		this.load.image('hills', './assets/imagenes/objetos/lifebuoy.png');
+		this.load.image('mountains', './assets/imagenes/otras/feather.png');
+		this.load.image('skyRoad', './assets/imagenes/objetos/astronaut.png');
 		this.load.image('space', './assets/escenarios/Espacio/Espacio.jpg');
 		this.load.image('sea','./assets/escenarios/SobreMar/SobreMar.jpg');
 		this.load.image('disco','./assets/escenarios/Tierra/Discoteca/Discoteca.jpg');

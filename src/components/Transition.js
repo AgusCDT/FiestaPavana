@@ -11,7 +11,7 @@ export default class Transition extends Phaser.GameObjects.Sprite{
 		}
 		else if(pup == 'roadPup')
 		{	
-			this.scene.parallax.changeBackground('road');
+			this.scene.parallax.changeBackground('road', 'hills', 'mountains', 'skyRoad');
 		}
 		else if(pup == 'seaPup')
 		{
