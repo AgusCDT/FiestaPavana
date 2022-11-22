@@ -38,7 +38,8 @@ export default class Tierra extends Phaser.Scene
 		this.load.image('asteroid', './assets/imagenes/obstacles/asteroid.png');
 		this.load.image('island', './assets/imagenes/obstacles/island.png');
 		this.load.image('boat', './assets/imagenes/obstacles/boat.png');
-		this.load.image('eagle', './assets/imagenes/enemigos/eagle.png')
+		this.load.image('eagle', './assets/imagenes/enemigos/eagle.png');
+		this.load.spritesheet('dolphin', './assets/imagenes/enemigos/delfin.png', { frameWidth: 90, frameHeight: 90});
 		this.load.spritesheet('plane', './assets/imagenes/obstacles/plane.png', { frameWidth: 111, frameHeight: 73});
 		this.load.spritesheet('balloon', './assets/imagenes/obstacles/balloonAnimation.png', { frameWidth: 99, frameHeight: 154});
 	}
@@ -110,13 +111,14 @@ export default class Tierra extends Phaser.Scene
 	enemyRandom()
 	{
 		this.id=this.parallax.checkId();
-		let x = Phaser.Math.Between(1,4);
+		let x = Phaser.Math.Between(1,5);
 		if(this.id=='road')
 		{
 			//if (x == 1) {this.enemy= new Enemies(this,1200,(Phaser.Math.Between(0,1)*40)+440,'car', 0);}
-			if (x == 2) {this.enemy= new Enemies(this,1200,100,'plane', 2);}
+			//if (x == 2) {this.enemy= new Enemies(this,1200,100,'plane', 2);}
 			//else if (x == 3) {this.enemy= new Enemies(this,1200,100,'eagle', 3);}	
-			else if (x == 4) {this.enemy= new Enemies(this,1200,200,'balloon', 0);}	
+			//else if (x == 4) {this.enemy= new Enemies(this,1200,200,'balloon', 0);}	
+			if (x == 5) {this.enemy= new Enemies(this,1200,500,'dolphin', 0);}	
 			else this.enemyRandom();
 		}
 		else if(this.id=='space')
