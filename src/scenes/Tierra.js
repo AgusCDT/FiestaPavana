@@ -4,6 +4,7 @@ import Enemies from '../entities/Enemies.js';
 import Pups from '../entities/Pups.js';
 import Transition from '../components/Transition.js';
 import Cloud from '../Cloud.js';
+
 export default class Tierra extends Phaser.Scene 
 {
 	constructor() 
@@ -12,7 +13,7 @@ export default class Tierra extends Phaser.Scene
 		this.width = 1200;
 		this.height = 600;
 	}
-	
+
 	// precarga de imágenes
 	preload() 
 	{
@@ -34,9 +35,7 @@ export default class Tierra extends Phaser.Scene
 		this.load.image('asteroid', './assets/imagenes/obstacles/asteroid.png');
 		this.load.image('island', './assets/imagenes/obstacles/island.png');
 		this.load.image('boat', './assets/imagenes/obstacles/boat.png');
-		this.load.image('eagle', './assets/imagenes/enemigos/eagle.png');
-		this.load.spritesheet('dolphin', './assets/imagenes/enemigos/delfin.png', { frameWidth: 90, frameHeight: 90});
-		
+		this.load.image('eagle', './assets/imagenes/enemigos/eagle.png')
 		this.load.spritesheet('plane', './assets/imagenes/obstacles/plane.png', { frameWidth: 111, frameHeight: 73});
 		this.load.spritesheet('balloon', './assets/imagenes/obstacles/balloonAnimation.png', { frameWidth: 99, frameHeight: 154});
 	}
@@ -58,20 +57,6 @@ export default class Tierra extends Phaser.Scene
 		this.limitE=100;
 		this.limitP=Phaser.Math.Between(1,10)*100;
 		this.limitC=Phaser.Math.Between(1,10)*100;
-
-		/*dolphin = this.add.sprite(400, 100, 'dolphin');
-		var tween = this.tweens.add({
-			targets:  dolphin,
-			duration: 2000,
-			ease: 'Quint.easeInOut',         
-			repeat: -1,
-			yoyo: true,
-			alpha: {
-				getStart: () => 1, // empieza con fondo negro
-				getEnd: () => 0 // y termina transparente
-			},
-			
-		});		*/
 	}
 
 	cleanObjects()
@@ -122,13 +107,13 @@ export default class Tierra extends Phaser.Scene
 	enemyRandom()
 	{
 		this.id=this.parallax.checkId();
-		let x = Phaser.Math.Between(2,3);
+		let x = Phaser.Math.Between(1,4);
 		if(this.id=='road')
 		{
 			//if (x == 1) {this.enemy= new Enemies(this,1200,(Phaser.Math.Between(0,1)*40)+440,'car', 0);}
-			//if (x == 2) {this.enemy= new Enemies(this,1200,100,'plane', 2);}
-			if (x == 3) {this.enemy =  new Enemies(this,1200,500,'dolphin', 0);}	
-			//else if (x == 4) {this.enemy= new Enemies(this,1200,200,'balloon', 0);}	
+			if (x == 2) {this.enemy= new Enemies(this,1200,100,'plane', 2);}
+			//else if (x == 3) {this.enemy= new Enemies(this,1200,100,'eagle', 3);}	
+			else if (x == 4) {this.enemy= new Enemies(this,1200,200,'balloon', 0);}	
 			else this.enemyRandom();
 		}
 		else if(this.id=='space')
