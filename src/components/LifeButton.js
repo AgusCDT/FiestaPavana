@@ -2,9 +2,14 @@ import Button from './Button.js';
 
 export default class LifeButton extends Button {
     constructor(scene) {
-        super(scene, 'lifebutton', 1070, 305);
+        super(scene, 'lifebutton', 1040, 305);
         this.price = 1;
         this.maxLife = 5;
+    }
+
+    create (){
+        super.create();
+        this.label = this.relatedScene.add.text(this.x - 10, this.y + 77, this.price, { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
     }
 
     ClickButton() {
