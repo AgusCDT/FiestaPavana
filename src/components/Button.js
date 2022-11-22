@@ -1,9 +1,12 @@
+import Cloud from '../Cloud.js';
+
 export default class Button {
-    constructor(scene, image, x, y, key) {
+    constructor(scene, image, x, y) {
         this.image = image;
         this.relatedScene = scene;
         this.x = x;
         this.y = y;
+        this.cloud = new Cloud(this);
     }
   
     create() {

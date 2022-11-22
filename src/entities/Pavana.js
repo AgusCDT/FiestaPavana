@@ -12,8 +12,9 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 		this.maxSpeed = 400;
 		this.acceleration = 10;
 		this.deceleration = 10;
-		this.life = 3;
+		this.life = this.scene.cloud.getLife();
 		this.lifeImages = this.scene.add.group();
+		this.multiplicator = this.scene.cloud.getMultiplicator();
 		//this.lifeImages = [];
 		this.tempColision = 150;
 		this.label = this.scene.add.text(10, 10, "Life: " + this.life, { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
