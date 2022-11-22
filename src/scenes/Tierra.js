@@ -33,8 +33,8 @@ export default class Tierra extends Phaser.Scene
 		this.load.image('feather', './assets/imagenes/otras/feather.png');
 		//this.load.image('balloon', './assets/imagenes/obstacles/balloon.png');
 		this.load.image('asteroid', './assets/imagenes/obstacles/asteroid.png');
-		this.load.image('island', './assets/imagenes/obstacles/island.png');
-		this.load.image('boat', './assets/imagenes/obstacles/boat.png');
+		this.load.image('island', './assets/imagenes/obstacles/island6.png');
+		//this.load.image('boat', './assets/imagenes/obstacles/boat.png');
 		this.load.image('eagle', './assets/imagenes/enemigos/eagle.png')
 		this.load.spritesheet('plane', './assets/imagenes/obstacles/plane.png', { frameWidth: 111, frameHeight: 73});
 		this.load.spritesheet('balloon', './assets/imagenes/obstacles/balloonAnimation.png', { frameWidth: 99, frameHeight: 154});
@@ -126,7 +126,7 @@ export default class Tierra extends Phaser.Scene
 		{
 			//if (x == 1) {this.enemy= new Enemies(this,1200,Phaser.Math.Between(42,52)*10,'boat', 0);}
 			if (x == 2) {this.enemy= new Enemies(this,1200, Phaser.Math.Between(20,45)*10,'plane', Phaser.Math.Between(1,2));}
-			//else if (x == 3) {this.enemy= new Enemies(this,1200,440,'island', 0);}	
+			else if (x == 3) {this.enemy= new Enemies(this,1200,440,'island', 0);}	
 			else this.enemyRandom();
 		}
 	}

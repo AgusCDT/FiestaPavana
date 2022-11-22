@@ -16,25 +16,27 @@ export default class Enemies extends Phaser.GameObjects.Sprite{
 			repeat: -1
 		});
 		this.play('idle');*/
-		if (this.filename == 'balloon') {
-			var nStart = 0;
-			var nEnd = 3;
-			var nFrameRate = 5;
-			var nRepeat = -1;
+		if (this.filename != 'island') {
+			if (this.filename == 'balloon') {
+				var nStart = 0;
+				var nEnd = 3;
+				var nFrameRate = 5;
+				var nRepeat = -1;
+			}
+			else if (this.filename == 'plane') {
+				var nStart = 0;
+				var nEnd = 30;
+				var nFrameRate = 7;
+				var nRepeat = 0;
+			}
+			this.scene.anims.create({
+				key: this.filename,
+				frames: scene.anims.generateFrameNumbers(this.filename, { start: nStart, end: nEnd}),
+				frameRate: nFrameRate,
+				repeat: nRepeat
+			});
+			this.play(this.filename);
 		}
-		else if (this.filename == 'plane') {
-			var nStart = 0;
-			var nEnd = 30;
-			var nFrameRate = 7;
-			var nRepeat = 0;
-		}
-		this.scene.anims.create({
-			key: this.filename,
-			frames: scene.anims.generateFrameNumbers(this.filename, { start: nStart, end: nEnd}),
-			frameRate: nFrameRate,
-			repeat: nRepeat
-		});
-		this.play(this.filename);
 	}
 	
 	preUpdate(t, dt)
@@ -76,7 +78,7 @@ export default class Enemies extends Phaser.GameObjects.Sprite{
 			}
 		}
 
-		if (this.x < -50){ // Los enemigos se destruyen al sobrepasar la izquierda para no consumir memoria
+		if (this.x < -50) { // Los enemigos se destruyen al sobrepasar la izquierda para no consumir memoria
 			this.destroy();
 		}
 	}
