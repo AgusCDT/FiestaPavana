@@ -1,5 +1,5 @@
 export default class Enemies extends Phaser.GameObjects.Sprite{
-
+	
 	constructor(scene, x, y, filename, move) {
 		super(scene, x, y, filename, move);
 		this.scene.add.existing(this);
@@ -28,12 +28,31 @@ export default class Enemies extends Phaser.GameObjects.Sprite{
 			var nFrameRate = 7;
 			var nRepeat = 0;
 		}
+		else if (this.filename == 'dolphin'){
+			var nStart = 0;
+			var nEnd = 0;
+			var nFrameRate = 5;
+			var nRepeat = -1;
+			
+			var tween = this.scene.tweens.add({
+				targets:  this.scene.enemy,
+				
+				duration: 2000,
+				ease: 'Quint.easeInOut',         
+				repeat: 1,
+				yoyo: true,
+				
+			});
+			
+
+		}
 		this.scene.anims.create({
 			key: this.filename,
 			frames: scene.anims.generateFrameNumbers(this.filename, { start: nStart, end: nEnd}),
 			frameRate: nFrameRate,
 			repeat: nRepeat
 		});
+					
 		this.play(this.filename);
 	}
 	
