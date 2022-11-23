@@ -20,7 +20,9 @@ export default class Parallax extends Phaser.GameObjects.Sprite{
 		this.parallax2 = this.scene.add.tileSprite(0, 0, 3200, 600, id2).setOrigin(0,0);
 		this.parallax3= this.scene.add.tileSprite(0, 0, 3200, 600, id3).setOrigin(0,0);
 		this.parallax4 = this.scene.add.tileSprite(0, 0, 3200, 600, id4).setOrigin(0,0);	
-		
+		if(id == 'seaId'){
+			this.parallax4.setDepth(2);
+		}
 		this.id=id;	
 		this.id1=id1;
 		this.id2=id2;

@@ -30,17 +30,26 @@ export default class Enemies extends Phaser.GameObjects.Sprite{
 		}
 		else if (this.filename == 'dolphin'){
 			var nStart = 0;
-			var nEnd = 0;
-			var nFrameRate = 5;
+			var nEnd = 2;
+			var nFrameRate = 2;
 			var nRepeat = -1;
 			
 			var tween = this.scene.tweens.add({
-				targets:  this.scene.enemy,		
-				duration: 2000,
-				ease: 'Quint.easeInOut',         
-				repeat: 1,
-				yoyo: true,
+				targets:  this.scene.dolphin,
 				
+				y: {
+					getStart: () => 510, 
+					getEnd: () => 550 
+				},
+				duration: 2000,
+				ease: 'Bounce.easeInOut',         
+				repeat: -1,
+				yoyo: true,
+				angle: {
+					getStart: () => 0, 
+					getEnd: () => -90 
+				
+				},
 			});
 		}
 		this.scene.anims.create({
@@ -51,7 +60,14 @@ export default class Enemies extends Phaser.GameObjects.Sprite{
 		});
 		this.play(this.filename);
 	}
-	
+	n(){
+		if (this.y <= 0){
+			this.speedY *= -1;
+		}
+		else if (this.y >= 500){
+			this.speedY *= -1;
+		}
+	}
 	preUpdate(t, dt)
 	{
 		super.preUpdate(t, dt);

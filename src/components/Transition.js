@@ -15,7 +15,7 @@ export default class Transition extends Phaser.GameObjects.Sprite{
 		}
 		else if(pup == 'seaPup')
 		{
-			this.scene.parallax.changeBackground('seaId', 'skySea', 'clouds', 'islands', 'oversea');
+			this.scene.parallax.changeBackground('seaId', 'skySea', 'clouds', 'islands', 'sea');
 		}
 		else if(pup == 'discoPup')
 		{

@@ -19,20 +19,20 @@ export default class Tierra extends Phaser.Scene
 	{
 		this.load.image('backgroundTransition', './assets/imagenes/otras/backgroundBlack.png');
 		// Road Parallax
-		this.load.image('skyRoad', './assets/escenarios/Parallax/Carretera/skyRoad.png');	
-		this.load.image('road', './assets/escenarios/Parallax/Carretera/road.png');
-		this.load.image('hills', './assets/escenarios/Parallax/Carretera/hills.png');
-		this.load.image('mountains', './assets/escenarios/Parallax/Carretera/mountains_1.png');
+		this.load.image('skyRoad', './assets/escenarios/Carretera/skyRoad.png');	
+		this.load.image('mountains', './assets/escenarios/Carretera/mountains_1.png');
+		this.load.image('hills', './assets/escenarios/Carretera/hills.png');	
+		this.load.image('road', './assets/escenarios/Carretera/road.png');
 		// Sea Parallax
-		this.load.image('skySea', './assets/escenarios/Parallax/SobreMar/skySea.png');
-		this.load.image('clouds', './assets/escenarios/Parallax/SobreMar/clouds.png');
-		this.load.image('islands', './assets/escenarios/Parallax/SobreMar/islands.png');
-		this.load.image('sea', './assets/escenarios/Parallax/SobreMar/oversea.png');
+		this.load.image('skySea', './assets/escenarios/SobreMar/skySea.png');
+		this.load.image('clouds', './assets/escenarios/SobreMar/clouds.png');
+		this.load.image('islands', './assets/escenarios/SobreMar/islands.png');
+		this.load.image('sea', './assets/escenarios/SobreMar/sea.png');
 		// Space Parallax
-		this.load.image('space_1', './assets/escenarios/Parallax/Espacio/space_1.png');
-		this.load.image('space_2', './assets/escenarios/Parallax/Espacio/space_2.png');
-		this.load.image('planets_1', './assets/escenarios/Parallax/Espacio/planets_1.png');
-		this.load.image('planets_2', './assets/escenarios/Parallax/Espacio/planets_2.png');
+		this.load.image('space_1', './assets/escenarios/Espacio/space_1.png');
+		this.load.image('space_2', './assets/escenarios/Espacio/space_2.png');
+		this.load.image('planets_1', './assets/escenarios/Espacio/planets_1.png');
+		this.load.image('planets_2', './assets/escenarios/Espacio/planets_2.png');
 		// Disco background
 		this.load.image('disco','./assets/escenarios/Tierra/Discoteca/Discoteca.jpg');
 		// Pavana 
@@ -130,23 +130,29 @@ export default class Tierra extends Phaser.Scene
 		if(this.id=='roadId')
 		{
 			//if (x == 1) {this.enemy= new Enemies(this,1200,(Phaser.Math.Between(0,1)*40)+440,'car', 0);}
-			if (x == 2) {this.enemy= new Enemies(this,1200,100,'plane', 2);}
+			//if (x == 2) {this.enemy= new Enemies(this,1200,100,'plane', 2);}
 			//else if (x == 3) {this.enemy= new Enemies(this,1200,100,'eagle', 3);}	
-			else if (x == 4) {this.enemy= new Enemies(this,1200,200,'balloon', 0);}	
-			else if (x == 5) {this.enemy= new Enemies(this,1200,500,'dolphin', 0);}	
+			//else if (x == 4) {this.enemy= new Enemies(this,1200,200,'balloon', 0);}	
+			if (x == 5) {this.enemy= new Enemies(this,1200,550,'dolphin', 0);
+			this.dolphin=this.enemy;}	
 			else this.enemyRandom();
 		}
 		else if(this.id=='spaceId')
 		{
-			if (x == 1) {this.enemy= new Enemies(this,1200,300,'asteroid', 0);}
-			else if (x == 2) {this.enemy= new Enemies(this,1200,300,'ufo', 1);}
-			else this.enemyRandom(); 
+			//if (x == 1) {this.enemy= new Enemies(this,1200,300,'asteroid', 0);}
+			//else if (x == 2) {this.enemy= new Enemies(this,1200,300,'ufo', 1);}
+			//else this.enemyRandom(); 
 		}
 		else if(this.id=='seaId')
 		{
-			if (x == 1) {this.enemy= new Enemies(this,1200,Phaser.Math.Between(42,52)*10,'boat', 0);}
-			else if (x == 2) {this.enemy= new Enemies(this,1200, Phaser.Math.Between(20,45)*10,'plane', Phaser.Math.Between(1,2));}
-			else if (x == 3) {this.enemy= new Enemies(this,1200,440,'island', 0);}	
+			//if (x == 1) {this.enemy= new Enemies(this,1200,Phaser.Math.Between(42,52)*10,'boat', 0);}
+			if (x == 2) {this.enemy= new Enemies(this,1200, Phaser.Math.Between(20,45)*10,'plane', Phaser.Math.Between(1,2));}
+			// else if (x == 3) {this.enemy= new Enemies(this,1200,440,'island', 0);}
+			else if(x==4){
+				this.enemy= new Enemies(this,1200,550,'dolphin', 0);
+				this.dolphin=this.enemy;
+			}
+				
 			else this.enemyRandom();
 		}
 	}
