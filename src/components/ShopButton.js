@@ -7,5 +7,5 @@ export default class ShopButton extends Button {
 
     ClickButton() {
         this.relatedScene.scene.start('shop');
-    } 
+    }
 }

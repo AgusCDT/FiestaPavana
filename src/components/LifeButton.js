@@ -10,6 +10,9 @@ export default class LifeButton extends Button {
     create (){
         super.create();
         this.label = this.relatedScene.add.text(this.x - 10, this.y + 77, this.price, { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
+        if (this.cloud.getLife() == this.maxLife) {
+            this.soldout = this.relatedScene.add.image(this.x, this.y, 'soldout');
+        }
     }
 
     ClickButton() {
@@ -20,6 +23,9 @@ export default class LifeButton extends Button {
             this.cloud.updateLifePrice(this.price);
             this.label.destroy();
             this.label = this.relatedScene.add.text(this.x - 10, this.y + 77, this.price, { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
+            if (this.cloud.getLife() == this.maxLife) {
+                this.soldout = this.relatedScene.add.image(this.x, this.y, 'soldout');
+            }
         }
         else if (this.cloud.getLife() >= this.maxLife){
             console.log('Tienes el maximo de vidas');

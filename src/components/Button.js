@@ -1,6 +1,3 @@
-import Cloud from '../Cloud.js';
-import Shop from '../scenes/Shop.js';
-
 export default class Button {
     constructor(scene, image, x, y, cloud) {
         this.image = image;
@@ -9,7 +6,7 @@ export default class Button {
         this.y = y;
         this.cloud = cloud;
     }
-  
+
     create() {
         this.Button = this.relatedScene.add.sprite(this.x, this.y, this.image).setInteractive();
   

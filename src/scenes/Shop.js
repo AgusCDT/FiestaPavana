@@ -25,6 +25,7 @@ export default class Shop extends Phaser.Scene {
 		this.load.image('spacebutton', './assets/componentes/spaceButton.png');
 		this.load.image('seabutton', './assets/componentes/seaButton.png');
 		this.load.image('beachbutton', './assets/componentes/beachButton.png');
+		this.load.image('soldout', './assets/imagenes/otras/soldOut.png')
 		this.load.spritesheet('menubutton', './assets/componentes/BotonMenu.png', { frameWidth: 176, frameHeight: 93});
 	}
 	 
