@@ -12,8 +12,11 @@ export default class Tierra extends Phaser.Scene
 		super({ key: 'tierra' });
 		this.width = 1200;
 		this.height = 600;
+		this.cloud;
 	}
-
+	init(save) {
+		this.cloud = save.save;
+	}
 	// precarga de imágenes
 	preload() 
 	{
@@ -44,7 +47,6 @@ export default class Tierra extends Phaser.Scene
 	{
 		this.parallax = new Parallax(this);
 		this.parallax.setDepth(0);
-		this.cloud = new Cloud(this);
 	 	this.pavana = new Pavana(this, 100, 100);
 		this.pavana.loadLife();
 		this.timerE = 0;

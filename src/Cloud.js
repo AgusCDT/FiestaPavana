@@ -1,6 +1,5 @@
 export default class Cloud {
-    constructor(scene) {
-		this.relatedScene = scene;
+    constructor() {
         this.setHighScore();
         this.setCoins();
         this.setLife();
