@@ -54,7 +54,7 @@ export default class Tierra extends Phaser.Scene
 	 	this.load.image('spacePup', './assets/imagenes/objetos/astronaut.png'); 
 	 	this.load.image('seaPup', './assets/imagenes/objetos/lifebuoy.png');
 	 	this.load.image('roadPup', './assets/imagenes/objetos/traffic_cone.png');
-	 	this.load.image('discoPup', './assets/imagenes/objetos/cloth.png');
+	 	this.load.image('discoPup', './assets/imagenes/objetos/shirt.png');
 		// Coins
 	 	this.load.image('goldenFish', './assets/imagenes/objetos/pez-dorado.png');
 		// HUD
