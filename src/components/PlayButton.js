@@ -7,6 +7,6 @@ export default class PlayButton extends Button {
     }
 
     ClickButton() {
-        this.relatedScene.scene.start('tierra', {save:this.cloud});
+        this.relatedScene.scene.start('tierra', {cloud:this.cloud});
     } 
 }

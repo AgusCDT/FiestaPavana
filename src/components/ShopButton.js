@@ -7,6 +7,6 @@ export default class ShopButton extends Button {
     }
 
     ClickButton() {
-        this.relatedScene.scene.start('shop', {save:this.cloud});
+        this.relatedScene.scene.start('shop', {cloud:this.cloud});
     }
 }
