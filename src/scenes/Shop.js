@@ -4,7 +4,6 @@ import TrophyButton from '../components/TrophyButton.js';
 import SpaceButton from '../components/SpaceButton.js';
 import SeaButton from '../components/SeaButton.js';
 import BeachButton from '../components/BeachButton.js';
-import Cloud from '../Cloud.js';
 
 export default class Shop extends Phaser.Scene {
 	constructor() {
@@ -14,7 +13,7 @@ export default class Shop extends Phaser.Scene {
 		
 	}
 	init (save) {
-		this.cloud = save.save;
+		this.cloud = save.cloud;
 	}
 	preload() {
 	 	this.load.image('shop',  './assets/imagenes/otras/shopWithoutButtons.png');
@@ -29,7 +28,7 @@ export default class Shop extends Phaser.Scene {
 	create() {
 	 	this.add.image(0, 0, 'shop').setOrigin(0, 0);
 		this.label = this.add.text(1105, 20, this.cloud.getCoins(), { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
-		this.MenuButton = new MenuButton(this, this.cloud);
+		this.MenuButton = new MenuButton(this, this.cloud, 690, 450);
 		this.LifeButton = new LifeButton(this, this.cloud);
 		this.TrophyButton = new TrophyButton(this, this.cloud);
 		this.SpaceButton = new SpaceButton(this, this.cloud);
