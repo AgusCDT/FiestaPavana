@@ -9,6 +9,10 @@ export default class Menu extends Phaser.Scene {
 		this.ShopButton = new ShopButton(this, this.cloud); 
 		this.PlayButton = new PlayButton(this, this.cloud);
 	}
+
+	init(save) {
+		this.cloud = save.cloud;
+	}
 	 
 	preload() {
 		this.load.image('menu', './assets/escenarios/Tierra/Carretera/Carretera.jpg');	 	

@@ -14,7 +14,7 @@ export default class Shop extends Phaser.Scene {
 		
 	}
 	init (save) {
-		this.cloud = save.save;
+		this.cloud = save.cloud;
 	}
 	preload() {
 	 	this.load.image('shop',  './assets/imagenes/otras/shopWithoutButtons.png');

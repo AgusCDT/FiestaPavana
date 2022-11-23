@@ -1,5 +1,3 @@
-import ShopButton from '../components/ShopButton.js';
-import PlayButton from '../components/PlayButton.js';
 import MenuButton from '../components/MenuButton.js';
 
 export default class GameOver extends Phaser.Scene{
@@ -9,7 +7,7 @@ export default class GameOver extends Phaser.Scene{
     }
 
 	init(save) {
-		this.cloud = save.save;
+		this.cloud = save.cloud;
 	}
 
     preload() {

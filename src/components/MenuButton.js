@@ -7,6 +7,6 @@ export default class MenuButton extends Button {
     }
 
     ClickButton() {
-        this.relatedScene.scene.start('menu', {save:this.cloud});
+        this.relatedScene.scene.start('menu', {cloud:this.cloud});
     }
 }

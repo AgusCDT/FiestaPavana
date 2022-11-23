@@ -15,7 +15,7 @@ export default class Tierra extends Phaser.Scene
 		this.cloud;
 	}
 	init(save) {
-		this.cloud = save.save;
+		this.cloud = save.cloud;
 	}
 	// precarga de imágenes
 	preload() 
