@@ -9,13 +9,7 @@ export default class Enemies extends Phaser.GameObjects.Sprite{
 		this.move = move;
 		this.filename = filename;
 		this.setDepth(1);
-		/*this.scene.anims.create({
-			key: 'idle',
-			frames: scene.anims.generateFrameNumbers(this.filename, { start: 0, end: 8}),
-			frameRate: 30,
-			repeat: -1
-		});
-		this.play('idle');*/
+		
 		if (this.filename == 'balloon') {
 			var nStart = 0;
 			var nEnd = 3;
@@ -36,7 +30,6 @@ export default class Enemies extends Phaser.GameObjects.Sprite{
 			
 			var tween = this.scene.tweens.add({
 				targets:  this.scene.dolphin,
-				
 				y: {
 					getStart: () => 510, 
 					getEnd: () => 550 
@@ -48,7 +41,6 @@ export default class Enemies extends Phaser.GameObjects.Sprite{
 				angle: {
 					getStart: () => 0, 
 					getEnd: () => -90 
-				
 				},
 			});
 		}
@@ -60,14 +52,8 @@ export default class Enemies extends Phaser.GameObjects.Sprite{
 		});
 		this.play(this.filename);
 	}
-	n(){
-		if (this.y <= 0){
-			this.speedY *= -1;
-		}
-		else if (this.y >= 500){
-			this.speedY *= -1;
-		}
-	}
+	
+
 	preUpdate(t, dt)
 	{
 		super.preUpdate(t, dt);
@@ -100,14 +86,14 @@ export default class Enemies extends Phaser.GameObjects.Sprite{
 				if (this.scene.pavana.life <= 0) {
 					this.scene.pavana.destroy();
 					this.scene.cloud.updateHighScore(this.scene.pavana.score);
-					this.scene.scene.start('GameOver');
+					this.scene.scene.start('GameOver', {save: this.scene.cloud});
 				}
 				this.scene.pavana.label.text = "Life: " + this.scene.pavana.life;
 				this.scene.pavana.tempColision = 150;
 			}
 		}
 
-		if (this.x < -50){ // Los enemigos se destruyen al sobrepasar la izquierda para no consumir memoria
+		if (this.x < -50) { // Los enemigos se destruyen al sobrepasar la izquierda para no consumir memoria
 			this.destroy();
 		}
 	}

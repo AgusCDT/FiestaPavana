@@ -1,12 +1,16 @@
 import ShopButton from '../components/ShopButton.js';
 import PlayButton from '../components/PlayButton.js';
+import MenuButton from '../components/MenuButton.js';
 
 export default class GameOver extends Phaser.Scene{
     constructor() {
         super({ key: 'GameOver' });
-        this.ShopButton = new ShopButton(this);
-		this.PlayButton = new PlayButton(this);
+		this.cloud;
     }
+
+	init(save) {
+		this.cloud = save.save;
+	}
 
     preload() {
 		this.load.image('GameOver', './assets/escenarios/SobreMar/SobreMar.jpg');	 	
@@ -16,7 +20,7 @@ export default class GameOver extends Phaser.Scene{
 	
 	create() {
 	 	this.add.image(0, 0, 'GameOver').setOrigin(0, 0);
-	 	this.ShopButton.create();
-	 	this.PlayButton.create();
+		this.MenuButton = new MenuButton(this, this.cloud);
+		this.MenuButton.create();
 	}
 }

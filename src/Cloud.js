@@ -1,8 +1,14 @@
 export default class Cloud {
-    constructor(scene) {
-		this.relatedScene = scene;
+    constructor() {
         this.setHighScore();
         this.setCoins();
+        this.setLife();
+        this.setMultiplicator();
+        this.setSpace();
+        this.setSea();
+        this.setBeach();
+        this.setMultiplicatorPrice();
+        this.setLifePrice();
 	}
  
     setHighScore() {
@@ -18,6 +24,55 @@ export default class Cloud {
         this.coins = parseInt(localStorage.getItem('coins')) || 0;
         localStorage.setItem('coins', this.coins);
     };
+
+    setLife() { 
+        // Coge el valor de localStorage, o 2 si no se encuentra
+        // Hago el parseInt() porque los valores en localStorage se guardan como strings
+        this.life = parseInt(localStorage.getItem('life')) || 2;
+        localStorage.setItem('life', this.life);
+    }
+
+    setMultiplicator(){
+        // Coge el valor de localStorage, o 1 si no se encuentra
+        // Hago el parseFloat() porque los valores en localStorage se guardan como strings
+        this.multiplicator = parseFloat(localStorage.getItem('multiplicator')) || 1;
+        localStorage.setItem('multiplicator', this.multiplicator);
+    }
+
+    setSpace(){
+        // Coge el valor de localStorage, o 0 si no se encuentra (0 si no está desbloqueado y 1 si sí lo está)
+        // Hago el parseInt() porque los valores en localStorage se guardan como strings
+        this.space = parseInt(localStorage.getItem('space')) || 0;
+        localStorage.setItem('space', this.space);
+    }
+
+    setSea(){
+        // Coge el valor de localStorage, o 0 si no se encuentra (0 si no está desbloqueado y 1 si sí lo está)
+        // Hago el parseInt() porque los valores en localStorage se guardan como strings
+        this.sea = parseInt(localStorage.getItem('sea')) || 0;
+        localStorage.setItem('sea', this.sea);
+    }
+
+    setBeach(){
+        // Coge el valor de localStorage, o 0 si no se encuentra (0 si no está desbloqueado y 1 si sí lo está)
+        // Hago el parseInt() porque los valores en localStorage se guardan como strings
+        this.beach = parseInt(localStorage.getItem('beach')) || 0;
+        localStorage.setItem('beach', this.beach);
+    }
+
+    setLifePrice(){
+        // Coge el valor de localStorage, o 50 (aqui es donde de verdad se setea el primer precio de la mejora de vida)
+        // Hago el parseInt() porque los valores en localStorage se guardan como strings
+        this.lifePrice = parseInt(localStorage.getItem('lifePrice')) || 50;
+        localStorage.setItem('lifePrice', this.lifePrice);
+    }
+
+    setMultiplicatorPrice(){
+        // Coge el valor de localStorage, o 50 (aqui es donde de verdad se setea el primer precio de la mejora de multiplicador)
+        // Hago el parseInt() porque los valores en localStorage se guardan como strings
+        this.multiplicatorPrice = parseInt(localStorage.getItem('multiplicatorPrice')) || 50;
+        localStorage.setItem('multiplicatorPrice', this.multiplicatorPrice);
+    }
     
     updateHighScore(score){
         if (score > this.highScore){
@@ -38,7 +93,70 @@ export default class Cloud {
         localStorage.setItem('coins', this.coins);
     }
 
+    updateMultiplicatorPrice(value) {
+        this.multiplicatorPrice = value;
+        localStorage.setItem('multiplicatorPrice', this.multiplicatorPrice);
+    }
+
+    updateLifePrice(value) {
+        this.lifePrice = value;
+        localStorage.setItem('lifePrice', this.lifePrice);
+    }
+
+    upgradeLife() {
+        this.life++;
+        localStorage.setItem('life', this.life);
+    }
+
+    upgradeMultiplicator() {
+        this.multiplicator += 0.1;
+        localStorage.setItem('multiplicator', this.multiplicator);
+    }
+
+    upgradeSpace() {
+        this.space = 1;
+        localStorage.setItem('space', this.space);
+    }
+
+    upgradeSea() {
+        this.sea = 1;
+        localStorage.setItem('sea', this.sea);
+    }
+
+    upgradeBeach() {
+        this.beach = 1;
+        localStorage.setItem('beach', this.beach);
+    }
+
+    getSea() {
+        return this.sea;
+    }
+
+    getBeach() {
+        return this.beach;
+    }
+
+    getSpace() {
+        return this.space;
+    }
+
+    getMultiplicator(){
+        return this.multiplicator;
+    }
+
     getCoins() {
         return this.coins;
+    }
+
+    getLife() {
+        return this.life;
+    }
+
+    getMultiplicatorPrice(){
+        return this.multiplicatorPrice;
+    }
+
+    getLifePrice() {
+        return this.lifePrice;
     }
 }

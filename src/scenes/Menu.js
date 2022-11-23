@@ -1,11 +1,13 @@
 import ShopButton from '../components/ShopButton.js';
 import PlayButton from '../components/PlayButton.js';
+import Cloud from '../Cloud.js';
 
 export default class Menu extends Phaser.Scene {
 	constructor() {
 		super({ key: 'menu' });
-		this.ShopButton = new ShopButton(this); 
-		this.PlayButton = new PlayButton(this);
+		this.cloud = new Cloud();
+		this.ShopButton = new ShopButton(this, this.cloud); 
+		this.PlayButton = new PlayButton(this, this.cloud);
 	}
 	 
 	preload() {
@@ -15,6 +17,7 @@ export default class Menu extends Phaser.Scene {
 		this.load.image('road', './assets/escenarios/Carretera/road.png');
 	 	this.load.spritesheet('playbutton', './assets/componentes/BotonPlay.png', { frameWidth: 176, frameHeight: 93});
 		this.load.spritesheet('shopbutton', './assets/componentes/BotonShop.png', { frameWidth: 176, frameHeight: 93});
+		this.load.spritesheet('menubutton', './assets/componentes/BotonMenu.png', { frameWidth: 176, frameHeight: 93});
 	}
 	
 	create() {
