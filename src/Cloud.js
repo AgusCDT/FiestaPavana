@@ -8,6 +8,8 @@ export default class Cloud {
         this.setSpace();
         this.setSea();
         this.setBeach();
+        this.setMultiplicatorPrice();
+        this.setLifePrice();
 	}
  
     setHighScore() {
@@ -33,8 +35,8 @@ export default class Cloud {
 
     setMultiplicator(){
         // Coge el valor de localStorage, o 1 si no se encuentra
-        // Hago el parseInt() porque los valores en localStorage se guardan como strings
-        this.multiplicator = parseInt(localStorage.getItem('multiplicator')) || 1;
+        // Hago el parseFloat() porque los valores en localStorage se guardan como strings
+        this.multiplicator = parseFloat(localStorage.getItem('multiplicator')) || 1;
         localStorage.setItem('multiplicator', this.multiplicator);
     }
 
@@ -58,6 +60,20 @@ export default class Cloud {
         this.beach = parseInt(localStorage.getItem('beach')) || 0;
         localStorage.setItem('beach', this.beach);
     }
+
+    setLifePrice(){
+        // Coge el valor de localStorage, o 50 (aqui es donde de verdad se setea el primer precio de la mejora de vida)
+        // Hago el parseInt() porque los valores en localStorage se guardan como strings
+        this.lifePrice = parseInt(localStorage.getItem('lifePrice')) || 50;
+        localStorage.setItem('lifePrice', this.lifePrice);
+    }
+
+    setMultiplicatorPrice(){
+        // Coge el valor de localStorage, o 50 (aqui es donde de verdad se setea el primer precio de la mejora de multiplicador)
+        // Hago el parseInt() porque los valores en localStorage se guardan como strings
+        this.multiplicatorPrice = parseInt(localStorage.getItem('multiplicatorPrice')) || 50;
+        localStorage.setItem('multiplicatorPrice', this.multiplicatorPrice);
+    }
     
     updateHighScore(score){
         if (score > this.highScore){
@@ -76,6 +92,16 @@ export default class Cloud {
     updateCoins(decrement) {
         this.coins -= decrement;
         localStorage.setItem('coins', this.coins);
+    }
+
+    updateMultiplicatorPrice(value) {
+        this.multiplicatorPrice = value;
+        localStorage.setItem('multiplicatorPrice', this.multiplicatorPrice);
+    }
+
+    updateLifePrice(value) {
+        this.lifePrice = value;
+        localStorage.setItem('lifePrice', this.lifePrice);
     }
 
     upgradeLife() {
@@ -125,5 +151,13 @@ export default class Cloud {
 
     getLife() {
         return this.life;
+    }
+
+    getMultiplicatorPrice(){
+        return this.multiplicatorPrice;
+    }
+
+    getLifePrice() {
+        return this.lifePrice;
     }
 }

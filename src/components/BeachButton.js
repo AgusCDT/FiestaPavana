@@ -1,8 +1,8 @@
 import Button from './Button.js';
 
 export default class BeachButton extends Button {
-    constructor(scene) {
-        super(scene, 'beachbutton', 500, 305);
+    constructor(scene, cloud) {
+        super(scene, 'beachbutton', 500, 305, cloud);
         this.price = 1;
     }
 

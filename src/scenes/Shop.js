@@ -9,13 +9,13 @@ import Cloud from '../Cloud.js';
 export default class Shop extends Phaser.Scene {
 	constructor() {
 		super({ key: 'shop' });
-		this.MenuButton = new MenuButton(this);
-		this.LifeButton = new LifeButton(this);
-		this.TrophyButton = new TrophyButton(this);
-		this.SpaceButton = new SpaceButton(this);
-		this.SeaButton = new SeaButton(this);
-		this.BeachButton = new BeachButton(this);
 		this.cloud = new Cloud(this);
+		this.MenuButton = new MenuButton(this, this.cloud);
+		this.LifeButton = new LifeButton(this, this.cloud);
+		this.TrophyButton = new TrophyButton(this, this.cloud);
+		this.SpaceButton = new SpaceButton(this, this.cloud);
+		this.SeaButton = new SeaButton(this, this.cloud);
+		this.BeachButton = new BeachButton(this, this.cloud);
 	}
 	 
 	preload() {
@@ -40,6 +40,7 @@ export default class Shop extends Phaser.Scene {
 	}
 
 	updateLabel() {
+		this.label.destroy();
 		this.label = this.add.text(1105, 20, this.cloud.getCoins(), { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
 	}
 }

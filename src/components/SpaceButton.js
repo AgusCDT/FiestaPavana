@@ -1,8 +1,8 @@
 import Button from './Button.js';
 
 export default class SpaceButton extends Button {
-    constructor(scene) {
-        super(scene, 'spacebutton', 160, 305);
+    constructor(scene, cloud) {
+        super(scene, 'spacebutton', 160, 305, cloud);
         this.price = 20000;
     }
 

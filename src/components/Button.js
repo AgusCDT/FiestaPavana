@@ -1,12 +1,13 @@
 import Cloud from '../Cloud.js';
+import Shop from '../scenes/Shop.js';
 
 export default class Button {
-    constructor(scene, image, x, y) {
+    constructor(scene, image, x, y, cloud) {
         this.image = image;
         this.relatedScene = scene;
         this.x = x;
         this.y = y;
-        this.cloud = new Cloud(this);
+        this.cloud = cloud;
     }
   
     create() {
@@ -24,17 +25,42 @@ export default class Button {
         });
         this.Button.on('pointerdown', () => {
             this.ClickButton();
+            if (this.image != 'playbutton' && this.image != 'menubutton' && this.image != 'shopbutton'){
+                this.relatedScene.updateLabel();
+            }
         });
-        /*this.Button.on('pointerdown', function() {
-            Game.scene.tweens.add(
+        this.Button.on('pointerdown', function() {
+            this.scene.tweens.add(
                 {
-                    targets: logo,
+                    targets: this,
                     scaleX: 0.9,
                     scaleY: 0.9,
                     duration: 50,
                     yoyo: true
                 }
             );
-        });*/
+        });
+        this.Button.on('pointerover', function() {
+            this.scene.tweens.add(
+                {
+                    targets: this,
+                    scaleX: 1.05,
+                    scaleY: 1.05,
+                    duration: 50,
+                    yoyo: false
+                }
+            );
+        });
+        this.Button.on('pointerout', function() {
+            this.scene.tweens.add(
+                {
+                    targets: this,
+                    scaleX: 1,
+                    scaleY: 1,
+                    duration: 50,
+                    yoyo: false
+                }
+            );
+        });
     }
 }
