@@ -3,7 +3,6 @@ import Parallax from '../Parallax.js';
 import Enemies from '../entities/Enemies.js';
 import Pups from '../entities/Pups.js';
 import Transition from '../components/Transition.js';
-import Cloud from '../Cloud.js';
 
 export default class Tierra extends Phaser.Scene 
 {

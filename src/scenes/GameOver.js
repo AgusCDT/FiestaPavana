@@ -18,7 +18,7 @@ export default class GameOver extends Phaser.Scene{
 	
 	create() {
 	 	this.add.image(0, 0, 'GameOver').setOrigin(0, 0);
-		this.MenuButton = new MenuButton(this, this.cloud);
+		this.MenuButton = new MenuButton(this, this.cloud, 600, 450);
 		this.MenuButton.create();
 	}
 }
