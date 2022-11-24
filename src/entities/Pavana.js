@@ -19,15 +19,19 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 		this.tempColision = 150;
 		this.label = this.scene.add.text(10, 10, "Life: " + this.life, { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
 		this.cursors = this.scene.input.keyboard.createCursorKeys();
+		this.w = this.scene.input.keyboard.addKey('W');
+        this.a = this.scene.input.keyboard.addKey('A');
+        this.s = this.scene.input.keyboard.addKey('S');
+        this.d = this.scene.input.keyboard.addKey('D');
 	}
 
 	calculateVelocity(){
-		if (this.cursors.up.isDown) { // Input hacia arriba acelerando
+		if (this.w.isDown || this.cursors.up.isDown) { // Input hacia arriba acelerando
 	    	if (this.speedY > -this.maxSpeed) {
 				this.speedY -= this.acceleration;
 	    	}
 	    }
-	    else if (this.cursors.down.isDown) { // Input hacia abajo acelerando
+	    else if (this.s.isDown || this.cursors.down.isDown) { // Input hacia abajo acelerando
 	    	if (this.speedY < this.maxSpeed) {
 				this.speedY += this.acceleration;
 	    	}
@@ -46,12 +50,12 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 	    		}
 	    	}
 	    }
-	    if (this.cursors.left.isDown) { // Input hacia la izquierda acelerando
+	    if (this.a.isDown || this.cursors.left.isDown) { // Input hacia la izquierda acelerando
 	    	if (this.speedX > -this.maxSpeed) {
 				this.speedX -= this.acceleration;
 	    	}
 	    }
-	    else if (this.cursors.right.isDown) { // Input hacia la derecha acelerando
+	    else if (this.d.isDown || this.cursors.right.isDown) { // Input hacia la derecha acelerando
 	    	if (this.speedX < this.maxSpeed) {
 				this.speedX += this.acceleration;
 	    	}

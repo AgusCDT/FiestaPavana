@@ -22,6 +22,12 @@ export default class Enemies extends Phaser.GameObjects.Sprite{
 			var nFrameRate = 7;
 			var nRepeat = 0;
 		}
+		else if (this.filename == 'island') {
+			var nStart = 0;
+			var nEnd = 42;
+			var nFrameRate = 3;
+			var nRepeat = 0;
+		}
 		else if (this.filename == 'dolphin'){
 			var nStart = 0;
 			var nEnd = 2;
@@ -93,7 +99,7 @@ export default class Enemies extends Phaser.GameObjects.Sprite{
 			}
 		}
 
-		if (this.x < -50) { // Los enemigos se destruyen al sobrepasar la izquierda para no consumir memoria
+		if (this.x < -80) { // Los enemigos se destruyen al sobrepasar la izquierda para no consumir memoria
 			this.destroy();
 		}
 	}
