@@ -28,7 +28,7 @@ Fiesta Pavana es un juego donde el jugador controla una pavana (gaviota) por dif
 ### 3.	Jugabilidad
 
 #### 3.1. Movimiento del personaje
-El movimiento del personaje estará acotado por la pantalla y controlado por WASD. Habrá una pequeña aceleración al iniciar el movimiento. Además podremos ir en diagonal.
+El movimiento del personaje estará acotado por la pantalla y controlado por WASD. Habrá una pequeña aceleración al iniciar el movimiento, llegando a una velocidad máxima y contando con una deceleración para frenar. Además podremos ir en diagonal.
 
 #### 3.2. Cámara
 La cámara estará fija y será el escenario el que se desplace horizontalmente.
@@ -37,14 +37,13 @@ La cámara estará fija y será el escenario el que se desplace horizontalmente.
 La mecánica principal es la de movimiento, teniendo además una mecánica secundaria que es la recogida de monedas a través de peces dorados.
 
 #### 3.4. Mecánicas de escenario
-La mecánica principal del escenario es un scroll lateral hacia la izquierda, moviéndose con una velocidad incremental a lo largo de la partida. El escenario irá transformándose cuando la pavana recoge ciertos objetos (desbloqueables en la tienda), dando lugar a diferentes lugares y obstáculos:
+La mecánica principal del escenario es un scroll lateral hacia la izquierda, moviéndose con una velocidad incremental a lo largo de la partida. El escenario irá transicionando cuando la pavana recoge ciertos objetos (desbloqueables en la tienda), dando lugar a diferentes lugares y obstáculos:
 - **Flotador:** el escenario cambia a uno sobre el mar.
 - **Casco de astronauta:** le servirá a la pavana para viajar a un escenario en el espacio.
-- **Camiseta hawaiana:** la pavana irá a un escenario estático con temática de fiesta.
-- **Cono de tráfico:** el escenario cambia al de Tierra(principal).
+- **Camiseta hawaiana:** la pavana irá a un escenario estático con temática hawaiana.
+- **Cono de tráfico:** el escenario cambia al de Tierra(escenario inicial que no hace falta desbloquear).
 
-
-En cuanto a los obstáculos, irán apareciendo de manera aleatoria en los diferentes escenarios, como carteles en la carretera o barcos en el mar.
+En cuanto a los obstáculos, irán apareciendo de manera pseudoaleatoria en los diferentes escenarios, como carteles en la carretera o barcos en el mar.
 
 
 #### 3.5. Enemigos
@@ -58,7 +57,7 @@ Aparecerán también en los diferentes escenarios, algunos son: halcones, astero
 #### 4.1. Imagen y explicación de los escenarios
 
 
-- Tierra: escenario en el que la pavana viajará por tierra firme. Será el nivel principal y desde donde partiremos a los demás escenarios. Habrá coches, carteles de carretera, globos...
+- Tierra: escenario en el que la pavana viajará por tierra firme. Será el escenario principal y desde donde partiremos a los demás escenarios. Habrá coches, carteles de carretera, globos...
 
 
 - Mar: escenario ubicado sobre el mar. Habrá barcos, peces, aves rapaces...
@@ -67,18 +66,18 @@ Aparecerán también en los diferentes escenarios, algunos son: halcones, astero
 - Espacio exterior: nos iremos al espacio donde habrá obstáculos como planetas y asteroides además de ovnis como enemigos.
 
 
-- Discoteca(Hawaii): nivel estático sin scroll donde solo habrá monedas para recolectar y todos los demás objetos.
+- Fiesta(Hawaii): escenario estático sin scroll donde solo habrá monedas para recolectar, bajo un contrarreloj, que te devolverá a otro escenario aleatorio tras ese tiempo o tras recolectar todas las monedas.
 
 Por ejemplo el escenario de Tierra podría quedar así:
 
-![Imagen Escenario Tierra](https://raw.githubusercontent.com/AgusCDT/FiestaPavana/main/assets/escenarios/Tierra/Carretera/Carretera.jpg)
+![Imagen Escenario Tierra](https://raw.githubusercontent.com/AgusCDT/FiestaPavana/main/assets/escenarios/Carretera/Carretera.jpg)
 
 
 
 #### 4.2. Generación de escenarios
 Contamos en el juego con varios escenarios, nombrados y explicados anteriormente, a los cuales se acceden con objetos como el flotador. Partimos del escenario de Tierra, y mediante un scroll lateral movemos el fondo de manera que parezca que nos desplazamos.
 
-Primero habrá que desbloquear los objetos de escenario que nos llevan a otros escenarios. Cuando recogemos uno de esos objetos que provocan el cambio de escenario habrá una transición y cambiaremos de un fondo a otro. Los fondos serán más largos que la pantalla de juego, favoreciendo el scroll para que no sea aburrido.
+Primero habrá que desbloquear los objetos de escenario que nos llevan a otros escenarios a través de la tienda. Cuando recogemos uno de esos objetos que provocan el cambio de escenario habrá una transición y cambiaremos de un fondo a otro. Los fondos serán más largos que la pantalla de juego, favoreciendo el scroll para que no sea aburrido.
 
 
 
@@ -90,10 +89,10 @@ Primero habrá que desbloquear los objetos de escenario que nos llevan a otros e
 
 #### 5.2. Explicación de los elementos del HUD y su funcionamiento**
 
-Plumas:  nuestro personaje contará con 3 vidas en forma de plumas(arriba a la izquierda).
+Plumas:  nuestro personaje contará con 2 vidas en forma de plumas(arriba a la izquierda) de manera inicial. Se podrá comprar en la tienda hasta un máximo de 5 vidas.
 Record: puntuación máxima que ha alcanzado el jugador en las partidas jugadas(arriba).
 Puntuación: puntuación de la partida actual(arriba).
-Peces dorados: contador de peces conseguidos(arriba a la derecha).
+Peces dorados(monedas): contador de peces conseguidos(arriba a la derecha).
 
 
 
@@ -112,14 +111,14 @@ Los recursos estéticos se conseguirán mediante la página web “Flaticon” y
 | Nombre    | Descripción | Tipo | Escenario |
 |-----------|:-----------:|:----:|----------:|
 |Pavana     |Es el personaje que manejamos durante el juego. Movimiento uniformemente acelerado hacia arriba, abajo, izquierda, derecha y en diagonal.|Protagonista|Todos|
-|Halcones   |Aves un poco más grandes que la Pavana que realizan un movimiento vertical.|Enemigo|Mar|
-|Ovnis      |Naves que hacen un movimiento vertical.|Enemigos|Espacio|
+|Halcones   |Aves un poco más grandes que la Pavana que realizan un movimiento vertical en picado.|Enemigo|Mar|
+|Ovnis      |Naves que hacen un movimiento de teletransporte.|Enemigos|Espacio|
 |Coches     |Vehículos que van a una velocidad mayor que el escenario.|Enemigo|Tierra|
-|Islote     |Montículo de tierra con diferentes estructuras. Habrá que esquivarlo por arriba.|Obstáculo|Mar|
-|Avioneta   |Tienen mayor tamaño que la Pavana.|Obstáculo|Mar| 
+|Islote     |Montículo de tierra con un cocotero. Habrá que esquivarlo por arriba.|Obstáculo|Mar|
+|Avioneta   |Tienen mayor tamaño que la Pavana y dos tipos de movimiento.|Enemigo|Tierra y Mar| 
 |Carteles   |Señales de tráfico. Las habrá de distintos tipos y tamaños. Se esquivan por arriba.|Obstáculo|Tierra|
 |Barcos     |Habrá que pasarlos por arriba.|Obstáculo|Mar|
-|Asteroides |Obstáculo que contará con una animación de rodadura.|Obstáculo|Espacio|
+|Asteroides |Obstáculo que contará con una animación de rotación.|Obstáculo|Espacio|
 |Globo      |Tienen un tamaño similar a la avioneta.|Obstáculo|Tierra|
 |Flotador   |Provoca el cambio al escenario marítimo.|Objeto|Tierra, Discoteca|
 |Casco Astronauta|Con esto iremos al escenario en el espacio.|Objeto|Tierra y Discoteca|
@@ -133,8 +132,7 @@ Los recursos estéticos se conseguirán mediante la página web “Flaticon” y
 #### **7.2. Tienda del juego**
 
 En la tienda se podrá mejorar distintas características para poder obtener un mejor récord y objetos de escenario que harán cambiar el fondo, los obstáculos y los enemigos.
-Se podrán mejorar la velocidad de la pavana, el número de vidas, y la frecuencia de aparición de los power-ups a cambio de peces dorados (monedas) que se recolectan en las runs.
-Al elegir una opción se pedirá una confirmación de compra para no hacer compras sin querer.
+Se podrán aumentar el número de vidas y aumentar el multiplicador de puntuación.
 
 Una imagen de cómo se podría ver la tienda:
 
