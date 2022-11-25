@@ -3,6 +3,11 @@
 - BotonMenu.png -> Diseñadora de arte (Beatriz Rubio Rodríguez)
 - BotonPlay.png -> Diseñadora de arte (Beatriz Rubio Rodríguez)
 - BotonShop.png -> Diseñadora de arte (Beatriz Rubio Rodríguez)
+- beachButton.png -> Pablo Cerrada Vega
+- featherButton.png -> Pablo Cerrada Vega
+- seaButton.png -> Pablo Cerrada Vega
+- spaceButton.png -> Pablo Cerrada Vega
+- trophyButton.png -> Pablo Cerrada Vega
 - eagle.png -> https://www.flaticon.com/br/icone-gratis/aguia_3065699?term=Águia&page=1&position=37&page=1&position=37&related_id=3065699&origin=tag
 - car.png -> https://www.flaticon.com/kr/free-sticker/toy-car_7603357
 - UFO.png -> Editado por Diseñadora de arte (Beatriz Rubio Rodríguez)

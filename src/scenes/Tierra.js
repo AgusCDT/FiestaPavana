@@ -47,7 +47,7 @@ export default class Tierra extends Phaser.Scene
 		this.load.image('planets_1', './assets/escenarios/Espacio/planets_1.png');
 		this.load.image('planets_2', './assets/escenarios/Espacio/planets_2.png');
 		// Disco background
-		this.load.image('disco','./assets/escenarios/Tierra/Discoteca/Discoteca.jpg');
+		this.load.image('hawaii','./assets/escenarios/Fiesta/Fiesta.jpg');
 		// Pavana 
 	 	this.load.image('pavana', './assets/imagenes/gaviota.png');
 		// Enemies
@@ -65,7 +65,7 @@ export default class Tierra extends Phaser.Scene
 	 	this.load.image('spacePup', './assets/imagenes/objetos/astronaut.png'); 
 	 	this.load.image('seaPup', './assets/imagenes/objetos/lifebuoy.png');
 	 	this.load.image('roadPup', './assets/imagenes/objetos/traffic_cone.png');
-	 	this.load.image('discoPup', './assets/imagenes/objetos/shirt.png');
+	 	this.load.image('hawaiiPup', './assets/imagenes/objetos/shirt.png');
 		// Coins
 	 	this.load.image('goldenFish', './assets/imagenes/objetos/pez-dorado.png');
 		// HUD
@@ -99,26 +99,26 @@ export default class Tierra extends Phaser.Scene
 	pupRandom()
 	{
 		this.id=this.parallax.checkId();
-		let x = Phaser.Math.Between(1,7);
+		let x = 7;
 		if(this.id=='roadId')
 		{
 			if (x < 4) {this.pup= new Pups(this,1200,500,'spacePup');}
 			else if (x >= 4 && x <7) {this.pup= new Pups(this,1200,500,'seaPup');}
-			else if (x == 7) {this.pup= new Pups(this,1200,500,'discoPup');}
+			else if (x == 7) {this.pup= new Pups(this,1200,500,'hawaiiPup');}
 		}
 		else if(this.id=='spaceId')
 		{
 			if (x < 4) {this.pup= new Pups(this,1200,500,'seaPup');}
 			else if (x >= 4 && x <7) {this.pup= new Pups(this,1200,500,'roadPup');}
-			else if (x == 7) {this.pup= new Pups(this,1200,500,'discoPup');}
+			else if (x == 7) {this.pup= new Pups(this,1200,500,'hawaiiPup');}
 		}
 		else if(this.id=='seaId')
 		{
 			if (x < 4) {this.pup= new Pups(this,1200,500,'spacePup');}
 			else if (x >= 4 && x <7) {this.pup= new Pups(this,1200,500,'roadPup');}
-			else if (x == 7) {this.pup= new Pups(this,1200,500,'discoPup');}
+			else if (x == 7) {this.pup= new Pups(this,1200,500,'hawaiiPup');}
 		}
-		else if(this.id=='discoId')
+		else if(this.id=='hawaiiId')
 		{
 			if (x == 1 || x == 2) {this.pup= new Pups(this,1200,500,'spacePup');}
 			else if (x == 3 || x == 4) {this.pup= new Pups(this,1200,500,'roadPup');}
@@ -137,7 +137,7 @@ export default class Tierra extends Phaser.Scene
 	
 	enemyRandom()
 	{
-		this.id=this.parallax.checkId();
+		this.id = this.parallax.checkId();
 		let x = 4;//Phaser.Math.Between(1,5);
 		if(this.id=='roadId')
 		{
