@@ -1,6 +1,17 @@
 import Pavana from '../entities/Pavana.js';
 import Parallax from '../Parallax.js';
-import Enemies from '../entities/Enemies.js';
+import Enemies from '../entities/Enemies/Enemies.js';
+import Asteroid from '../entities/Enemies/Asteroid.js';
+import UFO from '../entities/Enemies/UFO.js';
+import Plane from '../entities/Enemies/Plane.js';
+import Car from '../entities/Enemies/Car.js';
+import Dolphin from '../entities/Enemies/Dolphin.js';
+import Balloon from '../entities/Enemies/Balloon.js';
+import Eagle from '../entities/Enemies/Eagle.js';
+import Island from '../entities/Enemies/Island.js';
+/*import Enemies from '../entities/Enemies/Enemies.js';
+import Enemies from '../entities/Enemies/Enemies.js';
+import Enemies from '../entities/Enemies/Enemies.js';*/
 import Pups from '../entities/Pups.js';
 import Transition from '../components/Transition.js';
 
@@ -127,13 +138,13 @@ export default class Tierra extends Phaser.Scene
 	enemyRandom()
 	{
 		this.id=this.parallax.checkId();
-		let x = Phaser.Math.Between(1,5);
+		let x = 4;//Phaser.Math.Between(1,5);
 		if(this.id=='roadId')
 		{
 			//if (x == 1) {this.enemy= new Enemies(this,1200,(Phaser.Math.Between(0,1)*40)+440,'car', 0);}
-			if (x == 2) {this.enemy= new Enemies(this,1200,100,'plane', 2);}
+			//else if (x == 2) {this.enemy= new Enemies(this,1200,100,'plane', 2);}
 			//else if (x == 3) {this.enemy= new Enemies(this,1200,100,'eagle', 3);}	
-			else if (x == 4) {this.enemy= new Enemies(this,1200,200,'balloon', 0);}	
+			if (x == 4) {new Balloon(this, 1200, 200);}//this.enemy= new Enemies(this,1200,200,'balloon', 0);}	
 			else this.enemyRandom();
 		}
 		else if(this.id=='spaceId')
