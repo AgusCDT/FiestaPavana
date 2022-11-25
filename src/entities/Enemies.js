@@ -35,7 +35,7 @@ export default class Enemies extends Phaser.GameObjects.Sprite{
 			var nRepeat = -1;
 			
 			var tween = this.scene.tweens.add({
-				targets:  this.scene.dolphin,
+				targets:  this,
 				y: {
 					getStart: () => 510, 
 					getEnd: () => 550 
