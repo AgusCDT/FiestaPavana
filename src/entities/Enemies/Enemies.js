@@ -1,16 +1,14 @@
 export default class Enemies extends Phaser.GameObjects.Sprite{
 
-	constructor(scene, x, y, filename, move) {
-		super(scene, x, y, filename, move);
+	constructor(scene, x, y) {
+		super(scene, x, y);
 		this.scene.add.existing(this);
     	this.scene.physics.add.existing(this);
-		this.speedX = -75;
-		this.speedY = -40;
-		this.move = move;
-		this.filename = filename;
+		//this.speedX = -75;
+		//this.speedY = -40;
 		this.setDepth(1);
 		
-		if (this.filename == 'balloon') {
+		/*if (this.filename == 'balloon') {
 			var nStart = 0;
 			var nEnd = 3;
 			var nFrameRate = 5;
@@ -56,14 +54,14 @@ export default class Enemies extends Phaser.GameObjects.Sprite{
 			frameRate: nFrameRate,
 			repeat: nRepeat
 		});
-		this.play(this.filename);
+		this.play(this.filename);*/
 	}
 	
 
 	preUpdate(t, dt)
 	{
 		super.preUpdate(t, dt);
-		if (this.move == 0){ // Movimiento estático
+		/*if (this.move == 0){ // Movimiento estático
 			this.speedY = 0;
 		}
 		else if (this.move == 1) { // Movimiento vertical
@@ -82,7 +80,7 @@ export default class Enemies extends Phaser.GameObjects.Sprite{
 			this.speedX -= 1;
 			this.speedY += 0.5;
 		}
-		this.body.setVelocity(this.speedX, this.speedY);
+		this.body.setVelocity(this.speedX, this.speedY);*/
 
 		if (this.scene.physics.overlap(this.scene.pavana, this)) {
 			if (this.scene.pavana.tempColision <= 0) { // Solo puede quitar vida si llevo cierto tiempo después de la anterior colisión
