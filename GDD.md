@@ -101,7 +101,7 @@ El videojuego tiene un estilo de dibujo animado, ya que la escultura elegida pro
 
 Los recursos estéticos se conseguirán mediante la página web “Flaticon” y de nuestra encargada de arte. Algunos ejemplos visuales serían:
 ![Imagen Pavana](https://raw.githubusercontent.com/AgusCDT/FiestaPavana/main/assets/imagenes/gaviota.png)
-![Imagen Pavana](https://raw.githubusercontent.com/AgusCDT/FiestaPavana/main/assets/imagenes/objetos/cloth.png)
+![Imagen Pavana](https://raw.githubusercontent.com/AgusCDT/FiestaPavana/main/assets/imagenes/objetos/shirt.png)
 ![Imagen Pavana](https://raw.githubusercontent.com/AgusCDT/FiestaPavana/main/assets/imagenes/objetos/lifebuoy.png)
 
 ### **7. Contenido**
