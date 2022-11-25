@@ -9,8 +9,8 @@ import Dolphin from '../entities/Enemies/Dolphin.js';
 import Balloon from '../entities/Enemies/Balloon.js';
 import Eagle from '../entities/Enemies/Eagle.js';
 import Island from '../entities/Enemies/Island.js';
+import Boat from '../entities/Enemies/Boat.js';
 /*import Enemies from '../entities/Enemies/Enemies.js';
-import Enemies from '../entities/Enemies/Enemies.js';
 import Enemies from '../entities/Enemies/Enemies.js';*/
 import Pups from '../entities/Pups.js';
 import Transition from '../components/Transition.js';
@@ -141,24 +141,24 @@ export default class Tierra extends Phaser.Scene
 		let x = 4;//Phaser.Math.Between(1,5);
 		if(this.id=='roadId')
 		{
-			//if (x == 1) {this.enemy= new Enemies(this,1200,(Phaser.Math.Between(0,1)*40)+440,'car', 0);}
-			//else if (x == 2) {this.enemy= new Enemies(this,1200,100,'plane', 2);}
-			//else if (x == 3) {this.enemy= new Enemies(this,1200,100,'eagle', 3);}	
-			if (x == 4) {new Balloon(this, 1200, 200);}//this.enemy= new Enemies(this,1200,200,'balloon', 0);}	
+			//if (x == 1) {new Car(this,1200,(Phaser.Math.Between(0,1)*40)+440);}
+			//else if (x == 2) {new Plane(this,1200,100);}
+			//else if (x == 3) {new Eagle(this,1200,100);}	
+			if (x == 4) {new Plane(this,1200,Phaser.Math.Between(100,400));}	
 			else this.enemyRandom();
 		}
 		else if(this.id=='spaceId')
 		{
-			//if (x == 1) {this.enemy= new Enemies(this,1200,300,'asteroid', 0);}
-			//else if (x == 2) {this.enemy= new Enemies(this,1200,300,'ufo', 1);}
+			//if (x == 1) {new Asteroid(this,1200,300);}
+			//else if (x == 2) {new UFO(this,1200,300);}
 			//else this.enemyRandom(); 
 		}
 		else if(this.id=='seaId')
 		{
-			//if (x == 1) {this.enemy= new Enemies(this,1200,Phaser.Math.Between(42,52)*10,'boat', 0);}
-			if (x == 2) {this.enemy= new Enemies(this,1200, Phaser.Math.Between(20,45)*10,'plane', Phaser.Math.Between(1,2));}
-			else if (x == 3) {this.enemy= new Enemies(this,1200,440,'island', 0);}
-			else if(x==4){this.enemy= new Enemies(this,1200,550,'dolphin', 0);}
+			//if (x == 1) {new Boat(this,1200,Phaser.Math.Between(42,52)*10);}
+			if (x == 2) {new Plane(this,1200, Phaser.Math.Between(100, 400));}
+			else if (x == 3) {new Island(this,1200,440);}
+			else if(x==4){new Dolphin(this,1200,550);}
 			else this.enemyRandom();
 		}
 	}

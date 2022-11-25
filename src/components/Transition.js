@@ -2,7 +2,6 @@ export default class Transition extends Phaser.GameObjects.Sprite{
     
 	// función que maneja qué pup coge la Pavana
 	// cambiando al escenario elegido
-
 	transition(pup){
 		
 		if(pup == 'spacePup')

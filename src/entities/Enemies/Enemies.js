@@ -4,57 +4,7 @@ export default class Enemies extends Phaser.GameObjects.Sprite{
 		super(scene, x, y);
 		this.scene.add.existing(this);
     	this.scene.physics.add.existing(this);
-		//this.speedX = -75;
-		//this.speedY = -40;
 		this.setDepth(1);
-		
-		/*if (this.filename == 'balloon') {
-			var nStart = 0;
-			var nEnd = 3;
-			var nFrameRate = 5;
-			var nRepeat = -1;
-		}
-		else if (this.filename == 'plane') {
-			var nStart = 0;
-			var nEnd = 30;
-			var nFrameRate = 7;
-			var nRepeat = 0;
-		}
-		else if (this.filename == 'island') {
-			var nStart = 0;
-			var nEnd = 42;
-			var nFrameRate = 3;
-			var nRepeat = 0;
-		}
-		else if (this.filename == 'dolphin'){
-			var nStart = 0;
-			var nEnd = 2;
-			var nFrameRate = 2;
-			var nRepeat = -1;
-			
-			var tween = this.scene.tweens.add({
-				targets:  this,
-				y: {
-					getStart: () => 510, 
-					getEnd: () => 550 
-				},
-				duration: 2000,
-				ease: 'Bounce.easeInOut',         
-				repeat: -1,
-				yoyo: true,
-				angle: {
-					getStart: () => 0, 
-					getEnd: () => -90 
-				},
-			});
-		}
-		this.scene.anims.create({
-			key: this.filename,
-			frames: scene.anims.generateFrameNumbers(this.filename, { start: nStart, end: nEnd}),
-			frameRate: nFrameRate,
-			repeat: nRepeat
-		});
-		this.play(this.filename);*/
 	}
 	
 
@@ -97,8 +47,8 @@ export default class Enemies extends Phaser.GameObjects.Sprite{
 			}
 		}
 
-		if (this.x < -80) { // Los enemigos se destruyen al sobrepasar la izquierda para no consumir memoria
+		/*if (this.x < -80) { // Los enemigos se destruyen al sobrepasar la izquierda para no consumir memoria
 			this.destroy();
-		}
+		}*/
 	}
 }
