@@ -1,1 +1,0 @@
-Nombrar adecuadamente las imágenes para tener referencias correctas desde fuera

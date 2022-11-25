@@ -49,7 +49,7 @@ En cuanto a los obstáculos, irán apareciendo de manera pseudoaleatoria en los 
 #### 3.5. Enemigos
 Diferenciaremos obstáculos de enemigos en que estos no serán estáticos y tendrán otras características como el desplazamiento vertical o mayor velocidad de desplazamiento.
 
-Aparecerán también en los diferentes escenarios, algunos son: halcones, asteroides en el espacio o coches en la ciudad.
+Aparecerán también en los diferentes escenarios, algunos son: águilas, asteroides en el espacio o coches en la carretera.
 
 
 
