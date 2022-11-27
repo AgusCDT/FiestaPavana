@@ -191,7 +191,6 @@ export default class Tierra extends Phaser.Scene
         this.audio.play();
         this.audio.setLoop(true)
     }
-	
 	update() 
 	{	
 		this.parallax.update();
