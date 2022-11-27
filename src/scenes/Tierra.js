@@ -52,7 +52,7 @@ export default class Tierra extends Phaser.Scene
 	 	this.load.image('pavana', './assets/imagenes/gaviota.png');
 		// Enemies
 		this.load.image('car', './assets/imagenes/enemigos/car.png');
-		this.load.image('ufo', './assets/imagenes/enemigos/UFO.png');
+		this.load.spritesheet('ufo', './assets/imagenes/enemigos/UFO.png', { frameWidth: 100, frameHeight: 100});
 		this.load.image('eagle', './assets/imagenes/enemigos/eagle.png');
 		this.load.spritesheet('dolphin', './assets/imagenes/enemigos/delfin.png', { frameWidth: 90, frameHeight: 90});
 		this.load.spritesheet('plane', './assets/imagenes/obstacles/plane.png', { frameWidth: 111, frameHeight: 73});
@@ -99,7 +99,7 @@ export default class Tierra extends Phaser.Scene
 	pupRandom()
 	{
 		this.id=this.parallax.checkId();
-		let x = 7;
+		let x = Phaser.Math.Between(1,7);
 		if(this.id=='roadId')
 		{
 			if (x < 4) {this.pup= new Pups(this,1200,500,'spacePup');}
@@ -150,7 +150,7 @@ export default class Tierra extends Phaser.Scene
 		else if(this.id=='spaceId')
 		{
 			//if (x == 1) {new Asteroid(this,1200,300);}
-			//else if (x == 2) {new UFO(this,1200,300);}
+			if (x <= 5) {new UFO(this,1200,Phaser.Math.Between(100, 500));}
 			//else this.enemyRandom(); 
 		}
 		else if(this.id=='seaId')
