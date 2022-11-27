@@ -31,12 +31,6 @@ export default class Tierra extends Phaser.Scene
 	preload() 
 	{
 		this.load.image('backgroundTransition', './assets/imagenes/otras/backgroundBlack.png');
-		this.load.image('road', './assets/escenarios/Tierra/Carretera/Carretera.jpg');
-		this.load.image('space', './assets/escenarios/Espacio/space.jpg');
-		this.load.image('sea','./assets/escenarios/SobreMar/SobreMar.jpg');
-		this.load.image('disco','./assets/escenarios/Tierra/Discoteca/Discoteca.jpg');
-	 	this.load.image('car', './assets/imagenes/enemigos/car.png');
-	 	this.load.image('ufo', './assets/imagenes/enemigos/ufo.png');
 		// Road Parallax
 		this.load.image('skyRoad', './assets/escenarios/Carretera/skyRoad.png');	
 		this.load.image('mountains', './assets/escenarios/Carretera/mountains_1.png');
@@ -76,13 +70,6 @@ export default class Tierra extends Phaser.Scene
 	 	this.load.image('goldenFish', './assets/imagenes/objetos/pez-dorado.png');
 		// HUD
 		this.load.image('feather', './assets/imagenes/otras/feather.png');
-		this.load.image('balloon', './assets/imagenes/obstacles/balloon.png');
-		this.load.image('asteroid', './assets/imagenes/obstacles/asteroid.png');
-		this.load.image('island', './assets/imagenes/obstacles/island.png');
-		this.load.image('boat', './assets/imagenes/obstacles/boat.png');
-		this.load.image('eagle', './assets/imagenes/enemigos/eagle.png');
-		this.load.spritesheet('pavana', './assets/imagenes/obstacles/pavanaAnimation.png', { frameWidth: 77.28, frameHeight: 42});
-		this.load.spritesheet('plane', './assets/imagenes/obstacles/plane.png', { frameWidth: 110.86, frameHeight: 73.30});
 	}
 	 
 	// creación de Pavana y el fondo
@@ -90,8 +77,6 @@ export default class Tierra extends Phaser.Scene
 	{
 		this.parallax = new Parallax(this);
 		this.parallax.setDepth(0);
-	 	this.pavana = new Pavana(this, 100, 100, 'pavana');
-		this.cloud = new Cloud(this);
 	 	this.pavana = new Pavana(this, 100, 100);
 		this.pavana.loadLife();
 		this.timerE = 0;
@@ -177,7 +162,8 @@ export default class Tierra extends Phaser.Scene
 			else this.enemyRandom();
 		}
 	}
-	
+
+
 	update() 
 	{	
 		this.parallax.update();
@@ -185,7 +171,6 @@ export default class Tierra extends Phaser.Scene
 		this.timerP=this.timerP+1;
 		this.timerC=this.timerC+1;
 		this.playTime+=1;
-		if(this.pavana.dir == 3) 
 		if(this.timerE>=this.limitE)
 		{
 			this.enemyRandom();
