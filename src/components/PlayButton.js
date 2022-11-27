@@ -1,11 +1,12 @@
 import Button from './Button.js';
 
 export default class PlayButton extends Button {
-  constructor(scene) {
-    super(scene, 'playbutton', 600, 350);
-  }
+    constructor(scene, cloud) {
+        super(scene, 'playbutton', 600, 350);
+        this.cloud = cloud;
+    }
 
-  ClickButton() {
-    this.relatedScene.scene.start('tierra');
-  } 
+    ClickButton() {
+        this.relatedScene.scene.start('tierra', {cloud:this.cloud});
+    } 
 }

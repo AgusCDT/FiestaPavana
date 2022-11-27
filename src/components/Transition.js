@@ -2,24 +2,23 @@ export default class Transition extends Phaser.GameObjects.Sprite{
     
 	// función que maneja qué pup coge la Pavana
 	// cambiando al escenario elegido
-
 	transition(pup){
 		
 		if(pup == 'spacePup')
 		{
-			this.scene.parallax.changeBackground('space');
+			this.scene.parallax.changeBackground('spaceId', 'space_1', 'space_2', 'planets_1', 'planets_2');
 		}
 		else if(pup == 'roadPup')
 		{	
-			this.scene.parallax.changeBackground('road');
+			this.scene.parallax.changeBackground('roadId', 'skyRoad', 'mountains', 'hills', 'road');
 		}
 		else if(pup == 'seaPup')
 		{
-			this.scene.parallax.changeBackground('sea');
+			this.scene.parallax.changeBackground('seaId', 'skySea', 'clouds', 'islands', 'sea');
 		}
-		else if(pup == 'discoPup')
+		else if(pup == 'hawaiiPup')
 		{
-			this.scene.parallax.changeBackground('disco');
+			this.scene.parallax.changeBackground('hawaiiId', 'hawaii');
 		}
 		this.scene.cleanObjects();
 		this.fadeOut();

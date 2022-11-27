@@ -1,11 +1,12 @@
 import Button from './Button.js';
 
 export default class MenuButton extends Button {
-  constructor(scene) {
-    super(scene, 'menubutton', 600, 450);
-  }
+    constructor(scene, cloud, x, y) {
+        super(scene, 'menubutton', x, y);
+        this.cloud = cloud;
+    }
 
-  ClickButton() {
-    this.relatedScene.scene.start('menu');
-  }
+    ClickButton() {
+        this.relatedScene.scene.start('menu', {cloud:this.cloud});
+    }
 }

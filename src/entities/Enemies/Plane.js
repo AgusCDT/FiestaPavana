@@ -1,23 +1,25 @@
 import Enemies from "./Enemies.js";
 
-export default class Balloon extends Enemies {
+export default class Plane extends Enemies {
     constructor(scene, x, y) {
         super(scene, x, y);
         this.speedX = -75;
-        this.speedY = 0;
-        this.body.setSize(69, 130).setOffset(15, 12);
+	    this.speedY = 0;
+        this.body.setSize(90, 60).setOffset(10, 10);
         // Animación
         this.scene.anims.create({
-			key: 'balloonAnimation',
-			frames: scene.anims.generateFrameNumbers('balloon', { start: 0, end: 3}),
-			frameRate: 5,
+			key: 'planeAnimation',
+			frames: scene.anims.generateFrameNumbers('plane', { start: 0, end: 30}),
+			frameRate: 7,
 			repeat: -1
 		});
-		this.play('balloonAnimation');
+		this.play('planeAnimation');
     }
 
     preUpdate(t, dt){
         super.preUpdate(t, dt);
+        //movement...
+        this.speedX -= 1;
         this.body.setVelocity(this.speedX, this.speedY);
         if (this.x < -80) { 
 			this.destroy();

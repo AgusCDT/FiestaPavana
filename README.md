@@ -9,11 +9,16 @@ En este repositorio desarrollaremos nuestro juego para la asignatura, llamado Fi
 
 ![Imagen HUD](https://raw.githubusercontent.com/AgusCDT/FiestaPavana/main/assets/imagenes/otras/HUD.jpg)
 
-![Imagen Escenario Tierra](https://raw.githubusercontent.com/AgusCDT/FiestaPavana/main/assets/escenarios/Tierra/Carretera/Carretera.jpg)
+![Imagen Escenario Tierra](https://raw.githubusercontent.com/AgusCDT/FiestaPavana/main/assets/escenarios/Carretera/Carretera.jpg)
+
+![Imagen Escenario Fiesta](https://raw.githubusercontent.com/AgusCDT/FiestaPavana/main/assets/escenarios/Fiesta/Fiesta.jpg)
+
+![Imagen Escenario Marítimo](https://raw.githubusercontent.com/AgusCDT/FiestaPavana/main/assets/escenarios/SobreMar/Mar.jpg)  
 
 
 
-- Nuestras redes sociales son:
+
+Nuestras redes sociales son:
 
 - Twitter: @TriolicGames
 - TikTok: @triolicgames
