@@ -70,6 +70,12 @@ export default class Tierra extends Phaser.Scene
 	 	this.load.image('goldenFish', './assets/imagenes/objetos/pez-dorado.png');
 		// HUD
 		this.load.image('feather', './assets/imagenes/otras/feather.png');
+		//Audio
+        this.load.audio('roadSound', './assets/sonidos/roadSound.wav');
+        this.load.audio('spaceSound', './assets/sonidos/spaceSound.wav');
+        this.load.audio('seaSound', './assets/sonidos/seaSound.wav');
+        this.load.audio('hawaiiSound', './assets/sonidos/hawaiiSound.wav');
+        this.load.audio('coin', './assets/sonidos/Coin.mp3');
 	}
 	 
 	// creación de Pavana y el fondo
@@ -163,7 +169,28 @@ export default class Tierra extends Phaser.Scene
 		}
 	}
 
-
+	soundManager(){
+        this.id = this.parallax.checkId();
+        if(this.id=='roadId')
+        {
+            this.audio = this.sound.add("roadSound");
+        }
+        else if(this.id=='spaceId')
+        {
+            this.audio = this.sound.add("spaceSound");
+        }
+        else if(this.id=='seaId')
+        {
+            this.audio = this.sound.add("seaSound");
+        }
+        else if(this.id == 'hawaiiId')
+        {
+            this.audio = this.sound.add("hawaiiSound");
+            console.log('audio cambiado');
+        }
+        this.audio.play();
+        this.audio.setLoop(true)
+    }
 	update() 
 	{	
 		this.parallax.update();
