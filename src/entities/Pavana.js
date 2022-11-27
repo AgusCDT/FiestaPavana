@@ -1,7 +1,7 @@
 export default class Pavana extends Phaser.GameObjects.Sprite{
 
-	constructor(scene, x, y) {
-		super(scene, x, y,'pavana');
+	constructor(scene, x, y, filename) {
+		super(scene, x, y, filename);
 		this.setDepth(1);
 		this.scene.add.existing(this);
     	this.scene.physics.add.existing(this);
@@ -16,6 +16,15 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 		this.tempColision = 150;
 		this.label = this.scene.add.text(10, 10, "Life: " + this.life, { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
 		this.cursors = this.scene.input.keyboard.createCursorKeys();
+		
+		//Animación
+        this.scene.anims.create({
+			key: 'pavanaAnimation',
+			frames: scene.anims.generateFrameNumbers('Right', { start: 0, end: 6}),
+			frames: scene.anims.generateFrameNumbers('Left', { start: 7, end: 13}),
+			frameRate: 5,
+			repeat: -1
+		});
 	}
 
 	calculateVelocity(){
@@ -46,11 +55,13 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 	    if (this.cursors.left.isDown) { // Input hacia la izquierda acelerando
 	    	if (this.speedX > -this.maxSpeed) {
 				this.speedX -= this.acceleration;
+				this.play('Left');
 	    	}
 	    }
 	    else if (this.cursors.right.isDown) { // Input hacia la derecha acelerando
 	    	if (this.speedX < this.maxSpeed) {
 				this.speedX += this.acceleration;
+				this.play('Right');
 	    	}
 	    }
 	    else { // Deceleracion cuando no se detecta input en el eje X
