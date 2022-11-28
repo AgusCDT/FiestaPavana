@@ -5,6 +5,7 @@ export default class Pups extends Phaser.GameObjects.Sprite{
 		super(scene, x, y, filename);
 		this.scene.pup = this;
 		this.scene.add.existing(this);
+		this.relatedScene = scene;
     	this.scene.physics.add.existing(this);
 		this.speedX = -75;
 		this.speedY = 0;
@@ -29,7 +30,8 @@ export default class Pups extends Phaser.GameObjects.Sprite{
 			}
 			else 
 			{
-				this.scene.cloud.pickUpCoins();
+				this.scene.cloud.pickUpCoins();	
+				this.relatedScene.updateLabel();
 			}		
 
 			this.scene.pavana.label.setDepth(1);

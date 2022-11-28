@@ -49,7 +49,8 @@ export default class Tierra extends Phaser.Scene
 		// Disco background
 		this.load.image('hawaii','./assets/escenarios/Fiesta/Fiesta.jpg');
 		// Pavana 
-	 	this.load.image('pavana', './assets/imagenes/gaviota.png');
+		this.load.spritesheet('pavanaRight', './assets/imagenes/PavanaRightAnimation.png', { frameWidth: 75, frameHeight: 39});
+		this.load.spritesheet('pavanaLeft', './assets/imagenes/PavanaLeftAnimation.png', { frameWidth: 75, frameHeight: 39});
 		// Enemies
 		this.load.image('car', './assets/imagenes/enemigos/car.png');
 		this.load.image('ufo', './assets/imagenes/enemigos/UFO.png');
@@ -75,7 +76,7 @@ export default class Tierra extends Phaser.Scene
         this.load.audio('spaceSound', './assets/sonidos/spaceSound.wav');
         this.load.audio('seaSound', './assets/sonidos/seaSound.wav');
         this.load.audio('hawaiiSound', './assets/sonidos/hawaiiSound.wav');
-        this.load.audio('coin', './assets/sonidos/Coin.mp3');
+        //this.load.audio('coin', './assets/sonidos/Coin.mp3');
 	}
 	 
 	// creación de Pavana y el fondo
@@ -94,6 +95,13 @@ export default class Tierra extends Phaser.Scene
 		this.limitE=100;
 		this.limitP=Phaser.Math.Between(1,10)*100;
 		this.limitC=Phaser.Math.Between(1,10)*100;
+		//this.coin = this.make.sprite(1105, 20, 'goldenFish');
+		this.label = this.add.text(1105, 20, this.cloud.getCoins(), { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
+	}
+
+	updateLabel() {
+		this.label.destroy();
+		this.label = this.add.text(1105, 20, this.cloud.getCoins(), { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
 	}
 
 	cleanObjects()
@@ -189,7 +197,7 @@ export default class Tierra extends Phaser.Scene
             console.log('audio cambiado');
         }
         this.audio.play();
-        this.audio.setLoop(true)
+        this.audio.setLoop(true);
     }
 	update() 
 	{	
