@@ -5,7 +5,9 @@ export default class Balloon extends Enemies {
         super(scene, x, y);
         this.speedX = -75;
         this.speedY = 0;
+        
         this.body.setSize(69, 130).setOffset(15, 12);
+        
         // Animación
         this.scene.anims.create({
 			key: 'balloonAnimation',
@@ -17,10 +19,7 @@ export default class Balloon extends Enemies {
     }
 
     preUpdate(t, dt){
-        super.preUpdate(t, dt);
         this.body.setVelocity(this.speedX, this.speedY);
-        if (this.x < -80) { 
-			this.destroy();
-        }  
+        super.preUpdate(t, dt);
     }
 }

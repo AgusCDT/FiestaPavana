@@ -50,10 +50,11 @@ export default class Tierra extends Phaser.Scene
 		// Disco background
 		this.load.image('hawaii','./assets/escenarios/Fiesta/Fiesta.jpg');
 		// Pavana 
-	 	this.load.image('pavana', './assets/imagenes/gaviota.png');
+		this.load.spritesheet('pavanaRight', './assets/imagenes/PavanaRightAnimation.png', { frameWidth: 75, frameHeight: 39});
+		this.load.spritesheet('pavanaLeft', './assets/imagenes/PavanaLeftAnimation.png', { frameWidth: 75, frameHeight: 39});
 		// Enemies
 		this.load.image('car', './assets/imagenes/enemigos/car.png');
-		this.load.image('ufo', './assets/imagenes/enemigos/UFO.png');
+		this.load.spritesheet('ufo', './assets/imagenes/enemigos/UFO.png', { frameWidth: 100, frameHeight: 100});
 		this.load.image('eagle', './assets/imagenes/enemigos/eagle.png');
 		this.load.spritesheet('dolphin', './assets/imagenes/enemigos/delfin.png', { frameWidth: 90, frameHeight: 90});
 		this.load.spritesheet('plane', './assets/imagenes/obstacles/plane.png', { frameWidth: 111, frameHeight: 73});
@@ -77,7 +78,7 @@ export default class Tierra extends Phaser.Scene
         this.load.audio('spaceSound', './assets/sonidos/spaceSound.wav');
         this.load.audio('seaSound', './assets/sonidos/seaSound.wav');
         this.load.audio('hawaiiSound', './assets/sonidos/hawaiiSound.wav');
-        this.load.audio('coin', './assets/sonidos/Coin.mp3');
+        //this.load.audio('coin', './assets/sonidos/Coin.mp3');
 	}
 	 
 	// creación de Pavana y el fondo
@@ -96,6 +97,13 @@ export default class Tierra extends Phaser.Scene
 		this.limitE=100;
 		this.limitP=Phaser.Math.Between(1,10)*100;
 		this.limitC=Phaser.Math.Between(1,10)*100;
+		//this.coin = this.make.sprite(1105, 20, 'goldenFish');
+		this.label = this.add.text(1105, 20, this.cloud.getCoins(), { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
+	}
+
+	updateLabel() {
+		this.label.destroy();
+		this.label = this.add.text(1105, 20, this.cloud.getCoins(), { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
 	}
 
 	cleanObjects()
@@ -107,7 +115,7 @@ export default class Tierra extends Phaser.Scene
 	pupRandom()
 	{
 		this.id=this.parallax.checkId();
-		let x = 7;
+		let x = Phaser.Math.Between(1,7);
 		if(this.id=='roadId')
 		{
 			if (x < 4) {this.pup= new Pups(this,1200,500,'spacePup');}
@@ -146,20 +154,20 @@ export default class Tierra extends Phaser.Scene
 	enemyRandom()
 	{
 		this.id = this.parallax.checkId();
-		let x = 4;//Phaser.Math.Between(1,5);
+		let x = 2;//Phaser.Math.Between(1,5);
 		if(this.id=='roadId')
 		{
 			//if (x == 1) {new Car(this,1200,(Phaser.Math.Between(0,1)*40)+440);}
-			//else if (x == 2) {new Plane(this,1200,100);}
+			if (x == 2) {new Balloon(this,1200,100);}
 			//else if (x == 3) {new Eagle(this,1200,100);}	
-			if (x == 4) {new Plane(this,1200,Phaser.Math.Between(100,400));}	
+			else if (x == 4) {new Plane(this,1200,Phaser.Math.Between(100,400));}	
 			else this.enemyRandom();
 		}
 		else if(this.id=='spaceId')
 		{
-			if (x == 1) {new Asteroid(this,1200,300);}
-			//else if (x == 2) {new UFO(this,1200,300);}
-			else this.enemyRandom(); 
+			//if (x == 1) {new Asteroid(this,1200,300);}
+			if (x <= 5) {new UFO(this,1200,Phaser.Math.Between(100, 500));}
+			//else this.enemyRandom(); 
 		}
 		else if(this.id=='seaId')
 		{
@@ -191,7 +199,7 @@ export default class Tierra extends Phaser.Scene
             console.log('audio cambiado');
         }
         this.audio.play();
-        this.audio.setLoop(true)
+        this.audio.setLoop(true);
     }
 	update() 
 	{	
