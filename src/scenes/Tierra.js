@@ -95,6 +95,13 @@ export default class Tierra extends Phaser.Scene
 		this.limitE=100;
 		this.limitP=Phaser.Math.Between(1,10)*100;
 		this.limitC=Phaser.Math.Between(1,10)*100;
+		//this.coin = this.make.sprite(1105, 20, 'goldenFish');
+		this.label = this.add.text(1105, 20, this.cloud.getCoins(), { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
+	}
+
+	updateLabel() {
+		this.label.destroy();
+		this.label = this.add.text(1105, 20, this.cloud.getCoins(), { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
 	}
 
 	cleanObjects()
