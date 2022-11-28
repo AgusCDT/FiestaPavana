@@ -57,7 +57,7 @@ export default class Tierra extends Phaser.Scene
 		this.load.spritesheet('dolphin', './assets/imagenes/enemigos/delfin.png', { frameWidth: 90, frameHeight: 90});
 		this.load.spritesheet('plane', './assets/imagenes/obstacles/plane.png', { frameWidth: 111, frameHeight: 73});
 		// Obstacles
-		this.load.image('asteroid', './assets/imagenes/obstacles/asteroid.png');
+		this.load.spritesheet('asteroid', './assets/imagenes/obstacles/asteroid.png', { frameWidth: 199, frameHeight: 201});
 		this.load.spritesheet('island', './assets/imagenes/obstacles/island.png', { frameWidth: 194, frameHeight: 254});
 		this.load.image('boat', './assets/imagenes/obstacles/boat.png');
 		this.load.spritesheet('balloon', './assets/imagenes/obstacles/balloonAnimation.png', { frameWidth: 99, frameHeight: 154});
@@ -155,9 +155,9 @@ export default class Tierra extends Phaser.Scene
 		}
 		else if(this.id=='spaceId')
 		{
-			//if (x == 1) {new Asteroid(this,1200,300);}
+			if (x == 1) {new Asteroid(this,1200,300);}
 			//else if (x == 2) {new UFO(this,1200,300);}
-			//else this.enemyRandom(); 
+			else this.enemyRandom(); 
 		}
 		else if(this.id=='seaId')
 		{
