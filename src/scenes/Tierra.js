@@ -13,6 +13,7 @@ import Boat from '../entities/Enemies/Boat.js';
 /*import Enemies from '../entities/Enemies/Enemies.js';
 import Enemies from '../entities/Enemies/Enemies.js';*/
 import Pups from '../entities/Pups.js';
+import Goldenfish from '../entities/Goldenfish.js';
 import Transition from '../components/Transition.js';
 
 export default class Tierra extends Phaser.Scene 
@@ -68,6 +69,7 @@ export default class Tierra extends Phaser.Scene
 	 	this.load.image('hawaiiPup', './assets/imagenes/objetos/shirt.png');
 		// Coins
 	 	this.load.image('goldenFish', './assets/imagenes/objetos/pez-dorado.png');
+		 this.load.image('gold', './assets/imagenes/otras/gold.png');
 		// HUD
 		this.load.image('feather', './assets/imagenes/otras/feather.png');
 		//Audio
@@ -137,7 +139,7 @@ export default class Tierra extends Phaser.Scene
 		let coinProbability = Phaser.Math.Between(1,3);
 		if (coinProbability == 1) 
 		{
-			this.pup = new Pups(this,1200,Phaser.Math.Between(50,this.height - 50),'goldenFish');
+			this.goldenfish = new Goldenfish(this,1200,Phaser.Math.Between(50,this.height - 50),'goldenFish');
 		}
 	}
 	
