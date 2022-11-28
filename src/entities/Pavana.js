@@ -23,6 +23,22 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
         this.s = this.scene.input.keyboard.addKey('S');
         this.d = this.scene.input.keyboard.addKey('D');
 		this.body.setSize(50, 30, 50, 25);
+		//Animación
+		this.scene.anims.create({
+			key: 'pavanaRightAnimation',
+			frames: scene.anims.generateFrameNumbers('pavanaRight', { start: 0, end: 6}),
+			frameRate: 10,
+			repeat: -1
+		});
+		this.play('pavanaRightAnimation');
+		this.scene.anims.create({
+			key: 'pavanaLeftAnimation',
+			frames: scene.anims.generateFrameNumbers('pavanaLeft', { start: 0, end: 6}),
+			frameRate: 10,
+			repeat: -1
+		});
+
+		
 	}
 
 	calculateVelocity(){
@@ -75,7 +91,16 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 	    	}
 	    }
 	}
-	
+	animationInput(){
+		if(this.d.isDown){
+			
+			this.play('pavanaRightAnimation');
+		}
+		else if (this.a.isDown){
+			
+			this.play('pavanaLeftAnimation');
+		}
+	}
 	loadLife() {
 		var lifee;
 		for (var i = 0; i < this.life; i++) {
@@ -98,12 +123,17 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 		console.log(this.lifeImages);
 	}
 
-	preUpdate() {
+	preUpdate(t, dt) {
+		super.preUpdate(t, dt);
 		this.score++;
 		if (this.tempColision > 0){
 			this.tempColision -= 1;
 		}
 		this.calculateVelocity();
+		this.animationInput();
 	    this.body.setVelocity(this.speedX, this.speedY); // Aplicamos los valores de velocidad
+
+		
+		
 	}
 }
