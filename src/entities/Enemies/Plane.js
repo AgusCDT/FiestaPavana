@@ -17,12 +17,9 @@ export default class Plane extends Enemies {
     }
 
     preUpdate(t, dt){
-        super.preUpdate(t, dt);
         //movement...
         this.speedX -= 1;
         this.body.setVelocity(this.speedX, this.speedY);
-        if (this.x < -80) { 
-			this.destroy();
-        }  
+        super.preUpdate(t, dt);
     }
 }

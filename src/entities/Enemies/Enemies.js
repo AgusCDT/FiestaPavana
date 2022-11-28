@@ -48,8 +48,8 @@ export default class Enemies extends Phaser.GameObjects.Sprite{
 			}
 		}
 
-		/*if (this.x < -80) { // Los enemigos se destruyen al sobrepasar la izquierda para no consumir memoria
+		if (this.x < -80) { // Los enemigos se destruyen al sobrepasar la izquierda para no consumir memoria
 			this.destroy();
-		}*/
+		}
 	}
 }
