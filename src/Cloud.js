@@ -110,6 +110,7 @@ export default class Cloud {
 
     upgradeMultiplicator() {
         this.multiplicator += 0.1;
+        this.multiplicator = parseFloat(this.multiplicator.toFixed(1));
         localStorage.setItem('multiplicator', this.multiplicator);
     }
 

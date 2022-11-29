@@ -8,6 +8,7 @@ export default class TrophyButton extends Button {
 
     create (){
         super.create();
+        this.mul = this.relatedScene.add.text(this.x - 10, this.y - 10, this.cloud.getMultiplicator(), { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
         this.label = this.relatedScene.add.text(this.x - 10, this.y + 77, this.price, { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
     }
 
@@ -17,6 +18,8 @@ export default class TrophyButton extends Button {
             this.cloud.upgradeMultiplicator();
             this.price *= 2;
             this.cloud.updateMultiplicatorPrice(this.price);
+            this.mul.destroy();
+            this.mul = this.relatedScene.add.text(this.x - 10, this.y - 10, this.cloud.getMultiplicator(), { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
             this.label.destroy();
             this.label = this.relatedScene.add.text(this.x - 10, this.y + 77, this.price, { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
         }

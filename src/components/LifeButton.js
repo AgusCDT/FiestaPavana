@@ -9,6 +9,7 @@ export default class LifeButton extends Button {
 
     create (){
         super.create();
+        this.mul = this.relatedScene.add.text(this.x, this.y - 10, this.cloud.getLife(), { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
         this.label = this.relatedScene.add.text(this.x - 10, this.y + 77, this.price, { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
         if (this.cloud.getLife() == this.maxLife) {
             this.soldout = this.relatedScene.add.image(this.x, this.y, 'soldout');
@@ -21,6 +22,8 @@ export default class LifeButton extends Button {
             this.cloud.upgradeLife();
             this.price += 50;
             this.cloud.updateLifePrice(this.price);
+            this.mul.destroy();
+            this.mul = this.relatedScene.add.text(this.x, this.y - 10, this.cloud.getLife(), { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
             this.label.destroy();
             this.label = this.relatedScene.add.text(this.x - 10, this.y + 77, this.price, { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
             if (this.cloud.getLife() == this.maxLife) {
