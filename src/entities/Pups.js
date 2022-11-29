@@ -35,6 +35,10 @@ export default class Pups extends Phaser.GameObjects.Sprite{
 	{	
 		this.body.setVelocity(this.speedX,this.speedY);    
 		this.colision();
+		if (this.x < -80) { // Los pups se destruyen al sobrepasar la izquierda para no consumir memoria
+			this.scene.elementsArray = this.scene.elementsArray.filter((item) => item !== this);
+			this.destroy();
+		}
 	}
 
 	colision()

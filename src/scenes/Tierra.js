@@ -95,7 +95,7 @@ export default class Tierra extends Phaser.Scene
 		this.limitE=100;
 		this.limitP=Phaser.Math.Between(1,10)*100;
 		this.limitC=Phaser.Math.Between(1,10)*100;
-		
+		this.elementsArray = [];
 		//this.coin = this.make.sprite(1105, 20, 'goldenFish');
 		this.label = this.add.text(1105, 20, this.cloud.getCoins(), { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
 
@@ -109,8 +109,8 @@ export default class Tierra extends Phaser.Scene
 
 	cleanObjects()
 	{
-		this.enemy.destroy();
-		this.pup.destroy();
+		this.elementsArray.forEach(element => element.destroy());
+		this.elementsArray.length = 0;
 	}
 	
 	pupRandom()
@@ -119,27 +119,27 @@ export default class Tierra extends Phaser.Scene
 		let x = Phaser.Math.Between(1,7);
 		if(this.id=='roadId')
 		{
-			if (x < 4 && this.cloud.getSpace() == 1) { new Pups(this,1200,500,'spacePup');}
-			else if (x >= 4 && x < 7 && this.cloud.getSea() == 1) { new Pups(this,1200,500,'seaPup');}
-			else if (x == 7 && this.cloud.getBeach() == 1) { new Pups(this,1200,500,'hawaiiPup');}
+			if (x < 4 && this.cloud.getSpace() == 1) { this.elementsArray.push(new Pups(this,1200,500,'spacePup'));}
+			else if (x >= 4 && x < 7 && this.cloud.getSea() == 1) { this.elementsArray.push(new Pups(this,1200,500,'seaPup'));}
+			else if (x == 7 && this.cloud.getBeach() == 1) { this.elementsArray.push(new Pups(this,1200,500,'hawaiiPup'));}
 		}
 		else if(this.id=='spaceId')
 		{
-			if (x < 4 && this.cloud.getSea() == 1) { new Pups(this,1200,500,'seaPup');}
-			else if (x >= 4 && x <7) { new Pups(this,1200,500,'roadPup');}
-			else if (x == 7 && this.cloud.getBeach() == 1) { new Pups(this,1200,500,'hawaiiPup');}
+			if (x < 4 && this.cloud.getSea() == 1) { this.elementsArray.push(new Pups(this,1200,500,'seaPup'));}
+			else if (x >= 4 && x <7) { this.elementsArray.push(new Pups(this,1200,500,'roadPup'));}
+			else if (x == 7 && this.cloud.getBeach() == 1) { this.elementsArray.push(new Pups(this,1200,500,'hawaiiPup'));}
 		}
 		else if(this.id=='seaId')
 		{
-			if (x < 4 && this.cloud.getSpace() == 1) { new Pups(this,1200,500,'spacePup');}
-			else if (x >= 4 && x < 7) { new Pups(this,1200,500,'roadPup');}
-			else if (x == 7 && this.cloud.getBeach() == 1) { new Pups(this,1200,500,'hawaiiPup');}
+			if (x < 4 && this.cloud.getSpace() == 1) { this.elementsArray.push(new Pups(this,1200,500,'spacePup'));}
+			else if (x >= 4 && x < 7) { this.elementsArray.push(new Pups(this,1200,500,'roadPup'));}
+			else if (x == 7 && this.cloud.getBeach() == 1) { this.elementsArray.push(new Pups(this,1200,500,'hawaiiPup'));}
 		}
 		else if(this.id=='hawaiiId')
 		{
-			if ((x == 1 || x == 2 ) && this.cloud.getSpace() == 1) {this.pup= new Pups(this,1200,500,'spacePup');}
-			else if (x == 3 || x == 4) {this.pup= new Pups(this,1200,500,'roadPup');}
-			else if ((x == 5 || x == 6) && this.cloud.getSea() == 1) {this.pup= new Pups(this,1200,500,'seaPup');}
+			if ((x == 1 || x == 2 ) && this.cloud.getSpace() == 1) { this.elementsArray.push(new Pups(this,1200,500,'spacePup'));}
+			else if (x == 3 || x == 4) { this.elementsArray.push(new Pups(this,1200,500,'roadPup'));}
+			else if ((x == 5 || x == 6) && this.cloud.getSea() == 1) { this.elementsArray.push(new Pups(this,1200,500,'seaPup'));}
 		}
 	}
 
@@ -148,8 +148,9 @@ export default class Tierra extends Phaser.Scene
 		let coinProbability = Phaser.Math.Between(1,3);
 		if (coinProbability == 1) 
 		{
-			this.goldenfish = new Goldenfish(this,1200,Phaser.Math.Between(50,this.height - 50),'goldenFish');
+			//this.goldenfish = new Goldenfish(this,1200,Phaser.Math.Between(50,this.height - 50),'goldenFish');
 			//this.scene.events.emit('goldenParticle');
+			this.elementsArray.push(new Goldenfish(this,1200,Phaser.Math.Between(50,this.height - 50),'goldenFish'));
 		}
 	}
 	
@@ -160,23 +161,23 @@ export default class Tierra extends Phaser.Scene
 		if(this.id=='roadId')
 		{
 			//if (x == 1) {new Car(this,1200,(Phaser.Math.Between(0,1)*40)+440);}
-			if (x == 2) {new Dolphin(this,1200,550);/*new Balloon(this,1200,100);*/}
+			if (x == 2) {this.elementsArray.push(new Balloon(this,1200,100));}
 			//else if (x == 3) {new Eagle(this,1200,100);}	
-			else if (x == 4) {new Plane(this,1200,Phaser.Math.Between(100,400));}	
+			else if (x == 4) {this.elementsArray.push(new Plane(this,1200,Phaser.Math.Between(100,400)));}	
 			else this.enemyRandom();
 		}
 		else if(this.id=='spaceId')
 		{
 			//if (x == 1) {new Asteroid(this,1200,300);}
-			if (x <= 5) {new UFO(this,1200,Phaser.Math.Between(100, 500));}
+			if (x <= 5) {this.elementsArray.push(new UFO(this,1200,Phaser.Math.Between(100, 500)));}
 			//else this.enemyRandom(); 
 		}
 		else if(this.id=='seaId')
 		{
 			//if (x == 1) {new Boat(this,1200,Phaser.Math.Between(42,52)*10);}
-			if (x == 4) {new Plane(this,1200, Phaser.Math.Between(100, 400));}
-			else if (x == 3) {new Island(this,1200,440);}
-			else if(x==2){new Dolphin(this,1200,550);}
+			if (x == 2) {this.elementsArray.push(new Plane(this,1200, Phaser.Math.Between(100, 400)));}
+			else if (x == 3) {this.elementsArray.push(new Island(this,1200,440));}
+			else if(x == 4){this.elementsArray.push(new Dolphin(this,1200,550));}
 			else this.enemyRandom();
 		}
 	}
