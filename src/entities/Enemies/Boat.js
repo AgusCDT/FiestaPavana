@@ -17,10 +17,7 @@ export default class Boat extends Enemies {
     }
 
     preUpdate(t, dt){
-        super.preUpdate(t, dt);
         this.body.setVelocity(this.speedX, this.speedY);  
-        if (this.x < -80) { 
-			this.destroy();
-        }  
+        super.preUpdate(t, dt); 
     }
 }

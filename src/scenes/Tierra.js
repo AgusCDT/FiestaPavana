@@ -169,8 +169,9 @@ export default class Tierra extends Phaser.Scene
 	enemyRandom()
 	{
 		this.id = this.parallax.checkId();
-		let x = 2;//Phaser.Math.Between(1,5);
-		if(this.id=='roadId')
+		let x = Phaser.Math.Between(1,5);
+		//let x = 4;
+		if(this.id == 'roadId')
 		{
 			//if (x == 1) {new Car(this,1200,(Phaser.Math.Between(0,1)*40)+440);}
 			if (x == 2) {this.elementsArray.push(new Balloon(this,1200,100));}
@@ -178,13 +179,13 @@ export default class Tierra extends Phaser.Scene
 			else if (x == 4) {this.elementsArray.push(new Plane(this,1200,Phaser.Math.Between(100,400)));}	
 			else this.enemyRandom();
 		}
-		else if(this.id=='spaceId')
+		else if(this.id =='spaceId')
 		{
-			//if (x == 1) {new Asteroid(this,1200,300);}
-			if (x <= 5) {this.elementsArray.push(new UFO(this,1200,Phaser.Math.Between(100, 500)));}
-			//else this.enemyRandom(); 
+			if (x == 1) {new Asteroid(this,1200,300);}
+			else if (x <= 5) {this.elementsArray.push(new UFO(this,1200,Phaser.Math.Between(100, 500)));}
+			else this.enemyRandom(); 
 		}
-		else if(this.id=='seaId')
+		else if(this.id =='seaId')
 		{
 			//if (x == 1) {new Boat(this,1200,Phaser.Math.Between(42,52)*10);}
 			if (x == 2) {this.elementsArray.push(new Plane(this,1200, Phaser.Math.Between(100, 400)));}
@@ -196,15 +197,15 @@ export default class Tierra extends Phaser.Scene
 
 	soundManager(){
         this.id = this.parallax.checkId();
-        if(this.id=='roadId')
+        if(this.id =='roadId')
         {
             this.audio = this.sound.add("roadSound");
         }
-        else if(this.id=='spaceId')
+        else if(this.id =='spaceId')
         {
             this.audio = this.sound.add("spaceSound");
         }
-        else if(this.id=='seaId')
+        else if(this.id =='seaId')
         {
             this.audio = this.sound.add("seaSound");
         }

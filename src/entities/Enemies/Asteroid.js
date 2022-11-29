@@ -32,8 +32,5 @@ export default class Asteroid extends Enemies {
         super.preUpdate(t, dt);
         //movement...
         this.body.setVelocity(this.speedX, this.speedY); 
-        if (this.x < -80) { 
-			this.destroy();
-        }   
     }
 }

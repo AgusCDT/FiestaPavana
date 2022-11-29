@@ -16,12 +16,9 @@ export default class Car extends Enemies {
 		this.play('carAnimation');
     }
 
-    preUpdate(t, dt){
-        super.preUpdate(t, dt);
+    preUpdate(t, dt) {    
         //movement...
-        this.body.setVelocity(this.speedX, this.speedY);  
-        if (this.x < -80) { 
-			this.destroy();
-        }  
+        this.body.setVelocity(this.speedX, this.speedY);
+        super.preUpdate(t, dt);  
     }
 }
