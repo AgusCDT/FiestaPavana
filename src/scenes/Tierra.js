@@ -10,8 +10,6 @@ import Balloon from '../entities/Enemies/Balloon.js';
 import Eagle from '../entities/Enemies/Eagle.js';
 import Island from '../entities/Enemies/Island.js';
 import Boat from '../entities/Enemies/Boat.js';
-/*import Enemies from '../entities/Enemies/Enemies.js';
-import Enemies from '../entities/Enemies/Enemies.js';*/
 import Pups from '../entities/Pups.js';
 import Goldenfish from '../entities/Goldenfish.js';
 import Transition from '../components/Transition.js';
@@ -118,27 +116,27 @@ export default class Tierra extends Phaser.Scene
 		let x = Phaser.Math.Between(1,7);
 		if(this.id=='roadId')
 		{
-			if (x < 4) {this.pup= new Pups(this,1200,500,'spacePup');}
-			else if (x >= 4 && x <7) {this.pup= new Pups(this,1200,500,'seaPup');}
-			else if (x == 7) {this.pup= new Pups(this,1200,500,'hawaiiPup');}
+			if (x < 4 && this.cloud.getSpace() == 1) { new Pups(this,1200,500,'spacePup');}
+			else if (x >= 4 && x < 7 && this.cloud.getSea() == 1) { new Pups(this,1200,500,'seaPup');}
+			else if (x == 7 && this.cloud.getBeach() == 1) { new Pups(this,1200,500,'hawaiiPup');}
 		}
 		else if(this.id=='spaceId')
 		{
-			if (x < 4) {this.pup= new Pups(this,1200,500,'seaPup');}
-			else if (x >= 4 && x <7) {this.pup= new Pups(this,1200,500,'roadPup');}
-			else if (x == 7) {this.pup= new Pups(this,1200,500,'hawaiiPup');}
+			if (x < 4 && this.cloud.getSea() == 1) { new Pups(this,1200,500,'seaPup');}
+			else if (x >= 4 && x <7) { new Pups(this,1200,500,'roadPup');}
+			else if (x == 7 && this.cloud.getBeach() == 1) { new Pups(this,1200,500,'hawaiiPup');}
 		}
 		else if(this.id=='seaId')
 		{
-			if (x < 4) {this.pup= new Pups(this,1200,500,'spacePup');}
-			else if (x >= 4 && x <7) {this.pup= new Pups(this,1200,500,'roadPup');}
-			else if (x == 7) {this.pup= new Pups(this,1200,500,'hawaiiPup');}
+			if (x < 4 && this.cloud.getSpace() == 1) { new Pups(this,1200,500,'spacePup');}
+			else if (x >= 4 && x < 7) { new Pups(this,1200,500,'roadPup');}
+			else if (x == 7 && this.cloud.getBeach() == 1) { new Pups(this,1200,500,'hawaiiPup');}
 		}
 		else if(this.id=='hawaiiId')
 		{
-			if (x == 1 || x == 2) {this.pup= new Pups(this,1200,500,'spacePup');}
+			if ((x == 1 || x == 2 ) && this.cloud.getSpace() == 1) {this.pup= new Pups(this,1200,500,'spacePup');}
 			else if (x == 3 || x == 4) {this.pup= new Pups(this,1200,500,'roadPup');}
-			else if (x == 5 || x == 6) {this.pup= new Pups(this,1200,500,'seaPup');}
+			else if ((x == 5 || x == 6) && this.cloud.getSea() == 1) {this.pup= new Pups(this,1200,500,'seaPup');}
 		}
 	}
 
