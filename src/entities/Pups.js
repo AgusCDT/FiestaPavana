@@ -10,7 +10,25 @@ export default class Pups extends Phaser.GameObjects.Sprite{
 		this.speedX = -75;
 		this.speedY = 0;
 		this.filename = filename;
-		this.setDepth(1);			
+		this.setDepth(1);	
+		this.body.setSize(52, 52).setOffset(7, 10);	
+		//Tween
+        var tween = this.scene.tweens.add({
+            targets:  this,
+            duration: 3000,
+            ease: 'Linear',         
+            repeat: -1,
+			yoyo: true,
+            scaleX: {
+                getStart: () => 0.7, 
+                getEnd: () => 1 
+            },
+			scaleY: {
+                getStart: () => 0.7, 
+                getEnd: () => 1 
+            },
+        });
+		
 	}
 	
 	preUpdate() 
@@ -27,18 +45,7 @@ export default class Pups extends Phaser.GameObjects.Sprite{
 	{
 		if(this.scene.physics.overlap(this.scene.pavana, this))
 		{
-			if (this.filename != 'goldenFish')
-			{
-				this.scene.transition.fadeIn(this.filename); // llamada a fadeIn en Transition			
-			}
-			else 
-			{
-				this.scene.cloud.pickUpCoins();	
-				this.relatedScene.updateLabel();
-			}		
-
-			this.scene.pavana.label.setDepth(1);
-			this.scene.elementsArray = this.scene.elementsArray.filter((item) => item !== this);
+			this.scene.transition.fadeIn(this.filename); // llamada a fadeIn en Transition				
 			this.destroy();	
 		}
 	}

@@ -31,7 +31,6 @@ export default class UFO extends Enemies {
     }
 
     preUpdate(t, dt){
-        super.preUpdate(t, dt);
         //movement...
         this.posX=this.x;  
         if(this.posX==1000)
@@ -56,9 +55,6 @@ export default class UFO extends Enemies {
         } 
 
         this.body.setVelocity(this.speedX, this.speedY);
-        
-        if (this.x < -80) { 
-			this.destroy();
-        }  
+        super.preUpdate(t, dt);
     }
 }

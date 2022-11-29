@@ -11,6 +11,7 @@ import Eagle from '../entities/Enemies/Eagle.js';
 import Island from '../entities/Enemies/Island.js';
 import Boat from '../entities/Enemies/Boat.js';
 import Pups from '../entities/Pups.js';
+import Goldenfish from '../entities/Goldenfish.js';
 import Transition from '../components/Transition.js';
 
 export default class Tierra extends Phaser.Scene 
@@ -56,7 +57,7 @@ export default class Tierra extends Phaser.Scene
 		this.load.spritesheet('dolphin', './assets/imagenes/enemigos/delfin.png', { frameWidth: 90, frameHeight: 90});
 		this.load.spritesheet('plane', './assets/imagenes/obstacles/plane.png', { frameWidth: 111, frameHeight: 73});
 		// Obstacles
-		this.load.image('asteroid', './assets/imagenes/obstacles/asteroid.png');
+		this.load.spritesheet('asteroid', './assets/imagenes/obstacles/asteroid.png', { frameWidth: 199, frameHeight: 201});
 		this.load.spritesheet('island', './assets/imagenes/obstacles/island.png', { frameWidth: 194, frameHeight: 254});
 		this.load.image('boat', './assets/imagenes/obstacles/boat.png');
 		this.load.spritesheet('balloon', './assets/imagenes/obstacles/balloonAnimation.png', { frameWidth: 99, frameHeight: 154});
@@ -67,6 +68,7 @@ export default class Tierra extends Phaser.Scene
 	 	this.load.image('hawaiiPup', './assets/imagenes/objetos/shirt.png');
 		// Coins
 	 	this.load.image('goldenFish', './assets/imagenes/objetos/pez-dorado.png');
+		this.load.image('gold', './assets/imagenes/otras/gold.png');
 		// HUD
 		this.load.image('feather', './assets/imagenes/otras/feather.png');
 		//Audio
@@ -95,12 +97,26 @@ export default class Tierra extends Phaser.Scene
 		this.limitC=Phaser.Math.Between(1,10)*100;
 		this.elementsArray = [];
 		//this.coin = this.make.sprite(1105, 20, 'goldenFish');
-		this.label = this.add.text(1105, 20, this.cloud.getCoins(), { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
+		this.HUD();
+		//this.events.on('goldenParticle', particle);
 	}
 
-	updateLabel() {
-		this.label.destroy();
-		this.label = this.add.text(1105, 20, this.cloud.getCoins(), { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
+	HUD() {
+		this.labelFish = this.add.text(1105, 20, this.cloud.getCoins(), { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
+		this.labelScore = this.add.text(800, 20, this.cloud.getScore(), { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
+
+		this.labelFish.setDepth(2);
+		this.labelScore.setDepth(2);
+	}
+
+	updateLabelFish() { // actualización al coger una moneda
+		this.labelFish.destroy();
+		this.labelFish = this.add.text(1105, 20, this.cloud.getCoins(), { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
+	}
+
+	updateLabelScore(){ // actualización del score durante la run
+		this.labelScore.destroy();
+		this.labelScore = this.add.text(400, 20, 'Score: '+ this.cloud.getScore(), { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
 	}
 
 	cleanObjects()
@@ -144,15 +160,18 @@ export default class Tierra extends Phaser.Scene
 		let coinProbability = Phaser.Math.Between(1,3);
 		if (coinProbability == 1) 
 		{
-			this.elementsArray.push(new Pups(this,1200,Phaser.Math.Between(50,this.height - 50),'goldenFish'));
+			//this.goldenfish = new Goldenfish(this,1200,Phaser.Math.Between(50,this.height - 50),'goldenFish');
+			//this.scene.events.emit('goldenParticle');
+			this.elementsArray.push(new Goldenfish(this,1200,Phaser.Math.Between(50,this.height - 50),'goldenFish'));
 		}
 	}
 	
 	enemyRandom()
 	{
 		this.id = this.parallax.checkId();
-		let x = 2;//Phaser.Math.Between(1,5);
-		if(this.id=='roadId')
+		let x = Phaser.Math.Between(1,5);
+		//let x = 4;
+		if(this.id == 'roadId')
 		{
 			//if (x == 1) {new Car(this,1200,(Phaser.Math.Between(0,1)*40)+440);}
 			if (x == 2) {this.elementsArray.push(new Balloon(this,1200,100));}
@@ -160,33 +179,33 @@ export default class Tierra extends Phaser.Scene
 			else if (x == 4) {this.elementsArray.push(new Plane(this,1200,Phaser.Math.Between(100,400)));}	
 			else this.enemyRandom();
 		}
-		else if(this.id=='spaceId')
+		else if(this.id =='spaceId')
 		{
-			//if (x == 1) {new Asteroid(this,1200,300);}
-			if (x <= 5) {this.elementsArray.push(new UFO(this,1200,Phaser.Math.Between(100, 500)));}
-			//else this.enemyRandom(); 
+			if (x == 1) {new Asteroid(this,1200,300);}
+			else if (x <= 5) {this.elementsArray.push(new UFO(this,1200,Phaser.Math.Between(100, 500)));}
+			else this.enemyRandom(); 
 		}
-		else if(this.id=='seaId')
+		else if(this.id =='seaId')
 		{
 			//if (x == 1) {new Boat(this,1200,Phaser.Math.Between(42,52)*10);}
 			if (x == 2) {this.elementsArray.push(new Plane(this,1200, Phaser.Math.Between(100, 400)));}
 			else if (x == 3) {this.elementsArray.push(new Island(this,1200,440));}
-			else if(x==4){this.elementsArray.push(new Dolphin(this,1200,550));}
+			else if(x == 4){this.elementsArray.push(new Dolphin(this,1200,550));}
 			else this.enemyRandom();
 		}
 	}
 
 	soundManager(){
         this.id = this.parallax.checkId();
-        if(this.id=='roadId')
+        if(this.id =='roadId')
         {
             this.audio = this.sound.add("roadSound");
         }
-        else if(this.id=='spaceId')
+        else if(this.id =='spaceId')
         {
             this.audio = this.sound.add("spaceSound");
         }
-        else if(this.id=='seaId')
+        else if(this.id =='seaId')
         {
             this.audio = this.sound.add("seaSound");
         }
@@ -201,6 +220,7 @@ export default class Tierra extends Phaser.Scene
 	update() 
 	{	
 		this.parallax.update();
+		this.updateLabelScore(); 
 		this.timerE=this.timerE+1;
 		this.timerP=this.timerP+1;
 		this.timerC=this.timerC+1;
@@ -226,3 +246,12 @@ export default class Tierra extends Phaser.Scene
 		}	
 	}
 }
+/*function particle () {
+	var particles = this.scene.add.particles('gold');
+
+var emitter = particles.createEmitter();
+
+emitter.setPosition(200, 200);
+emitter.setSpeed(100);
+emitter.setBlendMode(Phaser.BlendModes.ADD);
+}*/

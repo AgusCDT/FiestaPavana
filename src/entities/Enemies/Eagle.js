@@ -17,11 +17,8 @@ export default class Eagle extends Enemies {
     }
 
     preUpdate(t, dt){
-        super.preUpdate(t, dt);
         //movement...
         this.body.setVelocity(this.speedX, this.speedY);  
-        if (this.x < -80) { 
-			this.destroy();
-        }  
+        super.preUpdate(t, dt);
     }
 }

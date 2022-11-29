@@ -28,7 +28,7 @@ export default class Parallax extends Phaser.GameObjects.Sprite{
 	}
 	update(){
 		if(this.id == 'hawaiiId'){
-			this.parallax1.tilePositionX = 0.0;
+			this.parallax1.tilePositionX = 0.0; // escenario estático
 		}
 		else{
 			this.parallax1.tilePositionX += 0.01;
