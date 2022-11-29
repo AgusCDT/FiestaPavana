@@ -8,10 +8,27 @@ export default class Enemies extends Phaser.GameObjects.Sprite{
 		this.setDepth(1);
 	}
 	
+	colision() {
+		if (this.scene.physics.overlap(this.scene.pavana, this)) {
+			if (this.scene.pavana.tempColision <= 0) { // Solo puede quitar vida si llevo cierto tiempo después de la anterior colisión
+				this.scene.pavana.life -= 1;
+				this.scene.pavana.removeLife();
+				//this.scene.pavana.lifeImages[this.scene.pavana.life - 1].destroy();
+				if (this.scene.pavana.life <= 0) {
+					this.scene.pavana.destroy();
+					this.scene.cloud.updateHighScore(this.scene.pavana.score);
+					this.scene.scene.start('GameOver', {cloud: this.scene.cloud});
+				}
+				this.scene.pavana.label.text = "Life: " + this.scene.pavana.life;
+				this.scene.pavana.tempColision = 150;
+			}
+		}
+	}
 
 	preUpdate(t, dt)
 	{
 		super.preUpdate(t, dt);
+		this.colision();
 		/*if (this.move == 0){ // Movimiento estático
 			this.speedY = 0;
 		}
@@ -33,22 +50,10 @@ export default class Enemies extends Phaser.GameObjects.Sprite{
 		}
 		this.body.setVelocity(this.speedX, this.speedY);*/
 
-		if (this.scene.physics.overlap(this.scene.pavana, this)) {
-			if (this.scene.pavana.tempColision <= 0) { // Solo puede quitar vida si llevo cierto tiempo después de la anterior colisión
-				this.scene.pavana.life -= 1;
-				this.scene.pavana.removeLife();
-				//this.scene.pavana.lifeImages[this.scene.pavana.life - 1].destroy();
-				if (this.scene.pavana.life <= 0) {
-					this.scene.pavana.destroy();
-					this.scene.cloud.updateHighScore(this.scene.pavana.score);
-					this.scene.scene.start('GameOver', {cloud: this.scene.cloud});
-				}
-				this.scene.pavana.label.text = "Life: " + this.scene.pavana.life;
-				this.scene.pavana.tempColision = 150;
-			}
-		}
+		
 
 		if (this.x < -80) { // Los enemigos se destruyen al sobrepasar la izquierda para no consumir memoria
+			this.scene.elementsArray = this.scene.elementsArray.filter((item) => item !== this);
 			this.destroy();
 		}
 	}

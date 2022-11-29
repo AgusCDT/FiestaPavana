@@ -16,8 +16,11 @@ export default class Pups extends Phaser.GameObjects.Sprite{
 	preUpdate() 
 	{	
 		this.body.setVelocity(this.speedX,this.speedY);    
-		//if (this.scene.physics.overlap(this.scene.pavana, this)) {this.colision();}
 		this.colision();
+		if (this.x < -80) { // Los pups se destruyen al sobrepasar la izquierda para no consumir memoria
+			this.scene.elementsArray = this.scene.elementsArray.filter((item) => item !== this);
+			this.destroy();
+		}
 	}
 
 	colision()
@@ -26,7 +29,7 @@ export default class Pups extends Phaser.GameObjects.Sprite{
 		{
 			if (this.filename != 'goldenFish')
 			{
-				this.scene.transition.fadeIn(this.filename); // llamada a fadeIn en Transition				
+				this.scene.transition.fadeIn(this.filename); // llamada a fadeIn en Transition			
 			}
 			else 
 			{
@@ -35,7 +38,8 @@ export default class Pups extends Phaser.GameObjects.Sprite{
 			}		
 
 			this.scene.pavana.label.setDepth(1);
-			this.destroy();
+			this.scene.elementsArray = this.scene.elementsArray.filter((item) => item !== this);
+			this.destroy();	
 		}
 	}
 }

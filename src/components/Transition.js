@@ -44,6 +44,7 @@ export default class Transition extends Phaser.GameObjects.Sprite{
 	fadeIn(filename){
 		var pup = filename;
         var fadeIn = this.scene.add.image(0, 0, 'backgroundTransition', 0).setOrigin(0,0);
+		fadeIn.setDepth(3);
 		var tween = this.scene.tweens.add({
 			targets:  fadeIn,
 			duration: 2000,
@@ -54,7 +55,10 @@ export default class Transition extends Phaser.GameObjects.Sprite{
 				getStart: () => 0, // empieza con fondo transparente
 				getEnd: () => 1 // y termina con fondo negro
 			},
-			onComplete: () => this.transition(pup) // llamamos a esta función una vez se termina el fadeIn
+			onComplete: () => {
+				fadeIn.destroy();
+				this.transition(pup);
+			} // llamamos a esta función una vez se termina el fadeIn
 		});			
     }
 }
