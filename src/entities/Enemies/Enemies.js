@@ -29,6 +29,7 @@ export default class Enemies extends Phaser.GameObjects.Sprite{
 	{
 		super.preUpdate(t, dt);
 		this.colision();
+		
 		/*if (this.move == 0){ // Movimiento estático
 			this.speedY = 0;
 		}

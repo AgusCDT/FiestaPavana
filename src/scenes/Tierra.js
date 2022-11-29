@@ -68,7 +68,7 @@ export default class Tierra extends Phaser.Scene
 	 	this.load.image('hawaiiPup', './assets/imagenes/objetos/shirt.png');
 		// Coins
 	 	this.load.image('goldenFish', './assets/imagenes/objetos/pez-dorado.png');
-		 this.load.image('gold', './assets/imagenes/otras/gold.png');
+		this.load.image('gold', './assets/imagenes/otras/gold.png');
 		// HUD
 		this.load.image('feather', './assets/imagenes/otras/feather.png');
 		//Audio
@@ -97,14 +97,26 @@ export default class Tierra extends Phaser.Scene
 		this.limitC=Phaser.Math.Between(1,10)*100;
 		this.elementsArray = [];
 		//this.coin = this.make.sprite(1105, 20, 'goldenFish');
-		this.label = this.add.text(1105, 20, this.cloud.getCoins(), { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
-
+		this.HUD();
 		//this.events.on('goldenParticle', particle);
 	}
 
-	updateLabel() {
-		this.label.destroy();
-		this.label = this.add.text(1105, 20, this.cloud.getCoins(), { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
+	HUD() {
+		this.labelFish = this.add.text(1105, 20, this.cloud.getCoins(), { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
+		this.labelScore = this.add.text(800, 20, this.cloud.getScore(), { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
+
+		this.labelFish.setDepth(2);
+		this.labelScore.setDepth(2);
+	}
+
+	updateLabelFish() { // actualización al coger una moneda
+		this.labelFish.destroy();
+		this.labelFish = this.add.text(1105, 20, this.cloud.getCoins(), { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
+	}
+
+	updateLabelScore(){ // actualización del score durante la run
+		this.labelScore.destroy();
+		this.labelScore = this.add.text(400, 20, 'Score: '+ this.cloud.getScore(), { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
 	}
 
 	cleanObjects()
@@ -207,6 +219,7 @@ export default class Tierra extends Phaser.Scene
 	update() 
 	{	
 		this.parallax.update();
+		this.updateLabelScore(); 
 		this.timerE=this.timerE+1;
 		this.timerP=this.timerP+1;
 		this.timerC=this.timerC+1;

@@ -46,7 +46,6 @@ export default class Pups extends Phaser.GameObjects.Sprite{
 		if(this.scene.physics.overlap(this.scene.pavana, this))
 		{
 			this.scene.transition.fadeIn(this.filename); // llamada a fadeIn en Transition				
-			this.scene.pavana.label.setDepth(1);
 			this.destroy();	
 		}
 	}

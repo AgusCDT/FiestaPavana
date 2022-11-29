@@ -126,6 +126,7 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 	preUpdate(t, dt) {
 		super.preUpdate(t, dt);
 		this.score++;
+		this.scene.cloud.updateScore(this.score);
 		if (this.tempColision > 0){
 			this.tempColision -= 1;
 		}
