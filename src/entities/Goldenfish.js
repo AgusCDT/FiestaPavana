@@ -4,13 +4,16 @@ export default class Goldenfish extends Phaser.GameObjects.Sprite {
     constructor(scene, x, y, filename) 
 	{
 		super(scene, x, y, filename);
+		this.x = x;
+		this.y = y;
 		this.scene.goldenfish = this;
 		this.scene.add.existing(this);
     	this.scene.physics.add.existing(this);
 		this.speedX = -75;
 		this.speedY = 0;
 		this.filename = filename;
-		this.setDepth(1);		
+		this.setDepth(1);
+		this.body.setSize(50, 35).setOffset(5, 5);		
 		//Tween
         /*var tween = this.scene.tweens.add({
             targets:  this,
@@ -20,7 +23,6 @@ export default class Goldenfish extends Phaser.GameObjects.Sprite {
 			yoyo: true,
            
         });*/
-		
 	}
     
 	preUpdate() 

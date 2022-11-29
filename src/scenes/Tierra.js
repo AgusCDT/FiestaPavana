@@ -95,8 +95,11 @@ export default class Tierra extends Phaser.Scene
 		this.limitE=100;
 		this.limitP=Phaser.Math.Between(1,10)*100;
 		this.limitC=Phaser.Math.Between(1,10)*100;
+		
 		//this.coin = this.make.sprite(1105, 20, 'goldenFish');
 		this.label = this.add.text(1105, 20, this.cloud.getCoins(), { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
+
+		//this.events.on('goldenParticle', particle);
 	}
 
 	updateLabel() {
@@ -146,6 +149,7 @@ export default class Tierra extends Phaser.Scene
 		if (coinProbability == 1) 
 		{
 			this.goldenfish = new Goldenfish(this,1200,Phaser.Math.Between(50,this.height - 50),'goldenFish');
+			//this.scene.events.emit('goldenParticle');
 		}
 	}
 	
@@ -156,7 +160,7 @@ export default class Tierra extends Phaser.Scene
 		if(this.id=='roadId')
 		{
 			//if (x == 1) {new Car(this,1200,(Phaser.Math.Between(0,1)*40)+440);}
-			if (x == 2) {new Balloon(this,1200,100);}
+			if (x == 2) {new Dolphin(this,1200,550);/*new Balloon(this,1200,100);*/}
 			//else if (x == 3) {new Eagle(this,1200,100);}	
 			else if (x == 4) {new Plane(this,1200,Phaser.Math.Between(100,400));}	
 			else this.enemyRandom();
@@ -170,9 +174,9 @@ export default class Tierra extends Phaser.Scene
 		else if(this.id=='seaId')
 		{
 			//if (x == 1) {new Boat(this,1200,Phaser.Math.Between(42,52)*10);}
-			if (x == 2) {new Plane(this,1200, Phaser.Math.Between(100, 400));}
+			if (x == 4) {new Plane(this,1200, Phaser.Math.Between(100, 400));}
 			else if (x == 3) {new Island(this,1200,440);}
-			else if(x==4){new Dolphin(this,1200,550);}
+			else if(x==2){new Dolphin(this,1200,550);}
 			else this.enemyRandom();
 		}
 	}
@@ -227,3 +231,12 @@ export default class Tierra extends Phaser.Scene
 		}	
 	}
 }
+/*function particle () {
+	var particles = this.scene.add.particles('gold');
+
+var emitter = particles.createEmitter();
+
+emitter.setPosition(200, 200);
+emitter.setSpeed(100);
+emitter.setBlendMode(Phaser.BlendModes.ADD);
+}*/

@@ -10,7 +10,8 @@ export default class Pups extends Phaser.GameObjects.Sprite{
 		this.speedX = -75;
 		this.speedY = 0;
 		this.filename = filename;
-		this.setDepth(1);		
+		this.setDepth(1);	
+		this.body.setSize(52, 52).setOffset(7, 10);	
 		//Tween
         var tween = this.scene.tweens.add({
             targets:  this,

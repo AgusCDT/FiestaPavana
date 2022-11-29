@@ -3,17 +3,13 @@ import Enemies from "./Enemies.js";
 export default class Dolphin extends Enemies {
     constructor(scene, x, y) {
         super(scene, x, y);
-        this.speedX = -75;
-        this.speedY = 0;
-        this.body.setSize(90, 45).setOffset(10, 5);
+        this.speedX = -100;
+        this.speedY = -20;
+        this.body.setSize(90, 85).setOffset(10, 5);
         //Tween
         var tween = this.scene.tweens.add({
             targets:  this,
-            y: {
-                getStart: () => 510, 
-                getEnd: () => 550 
-            },
-            duration: 2000,
+            duration: 3500,
             ease: 'Linear',         
             repeat: -1,
             yoyo: true,
@@ -33,11 +29,16 @@ export default class Dolphin extends Enemies {
     }
 
     preUpdate(t, dt){
-        super.preUpdate(t, dt);
+        
         //movement...
+        if(this.y >= 550)
+        {
+            this.speedY *= -1;
+        }
+        else if(this.y <= 500){
+            this.speedY *= -1;
+        }
         this.body.setVelocity(this.speedX, this.speedY); 
-        if (this.x < -80) { 
-			this.destroy();
-        }   
+        super.preUpdate(t, dt);
     }
 }
