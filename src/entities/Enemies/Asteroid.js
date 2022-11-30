@@ -29,8 +29,9 @@ export default class Asteroid extends Enemies {
     }
 
     preUpdate(t, dt){
-        super.preUpdate(t, dt);
+        
         //movement...
-        this.body.setVelocity(this.speedX, this.speedY); 
+        this.body.setVelocity(this.speedX, this.speedY);
+        super.preUpdate(t, dt);
     }
 }

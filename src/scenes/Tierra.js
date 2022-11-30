@@ -181,7 +181,7 @@ export default class Tierra extends Phaser.Scene
 		}
 		else if(this.id =='spaceId')
 		{
-			if (x == 1) {new Asteroid(this,1200,300);}
+			if (x == 1) {this.elementsArray.push(new Asteroid(this,1200,300));}
 			else if (x <= 5) {this.elementsArray.push(new UFO(this,1200,Phaser.Math.Between(100, 500)));}
 			else this.enemyRandom(); 
 		}
