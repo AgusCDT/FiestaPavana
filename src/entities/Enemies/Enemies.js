@@ -19,8 +19,7 @@ export default class Enemies extends Phaser.GameObjects.Sprite{
 					this.scene.cloud.updateHighScore(this.scene.pavana.score);
 					this.scene.scene.start('GameOver', {cloud: this.scene.cloud});
 				}
-				this.scene.pavana.label.text = "Life: " + this.scene.pavana.life;
-				this.scene.pavana.tempColision = 150;
+				this.scene.pavana.tempColision = 2000;
 			}
 		}
 	}

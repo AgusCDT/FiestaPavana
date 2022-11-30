@@ -85,7 +85,6 @@ export default class Tierra extends Phaser.Scene
 		this.parallax = new Parallax(this);
 		this.parallax.setDepth(0);
 	 	this.pavana = new Pavana(this, 100, 100);
-		this.pavana.loadLife();
 		this.timerE = 0;
 		this.timerP = 0;
 		this.timerC = 0;	
@@ -104,7 +103,8 @@ export default class Tierra extends Phaser.Scene
 	HUD() {
 		this.labelFish = this.add.text(1105, 20, this.cloud.getCoins(), { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
 		this.labelScore = this.add.text(800, 20, this.cloud.getScore(), { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
-
+		this.pavana.loadLife();
+		
 		this.labelFish.setDepth(2);
 		this.labelScore.setDepth(2);
 	}
