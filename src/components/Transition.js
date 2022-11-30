@@ -58,6 +58,7 @@ export default class Transition extends Phaser.GameObjects.Sprite{
 			onComplete: () => {
 				fadeIn.destroy();
 				this.transition(pup);
+				this.scene.updateLabelFish();
 			} // llamamos a esta función una vez se termina el fadeIn
 		});			
     }
