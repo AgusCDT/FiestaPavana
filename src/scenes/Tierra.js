@@ -169,7 +169,7 @@ export default class Tierra extends Phaser.Scene
 		{
 			//this.goldenfish = new Goldenfish(this,1200,Phaser.Math.Between(50,this.height - 50),'goldenFish');
 			//this.scene.events.emit('goldenParticle');
-			this.elementsArray.push(new Goldenfish(this,1200,Phaser.Math.Between(50,this.height - 50),'goldenFish'));
+			this.elementsArray.push(this.goldenfish = new Goldenfish(this,1200,Phaser.Math.Between(50,this.height - 50),'goldenFish'));
 		}
 	}
 	
