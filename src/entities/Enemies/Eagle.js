@@ -5,15 +5,15 @@ export default class Eagle extends Enemies {
         super(scene, x, y);
         this.speedX = -75;
         this.speedY = 0;
-        this.body.setSize(90, 45).setOffset(10, 5);
+        this.body.setSize(77, 79).setOffset(5, 0);
         // Animación
         this.scene.anims.create({
 			key: 'eagleAnimation',
-			frames: scene.anims.generateFrameNumbers('eagle', { start: 0, end: 2}),
-			frameRate: 2,
+			frames: scene.anims.generateFrameNumbers('eagle', { start: 0, end: 6}),
+			frameRate: 5,
 			repeat: -1
 		});
-		this.play('eagleAnimation');
+		this.play('eagleAnimation',);
     }
 
     preUpdate(t, dt){
