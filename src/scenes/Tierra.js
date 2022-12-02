@@ -102,8 +102,8 @@ export default class Tierra extends Phaser.Scene
 
 	HUD() {
 		// texto e imagen de las monedas
-		this.labelFish = this.add.text(1105, 20, this.cloud.getCoins(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#00FF00' });
-		this.imageFish = this.add.image(1075, 40, 'goldenFish').setScale(0.7,0.7).setRotation(0.6);
+		this.labelFish = this.add.text(1105, 10, this.cloud.getCoins(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#00FF00' });
+		this.imageFish = this.add.image(1075, 30, 'goldenFish').setScale(0.7,0.7).setRotation(0.6);
 		// texto score
 		this.labelScore = this.add.text(370, 20, this.cloud.getScore(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#00FF00' }); 
 		
@@ -116,9 +116,9 @@ export default class Tierra extends Phaser.Scene
 
 	updateLabelFish() { // actualización al coger una moneda
 		this.labelFish.destroy();
-		this.labelFish = this.add.text(1105, 20, this.cloud.getCoins(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#00FF00' });
+		this.labelFish = this.add.text(1105, 10, this.cloud.getCoins(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#00FF00' });
 		this.imageFish.destroy();
-		this.imageFish = this.add.image(1075, 40, 'goldenFish').setScale(0.7,0.7).setRotation(0.6);
+		this.imageFish = this.add.image(1075, 30, 'goldenFish').setScale(0.7,0.7).setRotation(0.6);
 	}
 
 	updateLabelScore(){ // actualización del score durante la run
