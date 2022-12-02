@@ -27,7 +27,7 @@ export default class Shop extends Phaser.Scene {
 	 
 	create() {
 	 	this.add.image(0, 0, 'shop').setOrigin(0, 0);
-		this.label = this.add.text(1105, 20, this.cloud.getCoins(), { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
+		this.label = this.add.text(1105, 20, this.cloud.getCoins(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#00FF00' });
 		this.MenuButton = new MenuButton(this, this.cloud, 690, 450);
 		this.LifeButton = new LifeButton(this, this.cloud);
 		this.TrophyButton = new TrophyButton(this, this.cloud);
@@ -44,7 +44,7 @@ export default class Shop extends Phaser.Scene {
 
 	updateLabel() {
 		this.label.destroy();
-		this.label = this.add.text(1105, 20, this.cloud.getCoins(), { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
+		this.label = this.add.text(1105, 20, this.cloud.getCoins(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#00FF00' });
 	}
 }
 	
