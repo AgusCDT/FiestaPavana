@@ -104,22 +104,29 @@ export default class Tierra extends Phaser.Scene
 	}
 
 	HUD() {
-		this.labelFish = this.add.text(1105, 20, this.cloud.getCoins(), { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
-		this.labelScore = this.add.text(800, 20, this.cloud.getScore(), { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
+		// texto e imagen de las monedas
+		this.labelFish = this.add.text(1105, 10, this.cloud.getCoins(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#00FF00' });
+		this.imageFish = this.add.image(1075, 30, 'goldenFish').setScale(0.7,0.7).setRotation(0.6);
+		// texto score
+		this.labelScore = this.add.text(370, 20, this.cloud.getScore(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#00FF00' }); 
+		
 		this.pavana.loadLife();
 		
 		this.labelFish.setDepth(2);
 		this.labelScore.setDepth(2);
+		this.imageFish.setDepth(2);
 	}
 
 	updateLabelFish() { // actualización al coger una moneda
 		this.labelFish.destroy();
-		this.labelFish = this.add.text(1105, 20, this.cloud.getCoins(), { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
+		this.labelFish = this.add.text(1105, 10, this.cloud.getCoins(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#00FF00' });
+		this.imageFish.destroy();
+		this.imageFish = this.add.image(1075, 30, 'goldenFish').setScale(0.7,0.7).setRotation(0.6);
 	}
 
 	updateLabelScore(){ // actualización del score durante la run
 		this.labelScore.destroy();
-		this.labelScore = this.add.text(400, 20, 'Score: '+ this.cloud.getScore(), { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
+		this.labelScore = this.add.text(370, 20, 'Score: '+ this.cloud.getScore(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#00FF00' });
 	}
 
 	cleanObjects()
@@ -134,27 +141,27 @@ export default class Tierra extends Phaser.Scene
 		let x = Phaser.Math.Between(1,7);
 		if(this.id=='roadId')
 		{
-			if (x < 4 && this.cloud.getSpace() == 1) { this.elementsArray.push(new Pups(this,1200,500,'spacePup'));}
-			else if (x >= 4 && x < 7 && this.cloud.getSea() == 1) { this.elementsArray.push(new Pups(this,1200,500,'seaPup'));}
-			else if (x == 7 && this.cloud.getBeach() == 1) { this.elementsArray.push(new Pups(this,1200,500,'hawaiiPup'));}
+			if (x < 4 && this.cloud.getSpace() == 1) { this.elementsArray.push(new Pups(this,Phaser.Math.Between(50, 1150),-70,'spacePup'));}
+			else if (x >= 4 && x < 7 && this.cloud.getSea() == 1) { this.elementsArray.push(new Pups(this,Phaser.Math.Between(50, 1150),-70,'seaPup'));}
+			else if (x == 7 && this.cloud.getBeach() == 1) { this.elementsArray.push(new Pups(this,Phaser.Math.Between(50, 1150),-70,'hawaiiPup'));}
 		}
 		else if(this.id=='spaceId')
 		{
-			if (x < 4 && this.cloud.getSea() == 1) { this.elementsArray.push(new Pups(this,1200,500,'seaPup'));}
-			else if (x >= 4 && x <7) { this.elementsArray.push(new Pups(this,1200,500,'roadPup'));}
-			else if (x == 7 && this.cloud.getBeach() == 1) { this.elementsArray.push(new Pups(this,1200,500,'hawaiiPup'));}
+			if (x < 4 && this.cloud.getSea() == 1) { this.elementsArray.push(new Pups(this,Phaser.Math.Between(50, 1150),-70,'seaPup'));}
+			else if (x >= 4 && x <7) { this.elementsArray.push(new Pups(this,Phaser.Math.Between(50, 1150),-70,'roadPup'));}
+			else if (x == 7 && this.cloud.getBeach() == 1) { this.elementsArray.push(new Pups(this,Phaser.Math.Between(50, 1150),-70,'hawaiiPup'));}
 		}
 		else if(this.id=='seaId')
 		{
-			if (x < 4 && this.cloud.getSpace() == 1) { this.elementsArray.push(new Pups(this,1200,500,'spacePup'));}
-			else if (x >= 4 && x < 7) { this.elementsArray.push(new Pups(this,1200,500,'roadPup'));}
-			else if (x == 7 && this.cloud.getBeach() == 1) { this.elementsArray.push(new Pups(this,1200,500,'hawaiiPup'));}
+			if (x < 4 && this.cloud.getSpace() == 1) { this.elementsArray.push(new Pups(this,Phaser.Math.Between(50, 1150),-70,'spacePup'));}
+			else if (x >= 4 && x < 7) { this.elementsArray.push(new Pups(this,Phaser.Math.Between(50, 1150),-70,'roadPup'));}
+			else if (x == 7 && this.cloud.getBeach() == 1) { this.elementsArray.push(new Pups(this,Phaser.Math.Between(50, 1150),-70,'hawaiiPup'));}
 		}
 		else if(this.id=='hawaiiId')
 		{
-			if ((x == 1 || x == 2 ) && this.cloud.getSpace() == 1) { this.elementsArray.push(new Pups(this,1200,500,'spacePup'));}
-			else if (x == 3 || x == 4) { this.elementsArray.push(new Pups(this,1200,500,'roadPup'));}
-			else if ((x == 5 || x == 6) && this.cloud.getSea() == 1) { this.elementsArray.push(new Pups(this,1200,500,'seaPup'));}
+			if ((x == 1 || x == 2 ) && this.cloud.getSpace() == 1) { this.elementsArray.push(new Pups(this,Phaser.Math.Between(50, 1150),-70,'spacePup'));}
+			else if (x == 3 || x == 4) { this.elementsArray.push(new Pups(this,Phaser.Math.Between(50, 1150),-70,'roadPup'));}
+			else if ((x == 5 || x == 6) && this.cloud.getSea() == 1) { this.elementsArray.push(new Pups(this,Phaser.Math.Between(50, 1150),-70,'seaPup'));}
 		}
 	}
 
@@ -165,15 +172,15 @@ export default class Tierra extends Phaser.Scene
 		{
 			//this.goldenfish = new Goldenfish(this,1200,Phaser.Math.Between(50,this.height - 50),'goldenFish');
 			//this.scene.events.emit('goldenParticle');
-			this.elementsArray.push(new Goldenfish(this,1200,Phaser.Math.Between(50,this.height - 50),'goldenFish'));
+			this.elementsArray.push(this.goldenfish = new Goldenfish(this,1200,Phaser.Math.Between(50,this.height - 50),'goldenFish'));
 		}
 	}
 	
 	enemyRandom()
 	{
 		this.id = this.parallax.checkId();
-		//let x = Phaser.Math.Between(1,6);
-		let x = 5;
+		// let x = Phaser.Math.Between(1,5);
+		let x = 2;
 		if(this.id == 'roadId')
 		{
 			if (x == 1) {new Car(this,1200,(Phaser.Math.Between(0,1)*40)+440);}
