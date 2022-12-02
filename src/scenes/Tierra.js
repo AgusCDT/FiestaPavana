@@ -5,6 +5,7 @@ import Asteroid from '../entities/Enemies/Asteroid.js';
 import UFO from '../entities/Enemies/UFO.js';
 import Plane from '../entities/Enemies/Plane.js';
 import Car from '../entities/Enemies/Car.js';
+import Tree from '../entities/Enemies/Tree.js';
 import Dolphin from '../entities/Enemies/Dolphin.js';
 import Balloon from '../entities/Enemies/Balloon.js';
 import Eagle from '../entities/Enemies/Eagle.js';
@@ -56,6 +57,8 @@ export default class Tierra extends Phaser.Scene
 		this.load.spritesheet('eagle', './assets/imagenes/enemigos/eagleAnimation.png', { frameWidth: 79, frameHeight: 77});
 		this.load.spritesheet('dolphin', './assets/imagenes/enemigos/delfin.png', { frameWidth: 90, frameHeight: 90});
 		this.load.spritesheet('plane', './assets/imagenes/obstacles/plane.png', { frameWidth: 111, frameHeight: 73});
+		this.load.spritesheet('tree1','./assets/imagenes/obstacles/tree1.png', { frameWidth: 102, frameHeight: 116});
+		this.load.image('tree2','./assets/imagenes/obstacles/tree2.png');
 		// Obstacles
 		this.load.spritesheet('asteroid', './assets/imagenes/obstacles/asteroid.png', { frameWidth: 199, frameHeight: 201});
 		this.load.spritesheet('island', './assets/imagenes/obstacles/island.png', { frameWidth: 194, frameHeight: 254});
@@ -169,14 +172,15 @@ export default class Tierra extends Phaser.Scene
 	enemyRandom()
 	{
 		this.id = this.parallax.checkId();
-		let x = Phaser.Math.Between(1,5);
-		//let x = 3;
+		//let x = Phaser.Math.Between(1,6);
+		let x = 5;
 		if(this.id == 'roadId')
 		{
 			if (x == 1) {new Car(this,1200,(Phaser.Math.Between(0,1)*40)+440);}
 			if (x == 2) {this.elementsArray.push(new Balloon(this,1200,100));}
 			else if (x == 3) {new Eagle(this,1200,100);}
-			else if (x == 4) {this.elementsArray.push(new Plane(this,1200,Phaser.Math.Between(100,400)));}	
+			else if (x == 4) {this.elementsArray.push(new Plane(this,1200,Phaser.Math.Between(100,400)));}
+			else if (x == 5) {new Tree(this,1200,500);}
 			else this.enemyRandom();
 		}
 		else if(this.id =='spaceId')
