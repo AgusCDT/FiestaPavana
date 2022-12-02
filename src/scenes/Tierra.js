@@ -59,7 +59,7 @@ export default class Tierra extends Phaser.Scene
 		// Obstacles
 		this.load.spritesheet('asteroid', './assets/imagenes/obstacles/asteroid.png', { frameWidth: 199, frameHeight: 201});
 		this.load.spritesheet('island', './assets/imagenes/obstacles/island.png', { frameWidth: 194, frameHeight: 254});
-		this.load.image('boat', './assets/imagenes/obstacles/boat.png');
+		this.load.spritesheet('boat', './assets/imagenes/obstacles/boatAnimation.png', { frameWidth: 75, frameHeight: 90});
 		this.load.spritesheet('balloon', './assets/imagenes/obstacles/balloonAnimation.png', { frameWidth: 99, frameHeight: 154});
 		// Pups
 	 	this.load.image('spacePup', './assets/imagenes/objetos/astronaut.png'); 
@@ -169,8 +169,8 @@ export default class Tierra extends Phaser.Scene
 	enemyRandom()
 	{
 		this.id = this.parallax.checkId();
-		let x = Phaser.Math.Between(1,5);
-		//let x = 4;
+		//let x = Phaser.Math.Between(1,5);
+		let x = 3;
 		if(this.id == 'roadId')
 		{
 			//if (x == 1) {new Car(this,1200,(Phaser.Math.Between(0,1)*40)+440);}
