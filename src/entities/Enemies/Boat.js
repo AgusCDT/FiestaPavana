@@ -6,11 +6,23 @@ export default class Boat extends Enemies {
         this.speedX = -75;
         this.speedY = 0;
         this.body.setSize(90, 45).setOffset(10, 5);
-       // Animación
+        //Tween
+        var tween = this.scene.tweens.add({
+            targets:  this,
+            duration: 3000,
+            ease: 'Linear',         
+            repeat: -1,
+            yoyo: true,
+            angle: {
+                getStart: () => 10, 
+                getEnd: () => -10 
+            },
+        });
+    //    Animación
         this.scene.anims.create({
 			key: 'boatAnimation',
-			frames: scene.anims.generateFrameNumbers('boat', { start: 0, end: 2}),
-			frameRate: 2,
+			frames: scene.anims.generateFrameNumbers('boat', { start: 0, end: 6}),
+			frameRate: 5,
 			repeat: -1
 		});
 		this.play('boatAnimation');
