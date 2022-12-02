@@ -53,7 +53,7 @@ export default class Tierra extends Phaser.Scene
 		// Enemies
 		this.load.image('car', './assets/imagenes/enemigos/car.png');
 		this.load.spritesheet('ufo', './assets/imagenes/enemigos/UFO.png', { frameWidth: 100, frameHeight: 100});
-		this.load.image('eagle', './assets/imagenes/enemigos/eagle.png');
+		this.load.spritesheet('eagle', './assets/imagenes/enemigos/eagleAnimation.png', { frameWidth: 79, frameHeight: 77});
 		this.load.spritesheet('dolphin', './assets/imagenes/enemigos/delfin.png', { frameWidth: 90, frameHeight: 90});
 		this.load.spritesheet('plane', './assets/imagenes/obstacles/plane.png', { frameWidth: 111, frameHeight: 73});
 		// Obstacles
@@ -181,8 +181,8 @@ export default class Tierra extends Phaser.Scene
 		if(this.id == 'roadId')
 		{
 			//if (x == 1) {new Car(this,1200,(Phaser.Math.Between(0,1)*40)+440);}
-			if (x == 2) {/*this.elementsArray.push(new Balloon(this,1200,100));*/ this.elementsArray.push(new Island(this,1200,400));}
-			//else if (x == 3) {new Eagle(this,1200,100);}	
+			if (x == 2) {this.elementsArray.push(new Balloon(this,1200,100));}
+			//else if (x == 3) {new Eagle(this,1200,100);}
 			else if (x == 4) {this.elementsArray.push(new Plane(this,1200,Phaser.Math.Between(100,400)));}	
 			else this.enemyRandom();
 		}

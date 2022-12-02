@@ -20,7 +20,7 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
         this.a = this.scene.input.keyboard.addKey('A');
         this.s = this.scene.input.keyboard.addKey('S');
         this.d = this.scene.input.keyboard.addKey('D');
-		this.body.setSize(50, 30).setOffset(15, 5);
+		this.body.setSize(60, 39).setOffset(0, 0);
 		//Animación
 		this.scene.anims.create({
 			key: 'pavanaRightAnimation',
