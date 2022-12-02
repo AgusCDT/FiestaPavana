@@ -5,7 +5,7 @@ export default class Island extends Enemies {
         super(scene, x, y);
         this.speedX = -75;
         this.speedY = 0;
-        this.body.setSize(90, 45).setOffset(10, 5);
+        this.body.setSize(150, 220).setOffset(30, 15);
         // Animación
         this.scene.anims.create({
 			key: 'islandAnimation',

@@ -8,8 +8,8 @@ export default class TrophyButton extends Button {
 
     create (){
         super.create();
-        this.mul = this.relatedScene.add.text(this.x - 10, this.y - 10, this.cloud.getMultiplicator(), { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
-        this.label = this.relatedScene.add.text(this.x - 10, this.y + 77, this.price, { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
+        this.mul = this.relatedScene.add.text(this.x - 10, this.y - 10, this.cloud.getMultiplicator(), { fontFamily: 'Cooper Black', fontSize: 25, color: '#E10000' });
+        this.label = this.relatedScene.add.text(this.x - 10, this.y + 70, this.price, { fontFamily: 'Cooper Black', fontSize: 25, color: '#E10000' });
     }
 
     ClickButton() {
@@ -19,9 +19,9 @@ export default class TrophyButton extends Button {
             this.price *= 2;
             this.cloud.updateMultiplicatorPrice(this.price);
             this.mul.destroy();
-            this.mul = this.relatedScene.add.text(this.x - 10, this.y - 10, this.cloud.getMultiplicator(), { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
+            this.mul = this.relatedScene.add.text(this.x - 10, this.y - 10, this.cloud.getMultiplicator(), { fontFamily: 'Cooper Black', fontSize: 25, color: '#E10000' });
             this.label.destroy();
-            this.label = this.relatedScene.add.text(this.x - 10, this.y + 77, this.price, { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
+            this.label = this.relatedScene.add.text(this.x - 10, this.y + 70, this.price, { fontFamily: 'Cooper Black', fontSize: 25, color: '#E10000' });
         }
         else {
             console.log('no tienes dinero');

@@ -101,22 +101,29 @@ export default class Tierra extends Phaser.Scene
 	}
 
 	HUD() {
-		this.labelFish = this.add.text(1105, 20, this.cloud.getCoins(), { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
-		this.labelScore = this.add.text(800, 20, this.cloud.getScore(), { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
+		// texto e imagen de las monedas
+		this.labelFish = this.add.text(1105, 20, this.cloud.getCoins(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#00FF00' });
+		this.imageFish = this.add.image(1075, 40, 'goldenFish').setScale(0.7,0.7).setRotation(0.6);
+		// texto score
+		this.labelScore = this.add.text(370, 20, this.cloud.getScore(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#00FF00' }); 
+		
 		this.pavana.loadLife();
 		
 		this.labelFish.setDepth(2);
 		this.labelScore.setDepth(2);
+		this.imageFish.setDepth(2);
 	}
 
 	updateLabelFish() { // actualización al coger una moneda
 		this.labelFish.destroy();
-		this.labelFish = this.add.text(1105, 20, this.cloud.getCoins(), { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
+		this.labelFish = this.add.text(1105, 20, this.cloud.getCoins(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#00FF00' });
+		this.imageFish.destroy();
+		this.imageFish = this.add.image(1075, 40, 'goldenFish').setScale(0.7,0.7).setRotation(0.6);
 	}
 
 	updateLabelScore(){ // actualización del score durante la run
 		this.labelScore.destroy();
-		this.labelScore = this.add.text(400, 20, 'Score: '+ this.cloud.getScore(), { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
+		this.labelScore = this.add.text(370, 20, 'Score: '+ this.cloud.getScore(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#00FF00' });
 	}
 
 	cleanObjects()
@@ -169,12 +176,12 @@ export default class Tierra extends Phaser.Scene
 	enemyRandom()
 	{
 		this.id = this.parallax.checkId();
-		let x = Phaser.Math.Between(1,5);
-		//let x = 4;
+		// let x = Phaser.Math.Between(1,5);
+		let x = 2;
 		if(this.id == 'roadId')
 		{
 			//if (x == 1) {new Car(this,1200,(Phaser.Math.Between(0,1)*40)+440);}
-			if (x == 2) {this.elementsArray.push(new Balloon(this,1200,100));}
+			if (x == 2) {/*this.elementsArray.push(new Balloon(this,1200,100));*/ this.elementsArray.push(new Island(this,1200,400));}
 			//else if (x == 3) {new Eagle(this,1200,100);}	
 			else if (x == 4) {this.elementsArray.push(new Plane(this,1200,Phaser.Math.Between(100,400)));}	
 			else this.enemyRandom();
