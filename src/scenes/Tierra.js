@@ -5,6 +5,7 @@ import Asteroid from '../entities/Enemies/Asteroid.js';
 import UFO from '../entities/Enemies/UFO.js';
 import Plane from '../entities/Enemies/Plane.js';
 import Car from '../entities/Enemies/Car.js';
+import Tree from '../entities/Enemies/Tree.js';
 import Dolphin from '../entities/Enemies/Dolphin.js';
 import Balloon from '../entities/Enemies/Balloon.js';
 import Eagle from '../entities/Enemies/Eagle.js';
@@ -53,13 +54,15 @@ export default class Tierra extends Phaser.Scene
 		// Enemies
 		this.load.image('car', './assets/imagenes/enemigos/car.png');
 		this.load.spritesheet('ufo', './assets/imagenes/enemigos/UFO.png', { frameWidth: 100, frameHeight: 100});
-		this.load.image('eagle', './assets/imagenes/enemigos/eagle.png');
+		this.load.spritesheet('eagle', './assets/imagenes/enemigos/eagleAnimation.png', { frameWidth: 79, frameHeight: 77});
 		this.load.spritesheet('dolphin', './assets/imagenes/enemigos/delfin.png', { frameWidth: 90, frameHeight: 90});
 		this.load.spritesheet('plane', './assets/imagenes/obstacles/plane.png', { frameWidth: 111, frameHeight: 73});
+		this.load.spritesheet('tree1','./assets/imagenes/obstacles/tree1.png', { frameWidth: 102, frameHeight: 116});
+		this.load.image('tree2','./assets/imagenes/obstacles/tree2.png');
 		// Obstacles
 		this.load.spritesheet('asteroid', './assets/imagenes/obstacles/asteroid.png', { frameWidth: 199, frameHeight: 201});
 		this.load.spritesheet('island', './assets/imagenes/obstacles/island.png', { frameWidth: 194, frameHeight: 254});
-		this.load.image('boat', './assets/imagenes/obstacles/boat.png');
+		this.load.spritesheet('boat', './assets/imagenes/obstacles/boatAnimation.png', { frameWidth: 75, frameHeight: 90});
 		this.load.spritesheet('balloon', './assets/imagenes/obstacles/balloonAnimation.png', { frameWidth: 99, frameHeight: 154});
 		// Pups
 	 	this.load.image('spacePup', './assets/imagenes/objetos/astronaut.png'); 
@@ -103,23 +106,29 @@ export default class Tierra extends Phaser.Scene
 	}
 
 	HUD() {
-		this.labelFish = this.add.text(1105, 20, this.cloud.getCoins(), { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
-		this.labelScore = this.add.text(400, 20, this.cloud.getScore(), { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
+		// texto e imagen de las monedas
+		this.labelFish = this.add.text(1105, 10, this.cloud.getCoins(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#00FF00' });
+		this.imageFish = this.add.image(1075, 30, 'goldenFish').setScale(0.7,0.7).setRotation(0.6);
+		// texto score
+		this.labelScore = this.add.text(370, 20, this.cloud.getScore(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#00FF00' }); 
 		this.highScore = this.add.text(700, 20, 'HighScore: ' +this.cloud.getHighScore(), { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
 		this.pavana.loadLife();
 		
 		this.labelFish.setDepth(2);
 		this.labelScore.setDepth(2);
+		this.imageFish.setDepth(2);
 	}
 
 	updateLabelFish() { // actualización al coger una moneda
 		this.labelFish.destroy();
-		this.labelFish = this.add.text(1105, 20, this.cloud.getCoins(), { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
+		this.labelFish = this.add.text(1105, 10, this.cloud.getCoins(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#00FF00' });
+		this.imageFish.destroy();
+		this.imageFish = this.add.image(1075, 30, 'goldenFish').setScale(0.7,0.7).setRotation(0.6);
 	}
 
 	updateLabelScore(){ // actualización del score durante la run
 		this.labelScore.destroy();
-		this.labelScore = this.add.text(400, 20, 'Score: '+ this.cloud.getScore(), { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
+		this.labelScore = this.add.text(370, 20, 'Score: '+ this.cloud.getScore(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#00FF00' });
 	}
 
 	cleanObjects()
@@ -135,21 +144,21 @@ export default class Tierra extends Phaser.Scene
 		let x=7;
 		if(this.id=='roadId')
 		{
-			if (x < 4 && this.cloud.getSpace() == 1) { this.elementsArray.push(new Pups(this,1200,500,'spacePup'));}
-			else if (x >= 4 && x < 7 && this.cloud.getSea() == 1) { this.elementsArray.push(new Pups(this,1200,500,'seaPup'));}
-			else if (x == 7 && this.cloud.getBeach() == 1) { this.elementsArray.push(new Pups(this,1200,500,'hawaiiPup'));}
+			if (x < 4 && this.cloud.getSpace() == 1) { this.elementsArray.push(new Pups(this,Phaser.Math.Between(50, 1150),-70,'spacePup'));}
+			else if (x >= 4 && x < 7 && this.cloud.getSea() == 1) { this.elementsArray.push(new Pups(this,Phaser.Math.Between(50, 1150),-70,'seaPup'));}
+			else if (x == 7 && this.cloud.getBeach() == 1) { this.elementsArray.push(new Pups(this,Phaser.Math.Between(50, 1150),-70,'hawaiiPup'));}
 		}
 		else if(this.id=='spaceId')
 		{
-			if (x < 4 && this.cloud.getSea() == 1) { this.elementsArray.push(new Pups(this,1200,500,'seaPup'));}
-			else if (x >= 4 && x <7) { this.elementsArray.push(new Pups(this,1200,500,'roadPup'));}
-			else if (x == 7 && this.cloud.getBeach() == 1) { this.elementsArray.push(new Pups(this,1200,500,'hawaiiPup'));}
+			if (x < 4 && this.cloud.getSea() == 1) { this.elementsArray.push(new Pups(this,Phaser.Math.Between(50, 1150),-70,'seaPup'));}
+			else if (x >= 4 && x <7) { this.elementsArray.push(new Pups(this,Phaser.Math.Between(50, 1150),-70,'roadPup'));}
+			else if (x == 7 && this.cloud.getBeach() == 1) { this.elementsArray.push(new Pups(this,Phaser.Math.Between(50, 1150),-70,'hawaiiPup'));}
 		}
 		else if(this.id=='seaId')
 		{
-			if (x < 4 && this.cloud.getSpace() == 1) { this.elementsArray.push(new Pups(this,1200,500,'spacePup'));}
-			else if (x >= 4 && x < 7) { this.elementsArray.push(new Pups(this,1200,500,'roadPup'));}
-			else if (x == 7 && this.cloud.getBeach() == 1) { this.elementsArray.push(new Pups(this,1200,500,'hawaiiPup'));}
+			if (x < 4 && this.cloud.getSpace() == 1) { this.elementsArray.push(new Pups(this,Phaser.Math.Between(50, 1150),-70,'spacePup'));}
+			else if (x >= 4 && x < 7) { this.elementsArray.push(new Pups(this,Phaser.Math.Between(50, 1150),-70,'roadPup'));}
+			else if (x == 7 && this.cloud.getBeach() == 1) { this.elementsArray.push(new Pups(this,Phaser.Math.Between(50, 1150),-70,'hawaiiPup'));}
 		}
 	}
 
@@ -170,10 +179,11 @@ export default class Tierra extends Phaser.Scene
 		let x = Phaser.Math.Between(1,5);
 		if(this.id == 'roadId')
 		{
-			//if (x == 1) {new Car(this,1200,(Phaser.Math.Between(0,1)*40)+440);}
+			if (x == 1) {new Car(this,1200,(Phaser.Math.Between(0,1)*40)+440);}
 			if (x == 2) {this.elementsArray.push(new Balloon(this,1200,100));}
-			//else if (x == 3) {new Eagle(this,1200,100);}	
-			else if (x == 4) {this.elementsArray.push(new Plane(this,1200,Phaser.Math.Between(100,400)));}	
+			else if (x == 3) {new Eagle(this,1200,100);}
+			else if (x == 4) {this.elementsArray.push(new Plane(this,1200,Phaser.Math.Between(100,400)));}
+			else if (x == 5) {new Tree(this,1200,500);}
 			else this.enemyRandom();
 		}
 		else if(this.id =='spaceId')

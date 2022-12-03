@@ -24,8 +24,19 @@ export default class Goldenfish extends Phaser.GameObjects.Sprite {
 			yoyo: true,
            
         });*/
+		
+		
+		this.particles = this.scene.add.particles('gold').setDepth(0);
+
+		this.particles.createEmitter({
+			
+			speed: 50,
+			scale: { start: 0.5, end: 0.5 },	
+			blendMode: 'ADD',
+			follow: this
+		});
 	}
-    
+
 	preUpdate() 
 	{	
 		if(this.move)
@@ -47,6 +58,7 @@ export default class Goldenfish extends Phaser.GameObjects.Sprite {
             this.scene.cloud.pickUpCoins();
 			this.scene.updateLabelFish();
 			this.destroy();	
+			this.particles.destroy();
 		}
 	}
 }
