@@ -124,6 +124,7 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 		this.calculateVelocity();
 		this.animationInput();
 	    this.body.setVelocity(this.speedX, this.speedY); // Aplicamos los valores de velocidad
+
 		if(!this.a.isDown&&!this.d.isDown&&!this.w.isDown&&!this.s.isDown)
 		{
 			console.log('no move no party');
@@ -133,6 +134,10 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 				this.removeLife();
 				this.noMove=0;
 			}
+		}
+		else
+		{
+			this.noMove=0;
 		}
 	}
 }
