@@ -118,6 +118,7 @@ export default class Tierra extends Phaser.Scene
 		
 		this.labelFish.setDepth(2);
 		this.labelScore.setDepth(2);
+		this.highScore.setDepth(2);
 		this.imageFish.setDepth(2);
 	}
 
@@ -281,7 +282,7 @@ export default class Tierra extends Phaser.Scene
 		if(this.hawaiiPlace)
 		{
 			this.hawaiiTime+=dt/1000;
-			if(parseInt(this.hawaiiTime)>=20||!this.hawaiiCoins)
+			if(parseInt(this.hawaiiTime)>=10||!this.hawaiiCoins)
 			{
 				this.transition.transition('roadPup');
 				this.hawaiiPlace=false;
