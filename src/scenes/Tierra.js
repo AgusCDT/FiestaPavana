@@ -91,13 +91,15 @@ export default class Tierra extends Phaser.Scene
 		this.timerE = 0;
 		this.timerP = 0;
 		this.timerC = 0;	
-		this.playTime=0;
+		this.gameTime=0;
 		this.transition = new Transition(this);
 		this.id ='road';
-		this.limitE=100;
-		this.limitP=Phaser.Math.Between(1,10)*100;
-		this.limitC=Phaser.Math.Between(1,10)*100;
+		this.limitE=Phaser.Math.Between(1,10);
+		this.limitP=Phaser.Math.Between(2,10);
+		this.limitC=Phaser.Math.Between(4,10);
 		this.elementsArray = [];
+		this.hawaiiPlace=false;
+		this.hawaiiTime=0;
 		//this.coin = this.make.sprite(1105, 20, 'goldenFish');
 		this.HUD();
 		//this.events.on('goldenParticle', particle);
@@ -109,7 +111,7 @@ export default class Tierra extends Phaser.Scene
 		this.imageFish = this.add.image(1075, 30, 'goldenFish').setScale(0.7,0.7).setRotation(0.6);
 		// texto score
 		this.labelScore = this.add.text(370, 20, this.cloud.getScore(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#00FF00' }); 
-		
+		this.highScore = this.add.text(700, 20, 'HighScore: ' +this.cloud.getHighScore(), { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
 		this.pavana.loadLife();
 		
 		this.labelFish.setDepth(2);
@@ -138,7 +140,8 @@ export default class Tierra extends Phaser.Scene
 	pupRandom()
 	{
 		this.id=this.parallax.checkId();
-		let x = Phaser.Math.Between(1,7);
+		//let x = Phaser.Math.Between(1,7);
+		let x=7;
 		if(this.id=='roadId')
 		{
 			if (x < 4 && this.cloud.getSpace() == 1) { this.elementsArray.push(new Pups(this,Phaser.Math.Between(50, 1150),-70,'spacePup'));}
@@ -157,12 +160,6 @@ export default class Tierra extends Phaser.Scene
 			else if (x >= 4 && x < 7) { this.elementsArray.push(new Pups(this,Phaser.Math.Between(50, 1150),-70,'roadPup'));}
 			else if (x == 7 && this.cloud.getBeach() == 1) { this.elementsArray.push(new Pups(this,Phaser.Math.Between(50, 1150),-70,'hawaiiPup'));}
 		}
-		else if(this.id=='hawaiiId')
-		{
-			if ((x == 1 || x == 2 ) && this.cloud.getSpace() == 1) { this.elementsArray.push(new Pups(this,Phaser.Math.Between(50, 1150),-70,'spacePup'));}
-			else if (x == 3 || x == 4) { this.elementsArray.push(new Pups(this,Phaser.Math.Between(50, 1150),-70,'roadPup'));}
-			else if ((x == 5 || x == 6) && this.cloud.getSea() == 1) { this.elementsArray.push(new Pups(this,Phaser.Math.Between(50, 1150),-70,'seaPup'));}
-		}
 	}
 
 	coinRandom() 
@@ -172,15 +169,14 @@ export default class Tierra extends Phaser.Scene
 		{
 			//this.goldenfish = new Goldenfish(this,1200,Phaser.Math.Between(50,this.height - 50),'goldenFish');
 			//this.scene.events.emit('goldenParticle');
-			this.elementsArray.push(this.goldenfish = new Goldenfish(this,1200,Phaser.Math.Between(50,this.height - 50),'goldenFish'));
+			this.elementsArray.push(new Goldenfish(this,1200,Phaser.Math.Between(50,this.height - 50),'goldenFish',false));
 		}
 	}
 	
 	enemyRandom()
 	{
 		this.id = this.parallax.checkId();
-		// let x = Phaser.Math.Between(1,5);
-		let x = 2;
+		let x = Phaser.Math.Between(1,5);
 		if(this.id == 'roadId')
 		{
 			if (x == 1) {new Car(this,1200,(Phaser.Math.Between(0,1)*40)+440);}
@@ -206,6 +202,18 @@ export default class Tierra extends Phaser.Scene
 		}
 	}
 
+	goldenHawaii()
+	{
+		for(let i=0; i<5;i++)
+		{
+			for(let j=0;j<5;j++)
+			{
+				new Goldenfish(this,400+i*100,200+j*50,'goldenFish',true);
+			}
+		}
+		this.hawaiiPlace=true;
+	}
+
 	soundManager(){
         this.id = this.parallax.checkId();
         if(this.id =='roadId')
@@ -228,33 +236,43 @@ export default class Tierra extends Phaser.Scene
         this.audio.play();
         this.audio.setLoop(true);
     }
-	update() 
+	update(t,dt) 
 	{	
+		this.gameTime+=dt;
 		this.parallax.update();
 		this.updateLabelScore(); 
-		this.timerE=this.timerE+1;
-		this.timerP=this.timerP+1;
-		this.timerC=this.timerC+1;
-		this.playTime+=1;
-		if(this.timerE>=this.limitE)
+		this.timerE+=dt/1000;
+		this.timerP+=dt/1000;
+		this.timerC+=dt/1000;
+		if(parseInt(this.timerE)>=this.limitE)
 		{
 			this.enemyRandom();
 			this.timerE=0;
-			this.limitE=Phaser.Math.Between(1,10)*100-(this.playTime/200);
-			console.log(this.limitE);
+			this.limitE=Phaser.Math.Between(1,10);
 		}
-		if(this.timerP>=this.limitP) 
+		if(parseInt(this.timerP)>=this.limitP) 
 		{
 			this.pupRandom();
 			this.timerP=0;
-			this.limitP=Phaser.Math.Between(1,10)*100;
+			this.limitP=Phaser.Math.Between(2,10);
 		}
-		if(this.timerC>=200)
+		if(parseInt(this.timerC)>=this.limitC)
 		{
 			this.coinRandom();
 			this.timerC=0;
-			this.limitC=Phaser.Math.Between(1,10)*100;
-		}	
+			this.limitC=Phaser.Math.Between(4,10);
+		}
+		if(this.hawaiiPlace)
+		{
+			this.hawaiiTime+=dt/1000;
+			console.log(parseInt(this.hawaiiTime));
+			if(parseInt(this.hawaiiTime)>=10)
+			{
+				this.scene.transition('roadPup');
+				console.log('time up');	
+				this.hawaiiPlace=false;
+			}
+		}
 	}
 }
 /*function particle () {

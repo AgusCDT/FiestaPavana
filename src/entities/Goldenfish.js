@@ -1,11 +1,12 @@
 
 
 export default class Goldenfish extends Phaser.GameObjects.Sprite {
-    constructor(scene, x, y, filename) 
+    constructor(scene, x, y, filename,move) 
 	{
 		super(scene, x, y, filename);
 		this.x = x;
 		this.y = y;
+		this.move=move;
 		this.scene.goldenfish = this;
 		this.scene.add.existing(this);
     	this.scene.physics.add.existing(this);
@@ -38,7 +39,14 @@ export default class Goldenfish extends Phaser.GameObjects.Sprite {
 
 	preUpdate() 
 	{	
-		this.body.setVelocity(this.speedX,this.speedY);    
+		if(this.move)
+		{
+			this.body.setVelocity(0,0);
+		}
+		else
+		{
+			this.body.setVelocity(this.speedX,this.speedY);
+		}		    
 		//if (this.scene.physics.overlap(this.scene.pavana, this)) {this.colision();}
 		this.colision();
 	}

@@ -177,4 +177,8 @@ export default class Cloud {
     getScore() {
         return this.score;
     }
+
+    getHighScore() {
+        return this.highScore;
+    }
 }
