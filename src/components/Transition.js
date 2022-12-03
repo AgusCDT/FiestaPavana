@@ -4,6 +4,7 @@ export default class Transition extends Phaser.GameObjects.Sprite{
 	// cambiando al escenario elegido
 	transition(pup){
 		
+		this.scene.cleanObjects();
 		if(pup == 'spacePup')
 		{
 			this.scene.parallax.changeBackground('spaceId', 'space_1', 'space_2', 'planets_1', 'planets_2');
@@ -19,8 +20,9 @@ export default class Transition extends Phaser.GameObjects.Sprite{
 		else if(pup == 'hawaiiPup')
 		{
 			this.scene.parallax.changeBackground('hawaiiId', 'hawaii');
+			this.scene.goldenHawaii();
 		}
-		this.scene.cleanObjects();
+		
 		this.fadeOut();
 	}
 

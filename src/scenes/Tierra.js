@@ -52,7 +52,7 @@ export default class Tierra extends Phaser.Scene
 		this.load.spritesheet('pavanaRight', './assets/imagenes/PavanaRightAnimation.png', { frameWidth: 75, frameHeight: 39});
 		this.load.spritesheet('pavanaLeft', './assets/imagenes/PavanaLeftAnimation.png', { frameWidth: 75, frameHeight: 39});
 		// Enemies
-		this.load.image('car', './assets/imagenes/enemigos/car.png');
+		this.load.spritesheet('car', './assets/imagenes/enemigos/car.png', { frameWidth: 175, frameHeight: 100});
 		this.load.spritesheet('ufo', './assets/imagenes/enemigos/UFO.png', { frameWidth: 100, frameHeight: 100});
 		this.load.spritesheet('eagle', './assets/imagenes/enemigos/eagleAnimation.png', { frameWidth: 79, frameHeight: 77});
 		this.load.spritesheet('dolphin', './assets/imagenes/enemigos/delfin.png', { frameWidth: 90, frameHeight: 90});
@@ -99,7 +99,9 @@ export default class Tierra extends Phaser.Scene
 		this.limitC=Phaser.Math.Between(4,10);
 		this.elementsArray = [];
 		this.hawaiiPlace=false;
+		this.hawaiiCoins=false;
 		this.hawaiiTime=0;
+		this.coinsCounterHawaii=0;
 		//this.coin = this.make.sprite(1105, 20, 'goldenFish');
 		this.HUD();
 		//this.events.on('goldenParticle', particle);
@@ -140,8 +142,7 @@ export default class Tierra extends Phaser.Scene
 	pupRandom()
 	{
 		this.id=this.parallax.checkId();
-		//let x = Phaser.Math.Between(1,7);
-		let x=7;
+		let x = Phaser.Math.Between(1,7);
 		if(this.id=='roadId')
 		{
 			if (x < 4 && this.cloud.getSpace() == 1) { this.elementsArray.push(new Pups(this,Phaser.Math.Between(50, 1150),-70,'spacePup'));}
@@ -164,12 +165,15 @@ export default class Tierra extends Phaser.Scene
 
 	coinRandom() 
 	{
-		let coinProbability = Phaser.Math.Between(1,3);
-		if (coinProbability == 1) 
+		if(this.id!='hawaiiId')
 		{
-			//this.goldenfish = new Goldenfish(this,1200,Phaser.Math.Between(50,this.height - 50),'goldenFish');
-			//this.scene.events.emit('goldenParticle');
-			this.elementsArray.push(new Goldenfish(this,1200,Phaser.Math.Between(50,this.height - 50),'goldenFish',false));
+			let coinProbability = Phaser.Math.Between(1,3);
+			if (coinProbability == 1) 
+			{
+				//this.goldenfish = new Goldenfish(this,1200,Phaser.Math.Between(50,this.height - 50),'goldenFish');
+				//this.scene.events.emit('goldenParticle');
+				this.elementsArray.push(new Goldenfish(this,1200,Phaser.Math.Between(50,this.height - 50),'goldenFish',false));
+			}
 		}
 	}
 	
@@ -179,11 +183,11 @@ export default class Tierra extends Phaser.Scene
 		let x = Phaser.Math.Between(1,5);
 		if(this.id == 'roadId')
 		{
-			if (x == 1) {new Car(this,1200,(Phaser.Math.Between(0,1)*40)+440);}
-			if (x == 2) {this.elementsArray.push(new Balloon(this,1200,100));}
-			else if (x == 3) {new Eagle(this,1200,100);}
+			if (x == 1) {this.elementsArray.push(new Car(this,1200,(Phaser.Math.Between(0,1)*40)+440));}
+			else if (x == 2) {this.elementsArray.push(new Balloon(this,1200,100));}
+			else if (x == 3) {this.elementsArray.push(new Eagle(this,1200,100));}
 			else if (x == 4) {this.elementsArray.push(new Plane(this,1200,Phaser.Math.Between(100,400)));}
-			else if (x == 5) {new Tree(this,1200,500);}
+			else if (x == 5) {this.elementsArray.push(new Tree(this,1200,500));}
 			else this.enemyRandom();
 		}
 		else if(this.id =='spaceId')
@@ -204,14 +208,26 @@ export default class Tierra extends Phaser.Scene
 
 	goldenHawaii()
 	{
+		this.hawaiiCoins=true;
 		for(let i=0; i<5;i++)
 		{
 			for(let j=0;j<5;j++)
 			{
-				new Goldenfish(this,400+i*100,200+j*50,'goldenFish',true);
+				this.elementsArray.push(new Goldenfish(this,400+i*100,200+j*50,'goldenFish',true));
+				this.coinsCounterHawaii=(i+1)*(j+1)	;
 			}
 		}
 		this.hawaiiPlace=true;
+	}
+
+	coinsHawaii()
+	{
+		this.coinsCounterHawaii-=1;
+		console.log(this.coinsCounterHawaii);		
+		if(this.coinsCounterHawaii==0)
+		{
+			this.hawaiiCoins=false;
+		}
 	}
 
 	soundManager(){
@@ -238,7 +254,7 @@ export default class Tierra extends Phaser.Scene
     }
 	update(t,dt) 
 	{	
-		this.gameTime+=dt;
+		this.gameTime+=dt/1000;
 		this.parallax.update();
 		this.updateLabelScore(); 
 		this.timerE+=dt/1000;
@@ -265,12 +281,11 @@ export default class Tierra extends Phaser.Scene
 		if(this.hawaiiPlace)
 		{
 			this.hawaiiTime+=dt/1000;
-			console.log(parseInt(this.hawaiiTime));
-			if(parseInt(this.hawaiiTime)>=10)
+			if(parseInt(this.hawaiiTime)>=20||!this.hawaiiCoins)
 			{
-				this.scene.transition('roadPup');
-				console.log('time up');	
+				this.transition.transition('roadPup');
 				this.hawaiiPlace=false;
+				this.hawaiiTime=0;	
 			}
 		}
 	}
