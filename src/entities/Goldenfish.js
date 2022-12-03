@@ -55,6 +55,7 @@ export default class Goldenfish extends Phaser.GameObjects.Sprite {
 	{
 		if(this.scene.physics.overlap(this.scene.pavana, this))
 		{
+			this.scene.coinsHawaii();
             this.scene.cloud.pickUpCoins();
 			this.scene.updateLabelFish();
 			this.destroy();	
