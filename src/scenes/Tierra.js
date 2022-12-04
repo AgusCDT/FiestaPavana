@@ -102,9 +102,7 @@ export default class Tierra extends Phaser.Scene
 		this.hawaiiCoins=false;
 		this.hawaiiTime=0;
 		this.coinsCounterHawaii=0;
-		//this.coin = this.make.sprite(1105, 20, 'goldenFish');
 		this.HUD();
-		//this.events.on('goldenParticle', particle);
 	}
 
 	HUD() {
@@ -171,8 +169,6 @@ export default class Tierra extends Phaser.Scene
 			let coinProbability = Phaser.Math.Between(1,3);
 			if (coinProbability == 1) 
 			{
-				//this.goldenfish = new Goldenfish(this,1200,Phaser.Math.Between(50,this.height - 50),'goldenFish');
-				//this.scene.events.emit('goldenParticle');
 				this.elementsArray.push(new Goldenfish(this,1200,Phaser.Math.Between(50,this.height - 50),'goldenFish',false));
 			}
 		}
@@ -291,12 +287,3 @@ export default class Tierra extends Phaser.Scene
 		}
 	}
 }
-/*function particle () {
-	var particles = this.scene.add.particles('gold');
-
-var emitter = particles.createEmitter();
-
-emitter.setPosition(200, 200);
-emitter.setSpeed(100);
-emitter.setBlendMode(Phaser.BlendModes.ADD);
-}*/
