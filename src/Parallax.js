@@ -39,8 +39,7 @@ export default class Parallax extends Phaser.GameObjects.Sprite{
 			this.parallax2.tilePositionX += 0.2;
 			this.parallax3.tilePositionX += 0.4;
 			this.parallax4.tilePositionX += 0.75;
-		}
-		
+		}	
 	}
 
 	checkId()

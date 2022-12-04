@@ -14,22 +14,10 @@ export default class Goldenfish extends Phaser.GameObjects.Sprite {
 		this.speedY = 0;
 		this.filename = filename;
 		this.setDepth(1);
-		this.body.setSize(50, 35).setOffset(5, 5);		
-		//Tween
-        /*var tween = this.scene.tweens.add({
-            targets:  this,
-            duration: 3000,
-            ease: 'Linear',         
-            repeat: -1,
-			yoyo: true,
-           
-        });*/
-		
-		
-		this.particles = this.scene.add.particles('gold').setDepth(0);
+		this.body.setSize(50, 35).setOffset(5, 5);	
 
+		this.particles = this.scene.add.particles('gold').setDepth(0);
 		this.particles.createEmitter({
-			
 			speed: 50,
 			scale: { start: 0.5, end: 0.5 },	
 			blendMode: 'ADD',

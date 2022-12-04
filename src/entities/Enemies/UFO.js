@@ -19,7 +19,7 @@ export default class UFO extends Enemies {
     }
 
     preUpdate(t, dt){
-        //movement...
+        // Movimiento
         this.posX=parseInt(this.x);  
         if(this.posX==1000)
         {

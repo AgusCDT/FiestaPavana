@@ -1,10 +1,12 @@
 import Enemies from "./Enemies.js";
+
 export default class Tree extends Enemies {
     constructor(scene, x, y) {
-        super(scene,600, 500);
+        super(scene,x, y);
         this.speedX = -75;
         this.speedY = 0;
-        this.body.setSize(102, 116).setOffset(0, 0);
+        this.body.setSize(85, 100).setOffset(10, 10);
+        this.setScale(1.5, 1.5);
         // Animación
         this.scene.anims.create({
 			key: 'treeAnimation',
@@ -14,9 +16,10 @@ export default class Tree extends Enemies {
 		});
 		this.play('treeAnimation');
     }
+    
     preUpdate(t, dt){
+        // Movimiento
         this.body.setVelocity(this.speedX, this.speedY);  
-        super.preUpdate(t, dt);
-        
+        super.preUpdate(t, dt); 
     }
 }

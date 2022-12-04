@@ -19,6 +19,7 @@ export default class Balloon extends Enemies {
     }
 
     preUpdate(t, dt){
+        // Movimiento
         this.body.setVelocity(this.speedX, this.speedY);
         super.preUpdate(t, dt);
     }

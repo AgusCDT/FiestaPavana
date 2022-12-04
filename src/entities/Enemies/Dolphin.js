@@ -28,9 +28,8 @@ export default class Dolphin extends Enemies {
 		this.play('dolphinAnimation');
     }
 
-    preUpdate(t, dt){
-        
-        //movement...
+    preUpdate(t, dt){        
+        // Movimiento
         if(this.y >= 550)
         {
             this.speedY *= -1;
