@@ -1,5 +1,3 @@
-
-
 export default class Goldenfish extends Phaser.GameObjects.Sprite {
     constructor(scene, x, y, filename) 
 	{

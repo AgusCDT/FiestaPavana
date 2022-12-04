@@ -1,5 +1,4 @@
 import Enemies from "./Enemies.js";
-
 export default class UFO extends Enemies {
     constructor(scene, x, y) {
         super(scene, x, y);
