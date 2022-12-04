@@ -129,10 +129,15 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 		{
 			console.log('no move no party');
 			this.noMove+=dt/1000;
+			
 			if(parseInt(this.noMove)>=5)
 			{
-				this.removeLife();
-				this.noMove=0;
+				if (this.lifeImages.length > 0){
+					this.removeLife();
+					this.noMove=0;
+				}
+				else this.scene.scene.start('GameOver', {cloud: this.scene.cloud});
+				
 			}
 		}
 		else
