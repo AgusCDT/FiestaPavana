@@ -11,7 +11,6 @@ export default class GameOver extends Phaser.Scene{
 	}
 
     preload() {
-		
 		this.load.image('GameOver', './assets/escenarios/Carretera/GameOver.jpg');	 	
 	 	this.load.spritesheet('playbutton', './assets/componentes/BotonPlay.png', { frameWidth: 176, frameHeight: 93});
 		this.load.spritesheet('shopbutton', './assets/componentes/BotonShop.png', { frameWidth: 176, frameHeight: 93});
