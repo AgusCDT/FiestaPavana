@@ -114,7 +114,7 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 		super.preUpdate(t, dt);
 		var place = this.scene.parallax.checkId();
 		if (place != 'hawaiiId') {
-			this.score += Math.round(Math.round(dt) / 2);
+			this.score += Math.round((dt / 2) * this.scene.cloud.getMultiplicator());
 		}
 		this.scene.cloud.updateScore(this.score);
 
@@ -125,7 +125,7 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 		this.animationInput();
 	    this.body.setVelocity(this.speedX, this.speedY); // Aplicamos los valores de velocidad
 
-		if(!this.a.isDown&&!this.d.isDown&&!this.w.isDown&&!this.s.isDown)
+		if(!this.a.isDown&&!this.d.isDown&&!this.w.isDown&&!this.s.isDown) // Esto lo ha hecho el gilipollas de cao
 		{
 			console.log('no move no party');
 			this.noMove+=dt/1000;
