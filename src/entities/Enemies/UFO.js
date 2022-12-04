@@ -6,51 +6,39 @@ export default class UFO extends Enemies {
         this.speedY = 0;
         this.posX=x;
         this.posY=y;
-        this.body.setSize(90, 45).setOffset(10, 5);
-        //Tween
-        /*var tween = this.scene.tweens.add({
-            targets:  this,
-            duration: 2000,
-            ease: 'Linear',         
-            repeat: -1,
-            yoyo: true,
-            angle: {
-                getStart: () => 0, 
-                getEnd: () => -90 
-            },
-        });*/
+        this.body.setSize(90, 50).setOffset(5, 30);
         // Animación
         this.scene.anims.create({
 			key: 'ufoAnimation',
-			frames: scene.anims.generateFrameNumbers('ufo', { start: 0, end: 1}),
-			frameRate: 1,
+			frames: scene.anims.generateFrameNumbers('ufo', { start: 0, end: 3}),
+			frameRate: 10,
 			repeat: -1
 		});
 		this.play('ufoAnimation');
     }
 
     preUpdate(t, dt){
-        //movement...
-        this.posX=this.x;  
+        // Movimiento
+        this.posX=parseInt(this.x);  
         if(this.posX==1000)
         {
-            this.body.reset(this.posX-1,Phaser.Math.Between(100,500));
+            this.body.reset(this.posX+Phaser.Math.Between(0,200)-100,Phaser.Math.Between(100,500));
         }
-        else if(this.posX==800)
+        if(this.posX==800)
         {
-            this.body.reset(this.posX-1,Phaser.Math.Between(100,500));
+            this.body.reset(this.posX+Phaser.Math.Between(0,200)-100,Phaser.Math.Between(100,500));
         }
-        else if(this.posX==600)
+        if(this.posX==600)
         {
-            this.body.reset(this.posX-1,Phaser.Math.Between(100,500));
+            this.body.reset(this.posX+Phaser.Math.Between(0,200)-100,Phaser.Math.Between(100,500));
         }
-        else if(this.posX==400)
+        if(this.posX==400)
         {
-            this.body.reset(this.posX-1,Phaser.Math.Between(100,500));
+            this.body.reset(this.posX+Phaser.Math.Between(0,200)-100,Phaser.Math.Between(100,500));
         }
-        else if(this.posX==200)
+        if(this.posX==200)
         {
-            this.body.reset(this.posX-1,Phaser.Math.Between(100,500));
+            this.body.reset(this.posX+Phaser.Math.Between(0,200)-100,Phaser.Math.Between(100,500));
         } 
 
         this.body.setVelocity(this.speedX, this.speedY);

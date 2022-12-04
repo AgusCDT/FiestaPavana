@@ -5,19 +5,19 @@ export default class Car extends Enemies {
         super(scene, x, y);
         this.speedX = -75;
         this.speedY = 0;
-        this.body.setSize(90, 45).setOffset(10, 5);
+        this.body.setSize(90, 50).setOffset(12,40);
         // Animación
         this.scene.anims.create({
 			key: 'carAnimation',
-			frames: scene.anims.generateFrameNumbers('car', { start: 0, end: 2}),
-			frameRate: 2,
+			frames: scene.anims.generateFrameNumbers('car', { start: 0, end: 3}),
+			frameRate: 10  ,
 			repeat: -1
 		});
 		this.play('carAnimation');
     }
 
     preUpdate(t, dt) {    
-        //movement...
+        // Movimiento
         this.body.setVelocity(this.speedX, this.speedY);
         super.preUpdate(t, dt);  
     }

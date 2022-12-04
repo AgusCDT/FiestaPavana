@@ -8,25 +8,25 @@ export default class Button {
     }
 
     create() {
-        this.Button = this.relatedScene.add.sprite(this.x, this.y, this.image).setInteractive();
+        this.button = this.relatedScene.add.sprite(this.x, this.y, this.image).setInteractive();
   
-        this.Button.on('pointerover', () => {
+        this.button.on('pointerover', () => {
             if (this.image == 'playbutton' || this.image == 'menubutton' || this.image == 'shopbutton'){
-                this.Button.setFrame(1);
+                this.button.setFrame(1);
             }
         });
-        this.Button.on('pointerout', () => {
+        this.button.on('pointerout', () => {
             if (this.image == 'playbutton' || this.image == 'menubutton' || this.image == 'shopbutton'){
-                this.Button.setFrame(0);
+                this.button.setFrame(0);
             }
         });
-        this.Button.on('pointerdown', () => {
+        this.button.on('pointerdown', () => {
             this.ClickButton();
             if (this.image != 'playbutton' && this.image != 'menubutton' && this.image != 'shopbutton'){
                 this.relatedScene.updateLabel();
             }
         });
-        this.Button.on('pointerdown', function() {
+        this.button.on('pointerdown', function() {
             this.scene.tweens.add(
                 {
                     targets: this,
@@ -37,7 +37,7 @@ export default class Button {
                 }
             );
         });
-        this.Button.on('pointerover', function() {
+        this.button.on('pointerover', function() {
             this.scene.tweens.add(
                 {
                     targets: this,
@@ -48,7 +48,7 @@ export default class Button {
                 }
             );
         });
-        this.Button.on('pointerout', function() {
+        this.button.on('pointerout', function() {
             this.scene.tweens.add(
                 {
                     targets: this,

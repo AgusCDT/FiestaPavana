@@ -20,7 +20,8 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
         this.a = this.scene.input.keyboard.addKey('A');
         this.s = this.scene.input.keyboard.addKey('S');
         this.d = this.scene.input.keyboard.addKey('D');
-		this.body.setSize(60, 39).setOffset(0, 0);
+		this.body.setSize(55, 30).setOffset(10, 5);
+		this.noMove=0;
 		//Animación
 		this.scene.anims.create({
 			key: 'pavanaRightAnimation',
@@ -123,5 +124,25 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 		this.calculateVelocity();
 		this.animationInput();
 	    this.body.setVelocity(this.speedX, this.speedY); // Aplicamos los valores de velocidad
+
+		if(!this.a.isDown&&!this.d.isDown&&!this.w.isDown&&!this.s.isDown)
+		{
+			console.log('no move no party');
+			this.noMove+=dt/1000;
+			
+			if(parseInt(this.noMove)>=5)
+			{
+				if (this.lifeImages.length > 0){
+					this.removeLife();
+					this.noMove=0;
+				}
+				else this.scene.scene.start('GameOver', {cloud: this.scene.cloud});
+				
+			}
+		}
+		else
+		{
+			this.noMove=0;
+		}
 	}
 }

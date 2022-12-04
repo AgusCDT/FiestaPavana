@@ -5,7 +5,8 @@ export default class Eagle extends Enemies {
         super(scene, x, y);
         this.speedX = -75;
         this.speedY = 0;
-        this.body.setSize(77, 79).setOffset(5, 0);
+        this.body.setSize(50, 45).setOffset(15, 25);
+        this.setScale(1.5, 1.5);
         // Animación
         this.scene.anims.create({
 			key: 'eagleAnimation',
@@ -17,7 +18,9 @@ export default class Eagle extends Enemies {
     }
 
     preUpdate(t, dt){
-        //movement...
+        // Movimiento
+        this.speedX -= 1;
+		this.speedY += 0.5;
         this.body.setVelocity(this.speedX, this.speedY);  
         super.preUpdate(t, dt);
     }

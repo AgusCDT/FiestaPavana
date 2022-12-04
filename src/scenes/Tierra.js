@@ -53,7 +53,7 @@ export default class Tierra extends Phaser.Scene
 		this.load.spritesheet('pavanaRight', './assets/imagenes/PavanaRightAnimation.png', { frameWidth: 75, frameHeight: 39});
 		this.load.spritesheet('pavanaLeft', './assets/imagenes/PavanaLeftAnimation.png', { frameWidth: 75, frameHeight: 39});
 		// Enemies
-		this.load.image('car', './assets/imagenes/enemigos/car.png');
+		this.load.spritesheet('car', './assets/imagenes/enemigos/car.png', { frameWidth: 175, frameHeight: 100});
 		this.load.spritesheet('ufo', './assets/imagenes/enemigos/UFO.png', { frameWidth: 100, frameHeight: 100});
 		this.load.spritesheet('eagle', './assets/imagenes/enemigos/eagleAnimation.png', { frameWidth: 79, frameHeight: 77});
 		this.load.spritesheet('dolphin', './assets/imagenes/enemigos/delfin.png', { frameWidth: 90, frameHeight: 90});
@@ -92,16 +92,18 @@ export default class Tierra extends Phaser.Scene
 		this.timerE = 0;
 		this.timerP = 0;
 		this.timerC = 0;	
-		this.playTime=0;
+		this.gameTime=0;
 		this.transition = new Transition(this);
 		this.id ='road';
-		this.limitE=100;
-		this.limitP=Phaser.Math.Between(1,10)*100;
-		this.limitC=Phaser.Math.Between(1,10)*100;
+		this.limitE=Phaser.Math.Between(1,10);
+		this.limitP=Phaser.Math.Between(2,10);
+		this.limitC=Phaser.Math.Between(4,10);
 		this.elementsArray = [];
-		//this.coin = this.make.sprite(1105, 20, 'goldenFish');
+		this.hawaiiPlace=false;
+		this.hawaiiCoins=false;
+		this.hawaiiTime=0;
+		this.coinsCounterHawaii=0;
 		this.HUD();
-		//this.events.on('goldenParticle', particle);
 	}
 
 	HUD() {
@@ -110,11 +112,12 @@ export default class Tierra extends Phaser.Scene
 		this.imageFish = this.add.image(1075, 30, 'goldenFish').setScale(0.7,0.7).setRotation(0.6);
 		// texto score
 		this.labelScore = this.add.text(370, 20, this.cloud.getScore(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#00FF00' }); 
-		
+		this.highScore = this.add.text(700, 20, 'HighScore: ' +this.cloud.getHighScore(), { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
 		this.pavana.loadLife();
 		
 		this.labelFish.setDepth(2);
 		this.labelScore.setDepth(2);
+		this.highScore.setDepth(2);
 		this.imageFish.setDepth(2);
 	}
 
@@ -158,53 +161,71 @@ export default class Tierra extends Phaser.Scene
 			else if (x >= 4 && x < 7) { this.elementsArray.push(new Pups(this,Phaser.Math.Between(50, 1150),-70,'roadPup'));}
 			else if (x == 7 && this.cloud.getBeach() == 1) { this.elementsArray.push(new Pups(this,Phaser.Math.Between(50, 1150),-70,'hawaiiPup'));}
 		}
-		else if(this.id=='hawaiiId')
-		{
-			if ((x == 1 || x == 2 ) && this.cloud.getSpace() == 1) { this.elementsArray.push(new Pups(this,Phaser.Math.Between(50, 1150),-70,'spacePup'));}
-			else if (x == 3 || x == 4) { this.elementsArray.push(new Pups(this,Phaser.Math.Between(50, 1150),-70,'roadPup'));}
-			else if ((x == 5 || x == 6) && this.cloud.getSea() == 1) { this.elementsArray.push(new Pups(this,Phaser.Math.Between(50, 1150),-70,'seaPup'));}
-		}
 	}
 
 	coinRandom() 
 	{
-		let coinProbability = Phaser.Math.Between(1,3);
-		if (coinProbability == 1) 
+		if(this.id!='hawaiiId')
 		{
-			//this.goldenfish = new Goldenfish(this,1200,Phaser.Math.Between(50,this.height - 50),'goldenFish');
-			//this.scene.events.emit('goldenParticle');
-			this.elementsArray.push(this.goldenfish = new Goldenfish(this,1200,Phaser.Math.Between(50,this.height - 50),'goldenFish'));
+			let coinProbability = Phaser.Math.Between(1,3);
+			if (coinProbability == 1) 
+			{
+				this.elementsArray.push(new Goldenfish(this,1200,Phaser.Math.Between(50,this.height - 50),'goldenFish',false));
+			}
 		}
 	}
 	
 	enemyRandom()
 	{
 		this.id = this.parallax.checkId();
-		// let x = Phaser.Math.Between(1,5);
-		let x = 6;
+		let x = Phaser.Math.Between(1,5);
 		if(this.id == 'roadId')
 		{
-			if (x == 1) {new Car(this,1200,(Phaser.Math.Between(0,1)*40)+440);}
-			if (x == 2) {this.elementsArray.push(new Balloon(this,1200,100));}
-			else if (x == 3) {new Eagle(this,1200,100);}
-			else if (x == 4) {this.elementsArray.push(new Plane(this,1200,Phaser.Math.Between(100,400)));}
-			else if (x == 5) {new Tree(this,1200,500);}
-			else if(x == 6) {new Sign(this,1200,450, 'sign');}
+			if (x == 1) {this.elementsArray.push(new Car(this,1200,(Phaser.Math.Between(0,1)*40)+440));}
+			else if (x == 2) {this.elementsArray.push(new Balloon(this,1200,Phaser.Math.Between(100,300)));}
+			else if (x == 3) {this.elementsArray.push(new Eagle(this,1200,Phaser.Math.Between(100,500)));}
+			else if (x == 4) {this.elementsArray.push(new Plane(this,1200,Phaser.Math.Between(100,400), 1));}
+			else if (x == 5) {this.elementsArray.push(new Tree(this,1200,500));}
+      else if(x == 6) {new Sign(this,1200,450, 'sign');}
 			else this.enemyRandom();
 		}
 		else if(this.id =='spaceId')
 		{
-			if (x == 1) {this.elementsArray.push(new Asteroid(this,1200,300));}
-			else if (x <= 5) {this.elementsArray.push(new UFO(this,1200,Phaser.Math.Between(100, 500)));}
+			if (x == 1) {this.elementsArray.push(new Asteroid(this,1200,Phaser.Math.Between(100,500)));}
+			else if (x <= 5) {this.elementsArray.push(new UFO(this,1200,Phaser.Math.Between(50, 550)));}
 			else this.enemyRandom(); 
 		}
 		else if(this.id =='seaId')
 		{
-			//if (x == 1) {new Boat(this,1200,Phaser.Math.Between(42,52)*10);}
-			if (x == 2) {this.elementsArray.push(new Plane(this,1200, Phaser.Math.Between(100, 400)));}
+			if (x == 1) {new Boat(this,1200,Phaser.Math.Between(42,52)*10);}
+			else if (x == 2) {this.elementsArray.push(new Dolphin(this,1200,550));}
 			else if (x == 3) {this.elementsArray.push(new Island(this,1200,440));}
-			else if(x == 4){this.elementsArray.push(new Dolphin(this,1200,550));}
+			else if(x == 4){this.elementsArray.push(new Plane(this,1200, Phaser.Math.Between(100, 400), 2));}
 			else this.enemyRandom();
+		}
+	}
+
+	goldenHawaii()
+	{
+		this.hawaiiCoins=true;
+		for(let i=0; i<5;i++)
+		{
+			for(let j=0;j<5;j++)
+			{
+				this.elementsArray.push(new Goldenfish(this,400+i*100,200+j*50,'goldenFish',true));
+				this.coinsCounterHawaii=(i+1)*(j+1)	;
+			}
+		}
+		this.hawaiiPlace=true;
+	}
+
+	coinsHawaii()
+	{
+		this.coinsCounterHawaii-=1;
+		console.log(this.coinsCounterHawaii);		
+		if(this.coinsCounterHawaii==0)
+		{
+			this.hawaiiCoins=false;
 		}
 	}
 
@@ -230,41 +251,41 @@ export default class Tierra extends Phaser.Scene
         this.audio.play();
         this.audio.setLoop(true);
     }
-	update() 
+	update(t,dt) 
 	{	
+		this.gameTime+=dt/1000;
 		this.parallax.update();
 		this.updateLabelScore(); 
-		this.timerE=this.timerE+1;
-		this.timerP=this.timerP+1;
-		this.timerC=this.timerC+1;
-		this.playTime+=1;
-		if(this.timerE>=this.limitE)
+		this.timerE+=dt/1000;
+		this.timerP+=dt/1000;
+		this.timerC+=dt/1000;
+		if(parseInt(this.timerE)>=this.limitE)
 		{
 			this.enemyRandom();
 			this.timerE=0;
-			this.limitE=Phaser.Math.Between(1,10)*100-(this.playTime/200);
-			console.log(this.limitE);
+			this.limitE=Phaser.Math.Between(1,10);
 		}
-		if(this.timerP>=this.limitP) 
+		if(parseInt(this.timerP)>=this.limitP) 
 		{
 			this.pupRandom();
 			this.timerP=0;
-			this.limitP=Phaser.Math.Between(1,10)*100;
+			this.limitP=Phaser.Math.Between(2,10);
 		}
-		if(this.timerC>=200)
+		if(parseInt(this.timerC)>=this.limitC)
 		{
 			this.coinRandom();
 			this.timerC=0;
-			this.limitC=Phaser.Math.Between(1,10)*100;
-		}	
+			this.limitC=Phaser.Math.Between(4,10);
+		}
+		if(this.hawaiiPlace)
+		{
+			this.hawaiiTime+=dt/1000;
+			if(parseInt(this.hawaiiTime)>=10||!this.hawaiiCoins)
+			{
+				this.transition.transition('roadPup');
+				this.hawaiiPlace=false;
+				this.hawaiiTime=0;	
+			}
+		}
 	}
 }
-/*function particle () {
-	var particles = this.scene.add.particles('gold');
-
-var emitter = particles.createEmitter();
-
-emitter.setPosition(200, 200);
-emitter.setSpeed(100);
-emitter.setBlendMode(Phaser.BlendModes.ADD);
-}*/

@@ -1,3 +1,5 @@
+//import Tierra from "./scenes/Tierra";
+
 export default class Parallax extends Phaser.GameObjects.Sprite{
 
 	constructor(scene)
@@ -27,16 +29,17 @@ export default class Parallax extends Phaser.GameObjects.Sprite{
 		this.id4 = id4;
 	}
 	update(){
-		if(this.id == 'hawaiiId'){
+		if(this.id == 'hawaiiId')
+		{
 			this.parallax1.tilePositionX = 0.0; // escenario estático
 		}
-		else{
+		else
+		{
 			this.parallax1.tilePositionX += 0.01;
 			this.parallax2.tilePositionX += 0.2;
 			this.parallax3.tilePositionX += 0.4;
 			this.parallax4.tilePositionX += 0.75;
-		}
-		
+		}	
 	}
 
 	checkId()
