@@ -183,7 +183,7 @@ export default class Tierra extends Phaser.Scene
 			if (x == 1) {this.elementsArray.push(new Car(this,1200,(Phaser.Math.Between(0,1)*40)+440));}
 			else if (x == 2) {this.elementsArray.push(new Balloon(this,1200,Phaser.Math.Between(100,300)));}
 			else if (x == 3) {this.elementsArray.push(new Eagle(this,1200,Phaser.Math.Between(100,500)));}
-			else if (x == 4) {this.elementsArray.push(new Plane(this,1200,Phaser.Math.Between(100,450)));}
+			else if (x == 4) {this.elementsArray.push(new Plane(this,1200,Phaser.Math.Between(100,400), 1));}
 			else if (x == 5) {this.elementsArray.push(new Tree(this,1200,500));}
 			else this.enemyRandom();
 		}
@@ -195,10 +195,10 @@ export default class Tierra extends Phaser.Scene
 		}
 		else if(this.id =='seaId')
 		{
-			//if (x == 1) {new Boat(this,1200,Phaser.Math.Between(42,52)*10);}
-			if (x == 2) {this.elementsArray.push(new Plane(this,1200, Phaser.Math.Between(100, 500)));}
+			if (x == 1) {new Boat(this,1200,Phaser.Math.Between(42,52)*10);}
+			else if (x == 2) {this.elementsArray.push(new Dolphin(this,1200,550));}
 			else if (x == 3) {this.elementsArray.push(new Island(this,1200,440));}
-			else if(x == 4){this.elementsArray.push(new Dolphin(this,1200,550));}
+			else if(x == 4){this.elementsArray.push(new Plane(this,1200, Phaser.Math.Between(100, 400), 2));}
 			else this.enemyRandom();
 		}
 	}

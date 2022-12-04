@@ -17,7 +17,7 @@ export default class Island extends Enemies {
     }
 
     preUpdate(t, dt){
-        //movement...
+        /// Movimiento
         this.body.setVelocity(this.speedX, this.speedY);  
         super.preUpdate(t, dt);
     }
