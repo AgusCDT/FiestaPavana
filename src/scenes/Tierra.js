@@ -53,6 +53,8 @@ export default class Tierra extends Phaser.Scene
 		// Pavana 
 		this.load.spritesheet('pavanaRight', './assets/imagenes/PavanaRightAnimation.png', { frameWidth: 75, frameHeight: 39});
 		this.load.spritesheet('pavanaLeft', './assets/imagenes/PavanaLeftAnimation.png', { frameWidth: 75, frameHeight: 39});
+		this.load.spritesheet('pavanaLeftDeath', './assets/imagenes/PavanaLeftAnimationDeath1.png', { frameWidth: 75, frameHeight: 39});
+		this.load.spritesheet('pavanaRightDeath', './assets/imagenes/PavanaRightAnimationDeath1.png', { frameWidth: 75, frameHeight: 39});
 		// Enemies
 		this.load.spritesheet('car', './assets/imagenes/enemigos/car.png', { frameWidth: 175, frameHeight: 100});
 		this.load.spritesheet('ufo', './assets/imagenes/enemigos/UFO.png', { frameWidth: 100, frameHeight: 100});
