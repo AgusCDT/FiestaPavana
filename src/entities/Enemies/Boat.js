@@ -19,7 +19,7 @@ export default class Boat extends Enemies {
                 getEnd: () => -10 
             },
         });
-    //    Animación
+        // Animación
         this.scene.anims.create({
 			key: 'boatAnimation',
 			frames: scene.anims.generateFrameNumbers('boat', { start: 0, end: 6}),
@@ -29,7 +29,7 @@ export default class Boat extends Enemies {
 		this.play('boatAnimation');
     }
 
-    preUpdate(t, dt){
+    preUpdate(t, dt) {
         // Movimiento
         this.body.setVelocity(this.speedX, this.speedY);  
         super.preUpdate(t, dt); 

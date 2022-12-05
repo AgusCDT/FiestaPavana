@@ -8,13 +8,14 @@ import BeachButton from '../components/BeachButton.js';
 export default class Shop extends Phaser.Scene {
 	constructor() {
 		super({ key: 'shop' });
-		//this.cloud = new Cloud(this);
 		this.cloud;
-		
 	}
+
 	init (save) {
 		this.cloud = save.cloud;
 	}
+	
+	// Precarga de imágenes
 	preload() {
 	 	this.load.image('shop',  './assets/imagenes/otras/shopWithoutButtons.png');
 		this.load.image('lifebutton', './assets/componentes/featherButton.png');
@@ -25,8 +26,8 @@ export default class Shop extends Phaser.Scene {
 		this.load.image('soldout', './assets/imagenes/otras/soldOut.png');
 	}
 	 
+	// Creación de los botones y la imagen de fondo
 	create() {
-		// Creo los botones y la imagen de fondo
 	 	this.add.image(0, 0, 'shop').setOrigin(0, 0);
 		this.label = this.add.text(1105, 10, this.cloud.getCoins(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#E10000' });
 		this.MenuButton = new MenuButton(this, this.cloud, 690, 450);

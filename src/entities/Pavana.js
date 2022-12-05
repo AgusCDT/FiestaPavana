@@ -1,6 +1,6 @@
 import Bomb from '../entities/Enemies/Bomb.js';
 
-export default class Pavana extends Phaser.GameObjects.Sprite{
+export default class Pavana extends Phaser.GameObjects.Sprite {
 
 	constructor(scene, x, y) {
 		super(scene, x, y,'pavana');
@@ -58,7 +58,7 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 		this.play('pavanaRightAnimation'); // Comienza con animacion hacia la derecha
 	}
 
-	calculateVelocity(){
+	calculateVelocity() {
 		if (this.w.isDown) { // Input hacia arriba acelerando
 	    	if (this.speedY > -this.maxSpeed) {
 				this.speedY -= this.acceleration;
@@ -181,18 +181,7 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 		this.lifeImages.length -= 1;
 	}
 
-	preUpdate(t, dt) {
-		super.preUpdate(t, dt);
-		var place = this.scene.parallax.checkId();
-		if (place != 'hawaiiId') {
-			this.score += Math.round((dt / 2) * this.scene.cloud.getMultiplicator());
-		}
-		this.scene.cloud.updateScore(this.score);
-
-		this.tColision(dt);
-		this.calculateVelocity();
-	    this.body.setVelocity(this.speedX, this.speedY); // Aplicamos los valores de velocidad
-
+	noMovePunishment(dt) {
 		if(!this.a.isDown && !this.d.isDown && !this.w.isDown && !this.s.isDown)
 		{
 			this.noMove+=dt/1000;
@@ -211,5 +200,22 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 		{
 			this.noMove=0;
 		}
+	}
+
+	calculateScore(dt){
+		var place = this.scene.parallax.checkId();
+		if (place != 'hawaiiId') {
+			this.score += Math.round((dt / 2) * this.scene.cloud.getMultiplicator());
+		}
+		this.scene.cloud.updateScore(this.score);
+	}
+
+	preUpdate(t, dt) {
+		super.preUpdate(t, dt);
+		this.calculateScore(dt);
+		this.tColision(dt);
+		this.calculateVelocity();
+	    this.body.setVelocity(this.speedX, this.speedY); // Aplicamos los valores de velocidad
+		this.noMovePunishment(dt);
 	}
 }

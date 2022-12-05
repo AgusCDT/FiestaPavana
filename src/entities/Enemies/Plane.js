@@ -5,14 +5,7 @@ export default class Plane extends Enemies {
         super(scene, x, y);
         // elección de movimiento
         this.move = move;
-        if(this.move == 1){
-            this.speedX = -75;
-            this.speedY = 0;
-        }
-        else if(this.move == 2){
-            this.speedX = -75;
-            this.speedY = 75;
-        }
+        this.moveChosen();
         
         this.body.setSize(90, 60).setOffset(10, 10);
         this.setScale(1.3, 1.3);
@@ -27,8 +20,19 @@ export default class Plane extends Enemies {
 		this.play('planeAnimation');
     }
 
-    preUpdate(t, dt){
-        // Movimiento
+    // El avión tendrá dos tipos de movimiento, uno en road y otro en sea
+    moveChosen() {
+        if(this.move == 1){
+            this.speedX = -75;
+            this.speedY = 0;
+        }
+        else if(this.move == 2){
+            this.speedX = -75;
+            this.speedY = 75;
+        }
+    }
+
+    planeMovement() {
         if (this.y <= 50) {             
             this.speedY *= -1;
         }
@@ -38,6 +42,11 @@ export default class Plane extends Enemies {
         if(this.move == 1) {
             this.speedX -= 1;
         }
+    }
+
+    preUpdate(t, dt) {
+        // Movimiento
+        this.planeMovement();
         this.body.setVelocity(this.speedX, this.speedY);
         super.preUpdate(t, dt);
     }

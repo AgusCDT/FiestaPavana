@@ -60,10 +60,10 @@ Aparecerán también en los diferentes escenarios, algunos son: águilas, astero
 - Tierra: escenario en el que la pavana viajará por tierra firme. Será el escenario principal y desde donde partiremos a los demás escenarios. Habrá coches, carteles de carretera, globos...
 
 
-- Mar: escenario ubicado sobre el mar. Habrá barcos, peces, aves rapaces...
+- Mar: escenario ubicado sobre el mar. Habrá barcos, delfines, aviones...
 
 
-- Espacio exterior: nos iremos al espacio donde habrá obstáculos como planetas y asteroides además de ovnis como enemigos.
+- Espacio exterior: nos iremos al espacio donde habrá obstáculos como asteroides, además de ovnis como enemigos.
 
 
 - Fiesta(Hawaii): escenario estático sin scroll donde solo habrá monedas para recolectar, bajo un contrarreloj, que te devolverá a otro escenario aleatorio tras ese tiempo o tras recolectar todas las monedas.
@@ -90,8 +90,8 @@ Primero habrá que desbloquear los objetos de escenario que nos llevan a otros e
 #### 5.2. Explicación de los elementos del HUD y su funcionamiento**
 
 Plumas:  nuestro personaje contará con 2 vidas en forma de plumas(arriba a la izquierda) de manera inicial. Se podrá comprar en la tienda hasta un máximo de 5 vidas.
-Record: puntuación máxima que ha alcanzado el jugador en las partidas jugadas(arriba).
-Puntuación: puntuación de la partida actual(arriba).
+Score: puntuación de la partida actual(arriba).
+HighScore: puntuación máxima que ha alcanzado el jugador en las partidas jugadas(arriba).
 Peces dorados(monedas): contador de peces conseguidos(arriba a la derecha).
 
 
@@ -111,19 +111,22 @@ Los recursos estéticos se conseguirán mediante la página web “Flaticon” y
 | Nombre    | Descripción | Tipo | Escenario |
 |-----------|:-----------:|:----:|----------:|
 |Pavana     |Es el personaje que manejamos durante el juego. Movimiento uniformemente acelerado hacia arriba, abajo, izquierda, derecha y en diagonal.|Protagonista|Todos|
-|Halcones   |Aves un poco más grandes que la Pavana que realizan un movimiento vertical en picado.|Enemigo|Mar|
+|Águilas   |Aves un poco más grandes que la Pavana que realizan un movimiento vertical en picado.|Enemigo|Carretera|
 |Ovnis      |Naves que hacen un movimiento de teletransporte.|Enemigos|Espacio|
 |Coches     |Vehículos que van a una velocidad mayor que el escenario.|Enemigo|Tierra|
-|Islote     |Montículo de tierra con un cocotero. Habrá que esquivarlo por arriba.|Obstáculo|Mar|
-|Avioneta   |Tienen mayor tamaño que la Pavana y dos tipos de movimiento.|Enemigo|Tierra y Mar| 
-|Carteles   |Señales de tráfico. Las habrá de distintos tipos y tamaños. Se esquivan por arriba.|Obstáculo|Tierra|
-|Barcos     |Habrá que pasarlos por arriba.|Obstáculo|Mar|
+|Isla    |Montículo de tierra con un cocotero.|Obstáculo|Mar|
+|Avion  |Tienen mayor tamaño que la Pavana y dos tipos de movimiento.|Enemigo|Tierra y Mar| 
+|Cartel  |Señales de tráfico. Se esquivan por arriba.|Obstáculo|Tierra|
+|Barcos     |Tendrán un balanceo sobre el mar.|Obstáculo|Mar|
 |Asteroides |Obstáculo que contará con una animación de rotación.|Obstáculo|Espacio|
-|Globo      |Tienen un tamaño similar a la avioneta.|Obstáculo|Tierra|
-|Flotador   |Provoca el cambio al escenario marítimo.|Objeto|Tierra, Discoteca|
-|Casco Astronauta|Con esto iremos al escenario en el espacio.|Objeto|Tierra y Discoteca|
-|Camisa Hawaiiana|Lo encontramos con una baja probabilidad. Cambia al escenario de la discoteca.|Objeto|Todos|
-|Cono de tráfico|Provoca el cambio al escenario terrestre.|Objeto|Espacio, Mar y Discoteca|
+|Globo      |Tienen un tamaño similar al avion, apareciendo por todo el cielo.|Obstáculo|Tierra|
+|Delfín      |Realizan un movimiento propio de un delfín. Tienen tamaño similar a la Pavana.|Obstáculo|Mar|
+|Árbol     |Aparecen como los carteles, en la carretera.|Obstáculo|Carretera|
+|Bomba     |Aparecen como castigo al quedarte quieto. Caen desde arriba y te restan una vida si no las esquivas.|Obstáculo|Carretera|
+|Flotador   |Provoca el cambio al escenario marítimo.|Objeto|Tierra, Espacio|
+|Casco Astronauta|Con esto iremos al escenario en el espacio.|Objeto|Tierra y Mar|
+|Camisa Hawaiiana|Lo encontramos con una baja probabilidad. Cambia al escenario de la Fiesta(Hawaii).|Objeto|Todos|
+|Cono de tráfico|Provoca el cambio al escenario terrestre.|Objeto|Espacio, Mar|
 |Peces Dorados|Bonificaciones con las que el jugador podrá comprar elementos en la tienda.|Objeto|Todos|
 
 

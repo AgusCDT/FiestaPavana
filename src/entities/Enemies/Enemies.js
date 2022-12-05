@@ -1,4 +1,4 @@
-export default class Enemies extends Phaser.GameObjects.Sprite{
+export default class Enemies extends Phaser.GameObjects.Sprite {
 
 	constructor(scene, x, y) {
 		super(scene, x, y);
@@ -14,13 +14,16 @@ export default class Enemies extends Phaser.GameObjects.Sprite{
 		}
 	}
 
-	preUpdate(t, dt)
-	{
-		super.preUpdate(t, dt);
-		this.colision();
+	onDestroy() {
 		if (this.x < -90) { // Los enemigos se destruyen al sobrepasar la izquierda para no consumir memoria
 			this.scene.elementsArray = this.scene.elementsArray.filter((item) => item !== this);
 			this.destroy();
 		}
+	}
+	
+	preUpdate(t, dt) {
+		super.preUpdate(t, dt);
+		this.colision();
+		this.onDestroy();
 	}
 }

@@ -1,6 +1,4 @@
-//import Tierra from "./scenes/Tierra";
-
-export default class Parallax extends Phaser.GameObjects.Sprite{
+export default class Parallax extends Phaser.GameObjects.Sprite {
 
 	constructor(scene)
 	{
@@ -16,8 +14,9 @@ export default class Parallax extends Phaser.GameObjects.Sprite{
 		this.id3 = 'hills';
 		this.id4 = 'road';	
 	}
-	changeBackground(id, id1, id2, id3, id4)
-	{
+
+    // Cambia los fondos según la id que se le pase como parámetro
+	changeBackground(id, id1, id2, id3, id4) {
 		this.parallax1 = this.scene.add.tileSprite(0, 0, 3200, 600, id1).setOrigin(0,0);
 		this.parallax2 = this.scene.add.tileSprite(0, 0, 3200, 600, id2).setOrigin(0,0);
 		this.parallax3= this.scene.add.tileSprite(0, 0, 3200, 600, id3).setOrigin(0,0);
@@ -28,7 +27,9 @@ export default class Parallax extends Phaser.GameObjects.Sprite{
 		this.id3 = id3;
 		this.id4 = id4;
 	}
-	update(){
+
+	// Maneja la velocidad de los fondos segun el escenario
+	parallaxMovement() {
 		if(this.id == 'hawaiiId')
 		{
 			this.parallax1.tilePositionX = 0.0; // escenario estático
@@ -41,9 +42,13 @@ export default class Parallax extends Phaser.GameObjects.Sprite{
 			this.parallax4.tilePositionX += 0.75;
 		}	
 	}
-
-	checkId()
-	{
+	
+	// Devuelve la id del escenario
+	checkId() {
 		return this.id;
+	}
+
+	update() {
+		this.parallaxMovement();
 	}
 }

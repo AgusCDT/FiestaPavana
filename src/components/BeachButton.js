@@ -6,7 +6,7 @@ export default class BeachButton extends Button {
         this.price = 50;
     }
 
-    create (){
+    create () {
         super.create();
         this.label = this.relatedScene.add.text(this.x - 10, this.y + 70, this.price, { fontFamily: 'Cooper Black', fontSize: 25, color: '#E10000' });
         if (this.cloud.getBeach() == 1) {
