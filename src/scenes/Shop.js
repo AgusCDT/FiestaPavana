@@ -26,6 +26,7 @@ export default class Shop extends Phaser.Scene {
 	}
 	 
 	create() {
+		// Creo los botones y la imagen de fondo
 	 	this.add.image(0, 0, 'shop').setOrigin(0, 0);
 		this.label = this.add.text(1105, 10, this.cloud.getCoins(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#E10000' });
 		this.MenuButton = new MenuButton(this, this.cloud, 690, 450);
@@ -42,6 +43,7 @@ export default class Shop extends Phaser.Scene {
 		this.BeachButton.create();
 	}
 
+	// Metodo para actualizar el indicador de monedas
 	updateLabel() {
 		this.label.destroy();
 		this.label = this.add.text(1105, 10, this.cloud.getCoins(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#00FF00' });

@@ -14,11 +14,11 @@ export default class BeachButton extends Button {
         }
     }
 
-    ClickButton() {
+    ClickButton() { // Compara valores para solo poder comprarla cuando tienes el dinero suficiente y cuando no la has comprado ya
         if (this.cloud.getCoins() >= this.price && this.cloud.getBeach() == 0) {
-            this.cloud.updateCoins(this.price);
-            this.cloud.upgradeBeach();
-            this.soldout = this.relatedScene.add.image(this.x, this.y, 'soldout');
+            this.cloud.updateCoins(this.price); // Actualiza las monedas en el localStorage
+            this.cloud.upgradeBeach(); // Setea la compra en el localStorage
+            this.soldout = this.relatedScene.add.image(this.x, this.y, 'soldout'); // Se añade la imagen de agotado
         }
     }
 }

@@ -14,11 +14,11 @@ export default class SeaButton extends Button {
         }
     }
 
-    ClickButton() {
+    ClickButton() { // Compara valores para solo poder comprarla cuando tienes el dinero suficiente y cuando no la has comprado ya
         if (this.cloud.getCoins() >= this.price && this.cloud.getSea() == 0) {
-            this.cloud.updateCoins(this.price);
-            this.cloud.upgradeSea();
-            this.soldout = this.relatedScene.add.image(this.x, this.y, 'soldout');
+            this.cloud.updateCoins(this.price); // Actualiza las monedas en el localStorage
+            this.cloud.upgradeSea(); // Setea la compra en el localStorage
+            this.soldout = this.relatedScene.add.image(this.x, this.y, 'soldout'); // Se añade la imagen de agotado
         }
     }
 }
