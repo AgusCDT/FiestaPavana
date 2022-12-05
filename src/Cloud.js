@@ -33,9 +33,9 @@ export default class Cloud {
     };
 
     setLife() { 
-        // Coge el valor de localStorage, o 2 si no se encuentra
+        // Coge el valor de localStorage, o 1 si no se encuentra
         // Hago el parseInt() porque los valores en localStorage se guardan como strings
-        this.life = parseInt(localStorage.getItem('life')) || 2;
+        this.life = parseInt(localStorage.getItem('life')) || 1;
         localStorage.setItem('life', this.life);
     }
 
@@ -70,7 +70,7 @@ export default class Cloud {
     setLifePrice() {
         // Coge el valor de localStorage, o 50 (aqui es donde de verdad se setea el primer precio de la mejora de vida)
         // Hago el parseInt() porque los valores en localStorage se guardan como strings
-        this.lifePrice = parseInt(localStorage.getItem('lifePrice')) || 50;
+        this.lifePrice = parseInt(localStorage.getItem('lifePrice')) || 15;
         localStorage.setItem('lifePrice', this.lifePrice);
     }
 

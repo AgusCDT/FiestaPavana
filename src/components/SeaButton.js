@@ -3,7 +3,7 @@ import Button from './Button.js';
 export default class SeaButton extends Button {
     constructor(scene, cloud) {
         super(scene, 'seabutton', 330, 305, cloud);
-        this.price = 1;
+        this.price = 30;
     }
 
     create (){
@@ -20,12 +20,5 @@ export default class SeaButton extends Button {
             this.cloud.upgradeSea();
             this.soldout = this.relatedScene.add.image(this.x, this.y, 'soldout');
         }
-        else if (this.cloud.getSea() == 1){
-            console.log('ya esta desbloqueado');
-        }
-        else {
-            console.log('no tienes dinero');
-        }
-        console.log('seaButton');
     }
 }

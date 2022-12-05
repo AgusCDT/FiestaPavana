@@ -16,7 +16,7 @@ export default class TrophyButton extends Button {
         if (this.cloud.getCoins() >= this.price) {
             this.cloud.updateCoins(this.price);
             this.cloud.upgradeMultiplicator();
-            this.price *= 2;
+            this.price += 50;
             this.cloud.updateMultiplicatorPrice(this.price);
             this.mul.destroy();
             this.mul = this.relatedScene.add.text(this.x - 14, this.y - 10, this.cloud.getMultiplicator(), { fontFamily: 'Cooper Black', fontSize: 25, color: '#E10000' });

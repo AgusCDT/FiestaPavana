@@ -3,7 +3,7 @@ import Button from './Button.js';
 export default class SpaceButton extends Button {
     constructor(scene, cloud) {
         super(scene, 'spacebutton', 160, 305, cloud);
-        this.price = 1;
+        this.price = 15;
     }
 
     create (){
@@ -20,12 +20,5 @@ export default class SpaceButton extends Button {
             this.cloud.upgradeSpace();
             this.soldout = this.relatedScene.add.image(this.x, this.y, 'soldout');
         }
-        else if (this.cloud.getSpace() == 1){
-            console.log('ya esta desbloqueado');
-        }
-        else {
-            console.log('no tienes dinero');
-        }
-        console.log('spaceButton');
     }
 }

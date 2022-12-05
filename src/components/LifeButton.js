@@ -19,8 +19,13 @@ export default class LifeButton extends Button {
     ClickButton() {
         if (this.cloud.getCoins() >= this.price && this.cloud.getLife() < this.maxLife) {
             this.cloud.updateCoins(this.price);
+            if (this.cloud.getLife() == 1) {
+                this.price += 35;
+            }
+            else {
+                this.price += 50;
+            }
             this.cloud.upgradeLife();
-            this.price += 50;
             this.cloud.updateLifePrice(this.price);
             this.mul.destroy();
             this.mul = this.relatedScene.add.text(this.x - 3, this.y - 10, this.cloud.getLife(), { fontFamily: 'Cooper Black', fontSize: 25, color: '#E10000' });
