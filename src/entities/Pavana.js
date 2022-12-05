@@ -107,6 +107,19 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 		}
 	}
 
+	enemyColision() {
+		if (this.tempColision <= 0) { // Solo puede quitar vida si llevo cierto tiempo después de la anterior colisión
+			this.life -= 1;
+			this.removeLife();
+			if (this.life <= 0) {
+				this.scene.cloud.updateHighScore(this.score);
+				this.scene.scene.start('GameOver', {cloud: this.scene.cloud});
+				this.destroy();
+			}
+			this.tempColision = 2000;
+		}
+	}
+
 	removeLife() {
 		this.lifeImages[this.lifeImages.length - 1].destroy();
 		this.lifeImages.length -= 1;
