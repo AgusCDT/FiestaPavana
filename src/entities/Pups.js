@@ -1,4 +1,4 @@
-export default class Pups extends Phaser.GameObjects.Sprite{
+export default class Pups extends Phaser.GameObjects.Sprite {
 
 	constructor(scene, x, y, filename) 
 	{
@@ -27,26 +27,27 @@ export default class Pups extends Phaser.GameObjects.Sprite{
                 getStart: () => 0.7, 
                 getEnd: () => 1 
             },
-        });
-		
+        });	
 	}
 	
-	preUpdate() 
-	{	
-		this.body.setVelocity(this.speedX,this.speedY);    
-		this.colision();
+	colision() {
+		if(this.scene.physics.overlap(this.scene.pavana, this))
+		{
+			this.scene.transition.fadeIn(this.filename); // llamada a fadeIn en Transition				
+			this.destroy();	
+		}
+	}
+
+	onDestroy() {
 		if (this.y > 680) { // Los pups se destruyen al sobrepasar el limite para no consumir memoria
 			this.scene.elementsArray = this.scene.elementsArray.filter((item) => item !== this);
 			this.destroy();
 		}
 	}
 
-	colision()
-	{
-		if(this.scene.physics.overlap(this.scene.pavana, this))
-		{
-			this.scene.transition.fadeIn(this.filename); // llamada a fadeIn en Transition				
-			this.destroy();	
-		}
+	preUpdate() {	
+		this.body.setVelocity(this.speedX,this.speedY);    
+		this.colision();
+		this.onDestroy();
 	}
 }

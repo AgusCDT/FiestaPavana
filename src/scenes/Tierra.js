@@ -1,6 +1,5 @@
 import Pavana from '../entities/Pavana.js';
 import Parallax from '../Parallax.js';
-import Enemies from '../entities/Enemies/Enemies.js';
 import Asteroid from '../entities/Enemies/Asteroid.js';
 import UFO from '../entities/Enemies/UFO.js';
 import Plane from '../entities/Enemies/Plane.js';
@@ -18,19 +17,19 @@ import Sign from '../entities/Enemies/Sign.js';
 
 export default class Tierra extends Phaser.Scene 
 {
-	constructor() 
-	{
+	constructor() {
 		super({ key: 'tierra' });
 		this.width = 1200;
 		this.height = 600;
 		this.cloud;
 	}
+
 	init(save) {
 		this.cloud = save.cloud;
 	}
-	// precarga de imágenes
-	preload() 
-	{
+
+	// Precarga de imágenes
+	preload() {
 		this.load.image('backgroundTransition', './assets/imagenes/otras/backgroundBlack.png');
 		this.load.image('bomb', './assets/imagenes/otras/bomba-nuclearM.png');
 		// Road Parallax
@@ -78,7 +77,7 @@ export default class Tierra extends Phaser.Scene
 		this.load.image('gold', './assets/imagenes/otras/gold.png');
 		// HUD
 		this.load.image('feather', './assets/imagenes/otras/feather.png');
-		//Audio
+		// Audio
         this.load.audio('roadSound', './assets/sonidos/roadSound.wav');
         this.load.audio('spaceSound', './assets/sonidos/spaceSound.wav');
         this.load.audio('seaSound', './assets/sonidos/seaSound.wav');
@@ -86,9 +85,8 @@ export default class Tierra extends Phaser.Scene
         //this.load.audio('coin', './assets/sonidos/Coin.mp3');
 	}
 	 
-	// creación de Pavana y el fondo
-	create() 
-	{
+	// Creación de componentes y parámetros
+	create() {
 		this.parallax = new Parallax(this);
 		this.parallax.setDepth(0);
 	 	this.pavana = new Pavana(this, 100, 100);
@@ -110,12 +108,13 @@ export default class Tierra extends Phaser.Scene
 	}
 
 	HUD() {
-		// texto e imagen de las monedas
+		// Texto e imagen de las monedas
 		this.labelFish = this.add.text(1105, 10, this.cloud.getCoins(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#E10000' });
 		this.imageFish = this.add.image(1075, 30, 'goldenFish').setScale(0.7,0.7).setRotation(0.6);
-		// texto score
+		// Texto score
 		this.labelScore = this.add.text(370, 20, this.cloud.getScore(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#E10000' }); 
 		this.highScore = this.add.text(700, 20, 'HighScore: ' +this.cloud.getHighScore(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#E10000' });
+		// Vidas
 		this.pavana.loadLife();
 		
 		this.labelFish.setDepth(2);
@@ -124,27 +123,25 @@ export default class Tierra extends Phaser.Scene
 		this.imageFish.setDepth(2);
 	}
 
-	updateLabelFish() { // actualización al coger una moneda
+	updateLabelFish() { // Actualización al coger una moneda
 		this.labelFish.destroy();
 		this.labelFish = this.add.text(1105, 10, this.cloud.getCoins(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#00FF00' });
 		this.imageFish.destroy();
 		this.imageFish = this.add.image(1075, 30, 'goldenFish').setScale(0.7,0.7).setRotation(0.6);
 	}
 
-	updateLabelScore(){ // actualización del score durante la run
+	updateLabelScore() { // Actualización del score durante la run
 		this.labelScore.destroy();
 		this.labelScore = this.add.text(370, 20, 'Score: '+ this.cloud.getScore(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#00FF00' });
 	}
 
-	cleanObjects()
-	{
+	cleanObjects() {
 		this.elementsArray.forEach(element => element.destroy());
 		this.elementsArray.length = 0;
 	}
 	
-	pupRandom()
-	{
-		this.id=this.parallax.checkId();
+	pupRandom() {
+		this.id = this.parallax.checkId();
 		let x = Phaser.Math.Between(1,7);
 		if(this.id=='roadId')
 		{
@@ -166,9 +163,8 @@ export default class Tierra extends Phaser.Scene
 		}
 	}
 
-	coinRandom() 
-	{
-		if(this.id!='hawaiiId')
+	coinRandom() {
+		if(this.id != 'hawaiiId')
 		{
 			let coinProbability = Phaser.Math.Between(1,3);
 			if (coinProbability == 1) 
@@ -178,8 +174,7 @@ export default class Tierra extends Phaser.Scene
 		}
 	}
 	
-	enemyRandom()
-	{
+	enemyRandom() {
 		this.id = this.parallax.checkId();
 		let x = Phaser.Math.Between(1,5);
 		if(this.id == 'roadId')
@@ -208,8 +203,7 @@ export default class Tierra extends Phaser.Scene
 		}
 	}
 
-	goldenHawaii()
-	{
+	goldenHawaii() {
 		this.hawaiiCoins=true;
 		for(let i=0; i<5;i++)
 		{
@@ -222,8 +216,7 @@ export default class Tierra extends Phaser.Scene
 		this.hawaiiPlace=true;
 	}
 
-	coinsHawaii()
-	{
+	coinsHawaii() {
 		this.coinsCounterHawaii-=1;	
 		if(this.coinsCounterHawaii==0)
 		{
@@ -231,7 +224,7 @@ export default class Tierra extends Phaser.Scene
 		}
 	}
 
-	soundManager(){
+	soundManager() {
         this.id = this.parallax.checkId();
         if(this.id =='roadId')
         {
@@ -253,8 +246,8 @@ export default class Tierra extends Phaser.Scene
         this.audio.play();
         this.audio.setLoop(true);
     }
-	update(t,dt) 
-	{	
+
+	update(t,dt) {	
 		this.gameTime += dt/1000;
 		this.parallax.update();
 		this.updateLabelScore(); 

@@ -6,7 +6,7 @@ export default class TrophyButton extends Button {
         this.price = this.cloud.getMultiplicatorPrice();
     }
 
-    create (){
+    create () {
         super.create();
         // Indicador de tu multiplicador
         this.mul = this.relatedScene.add.text(this.x - 14, this.y - 10, this.cloud.getMultiplicator(), { fontFamily: 'Cooper Black', fontSize: 25, color: '#E10000' });

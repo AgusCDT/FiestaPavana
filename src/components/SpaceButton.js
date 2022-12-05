@@ -6,7 +6,7 @@ export default class SpaceButton extends Button {
         this.price = 15;
     }
 
-    create (){
+    create() {
         super.create();
         this.label = this.relatedScene.add.text(this.x - 10, this.y + 70, this.price, { fontFamily: 'Cooper Black', fontSize: 25, color: '#E10000' });
         if (this.cloud.getSpace() == 1) {

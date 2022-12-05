@@ -1,9 +1,8 @@
-export default class Transition extends Phaser.GameObjects.Sprite{
+export default class Transition extends Phaser.GameObjects.Sprite {
     
-	// función que maneja qué pup coge la Pavana
+	// Función que maneja qué pup coge la Pavana
 	// cambiando al escenario elegido
-	transition(pup){
-		
+	transition(pup) {	
 		this.scene.cleanObjects();
 		if(pup == 'spacePup')
 		{
@@ -26,8 +25,7 @@ export default class Transition extends Phaser.GameObjects.Sprite{
 		this.fadeOut();
 	}
 
-	fadeOut()
-	{
+	fadeOut() {
         var fadeOut = this.scene.add.image(0, 0, 'backgroundTransition', 0).setOrigin(0,0);
 		var tween = this.scene.tweens.add({
 			targets:  fadeOut,
@@ -43,7 +41,7 @@ export default class Transition extends Phaser.GameObjects.Sprite{
 		});			
     }
 
-	fadeIn(filename){
+	fadeIn(filename) {
 		var pup = filename;
         var fadeIn = this.scene.add.image(0, 0, 'backgroundTransition', 0).setOrigin(0,0);
 		fadeIn.setDepth(3);

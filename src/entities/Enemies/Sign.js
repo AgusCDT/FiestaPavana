@@ -1,4 +1,5 @@
 import Enemies from "./Enemies.js";
+
 export default class Sign extends Enemies {
     constructor(scene, x, y, filename) {
         super(scene,x, y,filename);
@@ -7,7 +8,9 @@ export default class Sign extends Enemies {
         this.filename = filename;
         this.body.setSize(47, 116).setOffset(0, 0);
     }
-    preUpdate(){
+    
+    preUpdate(t, dt) {
         this.body.setVelocity(this.speedX, this.speedY); 
+        super.preUpdate(t, dt);
     }
 }

@@ -7,7 +7,7 @@ export default class LifeButton extends Button {
         this.maxLife = 5;
     }
 
-    create (){
+    create() {
         super.create();
         // Indicador de tus vidas
         this.mul = this.relatedScene.add.text(this.x - 3, this.y - 10, this.cloud.getLife(), { fontFamily: 'Cooper Black', fontSize: 25, color: '#E10000' });
