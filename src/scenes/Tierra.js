@@ -32,6 +32,7 @@ export default class Tierra extends Phaser.Scene
 	preload() 
 	{
 		this.load.image('backgroundTransition', './assets/imagenes/otras/backgroundBlack.png');
+		this.load.image('bomb', './assets/imagenes/otras/bomba-nuclearM.png');
 		// Road Parallax
 		this.load.image('skyRoad', './assets/escenarios/Carretera/skyRoad.png');	
 		this.load.image('mountains', './assets/escenarios/Carretera/mountains_1.png');
@@ -200,7 +201,7 @@ export default class Tierra extends Phaser.Scene
 			if (x == 1) {this.elementsArray.push(new Boat(this,1200,Phaser.Math.Between(42,52)*10));}
 			else if (x == 2) {this.elementsArray.push(new Dolphin(this,1200,550));}
 			else if (x == 3) {this.elementsArray.push(new Island(this,1200,440));}
-			else if(x == 4){this.elementsArray.push(new Plane(this,1200, Phaser.Math.Between(100, 400), 2));}
+			else if (x == 4) {this.elementsArray.push(new Plane(this,1200, Phaser.Math.Between(100, 400), 2));}
 			else this.enemyRandom();
 		}
 	}
@@ -221,8 +222,7 @@ export default class Tierra extends Phaser.Scene
 
 	coinsHawaii()
 	{
-		this.coinsCounterHawaii-=1;
-		console.log(this.coinsCounterHawaii);		
+		this.coinsCounterHawaii-=1;	
 		if(this.coinsCounterHawaii==0)
 		{
 			this.hawaiiCoins=false;

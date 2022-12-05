@@ -3,7 +3,7 @@ import Button from './Button.js';
 export default class BeachButton extends Button {
     constructor(scene, cloud) {
         super(scene, 'beachbutton', 500, 305, cloud);
-        this.price = 1;
+        this.price = 50;
     }
 
     create (){
@@ -14,18 +14,11 @@ export default class BeachButton extends Button {
         }
     }
 
-    ClickButton() {
+    ClickButton() { // Compara valores para solo poder comprarla cuando tienes el dinero suficiente y cuando no la has comprado ya
         if (this.cloud.getCoins() >= this.price && this.cloud.getBeach() == 0) {
-            this.cloud.updateCoins(this.price);
-            this.cloud.upgradeBeach();
-            this.soldout = this.relatedScene.add.image(this.x, this.y, 'soldout');
+            this.cloud.updateCoins(this.price); // Actualiza las monedas en el localStorage
+            this.cloud.upgradeBeach(); // Setea la compra en el localStorage
+            this.soldout = this.relatedScene.add.image(this.x, this.y, 'soldout'); // Se añade la imagen de agotado
         }
-        else if (this.cloud.getBeach() == 1){
-            console.log('ya esta desbloqueado');
-        }
-        else {
-            console.log('no tienes dinero');
-        }
-        console.log('beachButton');
     }
 }

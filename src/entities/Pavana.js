@@ -1,3 +1,5 @@
+import Bomb from '../entities/Enemies/Bomb.js';
+
 export default class Pavana extends Phaser.GameObjects.Sprite{
 
 	constructor(scene, x, y) {
@@ -105,6 +107,19 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 		}
 	}
 
+	enemyColision() {
+		if (this.tempColision <= 0) { // Solo puede quitar vida si llevo cierto tiempo después de la anterior colisión
+			this.life -= 1;
+			this.removeLife();
+			if (this.life <= 0) {
+				this.scene.cloud.updateHighScore(this.score);
+				this.scene.scene.start('GameOver', {cloud: this.scene.cloud});
+				this.destroy();
+			}
+			this.tempColision = 2000;
+		}
+	}
+
 	removeLife() {
 		this.lifeImages[this.lifeImages.length - 1].destroy();
 		this.lifeImages.length -= 1;
@@ -125,15 +140,15 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 		this.animationInput();
 	    this.body.setVelocity(this.speedX, this.speedY); // Aplicamos los valores de velocidad
 
-		if(!this.a.isDown&&!this.d.isDown&&!this.w.isDown&&!this.s.isDown) // Esto lo ha hecho el gilipollas de cao
+		if(!this.a.isDown && !this.d.isDown && !this.w.isDown && !this.s.isDown)
 		{
-			console.log('no move no party');
 			this.noMove+=dt/1000;
 			
 			if(parseInt(this.noMove)>=5)
 			{
 				if (this.lifeImages.length > 0){
-					this.removeLife();
+					//this.removeLife();
+					this.scene.elementsArray.push(new Bomb(this.scene, this.x, -70));
 					this.noMove=0;
 				}
 				else this.scene.scene.start('GameOver', {cloud: this.scene.cloud});
