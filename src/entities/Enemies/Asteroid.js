@@ -3,7 +3,7 @@ import Enemies from "./Enemies.js";
 export default class Asteroid extends Enemies {
     constructor(scene, x, y) {
         super(scene, x, y);
-        this.speedX = -75;
+        this.speedX = -75 - (this.scene.gameTime/10);
         this.speedY = 0;
         this.body.setSize(150, 140).setOffset(25, 30);
         //Tween

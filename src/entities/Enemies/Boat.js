@@ -3,7 +3,7 @@ import Enemies from "./Enemies.js";
 export default class Boat extends Enemies {
     constructor(scene, x, y) {
         super(scene, x, y);
-        this.speedX = -75;
+        this.speedX = -75 - (this.scene.gameTime/10);
         this.speedY = 0;
         this.body.setSize(60, 80).setOffset(10, 10);
         this.setScale(2,2);

@@ -3,7 +3,7 @@ import Enemies from "./Enemies.js";
 export default class Balloon extends Enemies {
     constructor(scene, x, y) {
         super(scene, x, y);
-        this.speedX = -75;
+        this.speedX = -75 - this.scene.gameTime;
         this.speedY = 0;
         
         this.body.setSize(69, 130).setOffset(15, 12);
