@@ -18,7 +18,7 @@ export default class Balloon extends Enemies {
 		this.play('balloonAnimation');
     }
 
-    preUpdate(t, dt){
+    preUpdate(t, dt) {
         // Movimiento
         this.body.setVelocity(this.speedX, this.speedY);
         super.preUpdate(t, dt);

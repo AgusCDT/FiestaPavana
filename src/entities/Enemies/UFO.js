@@ -17,9 +17,9 @@ export default class UFO extends Enemies {
 		this.play('ufoAnimation');
     }
 
-    preUpdate(t, dt){
-        // Movimiento
-        this.posX=parseInt(this.x);  
+    ufoMovement() {
+        this.posX = parseInt(this.x);
+        // console.log(this.posX);
         if(this.posX==1000)
         {
             this.body.reset(this.posX+Phaser.Math.Between(0,200)-100,Phaser.Math.Between(100,500));
@@ -40,7 +40,11 @@ export default class UFO extends Enemies {
         {
             this.body.reset(this.posX+Phaser.Math.Between(0,200)-100,Phaser.Math.Between(100,500));
         } 
+    }
 
+    preUpdate(t, dt) {
+        // Movimiento
+        this.ufoMovement();
         this.body.setVelocity(this.speedX, this.speedY);
         super.preUpdate(t, dt);
     }

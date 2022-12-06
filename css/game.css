@@ -1,13 +1,11 @@
-html
-{
+html {
 	cursor:  url(../assets/imagenes/plumacursor.png), auto;
 	font: oblique bold 120% cursive;
 	height: 120%;
 }
 
-h1 
-{
-	color: mediumturquoise;
+h1  {
+	color: rgb(83, 165, 212);
 	text-align: center;
 	font: oblique bold 120% cursive;
 	font-size: 300%;
@@ -16,47 +14,57 @@ h1
     align-items: center;
 }
 
-.logo
-{
+body {
+	background-image: url(../assets/imagenes/otras/webBackground.jpg);
+	color: rgb(83, 165, 212);
+}
+
+.logo {
 	margin-left: 10px;
 	margin-right: 10px;
 }
 
-a
-{
+a {
 	cursor:  url(../assets/imagenes/plumacursor.png), pointer;
 }
-.canvas
-{
+
+.canvas {
 	margin: auto;
 }
-.Descripcion{
-	margin-left: auto;
-	margin-right: auto;
+
+.Descripcion {
+	margin-left: 18em;
+	margin-right: 23em;
+	text-align: justify;
 }
 
-.Compañia
-{	
-	margin-left: auto;
-	margin-right: auto;
+.Objetivo {
+	margin-left: 18em;
+	margin-right: 23em;
+	text-align: justify;
 }
-footer 
-{
+
+.Compañia {	
+	margin-left: 18em;
+	margin-right: 23em;
+	text-align: justify;
+}
+footer {
 	padding: 1em 0;
 	margin-top: 4em;
+	margin-left: 13em;
 }
-.footer_container
-{
+
+.footer_container {
 	text-align: center;
 	display: flex;
 }
 
-.redes
-{
+.redes {
 	margin: 40px 30px 10px;
 }
-.redes:hover
-{
+
+.redes:hover {
 	background-color: rgba(0, 255, 157, 0.342);
 }
 

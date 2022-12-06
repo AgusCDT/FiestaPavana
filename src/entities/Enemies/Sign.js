@@ -1,4 +1,5 @@
 import Enemies from "./Enemies.js";
+
 export default class Sign extends Enemies {
     constructor(scene, x, y) {
         super(scene,x, y);
@@ -15,7 +16,7 @@ export default class Sign extends Enemies {
 		});
 		this.play('signAnimation');
     }
-    preUpdate(t, dt){
+    preUpdate(t, dt) {
         this.body.setVelocity(this.speedX, this.speedY);
         super.preUpdate(t, dt);
     }

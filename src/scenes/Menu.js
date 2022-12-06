@@ -14,6 +14,7 @@ export default class Menu extends Phaser.Scene {
 		this.cloud = save.cloud;
 	}
 	 
+	// Precarga de imágenes
 	preload() {
 		this.load.image('skyRoad', './assets/escenarios/Carretera/skyRoad.png');	
 		this.load.image('mountains', './assets/escenarios/Carretera/mountains_1.png');
@@ -24,6 +25,7 @@ export default class Menu extends Phaser.Scene {
 		this.load.spritesheet('menubutton', './assets/componentes/BotonMenu.png', { frameWidth: 176, frameHeight: 93});
 	}
 	
+	// Creación de los botones y la imagen de fondo
 	create() {
 		this.add.image(0, 0, 'skyRoad').setOrigin(0, 0);
 		this.add.image(0, 0, 'mountains').setOrigin(0, 0);

@@ -17,7 +17,7 @@ export default class Tree extends Enemies {
 		this.play('treeAnimation');
     }
     
-    preUpdate(t, dt){
+    preUpdate(t, dt) {
         // Movimiento
         this.body.setVelocity(this.speedX, this.speedY);  
         super.preUpdate(t, dt); 

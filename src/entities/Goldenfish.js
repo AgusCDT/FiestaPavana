@@ -4,7 +4,7 @@ export default class Goldenfish extends Phaser.GameObjects.Sprite {
 		super(scene, x, y, filename);
 		this.x = x;
 		this.y = y;
-		this.move=move;
+		this.move = move;
 		this.scene.goldenfish = this;
 		this.scene.add.existing(this);
     	this.scene.physics.add.existing(this);
@@ -23,8 +23,7 @@ export default class Goldenfish extends Phaser.GameObjects.Sprite {
 		});
 	}
 
-	preUpdate() 
-	{	
+	isMoving() {
 		if(this.move)
 		{
 			this.body.setVelocity(0,0);
@@ -32,13 +31,10 @@ export default class Goldenfish extends Phaser.GameObjects.Sprite {
 		else
 		{
 			this.body.setVelocity(this.speedX,this.speedY);
-		}		    
-		//if (this.scene.physics.overlap(this.scene.pavana, this)) {this.colision();}
-		this.colision();
+		}		
 	}
 
-	colision()
-	{
+	colision() {
 		if(this.scene.physics.overlap(this.scene.pavana, this))
 		{
 			this.scene.coinsHawaii();
@@ -47,5 +43,19 @@ export default class Goldenfish extends Phaser.GameObjects.Sprite {
 			this.destroy();	
 			this.particles.destroy();
 		}
+	}
+
+	onDestroy() {
+		if (this.x < -90) { // Los enemigos se destruyen al sobrepasar la izquierda para no consumir memoria
+			this.scene.elementsArray = this.scene.elementsArray.filter((item) => item !== this);
+			this.destroy();
+			this.particles.destroy();
+		}
+	}
+
+	preUpdate() {	
+		this.isMoving();
+		this.colision();
+		this.onDestroy();
 	}
 }

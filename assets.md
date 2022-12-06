@@ -34,7 +34,7 @@
 - gaviota.png -> https://www.flaticon.es/icono-gratis/gaviota_1826401?related_id=1826401&origin=pack
 - gaviota2.png -> https://www.flaticon.com/de/kostenloses-icon/mowe_1862103?term=möwen&page=1&position=85&page=1&position=85&related_id=1862103&origin=tag
 - plumacursor.png -> https://www.flaticon.com/free-icon/feather_2260603?related_id=2260719&origin=search
-
+- webBackground.jpg -> "https://www.freepik.es/vector-gratis/diseno-patron-nube-fondo-minimalista_33274228.htm#page=5&query=cartoon%20background&position=48&from_view=search&track=sph"
 ---
 
 **Escenarios:** Todos los escenarios(Tierra, Mar, Espacio y Hawaii) han sido realizados por la diseñadora de arte (Beatriz Rubio Rodríguez).
