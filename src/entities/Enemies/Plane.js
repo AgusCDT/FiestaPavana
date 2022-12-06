@@ -23,7 +23,7 @@ export default class Plane extends Enemies {
     // El avión tendrá dos tipos de movimiento, uno en road y otro en sea
     moveChosen() {
         if(this.move == 1){
-            this.speedX = -75 - (this.scene.gameTime/10);
+            this.speedX = -75 - this.scene.gameTime;
             this.speedY = 0;
         }
         else if(this.move == 2){

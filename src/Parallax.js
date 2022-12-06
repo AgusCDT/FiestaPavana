@@ -7,16 +7,16 @@ export default class Parallax extends Phaser.GameObjects.Sprite {
 		this.parallax1 = this.scene.add.tileSprite(0, 0, 3200, 600, 'skyRoad').setOrigin(0,0);
 		this.parallax2 = this.scene.add.tileSprite(0, 0, 3200, 600, 'mountains').setOrigin(0,0);
 		this.parallax3 = this.scene.add.tileSprite(0, 0, 3200, 600, 'hills').setOrigin(0,0);
-		this.parallax4 = this.scene.add.tileSprite(0, 0, 3200, 600, 'road').setOrigin(0,0);	
+		this.parallax4 = this.scene.add.tileSprite(0, 0, 3200, 600, 'road').setOrigin(0,0);
 		this.id = 'roadId';
 		this.id1 = 'skyRoad';
 		this.id2 = 'mountains';
 		this.id3 = 'hills';
 		this.id4 = 'road';	
 	}
-
     // Cambia los fondos según la id que se le pase como parámetro
 	changeBackground(id, id1, id2, id3, id4) {
+		
 		this.parallax1 = this.scene.add.tileSprite(0, 0, 3200, 600, id1).setOrigin(0,0);
 		this.parallax2 = this.scene.add.tileSprite(0, 0, 3200, 600, id2).setOrigin(0,0);
 		this.parallax3= this.scene.add.tileSprite(0, 0, 3200, 600, id3).setOrigin(0,0);

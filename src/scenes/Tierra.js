@@ -78,23 +78,26 @@ export default class Tierra extends Phaser.Scene
 		// HUD
 		this.load.image('feather', './assets/imagenes/otras/feather.png');
 		// Audio
-        this.load.audio('roadSound', './assets/sonidos/roadSound.wav');
-        this.load.audio('spaceSound', './assets/sonidos/spaceSound.wav');
-        this.load.audio('seaSound', './assets/sonidos/seaSound.wav');
-        this.load.audio('hawaiiSound', './assets/sonidos/hawaiiSound.wav');
+        this.load.audio('roadSound', './assets/sonidos/roadSound.mp3');
+        this.load.audio('spaceSound', './assets/sonidos/spaceSound.mp3');
+        this.load.audio('seaSound', './assets/sonidos/seaSound.mp3');
+        this.load.audio('hawaiiSound', './assets/sonidos/hawaiiSound.mp3');
         this.load.audio('damage', './assets/sonidos/damage.mp3');
 		this.load.audio('coin', './assets/sonidos/coin.mp3');
 	}
 	 
 	// Creación de componentes y parámetros
 	create() {
-		this.parallax = new Parallax(this);
+		this.parallax = new Parallax(this, this.music);
 		this.parallax.setDepth(0);
 	 	this.pavana = new Pavana(this, 100, 100, 'damage');
 		this.timerE = 0;
 		this.timerP = 0;
 		this.timerC = 0;	
 		this.gameTime=0;
+		this.music = this.sound.add('roadSound');
+		this.music.play();
+		this.music.setLoop(true);
 		this.transition = new Transition(this);
 		this.id ='road';
 		this.limitE=Phaser.Math.Between(1,10);
@@ -178,7 +181,7 @@ export default class Tierra extends Phaser.Scene
 	enemyRandom() {
 		this.id = this.parallax.checkId();
 		let x = Phaser.Math.Between(1,7);
-		//let x = 6;
+		//let x = 7;
 		if(this.id == 'roadId')
 		{
 			if (x == 1) {this.elementsArray.push(new Car(this,1200,(Phaser.Math.Between(0,1)*40)+440));}
@@ -225,30 +228,6 @@ export default class Tierra extends Phaser.Scene
 			this.hawaiiCoins=false;
 		}
 	}
-
-	soundManager() {
-        this.id = this.parallax.checkId();
-        if(this.id =='roadId')
-        {
-            this.audio = this.sound.add("roadSound");
-        }
-        else if(this.id =='spaceId')
-        {
-            this.audio = this.sound.add("spaceSound");
-        }
-        else if(this.id =='seaId')
-        {
-            this.audio = this.sound.add("seaSound");
-        }
-        else if(this.id == 'hawaiiId')
-        {
-            this.audio = this.sound.add("hawaiiSound");
-            console.log('audio cambiado');
-        }
-        this.audio.play();
-        this.audio.setLoop(true);
-    }
-
 	update(t,dt) {	
 		this.gameTime += dt/1000;
 		this.parallax.update();

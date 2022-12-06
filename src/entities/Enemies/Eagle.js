@@ -3,7 +3,7 @@ import Enemies from "./Enemies.js";
 export default class Eagle extends Enemies {
     constructor(scene, x, y) {
         super(scene, x, y);
-        this.speedX = -75 - (this.scene.gameTime/10);
+        this.speedX = -75 - this.scene.gameTime;
         this.speedY = 0;
         this.body.setSize(50, 45).setOffset(15, 25);
         this.setScale(1.5, 1.5);
