@@ -82,7 +82,7 @@ export default class Tierra extends Phaser.Scene
         this.load.audio('spaceSound', './assets/sonidos/spaceSound.mp3');
         this.load.audio('seaSound', './assets/sonidos/seaSound.mp3');
         this.load.audio('hawaiiSound', './assets/sonidos/hawaiiSound.mp3');
-        //this.load.audio('damage', './assets/sonidos/damage.mp3');
+        this.load.audio('damage', './assets/sonidos/Damage.mp3');
 		this.load.audio('coin', './assets/sonidos/coin.mp3');
 	}
 	 
@@ -90,7 +90,7 @@ export default class Tierra extends Phaser.Scene
 	create() {
 		this.parallax = new Parallax(this, this.music);
 		this.parallax.setDepth(0);
-	 	this.pavana = new Pavana(this, 100, 100);
+	 	this.pavana = new Pavana(this, 100, 100, 'damage');
 		this.timerE = 0;
 		this.timerP = 0;
 		this.timerC = 0;	
@@ -189,7 +189,7 @@ export default class Tierra extends Phaser.Scene
 			else if (x == 3) {this.elementsArray.push(new Eagle(this,1200,Phaser.Math.Between(100,500)));}
 			else if (x == 4) {this.elementsArray.push(new Plane(this,1200,Phaser.Math.Between(100,400), 1));}
 			else if (x == 5) {this.elementsArray.push(new Tree(this,1200,500));}
-      		else if(x == 6) {new Sign(this,1200,500);}
+      		else if(x == 6) {this.elementsArray.push(new Sign(this,1200,500));}
 			else this.enemyRandom();
 		}
 		else if(this.id =='spaceId')
