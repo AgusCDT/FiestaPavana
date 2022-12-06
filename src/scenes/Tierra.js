@@ -82,14 +82,15 @@ export default class Tierra extends Phaser.Scene
         this.load.audio('spaceSound', './assets/sonidos/spaceSound.wav');
         this.load.audio('seaSound', './assets/sonidos/seaSound.wav');
         this.load.audio('hawaiiSound', './assets/sonidos/hawaiiSound.wav');
-        //this.load.audio('coin', './assets/sonidos/Coin.mp3');
+        this.load.audio('damage', './assets/sonidos/damage.mp3');
+		this.load.audio('coin', './assets/sonidos/coin.mp3');
 	}
 	 
 	// Creación de componentes y parámetros
 	create() {
 		this.parallax = new Parallax(this);
 		this.parallax.setDepth(0);
-	 	this.pavana = new Pavana(this, 100, 100);
+	 	this.pavana = new Pavana(this, 100, 100, 'damage');
 		this.timerE = 0;
 		this.timerP = 0;
 		this.timerC = 0;	
@@ -169,7 +170,7 @@ export default class Tierra extends Phaser.Scene
 			let coinProbability = Phaser.Math.Between(1,3);
 			if (coinProbability == 1) 
 			{
-				this.elementsArray.push(new Goldenfish(this,1200,Phaser.Math.Between(50,this.height - 50),'goldenFish',false));
+				this.elementsArray.push(new Goldenfish(this,1200,Phaser.Math.Between(50,this.height - 50),'goldenFish',false, 'coin'));
 			}
 		}
 	}
@@ -210,7 +211,7 @@ export default class Tierra extends Phaser.Scene
 		{
 			for(let j=0;j<5;j++)
 			{
-				this.elementsArray.push(new Goldenfish(this,400+i*100,200+j*50,'goldenFish',true));
+				this.elementsArray.push(new Goldenfish(this,400+i*100,200+j*50,'goldenFish',true, 'coin'));
 				this.coinsCounterHawaii=(i+1)*(j+1)	;
 			}
 		}

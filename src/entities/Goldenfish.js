@@ -1,9 +1,10 @@
 export default class Goldenfish extends Phaser.GameObjects.Sprite {
-    constructor(scene, x, y, filename,move) 
+    constructor(scene, x, y, filename,move, audio) 
 	{
-		super(scene, x, y, filename);
+		super(scene, x, y, filename, audio);
 		this.x = x;
 		this.y = y;
+		this.audio = this.scene.sound.add(audio);
 		this.move = move;
 		this.scene.goldenfish = this;
 		this.scene.add.existing(this);
@@ -39,6 +40,7 @@ export default class Goldenfish extends Phaser.GameObjects.Sprite {
 		{
 			this.scene.coinsHawaii();
             this.scene.cloud.pickUpCoins();
+			this.audio.play();
 			this.scene.updateLabelFish();
 			this.destroy();	
 			this.particles.destroy();
