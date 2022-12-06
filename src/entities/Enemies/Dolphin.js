@@ -3,7 +3,7 @@ import Enemies from "./Enemies.js";
 export default class Dolphin extends Enemies {
     constructor(scene, x, y) {
         super(scene, x, y);
-        this.speedX = -100 - this.scene.gameTime;
+        this.speedX = -100;
         this.speedY = -20;
         this.body.setSize(90, 85).setOffset(10, 5);
         //Tween
@@ -38,10 +38,12 @@ export default class Dolphin extends Enemies {
         }
     }
     
-    preUpdate(t, dt) {        
+    preUpdate(t, dt) {
+        // Velocidad incremental
+        this.speed = this.speedX * (this.scene.gameTime/10);
         // Movimiento
         this.dolphinMovement();
-        this.body.setVelocity(this.speedX, this.speedY); 
+        this.body.setVelocity(this.speed, this.speedY); 
         super.preUpdate(t, dt);
     }
 }

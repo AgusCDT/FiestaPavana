@@ -2,7 +2,7 @@ import Enemies from "./Enemies.js";
 export default class UFO extends Enemies {
     constructor(scene, x, y) {
         super(scene, x, y);
-        this.speedX = -75 - this.scene.gameTime;
+        this.speedX = -75;
         this.speedY = 0;
         this.posX=x;
         this.posY=y;
@@ -43,9 +43,11 @@ export default class UFO extends Enemies {
     }
 
     preUpdate(t, dt) {
+        // Velocidad incremental
+        this.speed = this.speedX * (this.scene.gameTime/10);
         // Movimiento
         this.ufoMovement();
-        this.body.setVelocity(this.speedX, this.speedY);
+        this.body.setVelocity(this.speed, this.speedY);
         super.preUpdate(t, dt);
     }
 }

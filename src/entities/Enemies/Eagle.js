@@ -3,7 +3,7 @@ import Enemies from "./Enemies.js";
 export default class Eagle extends Enemies {
     constructor(scene, x, y) {
         super(scene, x, y);
-        this.speedX = -75 - this.scene.gameTime;
+        this.speedX = -75;
         this.speedY = 0;
         this.body.setSize(50, 45).setOffset(15, 25);
         this.setScale(1.5, 1.5);
@@ -23,9 +23,11 @@ export default class Eagle extends Enemies {
     }
 
     preUpdate(t, dt) {
+        // Velocidad incremental
+        this.speed = this.speedX * (this.scene.gameTime/10);
         // Movimiento
         this.eagleMovement();
-        this.body.setVelocity(this.speedX, this.speedY);  
+        this.body.setVelocity(this.speed, this.speedY);  
         super.preUpdate(t, dt);
     }
 }
