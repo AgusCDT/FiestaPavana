@@ -176,8 +176,8 @@ export default class Tierra extends Phaser.Scene
 	
 	enemyRandom() {
 		this.id = this.parallax.checkId();
-		//let x = Phaser.Math.Between(1,7);
-		let x = 6;
+		let x = Phaser.Math.Between(1,7);
+		//let x = 6;
 		if(this.id == 'roadId')
 		{
 			if (x == 1) {this.elementsArray.push(new Car(this,1200,(Phaser.Math.Between(0,1)*40)+440));}

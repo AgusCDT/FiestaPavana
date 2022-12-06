@@ -3,7 +3,7 @@ import Enemies from "./Enemies.js";
 export default class Dolphin extends Enemies {
     constructor(scene, x, y) {
         super(scene, x, y);
-        this.speedX = -100;
+        this.speedX = -100 - this.scene.gameTime;
         this.speedY = -20;
         this.body.setSize(90, 85).setOffset(10, 5);
         //Tween

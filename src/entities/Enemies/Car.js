@@ -3,7 +3,7 @@ import Enemies from "./Enemies.js";
 export default class Car extends Enemies {
     constructor(scene, x, y) {
         super(scene, x, y);
-        this.speedX = -75;
+        this.speedX = -75 - this.scene.gameTime;
         this.speedY = 0;
         this.body.setSize(90, 50).setOffset(12,40);
         // Animación

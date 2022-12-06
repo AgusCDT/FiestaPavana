@@ -36,10 +36,10 @@ export default class Parallax extends Phaser.GameObjects.Sprite {
 		}
 		else
 		{
-			this.parallax1.tilePositionX += 0.01;
-			this.parallax2.tilePositionX += 0.2;
-			this.parallax3.tilePositionX += 0.4;
-			this.parallax4.tilePositionX += 0.75;
+			this.parallax1.tilePositionX += 0.01 * (this.scene.gameTime/10);
+			this.parallax2.tilePositionX += 0.2 * (this.scene.gameTime/10);
+			this.parallax3.tilePositionX += 0.4 * (this.scene.gameTime/10);
+			this.parallax4.tilePositionX += 0.75 * (this.scene.gameTime/10);
 		}	
 	}
 	
