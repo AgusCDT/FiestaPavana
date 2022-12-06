@@ -66,7 +66,7 @@ export default class Tierra extends Phaser.Scene
 		this.load.spritesheet('boat', './assets/imagenes/obstacles/boatAnimation.png', { frameWidth: 75, frameHeight: 90});
 		this.load.spritesheet('balloon', './assets/imagenes/obstacles/balloonAnimation.png', { frameWidth: 99, frameHeight: 154});
 		this.load.spritesheet('tree1','./assets/imagenes/obstacles/tree1.png', { frameWidth: 102, frameHeight: 116});
-		this.load.image('sign', './assets/imagenes/obstacles/StopSign.png');
+		this.load.spritesheet('sign', './assets/imagenes/obstacles/StopSign.png', { frameWidth: 47, frameHeight: 116});
 		// Pups
 	 	this.load.image('spacePup', './assets/imagenes/objetos/astronaut.png'); 
 	 	this.load.image('seaPup', './assets/imagenes/objetos/lifebuoy.png');
@@ -176,7 +176,8 @@ export default class Tierra extends Phaser.Scene
 	
 	enemyRandom() {
 		this.id = this.parallax.checkId();
-		let x = Phaser.Math.Between(1,5);
+		//let x = Phaser.Math.Between(1,7);
+		let x = 6;
 		if(this.id == 'roadId')
 		{
 			if (x == 1) {this.elementsArray.push(new Car(this,1200,(Phaser.Math.Between(0,1)*40)+440));}
@@ -184,7 +185,7 @@ export default class Tierra extends Phaser.Scene
 			else if (x == 3) {this.elementsArray.push(new Eagle(this,1200,Phaser.Math.Between(100,500)));}
 			else if (x == 4) {this.elementsArray.push(new Plane(this,1200,Phaser.Math.Between(100,400), 1));}
 			else if (x == 5) {this.elementsArray.push(new Tree(this,1200,500));}
-      		else if (x == 6) {this.elementsArray.push(new Sign(this,1200,450, 'sign'));}
+      		else if(x == 6) {new Sign(this,1200,500);}
 			else this.enemyRandom();
 		}
 		else if(this.id =='spaceId')
