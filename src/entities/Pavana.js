@@ -2,9 +2,10 @@ import Bomb from '../entities/Enemies/Bomb.js';
 
 export default class Pavana extends Phaser.GameObjects.Sprite {
 
-	constructor(scene, x, y) {
-		super(scene, x, y,'pavana');
+	constructor(scene, x, y, audio) {
+		super(scene, x, y,'pavana', audio);
 		this.setDepth(1);
+		this.audio = this.scene.sound.add(audio);
 		this.scene.add.existing(this);
     	this.scene.physics.add.existing(this);
     	this.body.setCollideWorldBounds();
@@ -139,6 +140,7 @@ export default class Pavana extends Phaser.GameObjects.Sprite {
 	enemyColision() {
 		if (this.tempColision <= 0) { // Solo puede quitar vida si llevo cierto tiempo después de la anterior colisión
 			// Comienza la animacion de colision
+			this.audio.play();
 			if (this.leftAnim) {
 				this.play('pavanaLeftAnimationDeath');
 			}

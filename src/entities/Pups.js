@@ -6,6 +6,7 @@ export default class Pups extends Phaser.GameObjects.Sprite {
 		this.scene.pup = this;
 		this.scene.add.existing(this);
 		this.relatedScene = scene;
+		
     	this.scene.physics.add.existing(this);
 		this.speedX = 0;
 		this.speedY = 75;
@@ -33,7 +34,7 @@ export default class Pups extends Phaser.GameObjects.Sprite {
 	colision() {
 		if(this.scene.physics.overlap(this.scene.pavana, this))
 		{
-			this.scene.transition.fadeIn(this.filename); // llamada a fadeIn en Transition				
+			this.scene.transition.fadeIn(this.filename); // llamada a fadeIn en Transition
 			this.destroy();	
 		}
 	}

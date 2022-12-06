@@ -3,7 +3,7 @@ import Enemies from "./Enemies.js";
 export default class Balloon extends Enemies {
     constructor(scene, x, y) {
         super(scene, x, y);
-        this.speedX = -75 - this.scene.gameTime;
+        this.speedX = -75;
         this.speedY = 0;
         
         this.body.setSize(69, 130).setOffset(15, 12);
@@ -19,8 +19,10 @@ export default class Balloon extends Enemies {
     }
 
     preUpdate(t, dt) {
+        // Velocidad incremental
+        this.speed = this.speedX * (this.scene.gameTime/10);
         // Movimiento
-        this.body.setVelocity(this.speedX, this.speedY);
+        this.body.setVelocity(this.speed, this.speedY);
         super.preUpdate(t, dt);
     }
 }
