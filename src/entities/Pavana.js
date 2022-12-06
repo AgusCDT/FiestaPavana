@@ -64,7 +64,6 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 	    	}
 	    }
 	    if (this.a.isDown) { // Input hacia la izquierda acelerando
-			
 	    	if (this.speedX > -this.maxSpeed) {
 				this.speedX -= this.acceleration;
 	    	}
@@ -90,12 +89,12 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 	    }
 	}
 	animationInput(){
-		var durationD = this.d.getDuration();
-		var durationA = this.a.getDuration();
-		if (this.scene.input.keyboard.checkDown(this.d,durationD)){
+		if(this.d.isDown){
+			
 			this.play('pavanaRightAnimation');
 		}
-		else if(this.scene.input.keyboard.checkDown(this.a,durationA)){
+		else if (this.a.isDown){
+			
 			this.play('pavanaLeftAnimation');
 		}
 	}
