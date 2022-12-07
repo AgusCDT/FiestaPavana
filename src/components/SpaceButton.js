@@ -17,6 +17,7 @@ export default class SpaceButton extends Button {
 
     ClickButton() { // Compara valores para solo poder comprarla cuando tienes el dinero suficiente y cuando no la has comprado ya
         if (this.cloud.getCoins() >= this.price && this.cloud.getSpace() == 0) {
+            this.purchase.play();
             this.cloud.updateCoins(this.price); // Actualiza las monedas en el localStorage
             this.cloud.upgradeSpace(); // Setea la compra en el localStorage
             this.soldout = this.relatedScene.add.image(this.x, this.y, 'soldout'); // Se añade la imagen de agotado
