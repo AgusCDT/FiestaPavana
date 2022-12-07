@@ -87,10 +87,7 @@ export default class Tierra extends Phaser.Scene
 		//inGame
         this.load.audio('damage', './assets/sonidos/Damage.mp3');
 		this.load.audio('coin', './assets/sonidos/coin.mp3');
-		//Button
-		//this.load.audio('buy', './assets/sonidos/ShopSound.mp3');
-		this.load.audio('onButton', './assets/sonidos/onButtonSound.mp3');
-		this.load.audio('pressButton', './assets/sonidos/pressButonSound.mp3');
+		this.load.audio('pupSound', './assets/sonidos/pupSound.mp3');
 	}
 	 
 	// Creación de componentes y parámetros
