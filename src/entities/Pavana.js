@@ -151,6 +151,7 @@ export default class Pavana extends Phaser.GameObjects.Sprite {
 			this.removeLife();
 			if (this.life <= 0) {
 				this.scene.cloud.updateHighScore(this.score);
+				this.scene.music.stop();
 				this.scene.scene.start('GameOver', {cloud: this.scene.cloud});
 				this.destroy();
 			}
@@ -194,7 +195,10 @@ export default class Pavana extends Phaser.GameObjects.Sprite {
 					this.scene.elementsArray.push(new Bomb(this.scene, this.x, -70));
 					this.noMove=0;
 				}
-				else this.scene.scene.start('GameOver', {cloud: this.scene.cloud});
+				else {
+					this.scene.music.stop();
+					this.scene.scene.start('GameOver', {cloud: this.scene.cloud});					
+				}
 				
 			}
 		}
