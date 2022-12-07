@@ -9,24 +9,24 @@ export default class Button {
 
     create() {
         this.button = this.relatedScene.add.sprite(this.x, this.y, this.image).setInteractive();
-  
-        this.button.on('pointerover', () => {
+        
+        this.button.on('pointerover', () => { // Al pasar el ratón por encima del botón
             if (this.image == 'playbutton' || this.image == 'menubutton' || this.image == 'shopbutton'){
                 this.button.setFrame(1);
             }
         });
-        this.button.on('pointerout', () => {
+        this.button.on('pointerout', () => { // Al sacar el ratón del botón
             if (this.image == 'playbutton' || this.image == 'menubutton' || this.image == 'shopbutton'){
                 this.button.setFrame(0);
             }
         });
-        this.button.on('pointerdown', () => {
+        this.button.on('pointerdown', () => { // Al clicar el botón
             this.ClickButton();
             if (this.image != 'playbutton' && this.image != 'menubutton' && this.image != 'shopbutton'){
                 this.relatedScene.updateLabel();
             }
         });
-        this.button.on('pointerdown', function() {
+        this.button.on('pointerdown', function() { // Tween al clicar el botón
             this.scene.tweens.add(
                 {
                     targets: this,
@@ -37,7 +37,7 @@ export default class Button {
                 }
             );
         });
-        this.button.on('pointerover', function() {
+        this.button.on('pointerover', function() { // Tween al pasar el ratón por encima del botón
             this.scene.tweens.add(
                 {
                     targets: this,
@@ -48,7 +48,7 @@ export default class Button {
                 }
             );
         });
-        this.button.on('pointerout', function() {
+        this.button.on('pointerout', function() { // Tween al sacar el ratón del botón
             this.scene.tweens.add(
                 {
                     targets: this,

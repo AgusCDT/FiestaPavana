@@ -40,8 +40,14 @@ export default class UFO extends Enemies {
         {
             this.body.reset(this.posX+Phaser.Math.Between(0,200)-100,Phaser.Math.Between(100,500));
         } 
+    }
 
-        this.body.setVelocity(this.speedX, this.speedY);
+    preUpdate(t, dt) {
+        // Velocidad incremental
+        this.speed = this.speedX * (this.scene.gameTime/10);
+        // Movimiento
+        this.ufoMovement();
+        this.body.setVelocity(this.speed, this.speedY);
         super.preUpdate(t, dt);
     }
 }

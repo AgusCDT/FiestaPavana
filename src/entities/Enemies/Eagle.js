@@ -17,11 +17,17 @@ export default class Eagle extends Enemies {
 		this.play('eagleAnimation',);
     }
 
-    preUpdate(t, dt){
-        // Movimiento
+    eagleMovement() {
         this.speedX -= 1;
-		this.speedY += 0.5;
-        this.body.setVelocity(this.speedX, this.speedY);  
+        this.speedY += 0.5;
+    }
+
+    preUpdate(t, dt) {
+        // Velocidad incremental
+        this.speed = this.speedX * (this.scene.gameTime/10);
+        // Movimiento
+        this.eagleMovement();
+        this.body.setVelocity(this.speed, this.speedY);  
         super.preUpdate(t, dt);
     }
 }

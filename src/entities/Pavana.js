@@ -1,8 +1,11 @@
-export default class Pavana extends Phaser.GameObjects.Sprite{
+import Bomb from '../entities/Enemies/Bomb.js';
 
-	constructor(scene, x, y) {
-		super(scene, x, y,'pavana');
+export default class Pavana extends Phaser.GameObjects.Sprite {
+
+	constructor(scene, x, y, audio) {
+		super(scene, x, y,'pavana', audio);
 		this.setDepth(1);
+		this.audio = this.scene.sound.add(audio);
 		this.scene.add.existing(this);
     	this.scene.physics.add.existing(this);
     	this.body.setCollideWorldBounds();
@@ -12,6 +15,9 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 		this.maxSpeed = 400;
 		this.acceleration = 10;
 		this.deceleration = 10;
+		this.rightAnim = true; // Indica si se esta ejecutando la animacion hacia la derecha
+		this.leftAnim = false; // Indica si se esta ejecutando la animacion hacia la izquierda
+		this.stoppedAnimationDeath = true; // Indica si se ha acabado la animacion de colision
 		this.life = this.scene.cloud.getLife();
 		this.multiplicator = this.scene.cloud.getMultiplicator();
 		this.lifeImages = [];
@@ -29,16 +35,31 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 			frameRate: 10,
 			repeat: -1
 		});
-		this.play('pavanaRightAnimation');
+		
 		this.scene.anims.create({
 			key: 'pavanaLeftAnimation',
 			frames: scene.anims.generateFrameNumbers('pavanaLeft', { start: 0, end: 6}),
 			frameRate: 10,
 			repeat: -1
 		});
+
+		this.scene.anims.create({ // Animacion de colision hacia la izquierda
+			key: 'pavanaLeftAnimationDeath',
+			frames: scene.anims.generateFrameNumbers('pavanaLeftDeath', { start: 0, end: 7}),
+			frameRate: 10,
+			repeat: -1
+		});
+
+		this.scene.anims.create({ // Animacion de colision hacia la derecha
+			key: 'pavanaRightAnimationDeath',
+			frames: scene.anims.generateFrameNumbers('pavanaRightDeath', { start: 0, end: 7}),
+			frameRate: 10,
+			repeat: -1
+		});
+		this.play('pavanaRightAnimation'); // Comienza con animacion hacia la derecha
 	}
 
-	calculateVelocity(){
+	calculateVelocity() {
 		if (this.w.isDown) { // Input hacia arriba acelerando
 	    	if (this.speedY > -this.maxSpeed) {
 				this.speedY -= this.acceleration;
@@ -64,11 +85,31 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 	    	}
 	    }
 	    if (this.a.isDown) { // Input hacia la izquierda acelerando
+			if (!this.leftAnim) {
+				this.leftAnim = true;
+				this.rightAnim = false;
+				if (this.stoppedAnimationDeath) { // Si ha acabado la animacion de colision empieza la animación hacia la izquierda si no está empezada
+					this.play('pavanaLeftAnimation');
+				}
+				else { // Si no ha acabado la animacion de colision se sigue con ella
+					this.play('pavanaLeftAnimationDeath');
+				}
+			}
 	    	if (this.speedX > -this.maxSpeed) {
 				this.speedX -= this.acceleration;
 	    	}
 	    }
 	    else if (this.d.isDown) { // Input hacia la derecha acelerando
+			if (!this.rightAnim) {
+				this.leftAnim = false;
+				this.rightAnim = true;
+				if (this.stoppedAnimationDeath) { // Si ha acabado la animacion de colision empieza la animación hacia la derecha si no está empezada
+					this.play('pavanaRightAnimation');
+				}
+				else { // Si no ha acabado la animacion de colision se sigue con ella
+					this.play('pavanaRightAnimationDeath');
+				}
+			}
 	    	if (this.speedX < this.maxSpeed) {
 				this.speedX += this.acceleration;
 	    	}
@@ -88,20 +129,52 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 	    	}
 	    }
 	}
-	animationInput(){
-		if(this.d.isDown){
-			
-			this.play('pavanaRightAnimation');
-		}
-		else if (this.a.isDown){
-			
-			this.play('pavanaLeftAnimation');
-		}
-	}
+
 	loadLife() {
 		for (var i = 0; i < this.life; i++) {
 			this.lifeImages[i] = this.scene.add.image(60 * i + 40, 40, 'feather');
 			this.lifeImages[i].setDepth(2);
+		}
+	}
+
+	enemyColision() {
+		if (this.tempColision <= 0) { // Solo puede quitar vida si llevo cierto tiempo después de la anterior colisión
+			// Comienza la animacion de colision
+			this.audio.play();
+			if (this.leftAnim) {
+				this.play('pavanaLeftAnimationDeath');
+			}
+			else if (this.rightAnim) {
+				this.play('pavanaRightAnimationDeath');
+			}
+			this.life -= 1;
+			this.removeLife();
+			if (this.life <= 0) {
+				this.scene.cloud.updateHighScore(this.score);
+				this.scene.scene.start('GameOver', {cloud: this.scene.cloud});
+				this.destroy();
+			}
+			this.tempColision = 2000;
+			this.stoppedAnimationDeath = false;
+		}
+	}
+
+	tColision(dt) {
+		if (this.tempColision > 0){
+			this.tempColision -= Math.round(dt);
+		}
+		else {
+			// Cuando acaba el periodo de invulnerabilidad se cambia a animaciones de desplazamiento
+			if (!this.stoppedAnimationDeath) {
+				if (this.leftAnim) {
+					this.play('pavanaLeftAnimation');
+				}
+				else if (this.rightAnim) {
+					this.play('pavanaRightAnimation');
+				}
+				this.stoppedAnimationDeath = true;
+			}
+			
 		}
 	}
 
@@ -110,30 +183,15 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 		this.lifeImages.length -= 1;
 	}
 
-	preUpdate(t, dt) {
-		super.preUpdate(t, dt);
-		var place = this.scene.parallax.checkId();
-		if (place != 'hawaiiId') {
-			this.score += Math.round(Math.round(dt) / 2);
-		}
-		this.scene.cloud.updateScore(this.score);
-
-		if (this.tempColision > 0){
-			this.tempColision -= Math.round(dt);
-		}
-		this.calculateVelocity();
-		this.animationInput();
-	    this.body.setVelocity(this.speedX, this.speedY); // Aplicamos los valores de velocidad
-
-		if(!this.a.isDown&&!this.d.isDown&&!this.w.isDown&&!this.s.isDown)
+	noMovePunishment(dt) {
+		if(!this.a.isDown && !this.d.isDown && !this.w.isDown && !this.s.isDown)
 		{
-			console.log('no move no party');
 			this.noMove+=dt/1000;
 			
 			if(parseInt(this.noMove)>=5)
 			{
 				if (this.lifeImages.length > 0){
-					this.removeLife();
+					this.scene.elementsArray.push(new Bomb(this.scene, this.x, -70));
 					this.noMove=0;
 				}
 				else this.scene.scene.start('GameOver', {cloud: this.scene.cloud});
@@ -144,5 +202,22 @@ export default class Pavana extends Phaser.GameObjects.Sprite{
 		{
 			this.noMove=0;
 		}
+	}
+
+	calculateScore(dt){
+		var place = this.scene.parallax.checkId();
+		if (place != 'hawaiiId') {
+			this.score += Math.round((dt / 2) * this.scene.cloud.getMultiplicator());
+		}
+		this.scene.cloud.updateScore(this.score);
+	}
+
+	preUpdate(t, dt) {
+		super.preUpdate(t, dt);
+		this.calculateScore(dt);
+		this.tColision(dt);
+		this.calculateVelocity();
+	    this.body.setVelocity(this.speedX, this.speedY); // Aplicamos los valores de velocidad
+		this.noMovePunishment(dt);
 	}
 }

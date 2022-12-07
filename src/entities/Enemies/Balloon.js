@@ -18,9 +18,11 @@ export default class Balloon extends Enemies {
 		this.play('balloonAnimation');
     }
 
-    preUpdate(t, dt){
+    preUpdate(t, dt) {
+        // Velocidad incremental
+        this.speed = this.speedX * (this.scene.gameTime/10);
         // Movimiento
-        this.body.setVelocity(this.speedX, this.speedY);
+        this.body.setVelocity(this.speed, this.speedY);
         super.preUpdate(t, dt);
     }
 }

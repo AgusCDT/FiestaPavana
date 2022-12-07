@@ -1,6 +1,5 @@
 import Pavana from '../entities/Pavana.js';
 import Parallax from '../Parallax.js';
-import Enemies from '../entities/Enemies/Enemies.js';
 import Asteroid from '../entities/Enemies/Asteroid.js';
 import UFO from '../entities/Enemies/UFO.js';
 import Plane from '../entities/Enemies/Plane.js';
@@ -18,20 +17,21 @@ import Sign from '../entities/Enemies/Sign.js';
 
 export default class Tierra extends Phaser.Scene 
 {
-	constructor() 
-	{
+	constructor() {
 		super({ key: 'tierra' });
 		this.width = 1200;
 		this.height = 600;
 		this.cloud;
 	}
+
 	init(save) {
 		this.cloud = save.cloud;
 	}
-	// precarga de imágenes
-	preload() 
-	{
+
+	// Precarga de imágenes
+	preload() {
 		this.load.image('backgroundTransition', './assets/imagenes/otras/backgroundBlack.png');
+		this.load.image('bomb', './assets/imagenes/otras/bomba-nuclearM.png');
 		// Road Parallax
 		this.load.image('skyRoad', './assets/escenarios/Carretera/skyRoad.png');	
 		this.load.image('mountains', './assets/escenarios/Carretera/mountains_1.png');
@@ -52,6 +52,8 @@ export default class Tierra extends Phaser.Scene
 		// Pavana 
 		this.load.spritesheet('pavanaRight', './assets/imagenes/PavanaRightAnimation.png', { frameWidth: 75, frameHeight: 39});
 		this.load.spritesheet('pavanaLeft', './assets/imagenes/PavanaLeftAnimation.png', { frameWidth: 75, frameHeight: 39});
+		this.load.spritesheet('pavanaLeftDeath', './assets/imagenes/PavanaLeftAnimationDeath1.png', { frameWidth: 75, frameHeight: 39});
+		this.load.spritesheet('pavanaRightDeath', './assets/imagenes/PavanaRightAnimationDeath1.png', { frameWidth: 75, frameHeight: 39});
 		// Enemies
 		this.load.spritesheet('car', './assets/imagenes/enemigos/car.png', { frameWidth: 175, frameHeight: 100});
 		this.load.spritesheet('ufo', './assets/imagenes/enemigos/UFO.png', { frameWidth: 100, frameHeight: 100});
@@ -64,7 +66,7 @@ export default class Tierra extends Phaser.Scene
 		this.load.spritesheet('boat', './assets/imagenes/obstacles/boatAnimation.png', { frameWidth: 75, frameHeight: 90});
 		this.load.spritesheet('balloon', './assets/imagenes/obstacles/balloonAnimation.png', { frameWidth: 99, frameHeight: 154});
 		this.load.spritesheet('tree1','./assets/imagenes/obstacles/tree1.png', { frameWidth: 102, frameHeight: 116});
-		this.load.image('sign', './assets/imagenes/obstacles/StopSign.png');
+		this.load.spritesheet('sign', './assets/imagenes/obstacles/StopSign.png', { frameWidth: 47, frameHeight: 116});
 		// Pups
 	 	this.load.image('spacePup', './assets/imagenes/objetos/astronaut.png'); 
 	 	this.load.image('seaPup', './assets/imagenes/objetos/lifebuoy.png');
@@ -75,24 +77,27 @@ export default class Tierra extends Phaser.Scene
 		this.load.image('gold', './assets/imagenes/otras/gold.png');
 		// HUD
 		this.load.image('feather', './assets/imagenes/otras/feather.png');
-		//Audio
-        this.load.audio('roadSound', './assets/sonidos/roadSound.wav');
-        this.load.audio('spaceSound', './assets/sonidos/spaceSound.wav');
-        this.load.audio('seaSound', './assets/sonidos/seaSound.wav');
-        this.load.audio('hawaiiSound', './assets/sonidos/hawaiiSound.wav');
-        //this.load.audio('coin', './assets/sonidos/Coin.mp3');
+		// Audio
+        this.load.audio('roadSound', './assets/sonidos/roadSound.mp3');
+        this.load.audio('spaceSound', './assets/sonidos/spaceSound.mp3');
+        this.load.audio('seaSound', './assets/sonidos/seaSound.mp3');
+        this.load.audio('hawaiiSound', './assets/sonidos/hawaiiSound.mp3');
+        this.load.audio('damage', './assets/sonidos/Damage.mp3');
+		this.load.audio('coin', './assets/sonidos/coin.mp3');
 	}
 	 
-	// creación de Pavana y el fondo
-	create() 
-	{
-		this.parallax = new Parallax(this);
+	// Creación de componentes y parámetros
+	create() {
+		this.parallax = new Parallax(this, this.music);
 		this.parallax.setDepth(0);
-	 	this.pavana = new Pavana(this, 100, 100);
+	 	this.pavana = new Pavana(this, 100, 100, 'damage');
 		this.timerE = 0;
 		this.timerP = 0;
 		this.timerC = 0;	
 		this.gameTime=0;
+		this.music = this.sound.add('roadSound');
+		this.music.play();
+		this.music.setLoop(true);
 		this.transition = new Transition(this);
 		this.id ='road';
 		this.limitE=Phaser.Math.Between(1,10);
@@ -107,12 +112,13 @@ export default class Tierra extends Phaser.Scene
 	}
 
 	HUD() {
-		// texto e imagen de las monedas
-		this.labelFish = this.add.text(1105, 10, this.cloud.getCoins(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#00FF00' });
+		// Texto e imagen de las monedas
+		this.labelFish = this.add.text(1105, 10, this.cloud.getCoins(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#E10000' });
 		this.imageFish = this.add.image(1075, 30, 'goldenFish').setScale(0.7,0.7).setRotation(0.6);
-		// texto score
-		this.labelScore = this.add.text(370, 20, this.cloud.getScore(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#00FF00' }); 
-		this.highScore = this.add.text(700, 20, 'HighScore: ' +this.cloud.getHighScore(), { fontFamily: 'Arial', fontSize: 20, color: '#E10000' });
+		// Texto score
+		this.labelScore = this.add.text(370, 20, this.cloud.getScore(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#E10000' }); 
+		this.highScore = this.add.text(700, 20, 'HighScore: ' +this.cloud.getHighScore(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#E10000' });
+		// Vidas
 		this.pavana.loadLife();
 		
 		this.labelFish.setDepth(2);
@@ -121,27 +127,25 @@ export default class Tierra extends Phaser.Scene
 		this.imageFish.setDepth(2);
 	}
 
-	updateLabelFish() { // actualización al coger una moneda
+	updateLabelFish() { // Actualización al coger una moneda
 		this.labelFish.destroy();
 		this.labelFish = this.add.text(1105, 10, this.cloud.getCoins(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#00FF00' });
 		this.imageFish.destroy();
 		this.imageFish = this.add.image(1075, 30, 'goldenFish').setScale(0.7,0.7).setRotation(0.6);
 	}
 
-	updateLabelScore(){ // actualización del score durante la run
+	updateLabelScore() { // Actualización del score durante la run
 		this.labelScore.destroy();
 		this.labelScore = this.add.text(370, 20, 'Score: '+ this.cloud.getScore(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#00FF00' });
 	}
 
-	cleanObjects()
-	{
+	cleanObjects() {
 		this.elementsArray.forEach(element => element.destroy());
 		this.elementsArray.length = 0;
 	}
 	
-	pupRandom()
-	{
-		this.id=this.parallax.checkId();
+	pupRandom() {
+		this.id = this.parallax.checkId();
 		let x = Phaser.Math.Between(1,7);
 		if(this.id=='roadId')
 		{
@@ -163,22 +167,21 @@ export default class Tierra extends Phaser.Scene
 		}
 	}
 
-	coinRandom() 
-	{
-		if(this.id!='hawaiiId')
+	coinRandom() {
+		if(this.id != 'hawaiiId')
 		{
 			let coinProbability = Phaser.Math.Between(1,3);
 			if (coinProbability == 1) 
 			{
-				this.elementsArray.push(new Goldenfish(this,1200,Phaser.Math.Between(50,this.height - 50),'goldenFish',false));
+				this.elementsArray.push(new Goldenfish(this,1200,Phaser.Math.Between(50,this.height - 50),'goldenFish',false, 'coin'));
 			}
 		}
 	}
 	
-	enemyRandom()
-	{
+	enemyRandom() {
 		this.id = this.parallax.checkId();
-		let x = Phaser.Math.Between(1,5);
+		let x = Phaser.Math.Between(1,7);
+		//let x = 7;
 		if(this.id == 'roadId')
 		{
 			if (x == 1) {this.elementsArray.push(new Car(this,1200,(Phaser.Math.Between(0,1)*40)+440));}
@@ -186,7 +189,7 @@ export default class Tierra extends Phaser.Scene
 			else if (x == 3) {this.elementsArray.push(new Eagle(this,1200,Phaser.Math.Between(100,500)));}
 			else if (x == 4) {this.elementsArray.push(new Plane(this,1200,Phaser.Math.Between(100,400), 1));}
 			else if (x == 5) {this.elementsArray.push(new Tree(this,1200,500));}
-      else if(x == 6) {new Sign(this,1200,450, 'sign');}
+      		else if(x == 6) {this.elementsArray.push(new Sign(this,1200,500));}
 			else this.enemyRandom();
 		}
 		else if(this.id =='spaceId')
@@ -197,94 +200,67 @@ export default class Tierra extends Phaser.Scene
 		}
 		else if(this.id =='seaId')
 		{
-			if (x == 1) {new Boat(this,1200,Phaser.Math.Between(42,52)*10);}
+			if (x == 1) {this.elementsArray.push(new Boat(this,1200,Phaser.Math.Between(42,52)*10));}
 			else if (x == 2) {this.elementsArray.push(new Dolphin(this,1200,550));}
 			else if (x == 3) {this.elementsArray.push(new Island(this,1200,440));}
-			else if(x == 4){this.elementsArray.push(new Plane(this,1200, Phaser.Math.Between(100, 400), 2));}
+			else if (x == 4) {this.elementsArray.push(new Plane(this,1200, Phaser.Math.Between(100, 400), 2));}
 			else this.enemyRandom();
 		}
 	}
 
-	goldenHawaii()
-	{
+	goldenHawaii() {
 		this.hawaiiCoins=true;
 		for(let i=0; i<5;i++)
 		{
 			for(let j=0;j<5;j++)
 			{
-				this.elementsArray.push(new Goldenfish(this,400+i*100,200+j*50,'goldenFish',true));
+				this.elementsArray.push(new Goldenfish(this,400+i*100,200+j*50,'goldenFish',true, 'coin'));
 				this.coinsCounterHawaii=(i+1)*(j+1)	;
 			}
 		}
 		this.hawaiiPlace=true;
 	}
 
-	coinsHawaii()
-	{
-		this.coinsCounterHawaii-=1;
-		console.log(this.coinsCounterHawaii);		
+	coinsHawaii() {
+		this.coinsCounterHawaii-=1;	
 		if(this.coinsCounterHawaii==0)
 		{
 			this.hawaiiCoins=false;
 		}
 	}
-
-	soundManager(){
-        this.id = this.parallax.checkId();
-        if(this.id =='roadId')
-        {
-            this.audio = this.sound.add("roadSound");
-        }
-        else if(this.id =='spaceId')
-        {
-            this.audio = this.sound.add("spaceSound");
-        }
-        else if(this.id =='seaId')
-        {
-            this.audio = this.sound.add("seaSound");
-        }
-        else if(this.id == 'hawaiiId')
-        {
-            this.audio = this.sound.add("hawaiiSound");
-            console.log('audio cambiado');
-        }
-        this.audio.play();
-        this.audio.setLoop(true);
-    }
-	update(t,dt) 
-	{	
-		this.gameTime+=dt/1000;
+	update(t,dt) {	
+		this.gameTime += dt/1000;
 		this.parallax.update();
 		this.updateLabelScore(); 
-		this.timerE+=dt/1000;
-		this.timerP+=dt/1000;
-		this.timerC+=dt/1000;
+		this.timerE += dt/1000;
+		this.timerP += dt/1000;
+		this.timerC += dt/1000;
 		if(parseInt(this.timerE)>=this.limitE)
 		{
 			this.enemyRandom();
-			this.timerE=0;
-			this.limitE=Phaser.Math.Between(1,10);
+			this.timerE = 0;
+			this.limitE = Phaser.Math.Between(1,10);
 		}
 		if(parseInt(this.timerP)>=this.limitP) 
 		{
 			this.pupRandom();
-			this.timerP=0;
-			this.limitP=Phaser.Math.Between(2,10);
+			this.timerP = 0;
+			this.limitP = Phaser.Math.Between(2,10);
 		}
 		if(parseInt(this.timerC)>=this.limitC)
 		{
 			this.coinRandom();
-			this.timerC=0;
-			this.limitC=Phaser.Math.Between(4,10);
+			this.timerC = 0;
+			this.limitC = Phaser.Math.Between(4,10);
 		}
 		if(this.hawaiiPlace)
 		{
-			this.hawaiiTime+=dt/1000;
+			this.hawaiiTime += dt/1000;
 			if(parseInt(this.hawaiiTime)>=10||!this.hawaiiCoins)
 			{
 				this.transition.transition('roadPup');
-				this.hawaiiPlace=false;
-				this.hawaiiTime=0;	
+				this.hawaiiPlace = false;
+				this.hawaiiTime = 0;	
 			}
 		}
 	}

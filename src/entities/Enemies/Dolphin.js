@@ -28,8 +28,7 @@ export default class Dolphin extends Enemies {
 		this.play('dolphinAnimation');
     }
 
-    preUpdate(t, dt){        
-        // Movimiento
+    dolphinMovement() {
         if(this.y >= 550)
         {
             this.speedY *= -1;
@@ -37,7 +36,14 @@ export default class Dolphin extends Enemies {
         else if(this.y <= 500){
             this.speedY *= -1;
         }
-        this.body.setVelocity(this.speedX, this.speedY); 
+    }
+    
+    preUpdate(t, dt) {
+        // Velocidad incremental
+        this.speed = this.speedX * (this.scene.gameTime/10);
+        // Movimiento
+        this.dolphinMovement();
+        this.body.setVelocity(this.speed, this.speedY); 
         super.preUpdate(t, dt);
     }
 }
