@@ -52,7 +52,7 @@ export default class Shop extends Phaser.Scene {
 	// Metodo para actualizar el indicador de monedas
 	updateLabel() {
 		this.label.destroy();
-		this.label = this.add.text(1105, 10, this.cloud.getCoins(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#00FF00' });
+		this.label = this.add.text(1105, 10, this.cloud.getCoins(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#E10000' });
 	}
 }
 	

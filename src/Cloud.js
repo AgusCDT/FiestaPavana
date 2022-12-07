@@ -28,7 +28,7 @@ export default class Cloud {
     setCoins() {
         // Coge el valor de localStorage, o 0 si no se encuentra
         // Hago el parseInt() porque los valores en localStorage se guardan como strings
-        this.coins = parseInt(localStorage.getItem('coins')) || 0;
+        this.coins = parseInt(localStorage.getItem('coins')) || 1000;
         localStorage.setItem('coins', this.coins);
     };
 

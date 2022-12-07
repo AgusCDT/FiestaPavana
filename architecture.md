@@ -4,10 +4,10 @@ Architecture**
 # FIESTA PAVANA by ***Triolic Games*** 
 
 **A modo de leyenda:** 
-Naranja: Game 
-Rosa: Escenas 
-Azul: Componentes
-Verde: Clases hijas(en este caso de Button y Enemies) 
+- Naranja: Game 
+- Rosa: Escenas 
+- Azul: Componentes
+- Verde: Clases hijas(en este caso de Button y Enemies) 
 
 
 ![Imagen Arquitectura](https://raw.githubusercontent.com/AgusCDT/FiestaPavana/main/assets/imagenes/otras/UML.png)

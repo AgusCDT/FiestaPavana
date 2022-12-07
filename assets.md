@@ -8,7 +8,7 @@
 - seaButton.png -> Pablo Cerrada Vega
 - spaceButton.png -> Pablo Cerrada Vega
 - trophyButton.png -> Pablo Cerrada Vega
-- eagle.png -> https://www.flaticon.com/br/icone-gratis/aguia_3065699?term=Águia&page=1&position=37&page=1&position=37&related_id=3065699&origin=tag
+- eagleAnimation.png -> https://www.flaticon.com/br/icone-gratis/aguia_3065699?term=Águia&page=1&position=37&page=1&position=37&related_id=3065699&origin=tag
 - car.png -> https://www.flaticon.com/kr/free-sticker/toy-car_7603357
 - UFO.png -> Editado por Diseñadora de arte (Beatriz Rubio Rodríguez)
 - astronaut.png -> Editado por https://www.flaticon.com/ru/free-sticker/astronaut-helmet_7457403
@@ -18,9 +18,9 @@
 - traffic-cone.png -> https://www.flaticon.com/free-icon/traffic-cone_394576?term=cones&page=1&position=13&page=1&position=13&related_id=394576&origin=tag
 - asteroid.png -> Editado por Diseñadora de arte (Beatriz Rubio Rodríguez)
 - island.png ->  Editado por Diseñadora de arte (Beatriz Rubio Rodríguez)
-- balloon.png ->  Editado por Diseñadora de arte (Beatriz Rubio Rodríguez)
+- balloonAnimation.png ->  Editado por Diseñadora de arte (Beatriz Rubio Rodríguez)
 - plane.png -> https://www.flaticon.es/sticker-gratis/avion_7603317?related_id=7603317
-- boat.png -> https://www.flaticon.com/free-sticker/sailboat_7603239
+- boatAnimation.png -> https://www.flaticon.com/free-sticker/sailboat_7603239
 - delfin.png -> https://www.flaticon.es/icono-gratis/delfin_1864473?term=delfin&related_id=1864473
 - Architecture.png -> Pablo Cerrada Vega
 - HUD.jpg -> Agustín Castro de Troya
