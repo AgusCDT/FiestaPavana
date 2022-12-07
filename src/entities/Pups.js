@@ -6,7 +6,7 @@ export default class Pups extends Phaser.GameObjects.Sprite {
 		this.scene.pup = this;
 		this.scene.add.existing(this);
 		this.relatedScene = scene;
-		
+		this.audio = this.scene.sound.add('pupSound');
     	this.scene.physics.add.existing(this);
 		this.speedX = 0;
 		this.speedY = 75;
@@ -35,6 +35,7 @@ export default class Pups extends Phaser.GameObjects.Sprite {
 		if(this.scene.physics.overlap(this.scene.pavana, this))
 		{
 			this.scene.transition.fadeIn(this.filename); // llamada a fadeIn en Transition
+			this.audio.play();
 			this.destroy();	
 		}
 	}

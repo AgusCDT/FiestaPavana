@@ -43,10 +43,11 @@ export default class Tierra extends Phaser.Scene
 		this.load.image('islands', './assets/escenarios/SobreMar/islands.png');
 		this.load.image('sea', './assets/escenarios/SobreMar/sea.png');
 		// Space Parallax
-		this.load.image('space_1', './assets/escenarios/Espacio/space_1.png');
-		this.load.image('space_2', './assets/escenarios/Espacio/space_2.png');
-		this.load.image('planets_1', './assets/escenarios/Espacio/planets_1.png');
-		this.load.image('planets_2', './assets/escenarios/Espacio/planets_2.png');
+		this.load.image('space', './assets/escenarios/Espacio/space.jpeg');
+		// this.load.image('space_1', './assets/escenarios/Espacio/space_1.png');
+		// this.load.image('space_2', './assets/escenarios/Espacio/space_2.png');
+		// this.load.image('planets_1', './assets/escenarios/Espacio/planets_1.png');
+		// this.load.image('planets_2', './assets/escenarios/Espacio/planets_2.png');
 		// Disco background
 		this.load.image('hawaii','./assets/escenarios/Fiesta/Fiesta.jpg');
 		// Pavana 
@@ -78,19 +79,22 @@ export default class Tierra extends Phaser.Scene
 		// HUD
 		this.load.image('feather', './assets/imagenes/otras/feather.png');
 		// Audio
+		//Music
         this.load.audio('roadSound', './assets/sonidos/roadSound.mp3');
         this.load.audio('spaceSound', './assets/sonidos/spaceSound.mp3');
         this.load.audio('seaSound', './assets/sonidos/seaSound.mp3');
         this.load.audio('hawaiiSound', './assets/sonidos/hawaiiSound.mp3');
+		//inGame
         this.load.audio('damage', './assets/sonidos/Damage.mp3');
 		this.load.audio('coin', './assets/sonidos/coin.mp3');
+		this.load.audio('pupSound', './assets/sonidos/pupSound.mp3');
 	}
 	 
 	// Creación de componentes y parámetros
 	create() {
 		this.parallax = new Parallax(this, this.music);
 		this.parallax.setDepth(0);
-	 	this.pavana = new Pavana(this, 100, 100, 'damage');
+	 	this.pavana = new Pavana(this, 100, 100);
 		this.timerE = 0;
 		this.timerP = 0;
 		this.timerC = 0;	
@@ -214,7 +218,7 @@ export default class Tierra extends Phaser.Scene
 		{
 			for(let j=0;j<5;j++)
 			{
-				this.elementsArray.push(new Goldenfish(this,400+i*100,200+j*50,'goldenFish',true, 'coin'));
+				this.elementsArray.push(new Goldenfish(this,400+i*100,200+j*50,'goldenFish',true));
 				this.coinsCounterHawaii=(i+1)*(j+1)	;
 			}
 		}

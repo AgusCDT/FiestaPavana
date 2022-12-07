@@ -8,6 +8,7 @@ import BeachButton from '../components/BeachButton.js';
 export default class Shop extends Phaser.Scene {
 	constructor() {
 		super({ key: 'shop' });
+        
 		this.cloud;
 	}
 
@@ -24,18 +25,22 @@ export default class Shop extends Phaser.Scene {
 		this.load.image('seabutton', './assets/componentes/seaButton.png');
 		this.load.image('beachbutton', './assets/componentes/beachButton.png');
 		this.load.image('soldout', './assets/imagenes/otras/soldOut.png');
+		this.load.audio('buy', './assets/sonidos/ShopSound.mp3');
+		this.load.audio('pressButton', './assets/sonidos/pressButonSound.mp3');
 	}
 	 
 	// Creación de los botones y la imagen de fondo
 	create() {
 	 	this.add.image(0, 0, 'shop').setOrigin(0, 0);
+		this.buy = this.sound.add('buy');
+		this.press = this.sound.add('pressButton');
 		this.label = this.add.text(1105, 10, this.cloud.getCoins(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#E10000' });
-		this.MenuButton = new MenuButton(this, this.cloud, 690, 450);
-		this.LifeButton = new LifeButton(this, this.cloud);
-		this.TrophyButton = new TrophyButton(this, this.cloud);
-		this.SpaceButton = new SpaceButton(this, this.cloud);
-		this.SeaButton = new SeaButton(this, this.cloud);
-		this.BeachButton = new BeachButton(this, this.cloud);
+		this.MenuButton = new MenuButton(this, this.cloud, 690, 450, this.press);
+		this.LifeButton = new LifeButton(this, this.cloud, this.buy);
+		this.TrophyButton = new TrophyButton(this, this.cloud, this.buy);
+		this.SpaceButton = new SpaceButton(this, this.cloud, this.buy);
+		this.SeaButton = new SeaButton(this, this.cloud, this.buy);
+		this.BeachButton = new BeachButton(this, this.cloud, this.buy);
 		this.MenuButton.create();
 		this.LifeButton.create();
 		this.TrophyButton.create();
