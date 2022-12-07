@@ -20,23 +20,23 @@ export default class UFO extends Enemies {
     preUpdate(t, dt){
         // Movimiento
         this.posX=parseInt(this.x);  
-        if(this.posX==1000)
+        if(this.posX<=1002&&this.posX>=998)
         {
             this.body.reset(this.posX+Phaser.Math.Between(0,200)-100,Phaser.Math.Between(100,500));
         }
-        if(this.posX==800)
+        if(this.posX<=802&&this.posX>=798)
         {
             this.body.reset(this.posX+Phaser.Math.Between(0,200)-100,Phaser.Math.Between(100,500));
         }
-        if(this.posX==600)
+        if(this.posX<=602&&this.posX>=598)
         {
             this.body.reset(this.posX+Phaser.Math.Between(0,200)-100,Phaser.Math.Between(100,500));
         }
-        if(this.posX==400)
+        if(this.posX<=402&&this.posX>=398)
         {
             this.body.reset(this.posX+Phaser.Math.Between(0,200)-100,Phaser.Math.Between(100,500));
         }
-        if(this.posX==200)
+        if(this.posX<=202&&this.posX>=198)
         {
             this.body.reset(this.posX+Phaser.Math.Between(0,200)-100,Phaser.Math.Between(100,500));
         } 
