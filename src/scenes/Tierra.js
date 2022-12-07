@@ -131,11 +131,8 @@ export default class Tierra extends Phaser.Scene
 	updateLabelFish() { // Actualización al coger una moneda
 		this.labelFish.destroy();
 		this.labelFish = this.add.text(1105, 20, this.cloud.getCoins(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#E10000' });
-<<<<<<< Updated upstream
-=======
 		this.imageFish.destroy();
 		this.imageFish = this.add.image(1075,40, 'goldenFish').setScale(0.7,0.7).setRotation(0.6);
->>>>>>> Stashed changes
 	}
 
 	updateLabelScore() { // Actualización del score durante la run
