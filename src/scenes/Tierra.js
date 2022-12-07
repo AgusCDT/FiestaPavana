@@ -243,7 +243,8 @@ export default class Tierra extends Phaser.Scene
 		{
 			this.enemyRandom();
 			this.timerE = 0;
-			this.limitE = Phaser.Math.Between(1,10)-parseInt(this.gameTime/10)+1;
+			let value = Phaser.Math.Between(1,10)-parseInt(this.gameTime/10);
+			this.limitE=Phaser.Math.Clamp(value,1,10);
 		}
 		if(parseInt(this.timerP)>=this.limitP) 
 		{
