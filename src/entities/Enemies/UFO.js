@@ -17,7 +17,7 @@ export default class UFO extends Enemies {
 		this.play('ufoAnimation');
     }
 
-    preUpdate(t, dt){
+    ufoMovement(){
         // Movimiento
         this.posX=parseInt(this.x);  
         if(this.posX<=1002&&this.posX>=998)
