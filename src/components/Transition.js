@@ -8,7 +8,7 @@ export default class Transition extends Phaser.GameObjects.Sprite {
 		if(pup == 'spacePup')
 		{	
 			this.scene.music.stop();
-			this.scene.parallax.changeBackground('spaceId', 'space_1', 'space_2', 'planets_1', 'planets_2');
+			this.scene.parallax.changeBackground('spaceId',' ','space');
 			//Paramos la música, la cambiamos y finalmente la loopeamos.
 			this.scene.music = this.scene.sound.add('spaceSound');
 			this.scene.music.play();

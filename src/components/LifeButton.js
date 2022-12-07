@@ -1,8 +1,9 @@
 import Button from './Button.js';
 
 export default class LifeButton extends Button {
-    constructor(scene, cloud) {
-        super(scene, 'lifebutton', 1040, 305, cloud);
+    constructor(scene, cloud, audio) {
+        super(scene, 'lifebutton', 1040, 305, cloud, audio);
+        this.purchase = audio;
         this.price = this.cloud.getLifePrice();
         this.maxLife = 5;
     }
@@ -19,6 +20,7 @@ export default class LifeButton extends Button {
 
     ClickButton() { // Compara valores para solo poder comprarla cuando tienes el dinero suficiente y cuando no tienes el maximo de vidas
         if (this.cloud.getCoins() >= this.price && this.cloud.getLife() < this.maxLife) {
+            this.purchase.play();
             this.cloud.updateCoins(this.price); // Actualiza las monedas en el localStorage
             // Aumenta el precio de las vidas con cada compra
             if (this.cloud.getLife() == 1) {
