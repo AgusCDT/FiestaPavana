@@ -43,7 +43,7 @@ export default class Tierra extends Phaser.Scene
 		this.load.image('islands', './assets/escenarios/SobreMar/islands.png');
 		this.load.image('sea', './assets/escenarios/SobreMar/sea.png');
 		// Space Parallax
-		this.load.image('space', './assets/escenarios/Espacio/space.jpeg');
+		this.load.image('space', './assets/escenarios/Espacio/Espacio.jpg');
 		// this.load.image('space_1', './assets/escenarios/Espacio/space_1.png');
 		// this.load.image('space_2', './assets/escenarios/Espacio/space_2.png');
 		// this.load.image('planets_1', './assets/escenarios/Espacio/planets_1.png');
@@ -264,6 +264,7 @@ export default class Tierra extends Phaser.Scene
 			if(parseInt(this.hawaiiTime)>=10||!this.hawaiiCoins)
 			{
 				this.transition.transition('roadPup');
+				this.updateLabelFish();
 				this.hawaiiPlace = false;
 				this.hawaiiTime = 0;	
 			}
