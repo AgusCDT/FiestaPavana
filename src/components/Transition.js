@@ -43,6 +43,7 @@ export default class Transition extends Phaser.GameObjects.Sprite {
 			this.scene.music.setLoop(true);
 		}
 		
+		
 		this.fadeOut();
 	}
 
