@@ -13,7 +13,7 @@ export default class Enemies extends Phaser.GameObjects.Sprite {
 			this.scene.pavana.enemyColision();
 		}
 	}
-
+	
 	onDestroy() {
 		if (this.x < -90) { // Los enemigos se destruyen al sobrepasar la izquierda para no consumir memoria
 			this.scene.elementsArray = this.scene.elementsArray.filter((item) => item !== this);

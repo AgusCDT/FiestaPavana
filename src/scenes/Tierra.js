@@ -31,7 +31,7 @@ export default class Tierra extends Phaser.Scene
 	// Precarga de imágenes
 	preload() {
 		this.load.image('backgroundTransition', './assets/imagenes/otras/backgroundBlack.png');
-		this.load.image('bomb', './assets/imagenes/otras/bomba-nuclearM.png');
+		this.load.spritesheet('bomb', './assets/imagenes/otras/bomba-nuclearM.png', { frameWidth: 50, frameHeight: 50});
 		// Road Parallax
 		this.load.image('skyRoad', './assets/escenarios/Carretera/skyRoad.png');	
 		this.load.image('mountains', './assets/escenarios/Carretera/mountains_1.png');

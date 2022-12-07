@@ -3,7 +3,16 @@ import Enemies from "./Enemies.js";
 export default class Bomb extends Enemies {
     constructor(scene, x, y) {
         super(scene, x, y);
-        this.body.setSize(50, 50).setOffset(0, 0);
+        this.body.setSize(30, 50).setOffset(10, 0);
+
+        // Animación
+        this.scene.anims.create({
+			key: 'bombAnimation',
+			frames: scene.anims.generateFrameNumbers('bomb', { start: 0, end: 0}),
+			frameRate: 2,
+			repeat: -1
+		});
+		this.play('bombAnimation');
     }
 
     onDestroyBomb(){
