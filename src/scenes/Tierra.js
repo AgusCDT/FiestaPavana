@@ -106,7 +106,7 @@ export default class Tierra extends Phaser.Scene
 		this.transition = new Transition(this);
 		this.id ='road';
 		this.limitE=Phaser.Math.Between(1,10);
-		this.limitP=Phaser.Math.Between(1,2);
+		this.limitP=Phaser.Math.Between(20,30);
 		this.limitC=Phaser.Math.Between(2,5);
 		this.elementsArray = [];
 		this.hawaiiPlace=false;
