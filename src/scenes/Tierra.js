@@ -133,14 +133,14 @@ export default class Tierra extends Phaser.Scene
 
 	updateLabelFish() { // Actualización al coger una moneda
 		this.labelFish.destroy();
-		this.labelFish = this.add.text(1105, 10, this.cloud.getCoins(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#00FF00' });
+		this.labelFish = this.add.text(1105, 10, this.cloud.getCoins(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#E10000' });
 		this.imageFish.destroy();
 		this.imageFish = this.add.image(1075, 30, 'goldenFish').setScale(0.7,0.7).setRotation(0.6);
 	}
 
 	updateLabelScore() { // Actualización del score durante la run
 		this.labelScore.destroy();
-		this.labelScore = this.add.text(370, 20, 'Score: '+ this.cloud.getScore(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#00FF00' });
+		this.labelScore = this.add.text(370, 20, 'Score: '+ this.cloud.getScore(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#E10000' });
 	}
 
 	cleanObjects() {
@@ -243,7 +243,7 @@ export default class Tierra extends Phaser.Scene
 		{
 			this.enemyRandom();
 			this.timerE = 0;
-			this.limitE = Phaser.Math.Between(1,10);
+			this.limitE = Phaser.Math.Between(1,10)-parseInt(this.gameTime/10)+1;
 		}
 		if(parseInt(this.timerP)>=this.limitP) 
 		{
