@@ -5,7 +5,7 @@ export default class Asteroid extends Enemies {
         super(scene, x, y);
         this.speedX = -75;
         this.speedY = 0;
-        this.body.setSize(150, 140).setOffset(25, 30);
+        this.body.setSize(150, 160).setOffset(25, 25);
         //Tween
         var tween = this.scene.tweens.add({
             targets:  this,

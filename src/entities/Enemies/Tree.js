@@ -3,10 +3,12 @@ import Enemies from "./Enemies.js";
 export default class Tree extends Enemies {
     constructor(scene, x, y) {
         super(scene,x, y);
-        this.speedX = -75;
+        this.speedX = -47;
         this.speedY = 0;
         this.body.setSize(85, 100).setOffset(10, 10);
         this.setScale(1.5, 1.5);
+        this.setDepth(2);
+        
         // Animación
         this.scene.anims.create({
 			key: 'treeAnimation',

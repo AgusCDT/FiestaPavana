@@ -92,6 +92,7 @@ export default class Tierra extends Phaser.Scene
 	 
 	// Creación de componentes y parámetros
 	create() {
+		this.physics.world.setBounds(0, 70, 1200, 530);
 		this.parallax = new Parallax(this, this.music);
 		this.parallax.setDepth(0);
 	 	this.pavana = new Pavana(this, 100, 100);
@@ -105,8 +106,8 @@ export default class Tierra extends Phaser.Scene
 		this.transition = new Transition(this);
 		this.id ='road';
 		this.limitE=Phaser.Math.Between(1,10);
-		this.limitP=Phaser.Math.Between(2,10);
-		this.limitC=Phaser.Math.Between(4,10);
+		this.limitP=Phaser.Math.Between(1,2);
+		this.limitC=Phaser.Math.Between(2,5);
 		this.elementsArray = [];
 		this.hawaiiPlace=false;
 		this.hawaiiCoins=false;
@@ -117,11 +118,11 @@ export default class Tierra extends Phaser.Scene
 
 	HUD() {
 		// Texto e imagen de las monedas
-		this.labelFish = this.add.text(1105, 10, this.cloud.getCoins(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#E10000' });
-		this.imageFish = this.add.image(1075, 30, 'goldenFish').setScale(0.7,0.7).setRotation(0.6);
+		this.labelFish = this.add.text(1105, 20, this.cloud.getCoins(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#E10000' });
+		this.imageFish = this.add.image(1075, 40, 'goldenFish').setScale(0.7,0.7).setRotation(0.6);
 		// Texto score
 		this.labelScore = this.add.text(370, 20, this.cloud.getScore(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#E10000' }); 
-		this.highScore = this.add.text(700, 20, 'HighScore: ' +this.cloud.getHighScore(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#E10000' });
+		this.highScore = this.add.text(690, 20, 'HighScore: ' +this.cloud.getHighScore(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#E10000' });
 		// Vidas
 		this.pavana.loadLife();
 		
@@ -133,9 +134,7 @@ export default class Tierra extends Phaser.Scene
 
 	updateLabelFish() { // Actualización al coger una moneda
 		this.labelFish.destroy();
-		this.labelFish = this.add.text(1105, 10, this.cloud.getCoins(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#E10000' });
-		this.imageFish.destroy();
-		this.imageFish = this.add.image(1075, 30, 'goldenFish').setScale(0.7,0.7).setRotation(0.6);
+		this.labelFish = this.add.text(1105, 20, this.cloud.getCoins(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#E10000' });
 	}
 
 	updateLabelScore() { // Actualización del score durante la run
@@ -185,13 +184,12 @@ export default class Tierra extends Phaser.Scene
 	enemyRandom() {
 		this.id = this.parallax.checkId();
 		let x = Phaser.Math.Between(1,7);
-		//let x = 7;
 		if(this.id == 'roadId')
 		{
 			if (x == 1) {this.elementsArray.push(new Car(this,1200,(Phaser.Math.Between(0,1)*40)+440));}
 			else if (x == 2) {this.elementsArray.push(new Balloon(this,1200,Phaser.Math.Between(100,300)));}
 			else if (x == 3) {this.elementsArray.push(new Eagle(this,1200,Phaser.Math.Between(100,500)));}
-			else if (x == 4) {this.elementsArray.push(new Plane(this,1200,Phaser.Math.Between(100,400), 1));}
+			else if (x == 4) {this.elementsArray.push(new Plane(this,1200,Phaser.Math.Between(100,400), Phaser.Math.Between(1,2)));}
 			else if (x == 5) {this.elementsArray.push(new Tree(this,1200,500));}
       		else if(x == 6) {this.elementsArray.push(new Sign(this,1200,500));}
 			else this.enemyRandom();
@@ -199,6 +197,7 @@ export default class Tierra extends Phaser.Scene
 		else if(this.id =='spaceId')
 		{
 			if (x == 1) {this.elementsArray.push(new Asteroid(this,1200,Phaser.Math.Between(100,500)));}
+			if (x == 2) {this.elementsArray.push(new Asteroid(this,1200,Phaser.Math.Between(450,525)));}
 			else if (x <= 5) {this.elementsArray.push(new UFO(this,1200,Phaser.Math.Between(50, 550)));}
 			else this.enemyRandom(); 
 		}
@@ -207,7 +206,8 @@ export default class Tierra extends Phaser.Scene
 			if (x == 1) {this.elementsArray.push(new Boat(this,1200,Phaser.Math.Between(42,52)*10));}
 			else if (x == 2) {this.elementsArray.push(new Dolphin(this,1200,550));}
 			else if (x == 3) {this.elementsArray.push(new Island(this,1200,440));}
-			else if (x == 4) {this.elementsArray.push(new Plane(this,1200, Phaser.Math.Between(100, 400), 2));}
+			else if (x == 4 || x == 5) {this.elementsArray.push(new Balloon(this,1200, Phaser.Math.Between(100, 400)));}
+			else if (x >= 6) {this.elementsArray.push(new Plane(this,1200, Phaser.Math.Between(100, 400), Phaser.Math.Between(1,2)));}
 			else this.enemyRandom();
 		}
 	}
@@ -250,13 +250,13 @@ export default class Tierra extends Phaser.Scene
 		{
 			this.pupRandom();
 			this.timerP = 0;
-			this.limitP = Phaser.Math.Between(2,10);
+			this.limitP = Phaser.Math.Between(20,30);
 		}
 		if(parseInt(this.timerC)>=this.limitC)
 		{
 			this.coinRandom();
 			this.timerC = 0;
-			this.limitC = Phaser.Math.Between(4,10);
+			this.limitC = Phaser.Math.Between(2,5);
 		}
 		if(this.hawaiiPlace)
 		{

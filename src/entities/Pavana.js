@@ -8,7 +8,7 @@ export default class Pavana extends Phaser.GameObjects.Sprite {
 		this.audio = this.scene.sound.add('damage');
 		this.scene.add.existing(this);
     	this.scene.physics.add.existing(this);
-    	this.body.setCollideWorldBounds();
+    	this.body.setCollideWorldBounds();	
 		this.score = 0;
 		this.speedX = 0;
 		this.speedY = 0;
