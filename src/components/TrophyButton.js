@@ -1,8 +1,9 @@
 import Button from './Button.js';
 
 export default class TrophyButton extends Button {
-    constructor(scene, cloud) {
-        super(scene, 'trophybutton', 880, 305, cloud);
+    constructor(scene, cloud, audio) {
+        super(scene, 'trophybutton', 880, 305, cloud, audio);
+        this.purchase = audio;
         this.price = this.cloud.getMultiplicatorPrice();
     }
 

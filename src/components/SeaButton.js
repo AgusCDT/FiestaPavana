@@ -1,8 +1,9 @@
 import Button from './Button.js';
 
 export default class SeaButton extends Button {
-    constructor(scene, cloud) {
-        super(scene, 'seabutton', 330, 305, cloud);
+    constructor(scene, cloud, audio) {
+        super(scene, 'seabutton', 330, 305, cloud, audio);
+        this.purchase = audio;
         this.price = 30;
     }
 
