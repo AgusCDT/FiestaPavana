@@ -263,6 +263,7 @@ export default class Tierra extends Phaser.Scene
 			if(parseInt(this.hawaiiTime)>=10||!this.hawaiiCoins)
 			{
 				this.transition.transition('roadPup');
+				this.updateLabelFish();
 				this.hawaiiPlace = false;
 				this.hawaiiTime = 0;	
 			}
