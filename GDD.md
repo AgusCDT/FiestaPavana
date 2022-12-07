@@ -117,12 +117,12 @@ Los recursos estéticos se conseguirán mediante la página web “Flaticon” y
 |Isla    |Montículo de tierra con un cocotero.|Obstáculo|Mar|
 |Avion  |Tienen mayor tamaño que la Pavana y dos tipos de movimiento.|Enemigo|Tierra y Mar| 
 |Cartel  |Señales de tráfico. Se esquivan por arriba.|Obstáculo|Tierra|
-|Barcos     |Tendrán un balanceo sobre el mar.|Obstáculo|Mar|
+|Barcos     |Tendrán un balanceo sobre el mar.|enemigos|Mar|
 |Asteroides |Obstáculo que contará con una animación de rotación.|Obstáculo|Espacio|
-|Globo      |Tienen un tamaño similar al avion, apareciendo por todo el cielo.|Obstáculo|Tierra|
+|Globo      |Tienen un tamaño similar al avion, apareciendo por todo el cielo.|Obstáculo|Tierra y Mar|
 |Delfín      |Realizan un movimiento propio de un delfín. Tienen tamaño similar a la Pavana.|Obstáculo|Mar|
 |Árbol     |Aparecen como los carteles, en la carretera.|Obstáculo|Carretera|
-|Bomba     |Aparecen como castigo al quedarte quieto. Caen desde arriba y te restan una vida si no las esquivas.|Obstáculo|Carretera|
+|Bomba     |Aparecen como castigo al quedarte quieto. Caen desde arriba y te restan una vida si no las esquivas.|Enemigo|Carretera|
 |Flotador   |Provoca el cambio al escenario marítimo.|Objeto|Tierra, Espacio|
 |Casco Astronauta|Con esto iremos al escenario en el espacio.|Objeto|Tierra y Mar|
 |Camisa Hawaiiana|Lo encontramos con una baja probabilidad. Cambia al escenario de la Fiesta(Hawaii).|Objeto|Todos|

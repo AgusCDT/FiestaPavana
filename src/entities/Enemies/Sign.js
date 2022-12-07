@@ -2,7 +2,7 @@ import Enemies from "./Enemies.js";
 export default class Sign extends Enemies {
     constructor(scene, x, y) {
         super(scene,x, y);
-        this.speedX = -47;
+        this.speedX = -46;
         this.speedY = 0;
         this.body.setSize(47, 47).setOffset(0, 0);
         this.setDepth(2);

@@ -30,8 +30,8 @@ export default class Tierra extends Phaser.Scene
 
 	// Precarga de imágenes
 	preload() {
+		// Transition
 		this.load.image('backgroundTransition', './assets/imagenes/otras/backgroundBlack.png');
-		this.load.spritesheet('bomb', './assets/imagenes/otras/bomba-nuclearM.png', { frameWidth: 50, frameHeight: 50});
 		// Road Parallax
 		this.load.image('skyRoad', './assets/escenarios/Carretera/skyRoad.png');	
 		this.load.image('mountains', './assets/escenarios/Carretera/mountains_1.png');
@@ -44,23 +44,20 @@ export default class Tierra extends Phaser.Scene
 		this.load.image('sea', './assets/escenarios/SobreMar/sea.png');
 		// Space Parallax
 		this.load.image('space', './assets/escenarios/Espacio/Espacio.jpg');
-		// this.load.image('space_1', './assets/escenarios/Espacio/space_1.png');
-		// this.load.image('space_2', './assets/escenarios/Espacio/space_2.png');
-		// this.load.image('planets_1', './assets/escenarios/Espacio/planets_1.png');
-		// this.load.image('planets_2', './assets/escenarios/Espacio/planets_2.png');
 		// Disco background
 		this.load.image('hawaii','./assets/escenarios/Fiesta/Fiesta.jpg');
 		// Pavana 
-		this.load.spritesheet('pavanaRight', './assets/imagenes/PavanaRightAnimation.png', { frameWidth: 75, frameHeight: 39});
-		this.load.spritesheet('pavanaLeft', './assets/imagenes/PavanaLeftAnimation.png', { frameWidth: 75, frameHeight: 39});
-		this.load.spritesheet('pavanaLeftDeath', './assets/imagenes/PavanaLeftAnimationDeath1.png', { frameWidth: 75, frameHeight: 39});
-		this.load.spritesheet('pavanaRightDeath', './assets/imagenes/PavanaRightAnimationDeath1.png', { frameWidth: 75, frameHeight: 39});
+		this.load.spritesheet('pavanaRight', './assets/imagenes/pavana/PavanaRightAnimation.png', { frameWidth: 75, frameHeight: 39});
+		this.load.spritesheet('pavanaLeft', './assets/imagenes/pavana/PavanaLeftAnimation.png', { frameWidth: 75, frameHeight: 39});
+		this.load.spritesheet('pavanaLeftDeath', './assets/imagenes/pavana/PavanaLeftAnimationDeath1.png', { frameWidth: 75, frameHeight: 39});
+		this.load.spritesheet('pavanaRightDeath', './assets/imagenes/pavana/PavanaRightAnimationDeath1.png', { frameWidth: 75, frameHeight: 39});
 		// Enemies
 		this.load.spritesheet('car', './assets/imagenes/enemigos/car.png', { frameWidth: 175, frameHeight: 100});
 		this.load.spritesheet('ufo', './assets/imagenes/enemigos/UFO.png', { frameWidth: 100, frameHeight: 100});
 		this.load.spritesheet('eagle', './assets/imagenes/enemigos/eagleAnimation.png', { frameWidth: 79, frameHeight: 77});
 		this.load.spritesheet('dolphin', './assets/imagenes/enemigos/delfin.png', { frameWidth: 90, frameHeight: 90});
 		this.load.spritesheet('plane', './assets/imagenes/obstacles/plane.png', { frameWidth: 111, frameHeight: 73});
+		this.load.spritesheet('bomb', './assets/imagenes/otras/bomba-nuclearM.png', { frameWidth: 50, frameHeight: 50});
 		// Obstacles
 		this.load.spritesheet('asteroid', './assets/imagenes/obstacles/asteroid.png', { frameWidth: 199, frameHeight: 201});
 		this.load.spritesheet('island', './assets/imagenes/obstacles/island.png', { frameWidth: 194, frameHeight: 254});
@@ -78,7 +75,6 @@ export default class Tierra extends Phaser.Scene
 		this.load.image('gold', './assets/imagenes/otras/gold.png');
 		// HUD
 		this.load.image('feather', './assets/imagenes/otras/feather.png');
-		// Audio
 		//Music
         this.load.audio('roadSound', './assets/sonidos/roadSound.mp3');
         this.load.audio('spaceSound', './assets/sonidos/spaceSound.mp3');
@@ -135,6 +131,11 @@ export default class Tierra extends Phaser.Scene
 	updateLabelFish() { // Actualización al coger una moneda
 		this.labelFish.destroy();
 		this.labelFish = this.add.text(1105, 20, this.cloud.getCoins(), { fontFamily: 'Cooper Black', fontSize: 30, color: '#E10000' });
+<<<<<<< Updated upstream
+=======
+		this.imageFish.destroy();
+		this.imageFish = this.add.image(1075,40, 'goldenFish').setScale(0.7,0.7).setRotation(0.6);
+>>>>>>> Stashed changes
 	}
 
 	updateLabelScore() { // Actualización del score durante la run

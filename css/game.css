@@ -1,5 +1,5 @@
 html {
-	cursor:  url(../assets/imagenes/plumacursor.png), auto;
+	cursor:  url(../assets/imagenes/otras/plumacursor.png), auto;
 	font: oblique bold 120% cursive;
 	height: 120%;
 }
@@ -25,7 +25,7 @@ body {
 }
 
 a {
-	cursor:  url(../assets/imagenes/plumacursor.png), pointer;
+	cursor:  url(../assets/imagenes/otras/plumacursor.png), pointer;
 }
 
 .canvas {
