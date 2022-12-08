@@ -23,7 +23,7 @@
 - boatAnimation.png -> https://www.flaticon.com/free-sticker/sailboat_7603239
 - delfin.png -> https://www.flaticon.es/icono-gratis/delfin_1864473?term=delfin&related_id=1864473
 - Architecture.png -> Pablo Cerrada Vega
-- HUD.jpg -> Agustín Castro de Troya
+- HUD.png -> Agustín Castro de Troya
 - igtriolic.png -> Diseñadora de arte (Beatriz Rubio Rodríguez)
 - shop.jpg -> Pablo Cerrada Vega
 - shopScreenshot.PNG -> Pablo Cerrada Vega
