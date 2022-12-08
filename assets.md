@@ -30,11 +30,12 @@
 - tktriolic.png -> Diseñadora de arte (Beatriz Rubio Rodríguez)
 - TRIOLIC.png -> Diseñadora de arte (Beatriz Rubio Rodríguez)
 - twtriolic.png -> Diseñadora de arte (Beatriz Rubio Rodríguez)
-- UML.png -> Pablo Cerrada Vega
+- UML.png -> Agustín Castro De Troya
 - gaviotalogo.png -> https://www.flaticon.es/icono-gratis/gaviota_1826401?related_id=1826401&origin=pack
 - plumacursor.png -> https://www.flaticon.com/free-icon/feather_2260603?related_id=2260719&origin=search
 - webBackground.jpg -> "https://www.freepik.es/vector-gratis/diseno-patron-nube-fondo-minimalista_33274228.htm#page=5&query=cartoon%20background&position=48&from_view=search&track=sph"
 - wasdweb.png -> Pablo Cao Calvo
+- Pavana.png -> https://instagram.com/koigrafica?igshid=YmMyMTA2M2Y=
 ---
 
 **Escenarios:** Todos los escenarios(Tierra, Mar, Espacio y Hawaii) han sido realizados por la diseñadora de arte (Beatriz Rubio Rodríguez).
