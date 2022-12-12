@@ -85,7 +85,7 @@ Primero habrá que desbloquear los objetos de escenario que nos llevan a otros e
 ### 5.	HUD
 #### 5.1. Mockup del HUD
 
-![Imagen HUD](https://raw.githubusercontent.com/AgusCDT/FiestaPavana/main/assets/imagenes/otras/HUD.jpg)
+![Imagen HUD](https://raw.githubusercontent.com/AgusCDT/FiestaPavana/main/assets/imagenes/otras/HUD.png)
 
 #### 5.2. Explicación de los elementos del HUD y su funcionamiento**
 
@@ -100,9 +100,9 @@ Peces dorados(monedas): contador de peces conseguidos(arriba a la derecha).
 El videojuego tiene un estilo de dibujo animado, ya que la escultura elegida proviene de un cómic y queríamos que nuestro proyecto tuviera dicho estilo. Además esta estética más familiar está enfocada a todos los públicos.
 
 Los recursos estéticos se conseguirán mediante la página web “Flaticon” y de nuestra encargada de arte. Algunos ejemplos visuales serían:
-![Imagen Pavana](https://raw.githubusercontent.com/AgusCDT/FiestaPavana/main/assets/imagenes/gaviota.png)
-![Imagen Pavana](https://raw.githubusercontent.com/AgusCDT/FiestaPavana/main/assets/imagenes/objetos/shirt.png)
-![Imagen Pavana](https://raw.githubusercontent.com/AgusCDT/FiestaPavana/main/assets/imagenes/objetos/lifebuoy.png)
+![Imagen Pavana](https://raw.githubusercontent.com/AgusCDT/FiestaPavana/main/assets/imagenes/otras/gaviotalogo.png)
+![Imagen Shirt](https://raw.githubusercontent.com/AgusCDT/FiestaPavana/main/assets/imagenes/objetos/shirt.png)
+![Imagen Flotador](https://raw.githubusercontent.com/AgusCDT/FiestaPavana/main/assets/imagenes/objetos/lifebuoy.png)
 
 ### **7. Contenido**
 
